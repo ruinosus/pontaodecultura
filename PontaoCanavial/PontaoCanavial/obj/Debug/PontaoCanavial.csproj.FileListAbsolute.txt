@@ -1,0 +1,5 @@
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.dll
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.pdb
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.dll
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.pdb
