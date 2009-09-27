@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace PontaoCanavial
 {
@@ -33,6 +34,12 @@ namespace PontaoCanavial
         protected void Application_Start()
         {
             RegisterRoutes(RouteTable.Routes);
+        }
+
+        protected void Application_AuthenticateRequest()
+        {
+            if (User != null)
+                Membership.GetUser(true);
         }
     }
 }
