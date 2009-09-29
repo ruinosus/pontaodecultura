@@ -23,7 +23,7 @@ namespace PontaoCanavial.Models.VOs
                 yield return new RuleViolation("O nome é Necessário para o cadastro", "Nome");
             
             if (String.IsNullOrEmpty(NomeIdentificador))
-                yield return new RuleViolation("O nome identificador é Necessário para o cadastro", "Nome");
+                yield return new RuleViolation("O nome identificador é Necessário para o cadastro", "NomeIdentificador");
             
             yield break;
         }

@@ -3,3 +3,11 @@ E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.pdb
 E:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
 E:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.dll
 E:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.pdb
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.dll
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.pdb
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.dll
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.pdb
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.dll
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PagedList.dll
+C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.pdb
