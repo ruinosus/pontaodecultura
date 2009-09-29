@@ -44,7 +44,7 @@ namespace PontaoCanavial.Models.Repositorios
         {
             db.Banners.DeleteAllOnSubmit(ponto.Banners);
             db.Galerias.DeleteAllOnSubmit(ponto.Galerias);
-
+            
             foreach (Galeria galeria in ponto.Galerias)
             {
                 db.Imagems.DeleteAllOnSubmit(galeria.Imagems);

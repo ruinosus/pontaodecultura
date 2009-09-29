@@ -80,6 +80,7 @@
     <Compile Include="Models\UserAdministration\DetailsViewModel.cs" />
     <Compile Include="Models\UserAdministration\IndexViewModel.cs" />
     <Compile Include="Models\UserAdministration\RoleViewModel.cs" />
+    <Compile Include="Models\VOs\Newsletter.cs" />
     <Compile Include="Models\VOs\PontaoCanavial.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
