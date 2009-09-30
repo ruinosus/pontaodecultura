@@ -77,8 +77,13 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Models\ISmtpClient.cs" />
     <Compile Include="Models\Repositorios\CategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IBannerRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\ICategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IGaleriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IImagemRespositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\INewsletterRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\INoticiaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IProdutoRepositorio.cs" />
     <Compile Include="Models\Repositorios\NewsletterRepositorio.cs" />
     <Compile Include="Models\SmtpClientProxy.cs" />
     <Compile Include="Models\UserAdministration\DetailsViewModel.cs" />
@@ -89,6 +94,7 @@
     <Compile Include="Models\VOs\Galeria.cs" />
     <Compile Include="Models\VOs\Imagem.cs" />
     <Compile Include="Models\VOs\Newsletter.cs" />
+    <Compile Include="Models\VOs\Noticia.cs" />
     <Compile Include="Models\VOs\PontaoCanavial.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
