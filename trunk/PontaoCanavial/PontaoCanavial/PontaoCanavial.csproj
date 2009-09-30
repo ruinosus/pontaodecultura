@@ -76,10 +76,18 @@
     <Compile Include="Helpers\ControllerHelpers.cs" />
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Models\ISmtpClient.cs" />
+    <Compile Include="Models\Repositorios\CategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\ICategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\INewsletterRepositorio.cs" />
+    <Compile Include="Models\Repositorios\NewsletterRepositorio.cs" />
     <Compile Include="Models\SmtpClientProxy.cs" />
     <Compile Include="Models\UserAdministration\DetailsViewModel.cs" />
     <Compile Include="Models\UserAdministration\IndexViewModel.cs" />
     <Compile Include="Models\UserAdministration\RoleViewModel.cs" />
+    <Compile Include="Models\VOs\Banner.cs" />
+    <Compile Include="Models\VOs\Categoria.cs" />
+    <Compile Include="Models\VOs\Galeria.cs" />
+    <Compile Include="Models\VOs\Imagem.cs" />
     <Compile Include="Models\VOs\Newsletter.cs" />
     <Compile Include="Models\VOs\PontaoCanavial.designer.cs">
       <AutoGen>True</AutoGen>
@@ -89,7 +97,10 @@
     <Compile Include="Models\Repositorios\Interfaces\IPontoRepositorio.cs" />
     <Compile Include="Models\Repositorios\PontoRepositorio.cs" />
     <Compile Include="Models\VOs\Ponto.cs" />
+    <Compile Include="Models\VOs\Produto.cs" />
     <Compile Include="Models\VOs\RuleViolation.cs" />
+    <Compile Include="Models\VOs\Usuario.cs" />
+    <Compile Include="Models\VOs\UsuarioPonto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
