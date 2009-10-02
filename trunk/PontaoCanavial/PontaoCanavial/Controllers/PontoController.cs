@@ -33,14 +33,18 @@ namespace PontaoCanavial.Controllers
         {
             if (!string.IsNullOrEmpty(nomeIdentificador))
             {
-                var upcomingDinners = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
-                if (upcomingDinners!=null && upcomingDinners.NomeIdentificador != string.Empty)
-                    return View(upcomingDinners);
+                var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
+                if (pontinho != null && pontinho.NomeIdentificador != string.Empty)
+                    return View(pontinho);
                 else
                     return View("NaoEncontrado");
             }
             else
-            return View();
+            {
+                var pontao = pontoRepositorio.ConsultarPontao();
+                return View(pontao);
+
+            }
 
         }
 

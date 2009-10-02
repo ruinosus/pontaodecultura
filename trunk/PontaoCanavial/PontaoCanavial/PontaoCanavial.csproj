@@ -63,6 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
     <Compile Include="Controllers\UserAdministrationController.cs" />
@@ -77,14 +78,24 @@
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Models\ISmtpClient.cs" />
     <Compile Include="Models\Repositorios\CategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\EventoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\GaleriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\ImagemRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\IBannerRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\ICategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IEventoRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\IGaleriaRepositorio.cs" />
-    <Compile Include="Models\Repositorios\Interfaces\IImagemRespositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IImagemRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\INewsletterRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\INoticiaRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\IProdutoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IUsuarioPontoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IUsuarioRepositorio.cs" />
     <Compile Include="Models\Repositorios\NewsletterRepositorio.cs" />
+    <Compile Include="Models\Repositorios\NoticiaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\UsuarioPontoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="Models\SmtpClientProxy.cs" />
     <Compile Include="Models\UserAdministration\DetailsViewModel.cs" />
     <Compile Include="Models\UserAdministration\IndexViewModel.cs" />
@@ -95,6 +106,9 @@
     <Compile Include="Models\VOs\Imagem.cs" />
     <Compile Include="Models\VOs\Newsletter.cs" />
     <Compile Include="Models\VOs\Noticia.cs" />
+    <Compile Include="Models\VOs\PontaoCanavial.cs">
+      <DependentUpon>PontaoCanavial.dbml</DependentUpon>
+    </Compile>
     <Compile Include="Models\VOs\PontaoCanavial.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -112,6 +126,7 @@
   <ItemGroup>
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Views\Administrador\Index.aspx" />
     <Content Include="Views\Ponto\Details.aspx" />
     <Content Include="Views\Ponto\Index.aspx" />
     <Content Include="Views\Ponto\NaoEncontrado.aspx" />
