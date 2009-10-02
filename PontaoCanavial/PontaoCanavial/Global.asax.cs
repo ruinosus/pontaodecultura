@@ -18,17 +18,20 @@ namespace PontaoCanavial
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                "nomeIdentificador",
+                "Pontinho",
                 "Ponto/{nomeIdentificador}",
                 new { controller = "Ponto", action = "Index" }
             );
 
+
             routes.MapRoute(
-                "Default",                                              // Route name
-                "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
+                "Default",                                                              // Route name
+                "{controller}/{action}/{nomeIdentificador}",                           // URL with parameters
+                new { controller = "Ponto", action = "Index", nomeIdentificador = "" }  // Parameter defaults
             );
 
+            routes.MapRoute("teste", "Ponto/{nomeIdentificador}",
+               new { controller = "Ponto", action = "Index" });
         }
 
         protected void Application_Start()

@@ -30,21 +30,30 @@ namespace PontaoCanavial.Models.VOs
 		
     #region Extensibility Method Definitions
     partial void OnCreated();
+    partial void InsertNewsletter(Newsletter instance);
+    partial void UpdateNewsletter(Newsletter instance);
+    partial void DeleteNewsletter(Newsletter instance);
     partial void InsertBanner(Banner instance);
     partial void UpdateBanner(Banner instance);
     partial void DeleteBanner(Banner instance);
+    partial void InsertUsuarioPonto(UsuarioPonto instance);
+    partial void UpdateUsuarioPonto(UsuarioPonto instance);
+    partial void DeleteUsuarioPonto(UsuarioPonto instance);
     partial void InsertCategoria(Categoria instance);
     partial void UpdateCategoria(Categoria instance);
     partial void DeleteCategoria(Categoria instance);
+    partial void InsertEvento(Evento instance);
+    partial void UpdateEvento(Evento instance);
+    partial void DeleteEvento(Evento instance);
     partial void InsertGaleria(Galeria instance);
     partial void UpdateGaleria(Galeria instance);
     partial void DeleteGaleria(Galeria instance);
     partial void InsertImagem(Imagem instance);
     partial void UpdateImagem(Imagem instance);
     partial void DeleteImagem(Imagem instance);
-    partial void InsertNewsletter(Newsletter instance);
-    partial void UpdateNewsletter(Newsletter instance);
-    partial void DeleteNewsletter(Newsletter instance);
+    partial void InsertNewsletter1(Newsletter1 instance);
+    partial void UpdateNewsletter1(Newsletter1 instance);
+    partial void DeleteNewsletter1(Newsletter1 instance);
     partial void InsertNoticia(Noticia instance);
     partial void UpdateNoticia(Noticia instance);
     partial void DeleteNoticia(Noticia instance);
@@ -57,12 +66,6 @@ namespace PontaoCanavial.Models.VOs
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
-    partial void InsertUsuarioPonto(UsuarioPonto instance);
-    partial void UpdateUsuarioPonto(UsuarioPonto instance);
-    partial void DeleteUsuarioPonto(UsuarioPonto instance);
-    partial void InsertEvento(Evento instance);
-    partial void UpdateEvento(Evento instance);
-    partial void DeleteEvento(Evento instance);
     #endregion
 		
 		public PontaoCanavialDataContext() : 
@@ -95,6 +98,14 @@ namespace PontaoCanavial.Models.VOs
 			OnCreated();
 		}
 		
+		public System.Data.Linq.Table<Newsletter> Newsletters
+		{
+			get
+			{
+				return this.GetTable<Newsletter>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Banner> Banners
 		{
 			get
@@ -103,11 +114,27 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
+		public System.Data.Linq.Table<UsuarioPonto> UsuarioPontos
+		{
+			get
+			{
+				return this.GetTable<UsuarioPonto>();
+			}
+		}
+		
 		public System.Data.Linq.Table<Categoria> Categorias
 		{
 			get
 			{
 				return this.GetTable<Categoria>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Evento> Eventos
+		{
+			get
+			{
+				return this.GetTable<Evento>();
 			}
 		}
 		
@@ -127,11 +154,11 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Newsletter> Newsletters
+		public System.Data.Linq.Table<Newsletter1> Newsletter1s
 		{
 			get
 			{
-				return this.GetTable<Newsletter>();
+				return this.GetTable<Newsletter1>();
 			}
 		}
 		
@@ -166,20 +193,155 @@ namespace PontaoCanavial.Models.VOs
 				return this.GetTable<Usuario>();
 			}
 		}
+	}
+	
+	[Table(Name="dbo.Newsletter")]
+	public partial class Newsletter : INotifyPropertyChanging, INotifyPropertyChanged
+	{
 		
-		public System.Data.Linq.Table<UsuarioPonto> UsuarioPontos
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _PontoId;
+		
+		private string _Email;
+		
+		private EntityRef<Ponto> _Ponto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnPontoIdChanging(int value);
+    partial void OnPontoIdChanged();
+    partial void OnEmailChanging(string value);
+    partial void OnEmailChanged();
+    #endregion
+		
+		public Newsletter()
+		{
+			this._Ponto = default(EntityRef<Ponto>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
 		{
 			get
 			{
-				return this.GetTable<UsuarioPonto>();
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
 			}
 		}
 		
-		public System.Data.Linq.Table<Evento> Eventos
+		[Column(Storage="_PontoId", DbType="Int NOT NULL")]
+		public int PontoId
 		{
 			get
 			{
-				return this.GetTable<Evento>();
+				return this._PontoId;
+			}
+			set
+			{
+				if ((this._PontoId != value))
+				{
+					if (this._Ponto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPontoIdChanging(value);
+					this.SendPropertyChanging();
+					this._PontoId = value;
+					this.SendPropertyChanged("PontoId");
+					this.OnPontoIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Email", DbType="VarChar(50)")]
+		public string Email
+		{
+			get
+			{
+				return this._Email;
+			}
+			set
+			{
+				if ((this._Email != value))
+				{
+					this.OnEmailChanging(value);
+					this.SendPropertyChanging();
+					this._Email = value;
+					this.SendPropertyChanged("Email");
+					this.OnEmailChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Ponto_Newsletter", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
+		public Ponto Ponto
+		{
+			get
+			{
+				return this._Ponto.Entity;
+			}
+			set
+			{
+				Ponto previousValue = this._Ponto.Entity;
+				if (((previousValue != value) 
+							|| (this._Ponto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ponto.Entity = null;
+						previousValue.Newsletters.Remove(this);
+					}
+					this._Ponto.Entity = value;
+					if ((value != null))
+					{
+						value.Newsletters.Add(this);
+						this._PontoId = value.Id;
+					}
+					else
+					{
+						this._PontoId = default(int);
+					}
+					this.SendPropertyChanged("Ponto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
@@ -407,6 +569,198 @@ namespace PontaoCanavial.Models.VOs
 		}
 	}
 	
+	[Table(Name="dbo.UsuarioPonto")]
+	public partial class UsuarioPonto : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _PontoId;
+		
+		private int _UsuarioId;
+		
+		private EntityRef<Ponto> _Ponto;
+		
+		private EntityRef<Usuario> _Usuario;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnPontoIdChanging(int value);
+    partial void OnPontoIdChanged();
+    partial void OnUsuarioIdChanging(int value);
+    partial void OnUsuarioIdChanged();
+    #endregion
+		
+		public UsuarioPonto()
+		{
+			this._Ponto = default(EntityRef<Ponto>);
+			this._Usuario = default(EntityRef<Usuario>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PontoId", DbType="Int NOT NULL")]
+		public int PontoId
+		{
+			get
+			{
+				return this._PontoId;
+			}
+			set
+			{
+				if ((this._PontoId != value))
+				{
+					if (this._Ponto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPontoIdChanging(value);
+					this.SendPropertyChanging();
+					this._PontoId = value;
+					this.SendPropertyChanged("PontoId");
+					this.OnPontoIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_UsuarioId", DbType="Int NOT NULL")]
+		public int UsuarioId
+		{
+			get
+			{
+				return this._UsuarioId;
+			}
+			set
+			{
+				if ((this._UsuarioId != value))
+				{
+					if (this._Usuario.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnUsuarioIdChanging(value);
+					this.SendPropertyChanging();
+					this._UsuarioId = value;
+					this.SendPropertyChanged("UsuarioId");
+					this.OnUsuarioIdChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Ponto_UsuarioPonto", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
+		public Ponto Ponto
+		{
+			get
+			{
+				return this._Ponto.Entity;
+			}
+			set
+			{
+				Ponto previousValue = this._Ponto.Entity;
+				if (((previousValue != value) 
+							|| (this._Ponto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ponto.Entity = null;
+						previousValue.UsuarioPontos.Remove(this);
+					}
+					this._Ponto.Entity = value;
+					if ((value != null))
+					{
+						value.UsuarioPontos.Add(this);
+						this._PontoId = value.Id;
+					}
+					else
+					{
+						this._PontoId = default(int);
+					}
+					this.SendPropertyChanged("Ponto");
+				}
+			}
+		}
+		
+		[Association(Name="Usuario_UsuarioPonto", Storage="_Usuario", ThisKey="UsuarioId", OtherKey="Id", IsForeignKey=true)]
+		public Usuario Usuario
+		{
+			get
+			{
+				return this._Usuario.Entity;
+			}
+			set
+			{
+				Usuario previousValue = this._Usuario.Entity;
+				if (((previousValue != value) 
+							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Usuario.Entity = null;
+						previousValue.UsuarioPontos.Remove(this);
+					}
+					this._Usuario.Entity = value;
+					if ((value != null))
+					{
+						value.UsuarioPontos.Add(this);
+						this._UsuarioId = value.Id;
+					}
+					else
+					{
+						this._UsuarioId = default(int);
+					}
+					this.SendPropertyChanged("Usuario");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[Table(Name="dbo.Categoria")]
 	public partial class Categoria : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -455,7 +809,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Column(Storage="_Descricao", DbType="VarChar(20)")]
+		[Column(Storage="_Descricao", DbType="VarChar(25)")]
 		public string Descricao
 		{
 			get
@@ -518,6 +872,229 @@ namespace PontaoCanavial.Models.VOs
 		{
 			this.SendPropertyChanging();
 			entity.Categoria = null;
+		}
+	}
+	
+	[Table(Name="dbo.Evento")]
+	public partial class Evento : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private int _PontoId;
+		
+		private string _Nome;
+		
+		private System.Nullable<System.DateTime> _Data;
+		
+		private string _Descricao;
+		
+		private System.Data.Linq.Binary _Imagem;
+		
+		private EntityRef<Ponto> _Ponto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnPontoIdChanging(int value);
+    partial void OnPontoIdChanged();
+    partial void OnNomeChanging(string value);
+    partial void OnNomeChanged();
+    partial void OnDataChanging(System.Nullable<System.DateTime> value);
+    partial void OnDataChanged();
+    partial void OnDescricaoChanging(string value);
+    partial void OnDescricaoChanged();
+    partial void OnImagemChanging(System.Data.Linq.Binary value);
+    partial void OnImagemChanged();
+    #endregion
+		
+		public Evento()
+		{
+			this._Ponto = default(EntityRef<Ponto>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PontoId", DbType="Int NOT NULL")]
+		public int PontoId
+		{
+			get
+			{
+				return this._PontoId;
+			}
+			set
+			{
+				if ((this._PontoId != value))
+				{
+					if (this._Ponto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPontoIdChanging(value);
+					this.SendPropertyChanging();
+					this._PontoId = value;
+					this.SendPropertyChanged("PontoId");
+					this.OnPontoIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Nome", DbType="VarChar(5000) NOT NULL", CanBeNull=false)]
+		public string Nome
+		{
+			get
+			{
+				return this._Nome;
+			}
+			set
+			{
+				if ((this._Nome != value))
+				{
+					this.OnNomeChanging(value);
+					this.SendPropertyChanging();
+					this._Nome = value;
+					this.SendPropertyChanged("Nome");
+					this.OnNomeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Data", DbType="DateTime")]
+		public System.Nullable<System.DateTime> Data
+		{
+			get
+			{
+				return this._Data;
+			}
+			set
+			{
+				if ((this._Data != value))
+				{
+					this.OnDataChanging(value);
+					this.SendPropertyChanging();
+					this._Data = value;
+					this.SendPropertyChanged("Data");
+					this.OnDataChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Descricao", DbType="VarChar(5000)")]
+		public string Descricao
+		{
+			get
+			{
+				return this._Descricao;
+			}
+			set
+			{
+				if ((this._Descricao != value))
+				{
+					this.OnDescricaoChanging(value);
+					this.SendPropertyChanging();
+					this._Descricao = value;
+					this.SendPropertyChanged("Descricao");
+					this.OnDescricaoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Imagem", DbType="Image NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Imagem
+		{
+			get
+			{
+				return this._Imagem;
+			}
+			set
+			{
+				if ((this._Imagem != value))
+				{
+					this.OnImagemChanging(value);
+					this.SendPropertyChanging();
+					this._Imagem = value;
+					this.SendPropertyChanged("Imagem");
+					this.OnImagemChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Ponto_Evento", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
+		public Ponto Ponto
+		{
+			get
+			{
+				return this._Ponto.Entity;
+			}
+			set
+			{
+				Ponto previousValue = this._Ponto.Entity;
+				if (((previousValue != value) 
+							|| (this._Ponto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ponto.Entity = null;
+						previousValue.Eventos.Remove(this);
+					}
+					this._Ponto.Entity = value;
+					if ((value != null))
+					{
+						value.Eventos.Add(this);
+						this._PontoId = value.Id;
+					}
+					else
+					{
+						this._PontoId = default(int);
+					}
+					this.SendPropertyChanged("Ponto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
 		}
 	}
 	
@@ -972,7 +1549,7 @@ namespace PontaoCanavial.Models.VOs
 	}
 	
 	[Table(Name="dbo.Newsletter")]
-	public partial class Newsletter : INotifyPropertyChanging, INotifyPropertyChanged
+	public partial class Newsletter1 : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
@@ -997,7 +1574,7 @@ namespace PontaoCanavial.Models.VOs
     partial void OnEmailChanged();
     #endregion
 		
-		public Newsletter()
+		public Newsletter1()
 		{
 			this._Ponto = default(EntityRef<Ponto>);
 			OnCreated();
@@ -1067,7 +1644,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Ponto_Newsletter", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
+		[Association(Name="Ponto_Newsletter1", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
 		public Ponto Ponto
 		{
 			get
@@ -1084,12 +1661,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Newsletters.Remove(this);
+						previousValue.Newsletter1s.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Newsletters.Add(this);
+						value.Newsletter1s.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -1397,19 +1974,23 @@ namespace PontaoCanavial.Models.VOs
 		
 		private System.Data.Linq.Binary _Logo;
 		
-		private EntitySet<Banner> _Banners;
-		
-		private EntitySet<Galeria> _Galerias;
+		private System.Data.Linq.Binary _Cabecalho;
 		
 		private EntitySet<Newsletter> _Newsletters;
 		
-		private EntitySet<Noticia> _Noticias;
+		private EntitySet<Newsletter1> _Newsletter1s;
 		
-		private EntitySet<Produto> _Produtos;
+		private EntitySet<Banner> _Banners;
 		
 		private EntitySet<UsuarioPonto> _UsuarioPontos;
 		
 		private EntitySet<Evento> _Eventos;
+		
+		private EntitySet<Galeria> _Galerias;
+		
+		private EntitySet<Noticia> _Noticias;
+		
+		private EntitySet<Produto> _Produtos;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -1437,17 +2018,20 @@ namespace PontaoCanavial.Models.VOs
     partial void OnEPontaoChanged();
     partial void OnLogoChanging(System.Data.Linq.Binary value);
     partial void OnLogoChanged();
+    partial void OnCabecalhoChanging(System.Data.Linq.Binary value);
+    partial void OnCabecalhoChanged();
     #endregion
 		
 		public Ponto()
 		{
-			this._Banners = new EntitySet<Banner>(new Action<Banner>(this.attach_Banners), new Action<Banner>(this.detach_Banners));
-			this._Galerias = new EntitySet<Galeria>(new Action<Galeria>(this.attach_Galerias), new Action<Galeria>(this.detach_Galerias));
 			this._Newsletters = new EntitySet<Newsletter>(new Action<Newsletter>(this.attach_Newsletters), new Action<Newsletter>(this.detach_Newsletters));
-			this._Noticias = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticias), new Action<Noticia>(this.detach_Noticias));
-			this._Produtos = new EntitySet<Produto>(new Action<Produto>(this.attach_Produtos), new Action<Produto>(this.detach_Produtos));
+			this._Newsletter1s = new EntitySet<Newsletter1>(new Action<Newsletter1>(this.attach_Newsletter1s), new Action<Newsletter1>(this.detach_Newsletter1s));
+			this._Banners = new EntitySet<Banner>(new Action<Banner>(this.attach_Banners), new Action<Banner>(this.detach_Banners));
 			this._UsuarioPontos = new EntitySet<UsuarioPonto>(new Action<UsuarioPonto>(this.attach_UsuarioPontos), new Action<UsuarioPonto>(this.detach_UsuarioPontos));
 			this._Eventos = new EntitySet<Evento>(new Action<Evento>(this.attach_Eventos), new Action<Evento>(this.detach_Eventos));
+			this._Galerias = new EntitySet<Galeria>(new Action<Galeria>(this.attach_Galerias), new Action<Galeria>(this.detach_Galerias));
+			this._Noticias = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticias), new Action<Noticia>(this.detach_Noticias));
+			this._Produtos = new EntitySet<Produto>(new Action<Produto>(this.attach_Produtos), new Action<Produto>(this.detach_Produtos));
 			OnCreated();
 		}
 		
@@ -1651,7 +2235,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Column(Storage="_Logo", DbType="Image", CanBeNull=false)]
+		[Column(Storage="_Logo", DbType="Image", UpdateCheck=UpdateCheck.Never)]
 		public System.Data.Linq.Binary Logo
 		{
 			get
@@ -1671,29 +2255,23 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Ponto_Banner", Storage="_Banners", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Banner> Banners
+		[Column(Storage="_Cabecalho", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary Cabecalho
 		{
 			get
 			{
-				return this._Banners;
+				return this._Cabecalho;
 			}
 			set
 			{
-				this._Banners.Assign(value);
-			}
-		}
-		
-		[Association(Name="Ponto_Galeria", Storage="_Galerias", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Galeria> Galerias
-		{
-			get
-			{
-				return this._Galerias;
-			}
-			set
-			{
-				this._Galerias.Assign(value);
+				if ((this._Cabecalho != value))
+				{
+					this.OnCabecalhoChanging(value);
+					this.SendPropertyChanging();
+					this._Cabecalho = value;
+					this.SendPropertyChanged("Cabecalho");
+					this.OnCabecalhoChanged();
+				}
 			}
 		}
 		
@@ -1710,29 +2288,29 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Ponto_Noticia", Storage="_Noticias", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Noticia> Noticias
+		[Association(Name="Ponto_Newsletter1", Storage="_Newsletter1s", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Newsletter1> Newsletter1s
 		{
 			get
 			{
-				return this._Noticias;
+				return this._Newsletter1s;
 			}
 			set
 			{
-				this._Noticias.Assign(value);
+				this._Newsletter1s.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Produto", Storage="_Produtos", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Produto> Produtos
+		[Association(Name="Ponto_Banner", Storage="_Banners", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Banner> Banners
 		{
 			get
 			{
-				return this._Produtos;
+				return this._Banners;
 			}
 			set
 			{
-				this._Produtos.Assign(value);
+				this._Banners.Assign(value);
 			}
 		}
 		
@@ -1762,6 +2340,45 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
+		[Association(Name="Ponto_Galeria", Storage="_Galerias", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Galeria> Galerias
+		{
+			get
+			{
+				return this._Galerias;
+			}
+			set
+			{
+				this._Galerias.Assign(value);
+			}
+		}
+		
+		[Association(Name="Ponto_Noticia", Storage="_Noticias", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Noticia> Noticias
+		{
+			get
+			{
+				return this._Noticias;
+			}
+			set
+			{
+				this._Noticias.Assign(value);
+			}
+		}
+		
+		[Association(Name="Ponto_Produto", Storage="_Produtos", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Produto> Produtos
+		{
+			get
+			{
+				return this._Produtos;
+			}
+			set
+			{
+				this._Produtos.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -1782,30 +2399,6 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		private void attach_Banners(Banner entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ponto = this;
-		}
-		
-		private void detach_Banners(Banner entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ponto = null;
-		}
-		
-		private void attach_Galerias(Galeria entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ponto = this;
-		}
-		
-		private void detach_Galerias(Galeria entity)
-		{
-			this.SendPropertyChanging();
-			entity.Ponto = null;
-		}
-		
 		private void attach_Newsletters(Newsletter entity)
 		{
 			this.SendPropertyChanging();
@@ -1818,25 +2411,25 @@ namespace PontaoCanavial.Models.VOs
 			entity.Ponto = null;
 		}
 		
-		private void attach_Noticias(Noticia entity)
+		private void attach_Newsletter1s(Newsletter1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Noticias(Noticia entity)
+		private void detach_Newsletter1s(Newsletter1 entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Produtos(Produto entity)
+		private void attach_Banners(Banner entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Produtos(Produto entity)
+		private void detach_Banners(Banner entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
@@ -1861,6 +2454,42 @@ namespace PontaoCanavial.Models.VOs
 		}
 		
 		private void detach_Eventos(Evento entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = null;
+		}
+		
+		private void attach_Galerias(Galeria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = this;
+		}
+		
+		private void detach_Galerias(Galeria entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = null;
+		}
+		
+		private void attach_Noticias(Noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = this;
+		}
+		
+		private void detach_Noticias(Noticia entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = null;
+		}
+		
+		private void attach_Produtos(Produto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = this;
+		}
+		
+		private void detach_Produtos(Produto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
@@ -2022,7 +2651,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Column(Storage="_Descricao", DbType="string")]
+		[Column(Storage="_Descricao", DbType="VarChar(5000)")]
 		public string Descricao
 		{
 			get
@@ -2314,421 +2943,6 @@ namespace PontaoCanavial.Models.VOs
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
-		}
-	}
-	
-	[Table(Name="dbo.UsuarioPonto")]
-	public partial class UsuarioPonto : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private int _PontoId;
-		
-		private int _UsuarioId;
-		
-		private EntityRef<Ponto> _Ponto;
-		
-		private EntityRef<Usuario> _Usuario;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnPontoIdChanging(int value);
-    partial void OnPontoIdChanged();
-    partial void OnUsuarioIdChanging(int value);
-    partial void OnUsuarioIdChanged();
-    #endregion
-		
-		public UsuarioPonto()
-		{
-			this._Ponto = default(EntityRef<Ponto>);
-			this._Usuario = default(EntityRef<Usuario>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_PontoId", DbType="Int NOT NULL")]
-		public int PontoId
-		{
-			get
-			{
-				return this._PontoId;
-			}
-			set
-			{
-				if ((this._PontoId != value))
-				{
-					if (this._Ponto.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPontoIdChanging(value);
-					this.SendPropertyChanging();
-					this._PontoId = value;
-					this.SendPropertyChanged("PontoId");
-					this.OnPontoIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_UsuarioId", DbType="Int NOT NULL")]
-		public int UsuarioId
-		{
-			get
-			{
-				return this._UsuarioId;
-			}
-			set
-			{
-				if ((this._UsuarioId != value))
-				{
-					if (this._Usuario.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnUsuarioIdChanging(value);
-					this.SendPropertyChanging();
-					this._UsuarioId = value;
-					this.SendPropertyChanged("UsuarioId");
-					this.OnUsuarioIdChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Ponto_UsuarioPonto", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
-		public Ponto Ponto
-		{
-			get
-			{
-				return this._Ponto.Entity;
-			}
-			set
-			{
-				Ponto previousValue = this._Ponto.Entity;
-				if (((previousValue != value) 
-							|| (this._Ponto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Ponto.Entity = null;
-						previousValue.UsuarioPontos.Remove(this);
-					}
-					this._Ponto.Entity = value;
-					if ((value != null))
-					{
-						value.UsuarioPontos.Add(this);
-						this._PontoId = value.Id;
-					}
-					else
-					{
-						this._PontoId = default(int);
-					}
-					this.SendPropertyChanged("Ponto");
-				}
-			}
-		}
-		
-		[Association(Name="Usuario_UsuarioPonto", Storage="_Usuario", ThisKey="UsuarioId", OtherKey="Id", IsForeignKey=true)]
-		public Usuario Usuario
-		{
-			get
-			{
-				return this._Usuario.Entity;
-			}
-			set
-			{
-				Usuario previousValue = this._Usuario.Entity;
-				if (((previousValue != value) 
-							|| (this._Usuario.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Usuario.Entity = null;
-						previousValue.UsuarioPontos.Remove(this);
-					}
-					this._Usuario.Entity = value;
-					if ((value != null))
-					{
-						value.UsuarioPontos.Add(this);
-						this._UsuarioId = value.Id;
-					}
-					else
-					{
-						this._UsuarioId = default(int);
-					}
-					this.SendPropertyChanged("Usuario");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
-	[Table(Name="")]
-	public partial class Evento : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _Id;
-		
-		private string _Nome;
-		
-		private System.DateTime _Data;
-		
-		private string _Descricao;
-		
-		private System.Data.Linq.Binary _Imagem;
-		
-		private int _PontoId;
-		
-		private EntityRef<Ponto> _Ponto;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnIdChanging(int value);
-    partial void OnIdChanged();
-    partial void OnNomeChanging(string value);
-    partial void OnNomeChanged();
-    partial void OnDataChanging(System.DateTime value);
-    partial void OnDataChanged();
-    partial void OnDescricaoChanging(string value);
-    partial void OnDescricaoChanged();
-    partial void OnImagemChanging(System.Data.Linq.Binary value);
-    partial void OnImagemChanged();
-    partial void OnPontoIdChanging(int value);
-    partial void OnPontoIdChanged();
-    #endregion
-		
-		public Evento()
-		{
-			this._Ponto = default(EntityRef<Ponto>);
-			OnCreated();
-		}
-		
-		[Column(Storage="_Id", DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true)]
-		public int Id
-		{
-			get
-			{
-				return this._Id;
-			}
-			set
-			{
-				if ((this._Id != value))
-				{
-					this.OnIdChanging(value);
-					this.SendPropertyChanging();
-					this._Id = value;
-					this.SendPropertyChanged("Id");
-					this.OnIdChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Nome", DbType="VarChar(255)", CanBeNull=false)]
-		public string Nome
-		{
-			get
-			{
-				return this._Nome;
-			}
-			set
-			{
-				if ((this._Nome != value))
-				{
-					this.OnNomeChanging(value);
-					this.SendPropertyChanging();
-					this._Nome = value;
-					this.SendPropertyChanged("Nome");
-					this.OnNomeChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Data", DbType="DateTime")]
-		public System.DateTime Data
-		{
-			get
-			{
-				return this._Data;
-			}
-			set
-			{
-				if ((this._Data != value))
-				{
-					this.OnDataChanging(value);
-					this.SendPropertyChanging();
-					this._Data = value;
-					this.SendPropertyChanged("Data");
-					this.OnDataChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Descricao", DbType="VarChar(5000)", CanBeNull=false)]
-		public string Descricao
-		{
-			get
-			{
-				return this._Descricao;
-			}
-			set
-			{
-				if ((this._Descricao != value))
-				{
-					this.OnDescricaoChanging(value);
-					this.SendPropertyChanging();
-					this._Descricao = value;
-					this.SendPropertyChanged("Descricao");
-					this.OnDescricaoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_Imagem", DbType="Image", CanBeNull=false)]
-		public System.Data.Linq.Binary Imagem
-		{
-			get
-			{
-				return this._Imagem;
-			}
-			set
-			{
-				if ((this._Imagem != value))
-				{
-					this.OnImagemChanging(value);
-					this.SendPropertyChanging();
-					this._Imagem = value;
-					this.SendPropertyChanged("Imagem");
-					this.OnImagemChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_PontoId", DbType="Int NOT NULL")]
-		public int PontoId
-		{
-			get
-			{
-				return this._PontoId;
-			}
-			set
-			{
-				if ((this._PontoId != value))
-				{
-					if (this._Ponto.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnPontoIdChanging(value);
-					this.SendPropertyChanging();
-					this._PontoId = value;
-					this.SendPropertyChanged("PontoId");
-					this.OnPontoIdChanged();
-				}
-			}
-		}
-		
-		[Association(Name="Ponto_Evento", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
-		public Ponto Ponto
-		{
-			get
-			{
-				return this._Ponto.Entity;
-			}
-			set
-			{
-				Ponto previousValue = this._Ponto.Entity;
-				if (((previousValue != value) 
-							|| (this._Ponto.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._Ponto.Entity = null;
-						previousValue.Eventos.Remove(this);
-					}
-					this._Ponto.Entity = value;
-					if ((value != null))
-					{
-						value.Eventos.Add(this);
-						this._PontoId = value.Id;
-					}
-					else
-					{
-						this._PontoId = default(int);
-					}
-					this.SendPropertyChanged("Ponto");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
 		}
 	}
 }
