@@ -30,8 +30,9 @@ namespace PontaoCanavial
                 new { controller = "Ponto", action = "Index", nomeIdentificador = "" }  // Parameter defaults
             );
 
-            routes.MapRoute("teste", "Ponto/{nomeIdentificador}",
-               new { controller = "Ponto", action = "Index" });
+
+            //routes.MapRoute("teste", "Ponto/{nomeIdentificador}",
+            //   new { controller = "Ponto", action = "Index" });
         }
 
         protected void Application_Start()
