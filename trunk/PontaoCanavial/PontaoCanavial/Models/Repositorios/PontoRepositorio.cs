@@ -13,9 +13,14 @@ namespace PontaoCanavial.Models.Repositorios
 
         #region Métodos da Interface
 
-        public IQueryable<Ponto> ConsultarTodos()
+        public IQueryable<Ponto> ConsultarTodos(bool consultarApenasPontinhos)
         {
-            return db.Pontos;
+            if (!consultarApenasPontinhos)
+                return db.Pontos;
+
+            return from p in db.Pontos
+                   where p.EPontao == false || p.EPontao==null
+                   select p;
         }
 
         public Ponto ConsultarPorNomeIdentificador(string nomeIdentificador)
@@ -32,7 +37,7 @@ namespace PontaoCanavial.Models.Repositorios
         public Ponto GetPonto(int id)
         {
             return db.Pontos.SingleOrDefault(d => d.Id == id);
-        
+
         }
 
         public void Add(Ponto ponto)
@@ -44,7 +49,7 @@ namespace PontaoCanavial.Models.Repositorios
         {
             db.Banners.DeleteAllOnSubmit(ponto.Banners);
             db.Galerias.DeleteAllOnSubmit(ponto.Galerias);
-            
+
             foreach (Galeria galeria in ponto.Galerias)
             {
                 db.Imagems.DeleteAllOnSubmit(galeria.Imagems);
