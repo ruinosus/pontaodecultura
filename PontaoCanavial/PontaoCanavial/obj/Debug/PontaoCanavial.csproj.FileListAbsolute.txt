@@ -11,3 +11,6 @@ C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.pdb
 C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.dll
 C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PagedList.dll
 C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.pdb
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.dll
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PagedList.dll
+E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.pdb

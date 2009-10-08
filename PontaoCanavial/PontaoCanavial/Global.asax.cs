@@ -19,15 +19,15 @@ namespace PontaoCanavial
 
             routes.MapRoute(
                 "Pontinho",
-                "Ponto/{nomeIdentificador}",
+                "{nomeIdentificador}",
                 new { controller = "Ponto", action = "Index" }
             );
 
 
             routes.MapRoute(
                 "Default",                                                              // Route name
-                "{controller}/{action}/{nomeIdentificador}",                           // URL with parameters
-                new { controller = "Ponto", action = "Index", nomeIdentificador = "" }  // Parameter defaults
+                "{controller}/{action}/{id}",                           // URL with parameters
+                new { controller = "Ponto", action = "Index", id = "" }  // Parameter defaults
             );
 
 

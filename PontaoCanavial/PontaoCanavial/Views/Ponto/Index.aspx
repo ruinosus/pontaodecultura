@@ -1,11 +1,25 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" 
-Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.VOs.Ponto>" %>
+<%@ Page Title="" Language="C#" Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
 
-<asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Index
-</asp:Content>
+<%@ Import Namespace="PontaoCanavial.Models.VOs" %>
 
-<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
-    <h2><%=Html.Encode(Model.Nome) %></h2>
-
-</asp:Content>
+    <%if (Model.Ponto == null)
+      {
+          Response.Redirect("NaoEncontrado", false);
+      }      
+    %>
+   <b>
+    <%=
+        Html.Encode(Model.Ponto.Nome)
+    %></b>
+   <br />
+    <%
+    if (Model.Ponto.EPontao.HasValue)
+        if (Model.Ponto.EPontao.Value)
+            foreach (Ponto ponto in Model.Pontinhos)
+            {
+    %>
+    <%=     Html.ActionLink(ponto.Nome, "Index", new { nomeIdentificador = ponto.NomeIdentificador})%>
+    <br />
+    <%
+            }
+    %>

@@ -8,7 +8,7 @@ namespace PontaoCanavial.Models.Repositorios.Interfaces
 {
     public interface IPontoRepositorio
     {
-        IQueryable<Ponto> ConsultarTodos();
+        IQueryable<Ponto> ConsultarTodos(bool consultarApenasPontinhos);
         Ponto ConsultarPorNomeIdentificador(string nomeIdentificador);
         Ponto ConsultarPontao();
         Ponto GetPonto(int id);

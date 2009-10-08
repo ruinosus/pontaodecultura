@@ -127,9 +127,11 @@
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Views\Administrador\Index.aspx" />
+    <Content Include="Views\Ponto\Create.aspx" />
     <Content Include="Views\Ponto\Details.aspx" />
     <Content Include="Views\Ponto\Index.aspx" />
     <Content Include="Views\Ponto\NaoEncontrado.aspx" />
+    <Content Include="Views\Ponto\PontoForm.ascx" />
     <Content Include="Views\UserAdministration\Details.aspx" />
     <Content Include="Views\UserAdministration\Index.aspx" />
     <Content Include="Views\UserAdministration\Role.aspx" />

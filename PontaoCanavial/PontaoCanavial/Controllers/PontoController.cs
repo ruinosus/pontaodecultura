@@ -11,9 +11,33 @@ using PontaoCanavial.Helpers;
 
 namespace PontaoCanavial.Controllers
 {
+
+    #region ViewModel Classes
+   
+    public class PontoFormViewModel
+    {
+        #region Propriedades
+
+        public Ponto Ponto { get; private set; }
+        public List<Ponto> Pontinhos { get; private set; }
+
+        #endregion
+
+        #region Construtores
+
+        public PontoFormViewModel(Ponto ponto, List<Ponto> pontinhos)
+        {
+            Ponto = ponto;
+            Pontinhos = pontinhos;
+        }
+        #endregion
+    } 
+    #endregion
+
     [HandleError]
     public class PontoController : Controller
     {
+
 
         IPontoRepositorio pontoRepositorio;
 
@@ -35,14 +59,15 @@ namespace PontaoCanavial.Controllers
             {
                 var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
                 if (pontinho != null && pontinho.NomeIdentificador != string.Empty)
-                    return View(pontinho);
+                    return View(new PontoFormViewModel(pontinho,null));
                 else
                     return View("NaoEncontrado");
             }
             else
             {
                 var pontao = pontoRepositorio.ConsultarPontao();
-                return View(pontao);
+                List<Ponto> pontinhos = pontoRepositorio.ConsultarTodos(true).ToList();
+                return View(new PontoFormViewModel(pontao, pontinhos));
 
             }
 
@@ -60,27 +85,34 @@ namespace PontaoCanavial.Controllers
         //
         // GET: /Ponto/Create
 
+        
         public ActionResult Create()
         {
-            return View();
+            Ponto ponto = new Ponto();
+            return View(new PontoFormViewModel(ponto, null));
         }
 
         //
         // POST: /Ponto/Create
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Ponto ponto)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            if (ModelState.IsValid) {
 
-                return RedirectToAction("Index");
+                try {
+                    ponto.PontoRepositorio = pontoRepositorio;
+                    pontoRepositorio.Add(ponto);
+                    pontoRepositorio.Save();
+
+                    return RedirectToAction("Index", new { nomeIdentificador=ponto.NomeIdentificador});
+                }
+                catch {
+                    ModelState.AddModelErrors(ponto.GetRuleViolations());
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(new PontoFormViewModel(ponto,null));
         }
 
         //
