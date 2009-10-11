@@ -13,7 +13,7 @@
       <% 
           var imgurl = Url.Action("ThumbImage", "Image", 
                 new { id = Model.Ponto.Id,width=100,height=100 }); %>
-                <img src="<%=imgurl %>"  alt=""/>
+                <%=Html.Image("img",imgurl,"Imagem") %>               
     <% }%>
     <%=
         Html.Encode(Model.Ponto.Nome)
@@ -22,11 +22,14 @@
 <%
     if (Model.Ponto.EPontao.HasValue)
         if (Model.Ponto.EPontao.Value)
+        {
             foreach (Ponto ponto in Model.Pontinhos)
             {
 %>
-<%=     Html.ActionLink(ponto.Nome, "Index", new { nomeIdentificador = ponto.NomeIdentificador})%>
+<%=     Html.ActionLink(ponto.Nome, "Index", new { nomeIdentificador = ponto.NomeIdentificador })%>
+<%=     Html.ActionLink("Editar", "Edit", new { id = ponto.Id })%>
 <br />
 <%
-    }
+            }
+        }
 %>

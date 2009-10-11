@@ -9,7 +9,7 @@ using PontaoCanavial.Models.Repositorios;
 
 namespace PontaoCanavial.Models.VOs
 {
-    [Bind(Include = "Nome,NomeIdentificador")]
+    [Bind(Include = "Nome,NomeIdentificador,EquipeProjeto,DescricaoOficina,ApresentacaoProjeto,ObjetivoProjeto,JustificativaProjeto")]
     public partial class Ponto
     {
         private IPontoRepositorio pontoRepositorio;
