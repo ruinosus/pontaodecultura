@@ -139,6 +139,7 @@
     <Content Include="Views\Administrador\Index.aspx" />
     <Content Include="Views\Ponto\Create.aspx" />
     <Content Include="Views\Ponto\Details.aspx" />
+    <Content Include="Views\Ponto\Edit.aspx" />
     <Content Include="Views\Ponto\Index.aspx" />
     <Content Include="Views\Ponto\NaoEncontrado.aspx" />
     <Content Include="Views\Ponto\PontoForm.ascx" />

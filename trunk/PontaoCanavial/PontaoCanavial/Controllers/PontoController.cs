@@ -12,9 +12,8 @@ using System.IO;
 
 namespace PontaoCanavial.Controllers
 {
-
     #region ViewModel Classes
-   
+
     public class PontoFormViewModel
     {
         #region Propriedades
@@ -32,22 +31,22 @@ namespace PontaoCanavial.Controllers
             Pontinhos = pontinhos;
         }
         #endregion
-    } 
+    }
     #endregion
 
     [HandleError]
     public class PontoController : Controller
     {
-
-        private byte [] ConverterByte(string filename){  
-            FileStream fs = new FileStream(filename, FileMode.Open,FileAccess.Read);  
+        private byte[] ConverterByte(string filename)
+        {
+            FileStream fs = new FileStream(filename, FileMode.Open, FileAccess.Read);
             // Create a byte array of file stream length  
-            byte[] ImageData = new byte[fs.Length];  
+            byte[] ImageData = new byte[fs.Length];
             //Read block of bytes from stream into the byte array   
-            fs.Read(ImageData,0,System.Convert.ToInt32(fs.Length)); 
+            fs.Read(ImageData, 0, System.Convert.ToInt32(fs.Length));
             //Close the File Stream  
-            fs.Close();  
-            return ImageData; 
+            fs.Close();
+            return ImageData;
             //return the byte data
         }
 
@@ -62,16 +61,14 @@ namespace PontaoCanavial.Controllers
         {
             pontoRepositorio = repositorio;
         }
-        //
-        // GET: /Ponto/
-
+        
         public ActionResult Index(string nomeIdentificador)
         {
             if (!string.IsNullOrEmpty(nomeIdentificador))
             {
                 var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
                 if (pontinho != null && pontinho.NomeIdentificador != string.Empty)
-                    return View(new PontoFormViewModel(pontinho,null));
+                    return View(new PontoFormViewModel(pontinho, null));
                 else
                     return View("NaoEncontrado");
             }
@@ -85,18 +82,11 @@ namespace PontaoCanavial.Controllers
 
         }
 
-        //
-        // GET: /Ponto/Details/5
-
         public ActionResult Details(int id)
         {
-            
+
             return View();
-        }      
-
-        //
-        // GET: /Ponto/Create
-
+        }
         
         public ActionResult Create()
         {
@@ -104,50 +94,51 @@ namespace PontaoCanavial.Controllers
             return View(new PontoFormViewModel(ponto, null));
         }
 
-        //
-        // POST: /Ponto/Create
-
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Ponto ponto, HttpPostedFileBase uploadFile)
         {
-            if (ModelState.IsValid) {
+            if (ModelState.IsValid)
+            {
 
-                try {
+                try
+                {
+                    if (this.Request.Files.Count > 0)
+                    {
+                        HttpPostedFileBase file = this.Request.Files[0];
+                        Int32 length = file.ContentLength;
+                        byte[] logo = new byte[length];
+                        file.InputStream.Read(logo, 0, length);
+                        ponto.Logo = logo;
+                    }
 
-                    HttpPostedFileBase file = this.Request.Files[0];
-                    Int32 length = file.ContentLength;
-                    byte[] logo = new byte[length];
-                    file.InputStream.Read(logo, 0, length);
-                    ponto.Logo = logo;
                     if (Session["ImagemLogo"] != null)
                     {
                         ponto.Logo = (byte[])Session["ImagemLogo"];
+                    }
 
-                    } 
                     ponto.PontoRepositorio = pontoRepositorio;
                     pontoRepositorio.Add(ponto);
                     pontoRepositorio.Save();
 
-                    return RedirectToAction("Index", new { nomeIdentificador=ponto.NomeIdentificador});
+                    return RedirectToAction("Index", new { nomeIdentificador = ponto.NomeIdentificador });
                 }
-                catch {
+                catch
+                {
                     ModelState.AddModelErrors(ponto.GetRuleViolations());
                 }
             }
 
-            return View(new PontoFormViewModel(ponto,null));
+            return View(new PontoFormViewModel(ponto, null));
         }
-
-        //
-        // GET: /Ponto/Edit/5
 
         public ActionResult Edit(int id)
         {
-            return View();
-        }
+            Ponto ponto = pontoRepositorio.GetPonto(id);
 
-        //
-        // POST: /Ponto/Edit/5
+            if(ponto!=null)
+            return View(new PontoFormViewModel(ponto,null));
+            return View("NaoEncontrado");
+        }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(int id, FormCollection collection)
