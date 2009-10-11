@@ -8,6 +8,7 @@ using PontaoCanavial.Models.Repositorios.Interfaces;
 using PontaoCanavial.Models.Repositorios;
 using PontaoCanavial.Models.VOs;
 using PontaoCanavial.Helpers;
+using System.IO;
 
 namespace PontaoCanavial.Controllers
 {
@@ -38,6 +39,17 @@ namespace PontaoCanavial.Controllers
     public class PontoController : Controller
     {
 
+        private byte [] ConverterByte(string filename){  
+            FileStream fs = new FileStream(filename, FileMode.Open,FileAccess.Read);  
+            // Create a byte array of file stream length  
+            byte[] ImageData = new byte[fs.Length];  
+            //Read block of bytes from stream into the byte array   
+            fs.Read(ImageData,0,System.Convert.ToInt32(fs.Length)); 
+            //Close the File Stream  
+            fs.Close();  
+            return ImageData; 
+            //return the byte data
+        }
 
         IPontoRepositorio pontoRepositorio;
 
@@ -96,11 +108,22 @@ namespace PontaoCanavial.Controllers
         // POST: /Ponto/Create
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Ponto ponto)
+        public ActionResult Create(Ponto ponto, HttpPostedFileBase uploadFile)
         {
             if (ModelState.IsValid) {
 
                 try {
+
+                    HttpPostedFileBase file = this.Request.Files[0];
+                    Int32 length = file.ContentLength;
+                    byte[] logo = new byte[length];
+                    file.InputStream.Read(logo, 0, length);
+                    ponto.Logo = logo;
+                    if (Session["ImagemLogo"] != null)
+                    {
+                        ponto.Logo = (byte[])Session["ImagemLogo"];
+
+                    } 
                     ponto.PontoRepositorio = pontoRepositorio;
                     pontoRepositorio.Add(ponto);
                     pontoRepositorio.Save();
