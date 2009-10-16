@@ -134,6 +134,7 @@ namespace PontaoCanavial.Controllers
         public ActionResult Edit(int id)
         {
             Ponto ponto = pontoRepositorio.GetPonto(id);
+            ponto.Editando = true;
 
             if(ponto!=null)
             return View(new PontoFormViewModel(ponto,null));

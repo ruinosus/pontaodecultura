@@ -38,14 +38,25 @@ namespace PontaoCanavial.Models.VOs
                 yield return new RuleViolation("O nome identificador é Necessário para o cadastro", "NomeIdentificador");
             else
             {
-                Ponto p = pontoRepositorio.ConsultarPorNomeIdentificador(NomeIdentificador);
+                if (!this.Editando)
+                {
+                    Ponto p = pontoRepositorio.ConsultarPorNomeIdentificador(NomeIdentificador);
 
-                if (p != null)
-                    yield return new RuleViolation("Nome identificador já informado, por favor informe outro.", "NomeIdentificador");
+                    if (p != null)
+                        yield return new RuleViolation("Nome identificador já informado, por favor informe outro.", "NomeIdentificador");
+                }
             }
 
             //validar nomeidentificador,minusculos e sem caracteres especiais
             yield break;
+        }
+
+        private bool editando;
+
+        public bool Editando
+        {
+            get { return editando; }
+            set { editando = value; }
         }
 
         partial void OnValidate(ChangeAction action)

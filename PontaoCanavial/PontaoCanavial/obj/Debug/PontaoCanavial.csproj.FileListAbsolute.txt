@@ -14,3 +14,11 @@ C:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.pdb
 E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.dll
 E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PagedList.dll
 E:\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.pdb
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.dll
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PontaoCanavial.pdb
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.dll
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\PagedList.dll
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\bin\MvcMembership.pdb
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.dll
+C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\PontaoCanavial\obj\Debug\PontaoCanavial.pdb
