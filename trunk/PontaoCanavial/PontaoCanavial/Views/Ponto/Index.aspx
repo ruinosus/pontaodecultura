@@ -3,9 +3,42 @@
 <%@ Import Namespace="PontaoCanavial.Models.VOs" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 
+<%if (Model.Ponto == null)
+  {
+      Response.Redirect("NaoEncontrado", false);
+  }      
+%>
+
+    <%if (Model.Ponto.Logo != null)
+      {%>
+      <% 
+          var imgurl = Url.Action("ThumbImage", "Image", 
+                new { id = Model.Ponto.Id,width=100,height=100 }); %>
+                <%=Html.Image("img",imgurl,"Imagem") %>               
+    <% }%>
+    <%=
+        Html.Encode(Model.Ponto.Nome)
+    %>
+
+<%
+    if (Model.Ponto.EPontao.HasValue)
+        if (Model.Ponto.EPontao.Value)
+        {
+            foreach (Ponto ponto in Model.Pontinhos)
+            {
+%>
+<%=     Html.ActionLink(ponto.Nome, "Index", new { nomeIdentificador = ponto.NomeIdentificador })%>
+<%=     Html.ActionLink("Editar", "Edit", new { id = ponto.Id })%>
+<br />
+<%
+            }
+        }
+%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pont&atilde;o do Canavial</title>
     <link href="../../App_Themes/Pontao/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
@@ -175,7 +208,7 @@
             <div id="coluna-3">
                 <div id="buscar">
                     <h1>
-                        <%=Html.Image("imgBuscar", "../../App_Themes/Pontao/images/title01.jpg", "Buscar")%>
+                        <%=Html.Image("imgBuscar", "../../App_Themes/Pontao/images/title01.gif", "Buscar")%>
                     </h1>
                     <form id="form1" name="form1" method="post" action="">
                     <p>
@@ -200,7 +233,7 @@
                 </div>
                 <div id="enquete">
                     <h1>
-                        <%=Html.Image("imgBuscar2", "../../App_Themes/Pontao/images/title03.jpg", "Buscar")%>
+                        <%=Html.Image("imgEnquete", "../../App_Themes/Pontao/images/title03.gif", "Enquete")%>
                     </h1>
                     <form id="form2" name="form2" method="post" action="">
                     <h2>
@@ -243,7 +276,7 @@
                 </div>
                 <div id="newsletter">
                     <h1>
-                        <%=Html.Image("imgBuscar3", "../../App_Themes/Pontao/images/title06.jpg", "Buscar")%>
+                        <%=Html.Image("imgNewsletter", "../../App_Themes/Pontao/images/title06.gif", "Newsletter")%>
                     </h1>
                     <form id="form3" name="form3" method="post" action="">
                     <h2>
@@ -265,8 +298,7 @@
             <p>
             <span>Coordenação:<br/><%=Html.Image("imgAlonsoOliveira","../../App_Themes/Pontao/images/logo01.gif","Alonso Oliveira") %></span>
             <span>Patrocínio:<br/><%=Html.Image("imgFundarpe","../../App_Themes/Pontao/images/logo02.gif","FUNDARPE") %> <%=Html.Image("imgGovernoEstado","../../App_Themes/Pontao/images/logo03.gif","Governo do Estado") %></span>
-            <span>Realização:<br/>
-            <%=Html.Image("imgReviva", "../../App_Themes/Pontao/images/logo04.gif", "Associação Reviva")%> <%=Html.Image("imgCulturaViva", "../../App_Themes/Pontao/images/logo05.gif", "Cultura Viva")%> <%=Html.Image("imgMinisterioCultura", "../../App_Themes/Pontao/images/logo06.jpg", "Ministério da Cultura")%> <%=Html.Image("imgGovernoFederal", "../../App_Themes/Pontao/images/logo07.gif", "Governo Federal")%></span>
+            Realização:<br/><%=Html.Image("imgReviva","../../App_Themes/Pontao/images/logo04.gif", "Associação Reviva")%> <%=Html.Image("imgCulturaViva","../../App_Themes/Pontao/images/logo05.gif", "Cultura Viva")%><%=Html.Image("imgMinisterioCultura","../../App_Themes/Pontao/images/logo06.jpg", "Ministério da Cultura")%><%=Html.Image("imgGoverno", "../../App_Themes/Pontao/images/logo07.gif", "Governo do Estado")%>
             </p>
             <h2>Copyright © 2009 Pontão do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
           </div>
