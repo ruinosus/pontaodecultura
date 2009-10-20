@@ -165,7 +165,7 @@ namespace PontaoCanavial.Controllers
                     {
                         ponto.Logo = (byte[])Session["ImagemLogo"];
                     }
-
+                    ponto.Editando = true;
                     ponto.PontoRepositorio = pontoRepositorio;
                     UpdateModel(ponto);
                     pontoRepositorio.Save();
