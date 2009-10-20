@@ -144,16 +144,41 @@ namespace PontaoCanavial.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            Ponto ponto = pontoRepositorio.GetPonto(id);
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                try
+                {
+                   
+                    if (this.Request.Files.Count > 0)
+                    {
+                        
+                        HttpPostedFileBase file = this.Request.Files[0];
+                        Int32 length = file.ContentLength;
+                        byte[] logo = new byte[length];
+                        file.InputStream.Read(logo, 0, length);
+                        ponto.Logo = logo;
+                    }
+
+                    if (Session["ImagemLogo"] != null)
+                    {
+                        ponto.Logo = (byte[])Session["ImagemLogo"];
+                    }
+
+                    ponto.PontoRepositorio = pontoRepositorio;
+                    UpdateModel(ponto);
+                    pontoRepositorio.Save();
+
+                    return RedirectToAction("Index", new { nomeIdentificador = ponto.NomeIdentificador });
+                }
+                catch
+                {
+                    ModelState.AddModelErrors(ponto.GetRuleViolations());
+                }
             }
-            catch
-            {
-                return View();
-            }
+
+            return View(new PontoFormViewModel(ponto, null));
         }
     }
 }
