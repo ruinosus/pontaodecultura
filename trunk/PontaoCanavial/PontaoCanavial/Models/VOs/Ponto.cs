@@ -14,6 +14,7 @@ namespace PontaoCanavial.Models.VOs
     {
         private IPontoRepositorio pontoRepositorio;
 
+
         public IPontoRepositorio PontoRepositorio
         {
             get

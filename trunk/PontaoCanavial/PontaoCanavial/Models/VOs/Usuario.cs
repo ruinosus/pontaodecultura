@@ -7,7 +7,7 @@ using System.Data.Linq;
 
 namespace PontaoCanavial.Models.VOs
 {
-[Bind(Include = "Id,Nome,Email,Senha,Telefone")]
+[Bind(Include = "NomeUsuario,Email,Senha,Telefone")]
     public partial class Usuario
     {
 
@@ -20,7 +20,7 @@ namespace PontaoCanavial.Models.VOs
         {
 
             if (String.IsNullOrEmpty(Nome))
-                yield return new RuleViolation("O nome é Necessário para o cadastro", "Nome");
+                yield return new RuleViolation("O nome é Necessário para o cadastro", "NomeUsuario");
 
             if (String.IsNullOrEmpty(Email))
                 yield return new RuleViolation("O Email é Necessário para o cadastro", "Email");
