@@ -6,9 +6,14 @@
 <head runat="server">
     <title>Edit</title>
 </head>
+<% using (Html.BeginForm("Edit", "Ponto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+   { %>
+<fieldset>
 <body>
     <div>
     <% Html.RenderPartial("PontoForm"); %>
     </div>
 </body>
+</fieldset>
+<% } %>
 </html>
