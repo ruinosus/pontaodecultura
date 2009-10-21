@@ -2,43 +2,9 @@
 
 <%@ Import Namespace="PontaoCanavial.Models.VOs" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
-
-<%if (Model.Ponto == null)
-  {
-      Response.Redirect("NaoEncontrado", false);
-  }      
-%>
-
-    <%if (Model.Ponto.Logo != null)
-      {%>
-      <% 
-          var imgurl = Url.Action("ThumbImage", "Image", 
-                new { id = Model.Ponto.Id,width=100,height=100 }); %>
-                <%=Html.Image("img",imgurl,"Imagem") %>               
-    <% }%>
-    <%=
-        Html.Encode(Model.Ponto.Nome)
-    %>
-
-<%
-    if (Model.Ponto.EPontao.HasValue)
-        if (Model.Ponto.EPontao.Value)
-        {
-            foreach (Ponto ponto in Model.Pontinhos)
-            {
-%>
-<%=     Html.ActionLink(ponto.Nome, "Index", new { nomeIdentificador = ponto.NomeIdentificador })%>
-<%=     Html.ActionLink("Editar", "Edit", new { id = ponto.Id })%>
-<br />
-<%
-            }
-        }
-%>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pont&atilde;o do Canavial</title>
     <link href="../../App_Themes/Pontao/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
@@ -47,7 +13,23 @@
     <div id="root">
         <div id="top">
             <a href="#">
-                <%=Html.Image("imgLogo", "../../App_Themes/Pontao/images/pontao_logo.gif", "Logo do Pontão do Canavial")%></a>
+                <%if (Model.Ponto == null)
+                  {
+                      Response.Redirect("NaoEncontrado", false);
+                  }      
+                %>
+                <b>
+                    <%if (Model.Ponto.Logo != null)
+                      {%>
+                    <% 
+                        var imgurl = Url.Action("ThumbImage", "Image",
+                              new { id = Model.Ponto.Id, width = 100, height = 100 }); %>
+                    <%=Html.Image("img",imgurl,"Imagem") %>
+                    <% }%>
+                    <%=
+        Html.Encode(Model.Ponto.Nome)
+                    %>
+                    <%=Html.Image("imgLogo", "../../App_Themes/Pontao/images/pontao_logo.gif", "Logo do Pontão do Canavial")%></a>
             <%=Html.Image("imgBanner", "../../App_Themes/Pontao/images/pontao_banner.jpg", "")%>
         </div>
         <div id="menu-1">
@@ -86,15 +68,18 @@
         <div id="content">
             <div id="coluna-1">
                 <ul>
-                    <li><a href="#">Alafi&aacute;</a></li>
-                    <li><a href="#">Boi da Macuca</a></li>
-                    <li><a href="#">Casar&atilde;o de Of&iacute;cios</a></li>
-                    <li><a href="#">Cinema de Anima&ccedil;&atilde;o</a></li>
-                    <li><a href="#">Engenho dos Maracatus</a></li>
-                    <li><a href="#">Estrela de Ouro</a></li>
-                    <li><a href="#">Ororub&aacute;</a></li>
-                    <li><a href="#">Po&ccedil;o Comprido</a></li>
-                    <li><a href="#">Retretas</a></li>
+                    <%if (Model.Ponto.EPontao.HasValue)
+                          if (Model.Ponto.EPontao.Value)
+                    %>
+                    <% foreach (Ponto p in Model.Pontinhos)
+                       {
+                    %>
+                    <%Response.Write("<li>");%>
+                    <%=     Html.ActionLink(p.Nome, "Index", new { nomeIdentificador = p.NomeIdentificador })%>
+                    <%=     Html.ActionLink("Editar", "Edit", new { id = p.Id })%>
+                    <%  Response.Write("</li>");%>
+                    <% 
+                        } %>
                 </ul>
                 <%=Html.Image("imgMenuBottom", "../../App_Themes/Pontao/images/menu2_bottom.gif", "")%>
             </div>
@@ -294,15 +279,23 @@
                 </div>
             </div>
             <div id="assinatura">
-       	  <h2><a href="#">Sobre o Pontão</a> |  <a href="#">Galeria</a> |  <a href="#">Vídeos</a> |  <a href="#">Mapa do Site</a> |  <a href="#">Fale Conosco</a></h2>
-            <p>
-            <span>Coordenação:<br/><%=Html.Image("imgAlonsoOliveira","../../App_Themes/Pontao/images/logo01.gif","Alonso Oliveira") %></span>
-            <span>Patrocínio:<br/><%=Html.Image("imgFundarpe","../../App_Themes/Pontao/images/logo02.gif","FUNDARPE") %> <%=Html.Image("imgGovernoEstado","../../App_Themes/Pontao/images/logo03.gif","Governo do Estado") %></span>
-            Realização:<br/><%=Html.Image("imgReviva","../../App_Themes/Pontao/images/logo04.gif", "Associação Reviva")%> <%=Html.Image("imgCulturaViva","../../App_Themes/Pontao/images/logo05.gif", "Cultura Viva")%><%=Html.Image("imgMinisterioCultura","../../App_Themes/Pontao/images/logo06.jpg", "Ministério da Cultura")%><%=Html.Image("imgGoverno", "../../App_Themes/Pontao/images/logo07.gif", "Governo do Estado")%>
-            </p>
-            <h2>Copyright © 2009 Pontão do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
-          </div>
-      </div>
+                <h2>
+                    <a href="#">Sobre o Pontão</a> | <a href="#">Galeria</a> | <a href="#">Vídeos</a>
+                    | <a href="#">Mapa do Site</a> | <a href="#">Fale Conosco</a></h2>
+                <p>
+                    <span>Coordenação:<br />
+                        <%=Html.Image("imgAlonsoOliveira","../../App_Themes/Pontao/images/logo01.gif","Alonso Oliveira") %></span>
+                    <span>Patrocínio:<br />
+                        <%=Html.Image("imgFundarpe","../../App_Themes/Pontao/images/logo02.gif","FUNDARPE") %>
+                        <%=Html.Image("imgGovernoEstado","../../App_Themes/Pontao/images/logo03.gif","Governo do Estado") %></span>
+                    Realização:<br />
+                    <%=Html.Image("imgReviva","../../App_Themes/Pontao/images/logo04.gif", "Associação Reviva")%>
+                    <%=Html.Image("imgCulturaViva","../../App_Themes/Pontao/images/logo05.gif", "Cultura Viva")%><%=Html.Image("imgMinisterioCultura","../../App_Themes/Pontao/images/logo06.jpg", "Ministério da Cultura")%><%=Html.Image("imgGoverno", "../../App_Themes/Pontao/images/logo07.gif", "Governo do Estado")%>
+                </p>
+                <h2>
+                    Copyright © 2009 Pontão do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
+            </div>
+        </div>
     </div>
 </body>
 </html>
