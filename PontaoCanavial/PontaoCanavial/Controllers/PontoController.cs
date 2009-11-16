@@ -68,7 +68,7 @@ namespace PontaoCanavial.Controllers
             {
                 var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
                 if (pontinho != null && pontinho.NomeIdentificador != string.Empty)
-                    return View(new PontoFormViewModel(pontinho, null));
+                    return View("IndexPontinho", new PontoFormViewModel(pontinho, null));
                 else
                     return View("NaoEncontrado");
             }
@@ -76,7 +76,7 @@ namespace PontaoCanavial.Controllers
             {
                 var pontao = pontoRepositorio.ConsultarPontao();
                 List<Ponto> pontinhos = pontoRepositorio.ConsultarTodos(true).ToList();
-                return View(new PontoFormViewModel(pontao, pontinhos));
+                return View("IndexPontao", new PontoFormViewModel(pontao, pontinhos));
 
             }
 
@@ -84,7 +84,6 @@ namespace PontaoCanavial.Controllers
 
         public ActionResult Details(int id)
         {
-
             return View();
         }
         
@@ -95,15 +94,18 @@ namespace PontaoCanavial.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Ponto ponto, HttpPostedFileBase uploadFile)
+        public ActionResult Create(Ponto ponto)
         {
             if (ModelState.IsValid)
             {
 
                 try
                 {
+
+                   HttpPostedFileBase teste= this.Request.Files.Get("imgLogo");
                     if (this.Request.Files.Count > 0)
                     {
+
                         HttpPostedFileBase file = this.Request.Files[0];
                         Int32 length = file.ContentLength;
                         byte[] logo = new byte[length];

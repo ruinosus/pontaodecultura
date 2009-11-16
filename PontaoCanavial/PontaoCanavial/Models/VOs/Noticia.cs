@@ -7,7 +7,7 @@ using System.Data.Linq;
 
 namespace PontaoCanavial.Models.VOs
 {
-    [Bind(Include = "Id,PontoId,Titulo,DataCriacao,Preview,Corpo,Imagem")]
+    [Bind(Include = "Titulo,Preview,Corpo")]
     public partial class Noticia
     {
 

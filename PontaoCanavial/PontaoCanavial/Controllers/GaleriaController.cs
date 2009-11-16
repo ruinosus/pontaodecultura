@@ -7,10 +7,10 @@ using System.Web.Mvc.Ajax;
 
 namespace PontaoCanavial.Controllers
 {
-    public class AdministradorController : Controller
+    public class GaleriaController : Controller
     {
         //
-        // GET: /Administrador/
+        // GET: /Galeria/
 
         public ActionResult Index()
         {

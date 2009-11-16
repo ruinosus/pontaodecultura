@@ -44,11 +44,6 @@ namespace PontaoCanavial.Models.Repositorios
         #region IEventoRepositorio Members
 
 
-        public Evento ConsultarEvento()
-        {
-            throw new NotImplementedException();
-        }
-
         #endregion
     }
 }

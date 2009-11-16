@@ -60,13 +60,16 @@ namespace PontaoCanavial.Models.VOs
     partial void InsertProduto(Produto instance);
     partial void UpdateProduto(Produto instance);
     partial void DeleteProduto(Produto instance);
+    partial void InsertProjeto(Projeto instance);
+    partial void UpdateProjeto(Projeto instance);
+    partial void DeleteProjeto(Projeto instance);
     partial void InsertUsuario(Usuario instance);
     partial void UpdateUsuario(Usuario instance);
     partial void DeleteUsuario(Usuario instance);
     #endregion
 		
 		public PontaoCanavialDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PontaoCanavialDBConnectionString"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PontaoCanavialDBConnectionString1"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -172,6 +175,14 @@ namespace PontaoCanavial.Models.VOs
 			get
 			{
 				return this.GetTable<Produto>();
+			}
+		}
+		
+		public System.Data.Linq.Table<Projeto> Projetos
+		{
+			get
+			{
+				return this.GetTable<Projeto>();
 			}
 		}
 		
@@ -1800,14 +1811,6 @@ namespace PontaoCanavial.Models.VOs
 		
 		private System.Data.Linq.Binary _ImagemOficina;
 		
-		private string _ApresentacaoProjeto;
-		
-		private string _ObjetivoProjeto;
-		
-		private string _EquipeProjeto;
-		
-		private string _JustificativaProjeto;
-		
 		private System.Nullable<bool> _EPontao;
 		
 		private System.Data.Linq.Binary _Logo;
@@ -1828,6 +1831,8 @@ namespace PontaoCanavial.Models.VOs
 		
 		private EntitySet<Produto> _Produtos;
 		
+		private EntitySet<Projeto> _Projetos;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -1842,14 +1847,6 @@ namespace PontaoCanavial.Models.VOs
     partial void OnDescricaoOficinaChanged();
     partial void OnImagemOficinaChanging(System.Data.Linq.Binary value);
     partial void OnImagemOficinaChanged();
-    partial void OnApresentacaoProjetoChanging(string value);
-    partial void OnApresentacaoProjetoChanged();
-    partial void OnObjetivoProjetoChanging(string value);
-    partial void OnObjetivoProjetoChanged();
-    partial void OnEquipeProjetoChanging(string value);
-    partial void OnEquipeProjetoChanged();
-    partial void OnJustificativaProjetoChanging(string value);
-    partial void OnJustificativaProjetoChanged();
     partial void OnEPontaoChanging(System.Nullable<bool> value);
     partial void OnEPontaoChanged();
     partial void OnLogoChanging(System.Data.Linq.Binary value);
@@ -1867,6 +1864,7 @@ namespace PontaoCanavial.Models.VOs
 			this._Newsletters = new EntitySet<Newsletter>(new Action<Newsletter>(this.attach_Newsletters), new Action<Newsletter>(this.detach_Newsletters));
 			this._Noticias = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticias), new Action<Noticia>(this.detach_Noticias));
 			this._Produtos = new EntitySet<Produto>(new Action<Produto>(this.attach_Produtos), new Action<Produto>(this.detach_Produtos));
+			this._Projetos = new EntitySet<Projeto>(new Action<Projeto>(this.attach_Projetos), new Action<Projeto>(this.detach_Projetos));
 			OnCreated();
 		}
 		
@@ -1966,86 +1964,6 @@ namespace PontaoCanavial.Models.VOs
 					this._ImagemOficina = value;
 					this.SendPropertyChanged("ImagemOficina");
 					this.OnImagemOficinaChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ApresentacaoProjeto", DbType="VarChar(8000)")]
-		public string ApresentacaoProjeto
-		{
-			get
-			{
-				return this._ApresentacaoProjeto;
-			}
-			set
-			{
-				if ((this._ApresentacaoProjeto != value))
-				{
-					this.OnApresentacaoProjetoChanging(value);
-					this.SendPropertyChanging();
-					this._ApresentacaoProjeto = value;
-					this.SendPropertyChanged("ApresentacaoProjeto");
-					this.OnApresentacaoProjetoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_ObjetivoProjeto", DbType="VarChar(8000)")]
-		public string ObjetivoProjeto
-		{
-			get
-			{
-				return this._ObjetivoProjeto;
-			}
-			set
-			{
-				if ((this._ObjetivoProjeto != value))
-				{
-					this.OnObjetivoProjetoChanging(value);
-					this.SendPropertyChanging();
-					this._ObjetivoProjeto = value;
-					this.SendPropertyChanged("ObjetivoProjeto");
-					this.OnObjetivoProjetoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_EquipeProjeto", DbType="VarChar(8000)")]
-		public string EquipeProjeto
-		{
-			get
-			{
-				return this._EquipeProjeto;
-			}
-			set
-			{
-				if ((this._EquipeProjeto != value))
-				{
-					this.OnEquipeProjetoChanging(value);
-					this.SendPropertyChanging();
-					this._EquipeProjeto = value;
-					this.SendPropertyChanged("EquipeProjeto");
-					this.OnEquipeProjetoChanged();
-				}
-			}
-		}
-		
-		[Column(Storage="_JustificativaProjeto", DbType="VarChar(8000)")]
-		public string JustificativaProjeto
-		{
-			get
-			{
-				return this._JustificativaProjeto;
-			}
-			set
-			{
-				if ((this._JustificativaProjeto != value))
-				{
-					this.OnJustificativaProjetoChanging(value);
-					this.SendPropertyChanging();
-					this._JustificativaProjeto = value;
-					this.SendPropertyChanged("JustificativaProjeto");
-					this.OnJustificativaProjetoChanged();
 				}
 			}
 		}
@@ -2201,6 +2119,19 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
+		[Association(Name="Ponto_Projeto", Storage="_Projetos", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Projeto> Projetos
+		{
+			get
+			{
+				return this._Projetos;
+			}
+			set
+			{
+				this._Projetos.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -2300,6 +2231,18 @@ namespace PontaoCanavial.Models.VOs
 		}
 		
 		private void detach_Produtos(Produto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = null;
+		}
+		
+		private void attach_Projetos(Projeto entity)
+		{
+			this.SendPropertyChanging();
+			entity.Ponto = this;
+		}
+		
+		private void detach_Projetos(Projeto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
@@ -2543,6 +2486,253 @@ namespace PontaoCanavial.Models.VOs
 					else
 					{
 						this._PontoId = default(int);
+					}
+					this.SendPropertyChanged("Ponto");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[Table(Name="dbo.Projeto")]
+	public partial class Projeto : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _Id;
+		
+		private string _Objetivo;
+		
+		private string _Justificativa;
+		
+		private string _Apresentacao;
+		
+		private string _Equipe;
+		
+		private System.Nullable<int> _PontoId;
+		
+		private string _Titulo;
+		
+		private EntityRef<Ponto> _Ponto;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnIdChanging(int value);
+    partial void OnIdChanged();
+    partial void OnObjetivoChanging(string value);
+    partial void OnObjetivoChanged();
+    partial void OnJustificativaChanging(string value);
+    partial void OnJustificativaChanged();
+    partial void OnApresentacaoChanging(string value);
+    partial void OnApresentacaoChanged();
+    partial void OnEquipeChanging(string value);
+    partial void OnEquipeChanged();
+    partial void OnPontoIdChanging(System.Nullable<int> value);
+    partial void OnPontoIdChanged();
+    partial void OnTituloChanging(string value);
+    partial void OnTituloChanged();
+    #endregion
+		
+		public Projeto()
+		{
+			this._Ponto = default(EntityRef<Ponto>);
+			OnCreated();
+		}
+		
+		[Column(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int Id
+		{
+			get
+			{
+				return this._Id;
+			}
+			set
+			{
+				if ((this._Id != value))
+				{
+					this.OnIdChanging(value);
+					this.SendPropertyChanging();
+					this._Id = value;
+					this.SendPropertyChanged("Id");
+					this.OnIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Objetivo", DbType="VarChar(8000)")]
+		public string Objetivo
+		{
+			get
+			{
+				return this._Objetivo;
+			}
+			set
+			{
+				if ((this._Objetivo != value))
+				{
+					this.OnObjetivoChanging(value);
+					this.SendPropertyChanging();
+					this._Objetivo = value;
+					this.SendPropertyChanged("Objetivo");
+					this.OnObjetivoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Justificativa", DbType="VarChar(8000)")]
+		public string Justificativa
+		{
+			get
+			{
+				return this._Justificativa;
+			}
+			set
+			{
+				if ((this._Justificativa != value))
+				{
+					this.OnJustificativaChanging(value);
+					this.SendPropertyChanging();
+					this._Justificativa = value;
+					this.SendPropertyChanged("Justificativa");
+					this.OnJustificativaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Apresentacao", DbType="VarChar(8000)")]
+		public string Apresentacao
+		{
+			get
+			{
+				return this._Apresentacao;
+			}
+			set
+			{
+				if ((this._Apresentacao != value))
+				{
+					this.OnApresentacaoChanging(value);
+					this.SendPropertyChanging();
+					this._Apresentacao = value;
+					this.SendPropertyChanged("Apresentacao");
+					this.OnApresentacaoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Equipe", DbType="VarChar(8000)")]
+		public string Equipe
+		{
+			get
+			{
+				return this._Equipe;
+			}
+			set
+			{
+				if ((this._Equipe != value))
+				{
+					this.OnEquipeChanging(value);
+					this.SendPropertyChanging();
+					this._Equipe = value;
+					this.SendPropertyChanged("Equipe");
+					this.OnEquipeChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_PontoId", DbType="Int")]
+		public System.Nullable<int> PontoId
+		{
+			get
+			{
+				return this._PontoId;
+			}
+			set
+			{
+				if ((this._PontoId != value))
+				{
+					if (this._Ponto.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnPontoIdChanging(value);
+					this.SendPropertyChanging();
+					this._PontoId = value;
+					this.SendPropertyChanged("PontoId");
+					this.OnPontoIdChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_Titulo", DbType="VarChar(8000)")]
+		public string Titulo
+		{
+			get
+			{
+				return this._Titulo;
+			}
+			set
+			{
+				if ((this._Titulo != value))
+				{
+					this.OnTituloChanging(value);
+					this.SendPropertyChanging();
+					this._Titulo = value;
+					this.SendPropertyChanged("Titulo");
+					this.OnTituloChanged();
+				}
+			}
+		}
+		
+		[Association(Name="Ponto_Projeto", Storage="_Ponto", ThisKey="PontoId", OtherKey="Id", IsForeignKey=true)]
+		public Ponto Ponto
+		{
+			get
+			{
+				return this._Ponto.Entity;
+			}
+			set
+			{
+				Ponto previousValue = this._Ponto.Entity;
+				if (((previousValue != value) 
+							|| (this._Ponto.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._Ponto.Entity = null;
+						previousValue.Projetos.Remove(this);
+					}
+					this._Ponto.Entity = value;
+					if ((value != null))
+					{
+						value.Projetos.Add(this);
+						this._PontoId = value.Id;
+					}
+					else
+					{
+						this._PontoId = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("Ponto");
 				}
