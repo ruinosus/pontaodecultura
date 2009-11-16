@@ -1,0 +1,95 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{margin:0; padding:0;}
+a img{ border:0;}
+/* Divs */
+
+#root{margin:auto; width:910px; background-color:#333;}
+
+/* TOPO*/
+#top{width:910px; height:210px;}
+#top img{float:left;}
+
+#menu-1{width:910px; height:40px; background:url(../images/button_bg.gif) repeat-x #060;}
+#menu-1 img{float:left;}
+#menu-1 ul{float:left;}
+#menu-1 li{float:left; width:97px; height:30px; text-align:center; background-image:url(../images/button_sprite.jpg); list-style:none; padding-top:10px;}
+#menu-1 a{font-family:"Calibri","Trebuchet MS", Arial, Helvetica, sans-serif; font-size:1.1em; color:#FFF; text-align:center; text-decoration:none;}
+#menu-1 a:hover{color:#FC0; background:none;}
+
+
+/* CONTENT */
+
+#content{width:910px;}
+#content div{float:left;}
+
+#coluna-1{width:230px; height:860px; background-color:#fb6;}
+#coluna-1 ul{width:220px; background:url(../images/menu2-bg.jpg) repeat-x bottom #FFF; margin-left:3px; border-left:2px solid #666; border-right:2px solid #666;}
+#coluna-1 li{color:#363;  margin:0 10px 0 10px; padding:5px 0 5px 0;list-style:square; list-style-position:inside;  border-bottom:dotted #393 2px;}
+#coluna-1 li a{font-family:"Calibri","Trebuchet MS", Arial, Helvetica, sans-serif; color:#363; font-weight:bold; text-decoration:none;}
+#coluna-1 li a:hover{color:#900;}
+
+#coluna-2 {width:450px; height:860px; background-color:#FFF;}
+
+#eventos {width:450px; height:200px; font-size:0;}
+
+#noticias{ width:450px; height:330px;}
+#noticias h1{width:430px; padding-left:20px; height:50px; background:url(../images/title02_bg.gif) repeat-x #F00;}
+#noticias li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
+#noticias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1em;}
+#noticias h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:.7em;}
+#noticias a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias a:hover span p{ text-decoration:underline;}
+#noticias a:hover{ text-decoration:underline;}
+#noticias img{float:left; margin-right:4px;}
+
+#galerias{width:225px; height:330px; float:left;}
+#galerias h1{width:205px; padding-left:20px; height:50px; background:url(../images/title04_bg.gif) repeat-x #06C;}
+#galerias li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
+#galerias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#06C; font-weight:bold; font-size:1em;}
+#galerias a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#galerias a:hover span p{ text-decoration:underline;}
+#galerias a:hover{ text-decoration:underline;}
+#galerias img{float:left; margin-right:4px;}
+
+#produtos{width:225px; height:330px; float:left;}
+#produtos h1{width:205px; padding-left:20px; height:50px; background:url(../images/title05_bg.gif) repeat-x #C60;}
+#produtos li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
+#produtos h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#C60; font-weight:bold; font-size:1.2em;}
+#produtos a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none;}
+#produtos a:hover span h2{ text-decoration:underline;}
+#produtos a:hover span p{ text-decoration:underline;}
+#produtos a:hover{ text-decoration:underline;}
+#produtos img{float:left; margin-right:4px;}
+
+#coluna-3 {width:230px; height:860px; background-color:#FFF;}
+
+#buscar {width:230px; height:200px;}
+#buscar h1{width:210px; padding-left:20px; height:50px; background:url(../images/title01_bg.gif) repeat-x #88b300;}
+#buscar form{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; width:216px; height:136px; background-color:#eef5d5; border:solid #FFF 2px; padding:5px; text-align:center;}
+#buscar input{ font-size:1.1em; margin:10px 5px;}
+#buscar select{margin:10px 5px;}
+
+
+#enquete {width:230px; height:330px;}
+#enquete h1{width:210px; padding-left:20px; height:50px; background:url(../images/title03_bg.gif) repeat-x #c8b400;}
+#enquete form{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; width:216px; height:266px; background-color:#f9f7e0; border:solid #FFF 2px; padding:5px;}
+#enquete h2{color:#c8b400; font-weight:bold; font-size:1em;}
+#enquete li{ list-style:none; height:25px; margin:5px; font-size:.8em;}
+#enquete input{margin-right:5px;}
+
+#newsletter {width:230px; height:330px;}
+#newsletter h1{width:210px; padding-left:20px; height:50px; background:url(../images/title06_bg.gif) repeat-x #278775;}
+#newsletter form{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; width:216px; height:266px; background-color:#e4f7f4; border:solid #FFF 2px; padding:5px;}
+#newsletter h2{color:#278775; font-weight:bold; font-size:.9em; margin-bottom:10px;}
+#newsletter input{ font-size:1em; margin:10px 5px;}
+#newsletter span{color:#278775; font-weight:bold; font-size:1em;}
+
+
+#assinatura{ width:900px; height:165px; background:url(../images/asing_bg.gif) repeat-x #FFF; text-align:center; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; float:left; padding:5px;}
+#assinatura h2{color:#333; margin:5px; font-size:.8em;}
+#assinatura h2 a{color:#333; margin:5px; font-size:1em;}
+#assinatura h2 a:hover{color:#F00;}
+#assinatura span{color:#333; margin:5px 10px;; font-size:1em; font-weight:bold; text-align:left; float:left;}
+#assinatura img{ margin-left:10px;}

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Database Name="PontaoCanavialDB" Class="PontaoCanavialDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=ruinosus-nb\sqlexpress;Initial Catalog=PontaoCanavialDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PontaoCanavialDBConnectionString" Provider="System.Data.SqlClient" />
+  <Connection Mode="WebSettings" ConnectionString="Data Source=RUINOSUS-NB\SQLEXPRESS;Initial Catalog=PontaoCanavialDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PontaoCanavialDBConnectionString1" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Banner" Member="Banners">
     <Type Name="Banner">
       <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -88,10 +88,6 @@
       <Column Name="NomeIdentificador" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
       <Column Name="DescricaoOficina" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
       <Column Name="ImagemOficina" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="ApresentacaoProjeto" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
-      <Column Name="ObjetivoProjeto" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
-      <Column Name="EquipeProjeto" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
-      <Column Name="JustificativaProjeto" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
       <Column Name="EPontao" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
       <Column Name="Logo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="Cabecalho" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
@@ -102,6 +98,7 @@
       <Association Name="Ponto_Newsletter" Member="Newsletters" ThisKey="Id" OtherKey="PontoId" Type="Newsletter" />
       <Association Name="Ponto_Noticia" Member="Noticias" ThisKey="Id" OtherKey="PontoId" Type="Noticia" />
       <Association Name="Ponto_Produto" Member="Produtos" ThisKey="Id" OtherKey="PontoId" Type="Produto" />
+      <Association Name="Ponto_Projeto" Member="Projetos" ThisKey="Id" OtherKey="PontoId" Type="Projeto" />
     </Type>
   </Table>
   <Table Name="dbo.Produto" Member="Produtos">
@@ -114,6 +111,18 @@
       <Column Name="Descricao" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
       <Association Name="Categoria_Produto" Member="Categoria" ThisKey="CategoriaId" OtherKey="Id" Type="Categoria" IsForeignKey="true" />
       <Association Name="Ponto_Produto" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projeto" Member="Projetos">
+    <Type Name="Projeto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Objetivo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Justificativa" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Apresentacao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Equipe" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Titulo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Association Name="Ponto_Projeto" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Usuario" Member="Usuarios">

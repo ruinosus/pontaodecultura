@@ -1,0 +1,103 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+
+<%@ Import Namespace="PontaoCanavial.Models.VOs" %>
+<%@ Import Namespace="PontaoCanavial.Helpers" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pont&atilde;o do Canavial</title>
+    <link href="../../App_Themes/Pontinho/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="root">
+        <div id="menu-1">
+            <img src="../../App_Themes/Pontinho/images/pontao_bar.jpg" alt="Pontos de Cultura" />
+            <ul>
+                <li>
+                    <p>
+                        <a href="#">Pont&atilde;o</a></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Not&iacute;cias</a></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Eventos</a></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Galerias</a></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">V&iacute;deos</a></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Produtos</a></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Contatos</a></p>
+                </li>
+            </ul>
+        </div>
+        <div id="top">
+            
+                <%if (Model.Ponto == null)
+              {
+                  Response.Redirect("NaoEncontrado", false);
+              }      
+            %>
+            <b>
+                <%if (Model.Ponto.Logo != null)
+                  {%>
+                <% 
+                    var imgurl = Url.Action("ThumbImage", "Image",
+                          new { id = Model.Ponto.Id, width = 231, height = 207 }); %>
+                <%=Html.Image("img", imgurl, "Imagem")%>
+                <% }
+                  
+                %>
+            <img src="../../App_Themes/Pontinho/images/alafia_banner.jpg" alt="Banner" />
+        </div>
+        <div id="content">
+            <div id="coluna-1">
+                <ul>
+                    <li><a href="#">Alafi&aacute;</a></li>
+                    <li><a href="#">Apresenta&ccedil;&atilde;o</a></li>
+                    <li><a href="#">Projetos</a></li>
+                    <li><a href="#">Oficinas</a></li>
+                    <li><a href="#">Galerias</a></li>
+                    <li><a href="#">V&iacute;deos</a></li>
+                    <li><a href="#">Produtos</a></li>
+                    <li><a href="#">Contatos</a></li>
+                </ul>
+                <img src="../../App_Themes/Pontinho/images/menu2_bottom.gif" />
+            </div>
+            <asp:ContentPlaceHolder ID="contentMasterPontinho" runat="server">
+            
+            </asp:ContentPlaceHolder> 
+            <div id="assinatura">
+                <h2>
+                    <a href="#">Sobre o Pont&atilde;o</a> | <a href="#">Galeria</a> | <a href="#">V&iacute;deos</a>
+                    | <a href="#">Mapa do Site</a> | <a href="#">Fale Conosco</a></h2>
+                <p>
+                    <span>Coordena&ccedil;&atilde;o:<br />
+                        <img src="../../App_Themes/Pontinho/images/logo01.gif" alt="Alonso Oliveira" /></span> <span>Patroc&iacute;nio:<br />
+                            <img src="../../App_Themes/Pontinho/images/logo02.gif" alt="Fundarpe" /><img src="../../App_Themes/Pontinho/images/logo03.gif" alt="Governo de Pernambuco" /></span>
+                    <span>Realiza&ccedil;&atilde;o:<br />
+                        <img src="../../App_Themes/Pontinho/images/logo04.gif" alt="Associação Reviva" /><img src="../../App_Themes/Pontinho/images/logo05.gif"
+                            alt="Cultura Viva" /><img src="../../App_Themes/Pontinho/images/logo06.jpg" alt="Ministério da Cultura" /><img
+                                src="../../App_Themes/Pontinho/images/logo07.gif" alt="Governo Federal" /></span>
+                </p>
+                <h2>
+                    Copyright © 2009 Pont&atilde;o do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
