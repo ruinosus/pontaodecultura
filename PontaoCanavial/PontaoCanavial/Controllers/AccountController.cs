@@ -7,6 +7,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using System.Web.UI;
+using PontaoCanavial.Models.VOs;
+using PontaoCanavial.Models.Repositorios.Interfaces;
+using PontaoCanavial.Models.Repositorios;
 
 namespace PontaoCanavial.Controllers
 {
@@ -15,21 +18,24 @@ namespace PontaoCanavial.Controllers
     public class AccountController : Controller
     {
 
+        IUsuarioRepositorio usuarioRepositorio;
+
         // This constructor is used by the MVC framework to instantiate the controller using
         // the default forms authentication and membership providers.
 
         public AccountController()
-            : this(null, null)
+            : this(null, null,new UsuarioRepositorio())
         {
         }
-
+        
         // This constructor is not used by the MVC framework but is instead provided for ease
         // of unit testing this type. See the comments at the end of this file for more
         // information.
-        public AccountController(IFormsAuthentication formsAuth, IMembershipService service)
+        public AccountController(IFormsAuthentication formsAuth, IMembershipService service,IUsuarioRepositorio usuarioRepositorio)
         {
             FormsAuth = formsAuth ?? new FormsAuthenticationService();
             MembershipService = service ?? new AccountMembershipService();
+            this.usuarioRepositorio = usuarioRepositorio;
         }
 
         public IFormsAuthentication FormsAuth
@@ -99,6 +105,11 @@ namespace PontaoCanavial.Controllers
                 // Attempt to register the user
                 MembershipCreateStatus createStatus = MembershipService.CreateUser(userName, password, email);
 
+                Usuario usuario = new Usuario();
+                usuario.UserIdMembership = (System.Guid)Membership.GetUser(userName).ProviderUserKey;
+                usuario.Nome = "NOme ";
+                usuarioRepositorio.Add(usuario);
+                usuarioRepositorio.Save();
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuth.SignIn(userName, false /* createPersistentCookie */);
@@ -145,13 +156,13 @@ namespace PontaoCanavial.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("_FORM", "The current password is incorrect or the new password is invalid.");
+                    ModelState.AddModelError("_FORM", "A senha atual está incorreta ou a nova senha está inválida.");
                     return View();
                 }
             }
             catch
             {
-                ModelState.AddModelError("_FORM", "The current password is incorrect or the new password is invalid.");
+                ModelState.AddModelError("_FORM", "A senha atual está incorreta ou a nova senha está inválida.");
                 return View();
             }
         }
@@ -166,7 +177,7 @@ namespace PontaoCanavial.Controllers
         {
             if (filterContext.HttpContext.User.Identity is WindowsIdentity)
             {
-                throw new InvalidOperationException("Windows authentication is not supported.");
+                throw new InvalidOperationException("Autenticação via Windows não é suportada.");
             }
         }
 
@@ -176,19 +187,19 @@ namespace PontaoCanavial.Controllers
         {
             if (String.IsNullOrEmpty(currentPassword))
             {
-                ModelState.AddModelError("currentPassword", "You must specify a current password.");
+                ModelState.AddModelError("currentPassword", "Voce tem que especificar a senha atual.");
             }
             if (newPassword == null || newPassword.Length < MembershipService.MinPasswordLength)
             {
                 ModelState.AddModelError("newPassword",
                     String.Format(CultureInfo.CurrentCulture,
-                         "You must specify a new password of {0} or more characters.",
+                         "Voce tem que informar uma senha de {0} ou mais caracteres.",
                          MembershipService.MinPasswordLength));
             }
 
             if (!String.Equals(newPassword, confirmPassword, StringComparison.Ordinal))
             {
-                ModelState.AddModelError("_FORM", "The new password and confirmation password do not match.");
+                ModelState.AddModelError("_FORM", "A nova senha e a confirmação estão diferentes.");
             }
 
             return ModelState.IsValid;
@@ -198,15 +209,15 @@ namespace PontaoCanavial.Controllers
         {
             if (String.IsNullOrEmpty(userName))
             {
-                ModelState.AddModelError("username", "You must specify a username.");
+                ModelState.AddModelError("username", "Voce tem que informar um Login.");
             }
             if (String.IsNullOrEmpty(password))
             {
-                ModelState.AddModelError("password", "You must specify a password.");
+                ModelState.AddModelError("password", "Voce tem que informar uma senha.");
             }
             if (!MembershipService.ValidateUser(userName, password))
             {
-                ModelState.AddModelError("_FORM", "The username or password provided is incorrect.");
+                ModelState.AddModelError("_FORM", "O Login ou a senha inválidos.");
             }
 
             return ModelState.IsValid;
@@ -216,22 +227,22 @@ namespace PontaoCanavial.Controllers
         {
             if (String.IsNullOrEmpty(userName))
             {
-                ModelState.AddModelError("username", "You must specify a username.");
+                ModelState.AddModelError("username", "Voce tem que informar um Login.");
             }
             if (String.IsNullOrEmpty(email))
             {
-                ModelState.AddModelError("email", "You must specify an email address.");
+                ModelState.AddModelError("email", "Voce tem que informar um email.");
             }
             if (password == null || password.Length < MembershipService.MinPasswordLength)
             {
                 ModelState.AddModelError("password",
                     String.Format(CultureInfo.CurrentCulture,
-                         "You must specify a password of {0} or more characters.",
+                          "Voce tem que informar uma senha de {0} ou mais caracteres.",
                          MembershipService.MinPasswordLength));
             }
             if (!String.Equals(password, confirmPassword, StringComparison.Ordinal))
             {
-                ModelState.AddModelError("_FORM", "The new password and confirmation password do not match.");
+                ModelState.AddModelError("_FORM", "A nova senha e a confirmação estão diferentes.");
             }
             return ModelState.IsValid;
         }
@@ -243,34 +254,34 @@ namespace PontaoCanavial.Controllers
             switch (createStatus)
             {
                 case MembershipCreateStatus.DuplicateUserName:
-                    return "Username already exists. Please enter a different user name.";
+                    return "Login já existe. Por favor informe outro login.";
 
                 case MembershipCreateStatus.DuplicateEmail:
-                    return "A username for that e-mail address already exists. Please enter a different e-mail address.";
+                    return "Um login já se encontra cadastrado com o email informado. Por favor informe outro email.";
 
                 case MembershipCreateStatus.InvalidPassword:
-                    return "The password provided is invalid. Please enter a valid password value.";
+                    return "A senha informada é inválida. Por favor informe uma senha válida.";
 
                 case MembershipCreateStatus.InvalidEmail:
-                    return "The e-mail address provided is invalid. Please check the value and try again.";
+                    return "O email informado é inválido. Por favor informe um email valido e tente novamente.";
 
                 case MembershipCreateStatus.InvalidAnswer:
-                    return "The password retrieval answer provided is invalid. Please check the value and try again.";
+                    return "A resposta para solicitação de senha é inválida. Tente novamente.";
 
                 case MembershipCreateStatus.InvalidQuestion:
-                    return "The password retrieval question provided is invalid. Please check the value and try again.";
+                    return "A pergunta para solicitação de senha é inválidade. Tente novamente.";
 
                 case MembershipCreateStatus.InvalidUserName:
-                    return "The user name provided is invalid. Please check the value and try again.";
+                    return "Login inválido. Tente novamente.";
 
                 case MembershipCreateStatus.ProviderError:
-                    return "The authentication provider returned an error. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Ocorreu um erro na autenticação. Tente novamente. Se o erro continuar, por favor entre em contato com a administração do site.";
 
                 case MembershipCreateStatus.UserRejected:
-                    return "The user creation request has been canceled. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "A solicitação de conta foi cancelada.Tente novamente. Se o erro continuar, por favor entre em contato com a administração do site.";
 
                 default:
-                    return "An unknown error occurred. Please verify your entry and try again. If the problem persists, please contact your system administrator.";
+                    return "Um erro desconhecido ocorreu. Tente novamente. Se o erro continuar, por favor entre em contato com a administração do site.";
             }
         }
         #endregion

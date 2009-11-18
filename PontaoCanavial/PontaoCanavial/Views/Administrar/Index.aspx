@@ -7,5 +7,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>painel admin</h2>
+    <%= Html.ActionLink("Nova Conta", "../Account/Register") %> Cadastrar Novo Usuário.
 
 </asp:Content>

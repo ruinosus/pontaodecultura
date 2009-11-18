@@ -46,7 +46,7 @@ namespace PontaoCanavial.Controllers
 
         }
 
-        public ActionResult Details(int id)
+        public ActionResult NoticiaDetalhes(int id)
         {
             return View();
         }
@@ -54,9 +54,28 @@ namespace PontaoCanavial.Controllers
         public ActionResult Create(int id)
         {
             Noticia noticia = new Noticia();
+            Session.Add("PontoId", id);
             noticia.PontoId = id;
             return View(noticia);
         }
+
+        public bool ThumbnailCallback()
+        {
+            return false;
+        }
+
+        //if (fupImgPostagem.HasFile)
+        //    {
+        //        HttpPostedFile myFile = fupImgPostagem.PostedFile;
+                
+        //        System.Drawing.Image fullSizeImg = System.Drawing.Image.FromStream(myFile.InputStream);
+
+        //        System.Drawing.Image.GetThumbnailImageAbort dummyCallBack = new System.Drawing.Image.GetThumbnailImageAbort(ThumbnailCallback);
+
+        //        System.Drawing.Image thumbNailImg = fullSizeImg.GetThumbnailImage(200, 200, dummyCallBack, IntPtr.Zero);
+                
+        //        postagem.Imagem = ClasseAuxiliar.imageToByteArray(thumbNailImg);
+        //    }
 
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Create(Noticia noticia)
@@ -69,24 +88,25 @@ namespace PontaoCanavial.Controllers
                 {
 
                     HttpPostedFileBase imagem = this.Request.Files.Get("imgImagem");
+                    noticia.PontoId =  Convert.ToInt32(Session["PontoId"].ToString());
                     if (imagem!=null)
                     {
 
                         Int32 length = imagem.ContentLength;
                         byte[] imagemByte = new byte[length];
                         imagem.InputStream.Read(imagemByte, 0, length);
-                        noticia.Imagem= imagemByte;
+                        noticia.ImagemPequena= imagemByte;
                     }
 
                     noticiaRepositorio.Add(noticia);
                     noticiaRepositorio.Save();
 
-                    return RedirectToAction("Index");
+                    return RedirectToAction("../Noticia/Index");
                 }
-                catch
+                catch(Exception e)
                 {
                     ModelState.AddModelErrors(noticia.GetRuleViolations());
-                   // ModelState.AddModelError("erro", "erro no banco");
+                    ModelState.AddModelError("erro", e.Message);
                 }
             }
 

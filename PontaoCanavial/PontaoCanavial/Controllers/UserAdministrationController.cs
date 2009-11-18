@@ -13,9 +13,9 @@ namespace SampleWebsite.Controllers
 	public class UserAdministrationController : Controller
 	{
 		private const int PageSize = 10;
-		private const string ResetPasswordBody = "Your new password is: ";
+		private const string ResetPasswordBody = "Sua nova senha é: ";
 		private const string ResetPasswordFromAddress = "from@domain.com";
-		private const string ResetPasswordSubject = "Your New Password";
+		private const string ResetPasswordSubject = "Nova Senha";
 		private readonly IRolesService _rolesService;
 		private readonly ISmtpClient _smtpClient;
 		private readonly IUserService _userService;

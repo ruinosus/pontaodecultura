@@ -68,7 +68,10 @@ namespace PontaoCanavial.Controllers
             {
                 var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
                 if (pontinho != null && pontinho.NomeIdentificador != string.Empty)
+                {
+                    Session.Add("PontoFormViewModel", new PontoFormViewModel(pontinho, null));
                     return View("IndexPontinho", new PontoFormViewModel(pontinho, null));
+                }
                 else
                     return View("NaoEncontrado");
             }
@@ -76,6 +79,7 @@ namespace PontaoCanavial.Controllers
             {
                 var pontao = pontoRepositorio.ConsultarPontao();
                 List<Ponto> pontinhos = pontoRepositorio.ConsultarTodos(true).ToList();
+                Session.Add("PontoFormViewModel", new PontoFormViewModel(pontao, pontinhos));
                 return View("IndexPontao", new PontoFormViewModel(pontao, pontinhos));
 
             }
@@ -85,6 +89,11 @@ namespace PontaoCanavial.Controllers
         public ActionResult Details(int id)
         {
             return View();
+        }
+
+        public ActionResult NoticiaLista()
+        {
+            return  View("NoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
         }
         
         public ActionResult Create()

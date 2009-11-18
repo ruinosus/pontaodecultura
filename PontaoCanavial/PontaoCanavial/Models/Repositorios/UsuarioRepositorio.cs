@@ -70,7 +70,7 @@ namespace PontaoCanavial.Models.Repositorios
 
         void IUsuarioRepositorio.Add(Usuario usuario)
         {
-            throw new NotImplementedException();
+            db.Usuarios.InsertOnSubmit(usuario);
         }
 
         void IUsuarioRepositorio.Delete(Usuario usuario)
@@ -80,7 +80,7 @@ namespace PontaoCanavial.Models.Repositorios
 
         void IUsuarioRepositorio.Save()
         {
-            throw new NotImplementedException();
+            db.SubmitChanges();
         }
 
         #endregion
