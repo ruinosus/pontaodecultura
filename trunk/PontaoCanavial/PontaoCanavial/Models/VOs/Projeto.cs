@@ -7,7 +7,7 @@ using System.Data.Linq;
 
 namespace PontaoCanavial.Models.VOs
 {
-    [Bind(Include = "Id,Titulo")]
+    [Bind(Include = "Nome")]
 
     public partial class Projeto
     {
@@ -19,8 +19,8 @@ namespace PontaoCanavial.Models.VOs
         public IEnumerable<RuleViolation> GetRuleViolations()
         {
 
-            if (String.IsNullOrEmpty(Titulo))
-                yield return new RuleViolation("O título é Necessário para o cadastro", "Titulo");
+            if (String.IsNullOrEmpty(Nome))
+                yield return new RuleViolation("O Nome é Necessário para o cadastro", "Nome");
 
             
 

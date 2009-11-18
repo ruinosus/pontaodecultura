@@ -1,23 +1,22 @@
 ﻿<%@ Page Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage" %>
 
 <asp:Content ID="changePasswordTitle" ContentPlaceHolderID="TitleContent" runat="server">
-    Change Password
+    Mudando a senha
 </asp:Content>
 
 <asp:Content ID="changePasswordContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Change Password</h2>
+    <h2>Mudando a senha</h2>
     <p>
-        Use the form below to change your password. 
+        Utilize o formulário abaixo para mudar a sua senha. 
     </p>
     <p>
-        New passwords are required to be a minimum of <%=Html.Encode(ViewData["PasswordLength"])%> characters in length.
+        Senhas com no minimo <%=Html.Encode(ViewData["PasswordLength"])%> caracteres.
     </p>
-    <%= Html.ValidationSummary("Password change was unsuccessful. Please correct the errors and try again.")%>
+    <%= Html.ValidationSummary("Senha não alterada. Corrija os erros e tente novamente.")%>
 
     <% using (Html.BeginForm()) { %>
         <div>
-            <fieldset>
-                <legend>Account Information</legend>
+            <fieldset>Informações da Conta</legend>
                 <p>
                     <label for="currentPassword">Current password:</label>
                     <%= Html.Password("currentPassword") %>

@@ -5,14 +5,14 @@
 </asp:Content>
 
 <asp:Content ID="registerContent" ContentPlaceHolderID="MainContent" runat="server">
-    <h2>Create a New Account</h2>
+    <h2>Criando uma nova conta</h2>
     <p>
-        Use the form below to create a new account. 
+       Formulário para Nova Conta
     </p>
     <p>
-        Passwords are required to be a minimum of <%=Html.Encode(ViewData["PasswordLength"])%> characters in length.
+        Senhas com no minimo <%=Html.Encode(ViewData["PasswordLength"])%> caracteres.
     </p>
-    <%= Html.ValidationSummary("Account creation was unsuccessful. Please correct the errors and try again.") %>
+    <%= Html.ValidationSummary("Problemas ao criar uma nova conta. Corrija os erros e tente novamente.") %>
 
     <% using (Html.BeginForm()) { %>
         <div>

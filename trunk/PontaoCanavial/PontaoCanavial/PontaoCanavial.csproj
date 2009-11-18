@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL" />
+    <Reference Include="FlashControl, Version=2.4.2276.31815, Culture=neutral, PublicKeyToken=0066be59ecd613cb, processorArchitecture=MSIL" />
+    <Reference Include="KMobile.Web, Version=1.1.3004.24089, Culture=neutral, processorArchitecture=MSIL" />
     <Reference Include="PagedList, Version=1.1.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\MvcMembership\bin\Debug\PagedList.dll</HintPath>
@@ -285,6 +288,7 @@
     <None Include="Models\VOs\PontaoCanavial.dbml.layout">
       <DependentUpon>PontaoCanavial.dbml</DependentUpon>
     </None>
+    <Content Include="App_Themes\Pontao\images\coluna1-bg.jpg" />
     <Content Include="Scripts\documentation.css" />
     <Content Include="Scripts\documentation.js" />
     <Content Include="Scripts\jquery.blockUI.js" />
@@ -293,7 +297,7 @@
     <Content Include="Scripts\jquery.MetaData.js" />
     <Content Include="Scripts\jquery.MultiFile.pack.js" />
     <Content Include="Views\Noticia\Create.aspx" />
-    <Content Include="Views\Noticia\Details.aspx" />
+    <Content Include="Views\Noticia\NoticiaDetalhes.aspx" />
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
     <Content Include="Views\Noticia\NoticiaForm.ascx" />
