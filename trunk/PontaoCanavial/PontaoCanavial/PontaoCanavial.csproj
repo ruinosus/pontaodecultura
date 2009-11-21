@@ -65,14 +65,14 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\AdministrarController.cs" />
+    <Compile Include="Controllers\GerenciarContaController.cs" />
+    <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
-    <Compile Include="Controllers\UserAdministrationController.cs" />
+    <Compile Include="Controllers\AdministrarController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -96,17 +96,19 @@
     <Compile Include="Models\Repositorios\Interfaces\INewsletterRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\INoticiaRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\IProdutoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IProjetoRepositorio.cs" />
     <Compile Include="Models\Repositorios\Interfaces\IUsuarioPontoRepositorio.cs" />
-    <Compile Include="Models\Repositorios\Interfaces\IUsuarioRepositorio.cs" />
+    <Compile Include="Models\IUsuarioRepositorio.cs" />
     <Compile Include="Models\Repositorios\NewsletterRepositorio.cs" />
     <Compile Include="Models\Repositorios\NoticiaRepositorio.cs" />
     <Compile Include="Models\Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\ProjetoRepositorio.cs" />
     <Compile Include="Models\Repositorios\UsuarioPontoRepositorio.cs" />
     <Compile Include="Models\Repositorios\UsuarioRepositorio.cs" />
     <Compile Include="Models\SmtpClientProxy.cs" />
-    <Compile Include="Models\UserAdministration\DetailsViewModel.cs" />
-    <Compile Include="Models\UserAdministration\IndexViewModel.cs" />
-    <Compile Include="Models\UserAdministration\RoleViewModel.cs" />
+    <Compile Include="Models\Administrar\DetailsViewModel.cs" />
+    <Compile Include="Models\Administrar\IndexViewModel.cs" />
+    <Compile Include="Models\Administrar\RoleViewModel.cs" />
     <Compile Include="Models\VOs\Banner.cs" />
     <Compile Include="Models\VOs\Categoria.cs" />
     <Compile Include="Models\VOs\Galeria.cs" />
@@ -238,16 +240,15 @@
     <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
     <Content Include="Scripts\MultiFileExemplo.js" />
     <Content Include="Scripts\swfobject.js" />
-    <Content Include="Views\Administrar\Index.aspx" />
     <Content Include="Views\Ponto\Create.aspx" />
     <Content Include="Views\Ponto\Details.aspx" />
     <Content Include="Views\Ponto\Edit.aspx" />
     <Content Include="Views\Ponto\IndexPontinho.aspx" />
     <Content Include="Views\Ponto\NaoEncontrado.aspx" />
     <Content Include="Views\Ponto\PontoForm.ascx" />
-    <Content Include="Views\UserAdministration\Details.aspx" />
-    <Content Include="Views\UserAdministration\Index.aspx" />
-    <Content Include="Views\UserAdministration\Role.aspx" />
+    <Content Include="Views\Administrar\Details.aspx" />
+    <Content Include="Views\Administrar\Index.aspx" />
+    <Content Include="Views\Administrar\Role.aspx" />
     <Content Include="Web.config" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\jquery-1.3.2.js" />
@@ -258,10 +259,10 @@
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Views\Account\ChangePassword.aspx" />
-    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
-    <Content Include="Views\Account\LogOn.aspx" />
-    <Content Include="Views\Account\Register.aspx" />
+    <Content Include="Views\GerenciarConta\ChangePassword.aspx" />
+    <Content Include="Views\GerenciarConta\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\GerenciarConta\LogOn.aspx" />
+    <Content Include="Views\GerenciarConta\Register.aspx" />
     <Content Include="Views\Home\About.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
@@ -297,14 +298,24 @@
     <Content Include="Scripts\jquery.MetaData.js" />
     <Content Include="Scripts\jquery.MultiFile.pack.js" />
     <Content Include="Views\Noticia\Create.aspx" />
-    <Content Include="Views\Noticia\NoticiaDetalhes.aspx" />
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
     <Content Include="Views\Noticia\NoticiaForm.ascx" />
+    <Content Include="Views\Ponto\EventoDetalhe.aspx" />
+    <Content Include="Views\Ponto\EventoLista.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />
     <Content Include="Views\Ponto\IndexPontao.aspx" />
     <Content Include="Views\Ponto\MasterPagePontao.Master" />
+    <Content Include="Views\Ponto\NoticiaDetalhe.aspx" />
     <Content Include="Views\Ponto\NoticiaLista.aspx" />
+    <Content Include="Views\Ponto\PontoDetalhe.aspx" />
+    <Content Include="Views\Ponto\ProdutoLista.aspx" />
+    <Content Include="Views\Ponto\ProjetoDetalhe.aspx" />
+    <Content Include="Views\Ponto\ProjetoLista.aspx" />
+    <Content Include="Views\Projeto\Create.aspx" />
+    <Content Include="Views\Projeto\Edit.aspx" />
+    <Content Include="Views\Projeto\Index.aspx" />
+    <Content Include="Views\Projeto\ProjetoForm.ascx" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MvcMembership\MvcMembership.csproj">
