@@ -104,16 +104,13 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 
 #noticias-list{ width:450px; height:820px;}
 #noticias-list h1{width:430px; padding-left:20px; height:50px; background:url(../images/title02_bg.gif) repeat-x #F00;}
-#noticias-list li{ width:430px; height:80px; background-color:#EEE; border:solid #FFF 2px; border-bottom:solid #666 2px; list-style:none; padding:5px; margin:2px 4px;}
+#noticias-list li{ width:430px; height:80px; background-color:#EEE; border:solid #FFF 2px; border-bottom:solid #666 2px; list-style:none; padding:5px; margin:2px 4px; _margin:2px;}
 #noticias-list h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1.4em;}
 #noticias-list h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:1em;}
 #noticias-list a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
 #noticias-list a:hover span p{ text-decoration:underline;}
 #noticias-list a:hover{ text-decoration:underline;}
 #noticias-list img{float:left; margin-right:5px;}
-
-.texto-preview{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none;}
-.titulo-noticia{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1.4em;}
 
 /* TEXTO DA NOTÍCIAS */
 
@@ -128,7 +125,7 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 #noticias-text h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-size:1.4em; padding:10px;}
 #noticias-text .not-foto{width:240px; height:280px; margin-left:10px; _margin-left:5px; float:left;}
 #noticias-text .not-foto img{border:solid #333 1px;}
-#noticias-text .not-foto h4{width:226px; height:36px; margin-top:240px; _margin-top:230px; background-color:#ccc; border-bottom:solid #666 2px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; font-weight:normal; padding:2px;}
+#noticias-text .not-foto h4{width:226px; height:36px; margin-top:240px; _margin-top:0; background-color:#ccc; border-bottom:solid #666 2px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; font-weight:normal; padding:2px;}
 #noticias-text p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none; margin:0 10px;}
 
 #noticias-text img{float:left;}
@@ -160,11 +157,11 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 
 #galerias-desc{ width:450px;}
 #galerias-desc h1{width:430px; padding-left:20px; height:50px; background:url(../images/title04_bg.gif) repeat-x #639;}
-#galerias-desc li{ width:430px; height:80px; background-color:#f8f0ff; border:solid #FFF 2px; border-bottom:solid #666 2px; list-style:none; padding:5px; margin:5px 4px; _margin:5px 0; }
+#galerias-desc li{width:430px; background-color:#f8f0ff; border:solid #FFF 2px; border-bottom:solid #666 2px; list-style:none; padding:5px; margin:5px 4px; _margin:5px 2px;}
 #galerias-desc h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#639; font-weight:bold; font-size:1.2em;}
 #galerias-desc p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none;}
-#div-galeria{width:436px; height:360px; background-color:#ccc; border:solid #333 2px; background:url(../images/gallery_bg.gif); margin:0 5px;}
-#div-galeria img{ margin:12px; border:solid #333 1px;}
+#div-galeria{width:436px; height:360px; background-color:#ccc; border:solid #333 2px; background:url(../images/gallery_bg.gif); margin:0 5px; _margin:0 2px;}
+#div-galeria img{ margin:12px; _margin:10px; border:solid #333 1px;}
 #div-galeria ul {width:436px; height:60px; background-color:#333;} 
 #div-galeria ul li{text-align:center; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; padding:0 12px; color:#FFF; font-weight:bold; font-size:1.2em;}
 #div-galeria ul li.link-anterior {float:left;}
