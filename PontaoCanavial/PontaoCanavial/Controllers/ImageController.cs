@@ -42,19 +42,25 @@ namespace PontaoCanavial.Controllers
     public class ImageController : Controller
     {
         IPontoRepositorio pontoRepositorio;
+        INoticiaRepositorio noticiaRepositorio;
+        IProdutoRepositorio produtoRepositorio;
+        IEventoRepositorio eventoRepositorio;
+        IGaleriaRepositorio galeriaRepositorio;
+        IProjetoRepositorio projetoRepositorio;
 
         public ImageController()
-            : this(new PontoRepositorio())
+            : this(new PontoRepositorio(),new NoticiaRepositorio())
         {
         }
 
-        public ImageController(IPontoRepositorio repositorio)
+        public ImageController(IPontoRepositorio pontoRepositorio,INoticiaRepositorio noticiaRepositorio)
         {
-            pontoRepositorio = repositorio;
+            this.pontoRepositorio = pontoRepositorio;
+            this.noticiaRepositorio = noticiaRepositorio;
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ThumbImage(int id, int width, int height)
+        public ActionResult ThumbImagePonto(int id, int width, int height)
         {
             var ponto = pontoRepositorio.GetPonto(id);
             Image i = null;
@@ -79,8 +85,53 @@ namespace PontaoCanavial.Controllers
             }
         }
 
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImagePontoDetalhe(int id, int width, int height, string tipo)
+        {
+            var ponto = pontoRepositorio.GetPonto(id);
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P") || tipo.Equals("p"))
+                {
+                    byte[] tempImage = ponto.ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage = ponto.ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage = ponto.ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
+
         [AcceptVerbs(HttpVerbs.Post)]
-        public void SaveImage()
+        public void SaveImagePonto()
         {
             //for (int i = 0; i < Request.Files.Count; i++)
             //{
@@ -115,6 +166,231 @@ namespace PontaoCanavial.Controllers
             RedirectToAction("Ponto/Create");
         }
 
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImageNoticia(int id, int width, int height,string tipo)
+        {
+            var noticia = noticiaRepositorio.GetNoticia(id);
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P")||tipo.Equals("p"))
+                {
+                    byte[] tempImage = noticia.ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+                    
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage = noticia.ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+                    
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage = noticia.ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+                    
+                }                
+                
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+                
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImageProjeto(int id, int width, int height, string tipo)
+        {
+            var projeto = projetoRepositorio.GetProjeto(id);
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P") || tipo.Equals("p"))
+                {
+                    byte[] tempImage = projeto.ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage = projeto.ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage = projeto.ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImageEvento(int id, int width, int height, string tipo)
+        {
+            var evento = eventoRepositorio.GetEvento(id);
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P") || tipo.Equals("p"))
+                {
+                    byte[] tempImage = evento.ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage = evento.ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage = evento.ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImageProduto(int id, int width, int height, string tipo)
+        {
+            var produto = produtoRepositorio.GetProduto(id);
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P") || tipo.Equals("p"))
+                {
+                    byte[] tempImage = produto.ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage = produto.ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage = produto.ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImageGaleria(int id, int width, int height, string tipo)
+        {
+            var galeria = galeriaRepositorio.GetGaleria(id);
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P") || tipo.Equals("p"))
+                {
+                    byte[] tempImage = galeria.ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage = galeria.ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage = galeria.ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
 
     }
 }

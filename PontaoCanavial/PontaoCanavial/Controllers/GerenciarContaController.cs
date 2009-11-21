@@ -15,7 +15,7 @@ namespace PontaoCanavial.Controllers
 {
 
     [HandleError]
-    public class AccountController : Controller
+    public class GerenciarContaController : Controller
     {
 
         IUsuarioRepositorio usuarioRepositorio;
@@ -23,7 +23,7 @@ namespace PontaoCanavial.Controllers
         // This constructor is used by the MVC framework to instantiate the controller using
         // the default forms authentication and membership providers.
 
-        public AccountController()
+        public GerenciarContaController()
             : this(null, null,new UsuarioRepositorio())
         {
         }
@@ -31,7 +31,7 @@ namespace PontaoCanavial.Controllers
         // This constructor is not used by the MVC framework but is instead provided for ease
         // of unit testing this type. See the comments at the end of this file for more
         // information.
-        public AccountController(IFormsAuthentication formsAuth, IMembershipService service,IUsuarioRepositorio usuarioRepositorio)
+        public GerenciarContaController(IFormsAuthentication formsAuth, IMembershipService service,IUsuarioRepositorio usuarioRepositorio)
         {
             FormsAuth = formsAuth ?? new FormsAuthenticationService();
             MembershipService = service ?? new AccountMembershipService();
@@ -85,7 +85,7 @@ namespace PontaoCanavial.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
+        [Authorize(Roles="Administrador")]
         public ActionResult Register()
         {
 
@@ -94,7 +94,7 @@ namespace PontaoCanavial.Controllers
             return View();
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
+        [AcceptVerbs(HttpVerbs.Post), Authorize(Roles = "Administrador")]
         public ActionResult Register(string userName, string email, string password, string confirmPassword)
         {
 

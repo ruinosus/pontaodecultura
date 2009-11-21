@@ -104,6 +104,9 @@
       <Column Name="Equipe" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
       <Column Name="Apresentacao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
       <Column Name="Contato" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
       <Association Name="Ponto_Banner" Member="Banners" ThisKey="Id" OtherKey="PontoId" Type="Banner" />
       <Association Name="Ponto_Video" Member="Videos" ThisKey="Id" OtherKey="PontoId" Type="Video" />
       <Association Name="Ponto_Evento" Member="Eventos" ThisKey="Id" OtherKey="PontoId" Type="Evento" />
@@ -131,7 +134,7 @@
   </Table>
   <Table Name="dbo.Projeto" Member="Projetos">
     <Type Name="Projeto">
-      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
       <Column Name="Nome" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
       <Column Name="Descricao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
       <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
