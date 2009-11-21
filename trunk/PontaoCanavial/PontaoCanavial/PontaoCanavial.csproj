@@ -293,6 +293,10 @@
     <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.MetaData.js" />
     <Content Include="Scripts\jquery.MultiFile.pack.js" />
+    <Content Include="Views\GerenciarConta\ChangePassword.aspx" />
+    <Content Include="Views\GerenciarConta\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\GerenciarConta\LogOn.aspx" />
+    <Content Include="Views\GerenciarConta\Register.aspx" />
     <Content Include="Views\Noticia\Create.aspx" />
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
@@ -321,7 +325,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
-    <Folder Include="Views\GerenciarConta\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
