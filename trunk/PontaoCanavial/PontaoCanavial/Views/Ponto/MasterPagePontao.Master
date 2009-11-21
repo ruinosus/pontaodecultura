@@ -24,7 +24,7 @@
                 <%if (Model.Ponto.Logo != null)
                   {%>
                 <% 
-                    var imgurl = Url.Action("ThumbImage", "Image",
+                    var imgurl = Url.Action("ThumbImagePonto", "Image",
                           new { id = Model.Ponto.Id, width = 231, height = 207 }); %>
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
@@ -66,7 +66,7 @@
             <ul>
                 <li>
                     <p>
-                        <a href="#">Pont&atilde;o</a></p>
+                        <%=Html.ActionLink("Pontão","../Ponto/PontoDetalhe")%></p>
                 </li>
                 <li>
                     <p>
@@ -74,7 +74,11 @@
                 </li>
                 <li>
                     <p>
-                        <a href="#">Eventos</a></p>
+                        <%=Html.ActionLink("Projetos","../Ponto/ProjetoLista")%></p>
+                </li>
+                <li>
+                    <p>
+                        <%=Html.ActionLink("Eventos","../Ponto/EventoLista")%></p>
                 </li>
                 <li>
                     <p>
@@ -82,11 +86,7 @@
                 </li>
                 <li>
                     <p>
-                        <a href="#">V&iacute;deos</a></p>
-                </li>
-                <li>
-                    <p>
-                        <a href="#">Produtos</a></p>
+                        <%=Html.ActionLink("Produtos","../Ponto/ProdutoLista")%></p>
                 </li>
                 <li>
                     <p>

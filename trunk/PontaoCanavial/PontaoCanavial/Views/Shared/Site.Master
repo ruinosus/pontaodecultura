@@ -21,11 +21,11 @@
             <div id="menucontainer">
                 <ul id="menu">
                     <li>
-                        <%= Html.ActionLink("Home", "Index", "Home")%></li>
+                        <%= Html.ActionLink("Inicio", "Index", "Home")%></li>
                     <li>
-                        <%= Html.ActionLink("About", "About", "Home")%></li>
+                        <%= Html.ActionLink("Sobre", "About", "Home")%></li>
                     <li>
-                        <%= Html.ActionLink("User Administration", "Index", "UserAdministration")%></li>
+                        <%= Html.ActionLink("Painel Administrador", "Index", "Administrar")%></li>
                 </ul>
             </div>
         </div>
