@@ -1,6 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<DetailsViewModel>" %>
 <%@ Import Namespace="System.Globalization" %>
-<%@ Import Namespace="SampleWebsite.Models.UserAdministration"%>
+<%@ Import Namespace="SampleWebsite.Models.Administrar"%>
 
 <asp:Content ContentPlaceHolderID="TitleContent" runat="server">
 	User Details: <% =Html.Encode(Model.DisplayName) %>
@@ -32,18 +32,18 @@
 				<dd><% =Model.User.CreationDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture) %></dd>
 		</dl>
 
-		<% using(Html.BeginForm("ChangeApproval", "UserAdministration", new{ id = Model.User.ProviderUserKey })){ %>
+		<% using(Html.BeginForm("ChangeApproval", "Administrar", new{ id = Model.User.ProviderUserKey })){ %>
 			<% =Html.Hidden("isApproved", !Model.User.IsApproved) %>
 			<input type="submit" value='<% =(Model.User.IsApproved ? "Unapprove" : "Approve") %> Account' />
 		<% } %>
-		<% using(Html.BeginForm("DeleteUser", "UserAdministration", new{ id = Model.User.ProviderUserKey })){ %>
+		<% using(Html.BeginForm("DeleteUser", "Administrar", new{ id = Model.User.ProviderUserKey })){ %>
 			<input type="submit" value="Delete Account" />
 		<% } %>
 	</div>
 
 	<h3>Email Address & Comments</h3>
 	<div class="mvcMembership-emailAndComments">
-		<% using(Html.BeginForm("Details", "UserAdministration", new{ id = Model.User.ProviderUserKey })){ %>
+		<% using(Html.BeginForm("Details", "Administrar", new{ id = Model.User.ProviderUserKey })){ %>
 		<fieldset>
 			<p>
 				<label for="User_Email">Email Address:</label>
@@ -62,7 +62,7 @@
 	<div class="mvcMembership-password">
 		<% if(Model.User.IsLockedOut){ %>
 			<p>Locked out since <% =Model.User.LastLockoutDate.ToString("MMMM dd, yyyy h:mm:ss tt", CultureInfo.InvariantCulture) %></p>
-			<% using(Html.BeginForm("Unlock", "UserAdministration", new{ id = Model.User.ProviderUserKey })){ %>
+			<% using(Html.BeginForm("Unlock", "Administrar", new{ id = Model.User.ProviderUserKey })){ %>
 			<input type="submit" value="Unlock Account" />
 			<% } %>
 		<% }else{ %>
@@ -79,7 +79,7 @@
 			</dl>
 			<% } %>
 
-			<% using(Html.BeginForm("ResetPassword", "UserAdministration", new{ id = Model.User.ProviderUserKey })){ %>
+			<% using(Html.BeginForm("ResetPassword", "Administrar", new{ id = Model.User.ProviderUserKey })){ %>
 			<fieldset>
 				<p>
 					<dl>
@@ -109,11 +109,11 @@
 			<li>
 				<% =Html.ActionLink(role.Key, "Role", new{id = role.Key}) %>
 				<% if(role.Value){ %>
-					<% using(Html.BeginForm("RemoveFromRole", "UserAdministration", new{id = Model.User.ProviderUserKey, role = role.Key})){ %>
+					<% using(Html.BeginForm("RemoveFromRole", "Administrar", new{id = Model.User.ProviderUserKey, role = role.Key})){ %>
 					<input type="submit" value="Remove From" />
 					<% } %>
 				<% }else{ %>
-					<% using(Html.BeginForm("AddToRole", "UserAdministration", new{id = Model.User.ProviderUserKey, role = role.Key})){ %>
+					<% using(Html.BeginForm("AddToRole", "Administrar", new{id = Model.User.ProviderUserKey, role = role.Key})){ %>
 					<input type="submit" value="Add To" />
 					<% } %>
 				<% } %>

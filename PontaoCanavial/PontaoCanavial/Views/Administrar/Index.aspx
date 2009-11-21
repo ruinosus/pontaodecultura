@@ -1,6 +1,6 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<IndexViewModel>" %>
 <%@ Import Namespace="System.Globalization"%>
-<%@ Import Namespace="SampleWebsite.Models.UserAdministration"%>
+<%@ Import Namespace="SampleWebsite.Models.Administrar"%>
 <%@ Import Namespace="PagedList"%>
 
 <asp:Content ContentPlaceHolderID="TitleContent" runat="server">
@@ -74,7 +74,7 @@
 			<% foreach(var role in Model.Roles){ %>
 			<li>
 				<% =Html.ActionLink(role, "Role", new{id = role}) %>
-				<% using(Html.BeginForm("DeleteRole", "UserAdministration", new{id=role})){ %>
+				<% using(Html.BeginForm("DeleteRole", "Administrar", new{id=role})){ %>
 				<input type="submit" value="Delete" />
 				<% } %>
 			</li>
@@ -83,7 +83,7 @@
 	<% }else{ %>
 		<p>No roles have been created.</p>
 	<% } %>
-	<% using(Html.BeginForm("CreateRole", "UserAdministration")){ %>
+	<% using(Html.BeginForm("CreateRole", "Administrar")){ %>
 		<fieldset>
 			<label for="id">Role:</label>
 			<% =Html.TextBox("id") %>
