@@ -2074,6 +2074,12 @@ namespace PontaoCanavial.Models.VOs
 		
 		private string _Contato;
 		
+		private System.Data.Linq.Binary _ImagemPequena;
+		
+		private System.Data.Linq.Binary _ImagemMedia;
+		
+		private System.Data.Linq.Binary _ImagemGrande;
+		
 		private EntitySet<Banner> _Banners;
 		
 		private EntitySet<Video> _Videos;
@@ -2118,6 +2124,12 @@ namespace PontaoCanavial.Models.VOs
     partial void OnApresentacaoChanged();
     partial void OnContatoChanging(string value);
     partial void OnContatoChanged();
+    partial void OnImagemPequenaChanging(System.Data.Linq.Binary value);
+    partial void OnImagemPequenaChanged();
+    partial void OnImagemMediaChanging(System.Data.Linq.Binary value);
+    partial void OnImagemMediaChanged();
+    partial void OnImagemGrandeChanging(System.Data.Linq.Binary value);
+    partial void OnImagemGrandeChanged();
     #endregion
 		
 		public Ponto()
@@ -2350,6 +2362,66 @@ namespace PontaoCanavial.Models.VOs
 					this._Contato = value;
 					this.SendPropertyChanged("Contato");
 					this.OnContatoChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ImagemPequena", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ImagemPequena
+		{
+			get
+			{
+				return this._ImagemPequena;
+			}
+			set
+			{
+				if ((this._ImagemPequena != value))
+				{
+					this.OnImagemPequenaChanging(value);
+					this.SendPropertyChanging();
+					this._ImagemPequena = value;
+					this.SendPropertyChanged("ImagemPequena");
+					this.OnImagemPequenaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ImagemMedia", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ImagemMedia
+		{
+			get
+			{
+				return this._ImagemMedia;
+			}
+			set
+			{
+				if ((this._ImagemMedia != value))
+				{
+					this.OnImagemMediaChanging(value);
+					this.SendPropertyChanging();
+					this._ImagemMedia = value;
+					this.SendPropertyChanged("ImagemMedia");
+					this.OnImagemMediaChanged();
+				}
+			}
+		}
+		
+		[Column(Storage="_ImagemGrande", DbType="VarBinary(MAX)", UpdateCheck=UpdateCheck.Never)]
+		public System.Data.Linq.Binary ImagemGrande
+		{
+			get
+			{
+				return this._ImagemGrande;
+			}
+			set
+			{
+				if ((this._ImagemGrande != value))
+				{
+					this.OnImagemGrandeChanging(value);
+					this.SendPropertyChanging();
+					this._ImagemGrande = value;
+					this.SendPropertyChanged("ImagemGrande");
+					this.OnImagemGrandeChanged();
 				}
 			}
 		}
@@ -2960,7 +3032,7 @@ namespace PontaoCanavial.Models.VOs
 			OnCreated();
 		}
 		
-		[Column(Storage="_Id", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[Column(Storage="_Id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int Id
 		{
 			get

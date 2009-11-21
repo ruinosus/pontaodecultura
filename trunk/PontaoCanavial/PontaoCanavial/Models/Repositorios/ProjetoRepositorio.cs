@@ -2,36 +2,36 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using PontaoCanavial.Models.VOs;
 using PontaoCanavial.Models.Repositorios.Interfaces;
+using PontaoCanavial.Models.VOs;
 
 namespace PontaoCanavial.Models.Repositorios
 {
-    public class NoticiaRepositorio: INoticiaRepositorio
+    public class ProjetoRepositorio: IProjetoRepositorio
     {
         PontaoCanavialDataContext db = new PontaoCanavialDataContext();
 
         #region Métodos da Interface
 
-        public IQueryable<Noticia> ConsultarTodos()
+        public IQueryable<Projeto> ConsultarTodos()
         {
-            return db.Noticias;
+            return db.Projetos;
         }
 
-        public Noticia GetNoticia(int id)
+        public Projeto GetProjeto(int id)
         {
-            return db.Noticias.SingleOrDefault(d => d.Id == id);
+            return db.Projetos.SingleOrDefault(d => d.Id == id);
 
         }
 
-        public void Add(Noticia noticia)
+        public void Add(Projeto projeto)
         {
-            db.Noticias.InsertOnSubmit(noticia);
+            db.Projetos.InsertOnSubmit(projeto);
         }
 
-        public void Delete(Noticia noticia)
+        public void Delete(Projeto projeto)
         {
-            db.Noticias.DeleteOnSubmit(noticia);
+            db.Projetos.DeleteOnSubmit(projeto);
         }
 
         public void Save()
@@ -44,13 +44,11 @@ namespace PontaoCanavial.Models.Repositorios
         #region IEventoRepositorio Members
 
 
-        public Noticia ConsultarNoticia()
+        public Projeto ConsultarProjeto()
         {
             throw new NotImplementedException();
         }
 
         #endregion
-
-        
     }
 }

@@ -20,6 +20,12 @@ namespace PontaoCanavial.Controllers
 
         public Ponto Ponto { get; private set; }
         public List<Ponto> Pontinhos { get; private set; }
+        public Noticia NoticiaDetalhe { get; set; }
+        public Projeto ProjetoDetalhe { get; set; }
+        public Galeria GaleriaDetalhe { get; set; }
+        public Produto ProdutoDetalhe { get; set; }
+        public Evento EventoDetalhe { get; set; }
+       
 
         #endregion
 
@@ -28,7 +34,7 @@ namespace PontaoCanavial.Controllers
         public PontoFormViewModel(Ponto ponto, List<Ponto> pontinhos)
         {
             Ponto = ponto;
-            Pontinhos = pontinhos;
+            Pontinhos = pontinhos;            
         }
         #endregion
     }
@@ -51,17 +57,28 @@ namespace PontaoCanavial.Controllers
         }
 
         IPontoRepositorio pontoRepositorio;
+        INoticiaRepositorio noticiaRepositorio;
+        IProdutoRepositorio produtoRepositorio;
+        IProjetoRepositorio projetoRepositorio;
+        IGaleriaRepositorio galeriaRepositorio;
+        IEventoRepositorio eventoRepositorio;
 
         public PontoController()
-            : this(new PontoRepositorio())
+            : this(new PontoRepositorio(), new NoticiaRepositorio(), new ProjetoRepositorio(), new GaleriaRepositorio(), new ProdutoRepositorio(), new EventoRepositorio())
         {
         }
 
-        public PontoController(IPontoRepositorio repositorio)
+        public PontoController(IPontoRepositorio pontoRepositorio, INoticiaRepositorio noticiaRepositorio, IProjetoRepositorio projetoRepositorio, IGaleriaRepositorio galeriaRepositorio, IProdutoRepositorio produtoRepositorio, IEventoRepositorio eventoRepositorio)
         {
-            pontoRepositorio = repositorio;
+            this.pontoRepositorio = pontoRepositorio;
+            this.noticiaRepositorio = noticiaRepositorio;
+            this.produtoRepositorio = produtoRepositorio;
+            this.galeriaRepositorio = galeriaRepositorio;
+            this.projetoRepositorio = projetoRepositorio;
+            this.eventoRepositorio = eventoRepositorio;
+
         }
-        
+
         public ActionResult Index(string nomeIdentificador)
         {
             if (!string.IsNullOrEmpty(nomeIdentificador))
@@ -93,9 +110,73 @@ namespace PontaoCanavial.Controllers
 
         public ActionResult NoticiaLista()
         {
-            return  View("NoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            return View("NoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
         }
-        
+
+        public ActionResult ProjetoLista()
+        {
+            return View("ProjetoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult EventoLista()
+        {
+            return View("EventoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult ProdutoLista()
+        {
+            return View("ProdutoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult PontoDetalhe()
+        {
+            return View("PontoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+
+        public ActionResult ProjetoDetalhe(int id)
+        {
+
+            Projeto p = projetoRepositorio.GetProjeto(id);
+
+            if (p != null)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.ProjetoDetalhe = p;
+                return View("ProjetoDetalhe", pfvm);
+            }
+            return View("NaoEncontrado");
+        }
+
+        public ActionResult EventoDetalhe(int id)
+        {
+
+            Evento e = eventoRepositorio.GetEvento(id);
+
+            if (e != null)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.EventoDetalhe = e;
+                return View("EventoDetalhe", pfvm);
+            }
+            return View("NaoEncontrado");
+        }
+
+        public ActionResult NoticiaDetalhe(int id)
+        {
+
+            Noticia n = noticiaRepositorio.GetNoticia(id);
+
+            if (n != null)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.NoticiaDetalhe = n;
+                return View("NoticiaDetalhe", pfvm);
+            }
+                return View("NaoEncontrado");
+        }
+
+
         public ActionResult Create()
         {
             Ponto ponto = new Ponto();
@@ -111,7 +192,7 @@ namespace PontaoCanavial.Controllers
                 try
                 {
 
-                   HttpPostedFileBase teste= this.Request.Files.Get("imgLogo");
+                    HttpPostedFileBase teste = this.Request.Files.Get("imgLogo");
                     if (this.Request.Files.Count > 0)
                     {
 
@@ -125,6 +206,55 @@ namespace PontaoCanavial.Controllers
                     if (Session["ImagemLogo"] != null)
                     {
                         ponto.Logo = (byte[])Session["ImagemLogo"];
+                    }
+
+
+                    HttpPostedFileBase teste1 = this.Request.Files.Get("imgPequena");
+                    if (this.Request.Files.Count > 0)
+                    {
+
+                        HttpPostedFileBase file = this.Request.Files[0];
+                        Int32 length = file.ContentLength;
+                        byte[] imagemPequena = new byte[length];
+                        file.InputStream.Read(imagemPequena, 0, length);
+                        ponto.ImagemPequena = imagemPequena;
+                    }
+
+                    if (Session["ImagemPequena"] != null)
+                    {
+                        ponto.ImagemPequena = (byte[])Session["ImagemPequena"];
+                    }
+
+                    HttpPostedFileBase teste2 = this.Request.Files.Get("imgMedia");
+                    if (this.Request.Files.Count > 0)
+                    {
+
+                        HttpPostedFileBase file = this.Request.Files[0];
+                        Int32 length = file.ContentLength;
+                        byte[] imagemMedia = new byte[length];
+                        file.InputStream.Read(imagemMedia, 0, length);
+                        ponto.ImagemMedia = imagemMedia;
+                    }
+
+                    if (Session["ImagemMedia"] != null)
+                    {
+                        ponto.ImagemMedia = (byte[])Session["ImagemMedia"];
+                    }
+
+                    HttpPostedFileBase teste3 = this.Request.Files.Get("imgGrande");
+                    if (this.Request.Files.Count > 0)
+                    {
+
+                        HttpPostedFileBase file = this.Request.Files[0];
+                        Int32 length = file.ContentLength;
+                        byte[] imagemGrande = new byte[length];
+                        file.InputStream.Read(imagemGrande, 0, length);
+                        ponto.ImagemGrande = imagemGrande;
+                    }
+
+                    if (Session["ImagemGrande"] != null)
+                    {
+                        ponto.ImagemGrande = (byte[])Session["ImagemGrande"];
                     }
 
                     ponto.PontoRepositorio = pontoRepositorio;
@@ -147,8 +277,8 @@ namespace PontaoCanavial.Controllers
             Ponto ponto = pontoRepositorio.GetPonto(id);
             ponto.Editando = true;
 
-            if(ponto!=null)
-            return View(new PontoFormViewModel(ponto,null));
+            if (ponto != null)
+                return View(new PontoFormViewModel(ponto, null));
             return View("NaoEncontrado");
         }
 
@@ -161,10 +291,10 @@ namespace PontaoCanavial.Controllers
 
                 try
                 {
-                   
+
                     if (this.Request.Files.Count > 0)
                     {
-                        
+
                         HttpPostedFileBase file = this.Request.Files[0];
                         Int32 length = file.ContentLength;
                         byte[] logo = new byte[length];

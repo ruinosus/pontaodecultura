@@ -112,6 +112,9 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 #noticias-list a:hover{ text-decoration:underline;}
 #noticias-list img{float:left; margin-right:5px;}
 
+.texto-preview{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none;}
+.titulo-noticia{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1.4em;}
+
 /* TEXTO DA NOTÍCIAS */
 
 #noticias-text {width:450px; height:860px;}
