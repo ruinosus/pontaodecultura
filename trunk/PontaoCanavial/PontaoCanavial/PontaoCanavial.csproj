@@ -259,10 +259,6 @@
     <Content Include="Scripts\MicrosoftAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.js" />
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
-    <Content Include="Views\GerenciarConta\ChangePassword.aspx" />
-    <Content Include="Views\GerenciarConta\ChangePasswordSuccess.aspx" />
-    <Content Include="Views\GerenciarConta\LogOn.aspx" />
-    <Content Include="Views\GerenciarConta\Register.aspx" />
     <Content Include="Views\Home\About.aspx" />
     <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
@@ -325,6 +321,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />
+    <Folder Include="Views\GerenciarConta\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
