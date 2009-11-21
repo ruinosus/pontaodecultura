@@ -1,4 +1,4 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SampleWebsite.Models.UserAdministration.RoleViewModel>" %>
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<SampleWebsite.Models.Administrar.RoleViewModel>" %>
 
 <asp:Content ContentPlaceHolderID="TitleContent" runat="server">
 	Role: <% =Html.Encode(Model.Role) %>
@@ -15,7 +15,7 @@
 				<% foreach(var user in Model.Users){ %>
 				<li>
 					<% =Html.ActionLink(user.UserName, "Details", new{id=user.ProviderUserKey}) %>
-					<% using(Html.BeginForm("RemoveFromRole", "UserAdministration", new{id = user.ProviderUserKey, role = Model.Role})){ %>
+					<% using(Html.BeginForm("RemoveFromRole", "Administrar", new{id = user.ProviderUserKey, role = Model.Role})){ %>
 						<input type="submit" value="Remove From" />
 					<% } %>
 				</li>
