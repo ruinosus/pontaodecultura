@@ -4,11 +4,11 @@
 
     <h2>Edit</h2>
     
-        <% using (Html.BeginForm("Edit", "Noticia", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    <% using (Html.BeginForm("Edit", "Projeto", FormMethod.Post, new { enctype = "multipart/form-data" }))
    { %>
 <fieldset>
     <h2>Edit</h2>
-<% Html.RenderPartial("NoticiaForm"); %>
+<% Html.RenderPartial("ProjetoForm"); %>
 </fieldset>
 <% } %>
 
