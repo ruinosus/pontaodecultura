@@ -1,0 +1,165 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Database Name="PontaoCanavialDB" Class="PontaoCanavialDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=RUINOSUS-NB\SQLEXPRESS;Initial Catalog=PontaoCanavialDB;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="PontaoCanavialDBConnectionString1" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Banner" Member="Banners">
+    <Type Name="Banner">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="StatusBanner" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Localizacao" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Corpo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Ponto_Banner" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Video" Member="Videos">
+    <Type Name="Video">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Titulo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Conteudo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Association Name="Ponto_Video" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Categoria" Member="Categorias">
+    <Type Name="Categoria">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Association Name="Categoria_Produto" Member="Produtos" ThisKey="Id" OtherKey="CategoriaId" Type="Produto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Evento" Member="Eventos">
+    <Type Name="Evento">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(5000) NOT NULL" CanBeNull="false" />
+      <Column Name="Data" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Ponto_Evento" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Galeria" Member="Galerias">
+    <Type Name="Galeria">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Galeria_Imagem" Member="Imagems" ThisKey="Id" OtherKey="GaleriaId" Type="Imagem" />
+      <Association Name="Ponto_Galeria" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Imagem" Member="Imagems">
+    <Type Name="Imagem">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GaleriaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Galeria_Imagem" Member="Galeria" ThisKey="GaleriaId" OtherKey="Id" Type="Galeria" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Newsletter" Member="Newsletters">
+    <Type Name="Newsletter">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Ponto_Newsletter" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Noticia" Member="Noticias">
+    <Type Name="Noticia">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Titulo" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="DataCriacao" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Preview" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="Corpo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Ponto_Noticia" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+      <Association Name="Usuario_Noticia" Member="Usuario" ThisKey="UsuarioId" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Ponto" Member="Pontos">
+    <Type Name="Ponto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NomeIdentificador" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="EPontao" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Logo" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Cabecalho" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="Objetivo" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Justificativa" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Equipe" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Apresentacao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Contato" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Ponto_Banner" Member="Banners" ThisKey="Id" OtherKey="PontoId" Type="Banner" />
+      <Association Name="Ponto_Video" Member="Videos" ThisKey="Id" OtherKey="PontoId" Type="Video" />
+      <Association Name="Ponto_Evento" Member="Eventos" ThisKey="Id" OtherKey="PontoId" Type="Evento" />
+      <Association Name="Ponto_Galeria" Member="Galerias" ThisKey="Id" OtherKey="PontoId" Type="Galeria" />
+      <Association Name="Ponto_Newsletter" Member="Newsletters" ThisKey="Id" OtherKey="PontoId" Type="Newsletter" />
+      <Association Name="Ponto_Noticia" Member="Noticias" ThisKey="Id" OtherKey="PontoId" Type="Noticia" />
+      <Association Name="Ponto_Produto" Member="Produtos" ThisKey="Id" OtherKey="PontoId" Type="Produto" />
+      <Association Name="Ponto_Projeto" Member="Projetos" ThisKey="Id" OtherKey="PontoId" Type="Projeto" />
+      <Association Name="Ponto_UsuarioPonto" Member="UsuarioPontos" ThisKey="Id" OtherKey="PontoId" Type="UsuarioPonto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Produto" Member="Produtos">
+    <Type Name="Produto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CategoriaId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(5000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="Categoria_Produto" Member="Categoria" ThisKey="CategoriaId" OtherKey="Id" Type="Categoria" IsForeignKey="true" />
+      <Association Name="Ponto_Produto" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Projeto" Member="Projetos">
+    <Type Name="Projeto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="Descricao" Type="System.String" DbType="VarChar(8000)" CanBeNull="true" />
+      <Column Name="ImagemPequena" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemMedia" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="ImagemGrande" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Ponto_Projeto" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Usuario" Member="Usuarios">
+    <Type Name="Usuario">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Nome" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="UserIdMembership" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="Usuario_Noticia" Member="Noticias" ThisKey="Id" OtherKey="UsuarioId" Type="Noticia" />
+      <Association Name="Usuario_UsuarioPonto" Member="UsuarioPontos" ThisKey="Id" OtherKey="UsuarioId" Type="UsuarioPonto" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UsuarioPonto" Member="UsuarioPontos">
+    <Type Name="UsuarioPonto">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="PontoId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UsuarioId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="Ponto_UsuarioPonto" Member="Ponto" ThisKey="PontoId" OtherKey="Id" Type="Ponto" IsForeignKey="true" />
+      <Association Name="Usuario_UsuarioPonto" Member="Usuario" ThisKey="UsuarioId" OtherKey="Id" Type="Usuario" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
