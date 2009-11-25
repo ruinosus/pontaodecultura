@@ -5,7 +5,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using MvcMembership;
 using SampleWebsite.Models;
-using SampleWebsite.Models.UserAdministration;
+using SampleWebsite.Models.Administrar;
 
 namespace SampleWebsite.Controllers
 {
