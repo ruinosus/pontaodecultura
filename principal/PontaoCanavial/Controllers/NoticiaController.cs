@@ -86,17 +86,48 @@ namespace PontaoCanavial.Controllers
 
                 try
                 {
+                    noticia.PontoId = Convert.ToInt32(Session["PontoId"].ToString());
 
-                    HttpPostedFileBase imagem = this.Request.Files.Get("imgImagem");
-                    noticia.PontoId =  Convert.ToInt32(Session["PontoId"].ToString());
-                    if (imagem!=null)
+                    HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
+                    if (imagem != null)
                     {
 
                         Int32 length = imagem.ContentLength;
                         byte[] imagemByte = new byte[length];
                         imagem.InputStream.Read(imagemByte, 0, length);
-                        noticia.ImagemPequena= imagemByte;
+                        noticia.ImagemPequena = imagemByte;
                     }
+
+                    HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
+                    if (imagem != null)
+                    {
+
+                        Int32 length = imagem2.ContentLength;
+                        byte[] imagemByte = new byte[length];
+                        imagem.InputStream.Read(imagemByte, 0, length);
+                        noticia.ImagemMedia = imagemByte;
+                    }
+
+                    HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
+                    if (imagem != null)
+                    {
+                        Int32 length = imagem3.ContentLength;
+                        byte[] imagemByte = new byte[length];
+                        imagem.InputStream.Read(imagemByte, 0, length);
+                        noticia.ImagemGrande = imagemByte;
+                    }
+
+
+                    //HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
+                    //noticia.PontoId =  Convert.ToInt32(Session["PontoId"].ToString());
+                    //if (imagem!=null)
+                    //{
+
+                    //    Int32 length = imagem.ContentLength;
+                    //    byte[] imagemByte = new byte[length];
+                    //    imagem.InputStream.Read(imagemByte, 0, length);
+                    //    noticia.ImagemPequena= imagemByte;
+                    //}
 
                     noticiaRepositorio.Add(noticia);
                     noticiaRepositorio.Save();

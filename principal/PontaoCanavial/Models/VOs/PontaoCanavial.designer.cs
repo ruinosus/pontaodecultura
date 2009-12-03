@@ -72,7 +72,7 @@ namespace PontaoCanavial.Models.VOs
     #endregion
 		
 		public PontaoCanavialDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PontaoCanavialDBConnectionString1"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["PontaoCanavialDBConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -101,7 +101,7 @@ namespace PontaoCanavial.Models.VOs
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<Banner> Banners
+		public System.Data.Linq.Table<Banner> Banner
 		{
 			get
 			{
@@ -109,7 +109,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Video> Videos
+		public System.Data.Linq.Table<Video> Video
 		{
 			get
 			{
@@ -117,7 +117,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Categoria> Categorias
+		public System.Data.Linq.Table<Categoria> Categoria
 		{
 			get
 			{
@@ -125,7 +125,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Evento> Eventos
+		public System.Data.Linq.Table<Evento> Evento
 		{
 			get
 			{
@@ -133,7 +133,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Galeria> Galerias
+		public System.Data.Linq.Table<Galeria> Galeria
 		{
 			get
 			{
@@ -141,7 +141,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Imagem> Imagems
+		public System.Data.Linq.Table<Imagem> Imagem
 		{
 			get
 			{
@@ -149,7 +149,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Newsletter> Newsletters
+		public System.Data.Linq.Table<Newsletter> Newsletter
 		{
 			get
 			{
@@ -157,7 +157,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Noticia> Noticias
+		public System.Data.Linq.Table<Noticia> Noticia
 		{
 			get
 			{
@@ -165,7 +165,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Ponto> Pontos
+		public System.Data.Linq.Table<Ponto> Ponto
 		{
 			get
 			{
@@ -173,7 +173,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Produto> Produtos
+		public System.Data.Linq.Table<Produto> Produto
 		{
 			get
 			{
@@ -181,7 +181,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Projeto> Projetos
+		public System.Data.Linq.Table<Projeto> Projeto
 		{
 			get
 			{
@@ -189,7 +189,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<Usuario> Usuarios
+		public System.Data.Linq.Table<Usuario> Usuario
 		{
 			get
 			{
@@ -197,7 +197,7 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		public System.Data.Linq.Table<UsuarioPonto> UsuarioPontos
+		public System.Data.Linq.Table<UsuarioPonto> UsuarioPonto
 		{
 			get
 			{
@@ -391,12 +391,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Banners.Remove(this);
+						previousValue.Banner.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Banners.Add(this);
+						value.Banner.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -590,12 +590,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Videos.Remove(this);
+						previousValue.Video.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Videos.Add(this);
+						value.Video.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -638,7 +638,7 @@ namespace PontaoCanavial.Models.VOs
 		
 		private string _Descricao;
 		
-		private EntitySet<Produto> _Produtos;
+		private EntitySet<Produto> _Produto;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -652,7 +652,7 @@ namespace PontaoCanavial.Models.VOs
 		
 		public Categoria()
 		{
-			this._Produtos = new EntitySet<Produto>(new Action<Produto>(this.attach_Produtos), new Action<Produto>(this.detach_Produtos));
+			this._Produto = new EntitySet<Produto>(new Action<Produto>(this.attach_Produto), new Action<Produto>(this.detach_Produto));
 			OnCreated();
 		}
 		
@@ -696,16 +696,16 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Categoria_Produto", Storage="_Produtos", ThisKey="Id", OtherKey="CategoriaId")]
-		public EntitySet<Produto> Produtos
+		[Association(Name="Categoria_Produto", Storage="_Produto", ThisKey="Id", OtherKey="CategoriaId")]
+		public EntitySet<Produto> Produto
 		{
 			get
 			{
-				return this._Produtos;
+				return this._Produto;
 			}
 			set
 			{
-				this._Produtos.Assign(value);
+				this._Produto.Assign(value);
 			}
 		}
 		
@@ -729,13 +729,13 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		private void attach_Produtos(Produto entity)
+		private void attach_Produto(Produto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Categoria = this;
 		}
 		
-		private void detach_Produtos(Produto entity)
+		private void detach_Produto(Produto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Categoria = null;
@@ -975,12 +975,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Eventos.Remove(this);
+						previousValue.Evento.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Eventos.Add(this);
+						value.Evento.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -1033,7 +1033,7 @@ namespace PontaoCanavial.Models.VOs
 		
 		private System.Data.Linq.Binary _ImagemGrande;
 		
-		private EntitySet<Imagem> _Imagems;
+		private EntitySet<Imagem> _Imagem;
 		
 		private EntityRef<Ponto> _Ponto;
 		
@@ -1059,7 +1059,7 @@ namespace PontaoCanavial.Models.VOs
 		
 		public Galeria()
 		{
-			this._Imagems = new EntitySet<Imagem>(new Action<Imagem>(this.attach_Imagems), new Action<Imagem>(this.detach_Imagems));
+			this._Imagem = new EntitySet<Imagem>(new Action<Imagem>(this.attach_Imagem), new Action<Imagem>(this.detach_Imagem));
 			this._Ponto = default(EntityRef<Ponto>);
 			OnCreated();
 		}
@@ -1208,16 +1208,16 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Galeria_Imagem", Storage="_Imagems", ThisKey="Id", OtherKey="GaleriaId")]
-		public EntitySet<Imagem> Imagems
+		[Association(Name="Galeria_Imagem", Storage="_Imagem", ThisKey="Id", OtherKey="GaleriaId")]
+		public EntitySet<Imagem> Imagem
 		{
 			get
 			{
-				return this._Imagems;
+				return this._Imagem;
 			}
 			set
 			{
-				this._Imagems.Assign(value);
+				this._Imagem.Assign(value);
 			}
 		}
 		
@@ -1238,12 +1238,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Galerias.Remove(this);
+						previousValue.Galeria.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Galerias.Add(this);
+						value.Galeria.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -1275,13 +1275,13 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		private void attach_Imagems(Imagem entity)
+		private void attach_Imagem(Imagem entity)
 		{
 			this.SendPropertyChanging();
 			entity.Galeria = this;
 		}
 		
-		private void detach_Imagems(Imagem entity)
+		private void detach_Imagem(Imagem entity)
 		{
 			this.SendPropertyChanging();
 			entity.Galeria = null;
@@ -1497,12 +1497,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Galeria.Entity = null;
-						previousValue.Imagems.Remove(this);
+						previousValue.Imagem.Remove(this);
 					}
 					this._Galeria.Entity = value;
 					if ((value != null))
 					{
-						value.Imagems.Add(this);
+						value.Imagem.Add(this);
 						this._GaleriaId = value.Id;
 					}
 					else
@@ -1648,12 +1648,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Newsletters.Remove(this);
+						previousValue.Newsletter.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Newsletters.Add(this);
+						value.Newsletter.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -1974,12 +1974,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Noticias.Remove(this);
+						previousValue.Noticia.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Noticias.Add(this);
+						value.Noticia.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -2008,12 +2008,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Usuario.Entity = null;
-						previousValue.Noticias.Remove(this);
+						previousValue.Noticia.Remove(this);
 					}
 					this._Usuario.Entity = value;
 					if ((value != null))
 					{
-						value.Noticias.Add(this);
+						value.Noticia.Add(this);
 						this._UsuarioId = value.Id;
 					}
 					else
@@ -2080,23 +2080,23 @@ namespace PontaoCanavial.Models.VOs
 		
 		private System.Data.Linq.Binary _ImagemGrande;
 		
-		private EntitySet<Banner> _Banners;
+		private EntitySet<Banner> _Banner;
 		
-		private EntitySet<Video> _Videos;
+		private EntitySet<Video> _Video;
 		
-		private EntitySet<Evento> _Eventos;
+		private EntitySet<Evento> _Evento;
 		
-		private EntitySet<Galeria> _Galerias;
+		private EntitySet<Galeria> _Galeria;
 		
-		private EntitySet<Newsletter> _Newsletters;
+		private EntitySet<Newsletter> _Newsletter;
 		
-		private EntitySet<Noticia> _Noticias;
+		private EntitySet<Noticia> _Noticia;
 		
-		private EntitySet<Produto> _Produtos;
+		private EntitySet<Produto> _Produto;
 		
-		private EntitySet<Projeto> _Projetos;
+		private EntitySet<Projeto> _Projeto;
 		
-		private EntitySet<UsuarioPonto> _UsuarioPontos;
+		private EntitySet<UsuarioPonto> _UsuarioPonto;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -2134,15 +2134,15 @@ namespace PontaoCanavial.Models.VOs
 		
 		public Ponto()
 		{
-			this._Banners = new EntitySet<Banner>(new Action<Banner>(this.attach_Banners), new Action<Banner>(this.detach_Banners));
-			this._Videos = new EntitySet<Video>(new Action<Video>(this.attach_Videos), new Action<Video>(this.detach_Videos));
-			this._Eventos = new EntitySet<Evento>(new Action<Evento>(this.attach_Eventos), new Action<Evento>(this.detach_Eventos));
-			this._Galerias = new EntitySet<Galeria>(new Action<Galeria>(this.attach_Galerias), new Action<Galeria>(this.detach_Galerias));
-			this._Newsletters = new EntitySet<Newsletter>(new Action<Newsletter>(this.attach_Newsletters), new Action<Newsletter>(this.detach_Newsletters));
-			this._Noticias = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticias), new Action<Noticia>(this.detach_Noticias));
-			this._Produtos = new EntitySet<Produto>(new Action<Produto>(this.attach_Produtos), new Action<Produto>(this.detach_Produtos));
-			this._Projetos = new EntitySet<Projeto>(new Action<Projeto>(this.attach_Projetos), new Action<Projeto>(this.detach_Projetos));
-			this._UsuarioPontos = new EntitySet<UsuarioPonto>(new Action<UsuarioPonto>(this.attach_UsuarioPontos), new Action<UsuarioPonto>(this.detach_UsuarioPontos));
+			this._Banner = new EntitySet<Banner>(new Action<Banner>(this.attach_Banner), new Action<Banner>(this.detach_Banner));
+			this._Video = new EntitySet<Video>(new Action<Video>(this.attach_Video), new Action<Video>(this.detach_Video));
+			this._Evento = new EntitySet<Evento>(new Action<Evento>(this.attach_Evento), new Action<Evento>(this.detach_Evento));
+			this._Galeria = new EntitySet<Galeria>(new Action<Galeria>(this.attach_Galeria), new Action<Galeria>(this.detach_Galeria));
+			this._Newsletter = new EntitySet<Newsletter>(new Action<Newsletter>(this.attach_Newsletter), new Action<Newsletter>(this.detach_Newsletter));
+			this._Noticia = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticia), new Action<Noticia>(this.detach_Noticia));
+			this._Produto = new EntitySet<Produto>(new Action<Produto>(this.attach_Produto), new Action<Produto>(this.detach_Produto));
+			this._Projeto = new EntitySet<Projeto>(new Action<Projeto>(this.attach_Projeto), new Action<Projeto>(this.detach_Projeto));
+			this._UsuarioPonto = new EntitySet<UsuarioPonto>(new Action<UsuarioPonto>(this.attach_UsuarioPonto), new Action<UsuarioPonto>(this.detach_UsuarioPonto));
 			OnCreated();
 		}
 		
@@ -2426,120 +2426,120 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Ponto_Banner", Storage="_Banners", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Banner> Banners
+		[Association(Name="Ponto_Banner", Storage="_Banner", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Banner> Banner
 		{
 			get
 			{
-				return this._Banners;
+				return this._Banner;
 			}
 			set
 			{
-				this._Banners.Assign(value);
+				this._Banner.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Video", Storage="_Videos", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Video> Videos
+		[Association(Name="Ponto_Video", Storage="_Video", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Video> Video
 		{
 			get
 			{
-				return this._Videos;
+				return this._Video;
 			}
 			set
 			{
-				this._Videos.Assign(value);
+				this._Video.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Evento", Storage="_Eventos", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Evento> Eventos
+		[Association(Name="Ponto_Evento", Storage="_Evento", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Evento> Evento
 		{
 			get
 			{
-				return this._Eventos;
+				return this._Evento;
 			}
 			set
 			{
-				this._Eventos.Assign(value);
+				this._Evento.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Galeria", Storage="_Galerias", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Galeria> Galerias
+		[Association(Name="Ponto_Galeria", Storage="_Galeria", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Galeria> Galeria
 		{
 			get
 			{
-				return this._Galerias;
+				return this._Galeria;
 			}
 			set
 			{
-				this._Galerias.Assign(value);
+				this._Galeria.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Newsletter", Storage="_Newsletters", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Newsletter> Newsletters
+		[Association(Name="Ponto_Newsletter", Storage="_Newsletter", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Newsletter> Newsletter
 		{
 			get
 			{
-				return this._Newsletters;
+				return this._Newsletter;
 			}
 			set
 			{
-				this._Newsletters.Assign(value);
+				this._Newsletter.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Noticia", Storage="_Noticias", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Noticia> Noticias
+		[Association(Name="Ponto_Noticia", Storage="_Noticia", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Noticia> Noticia
 		{
 			get
 			{
-				return this._Noticias;
+				return this._Noticia;
 			}
 			set
 			{
-				this._Noticias.Assign(value);
+				this._Noticia.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Produto", Storage="_Produtos", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Produto> Produtos
+		[Association(Name="Ponto_Produto", Storage="_Produto", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Produto> Produto
 		{
 			get
 			{
-				return this._Produtos;
+				return this._Produto;
 			}
 			set
 			{
-				this._Produtos.Assign(value);
+				this._Produto.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_Projeto", Storage="_Projetos", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<Projeto> Projetos
+		[Association(Name="Ponto_Projeto", Storage="_Projeto", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<Projeto> Projeto
 		{
 			get
 			{
-				return this._Projetos;
+				return this._Projeto;
 			}
 			set
 			{
-				this._Projetos.Assign(value);
+				this._Projeto.Assign(value);
 			}
 		}
 		
-		[Association(Name="Ponto_UsuarioPonto", Storage="_UsuarioPontos", ThisKey="Id", OtherKey="PontoId")]
-		public EntitySet<UsuarioPonto> UsuarioPontos
+		[Association(Name="Ponto_UsuarioPonto", Storage="_UsuarioPonto", ThisKey="Id", OtherKey="PontoId")]
+		public EntitySet<UsuarioPonto> UsuarioPonto
 		{
 			get
 			{
-				return this._UsuarioPontos;
+				return this._UsuarioPonto;
 			}
 			set
 			{
-				this._UsuarioPontos.Assign(value);
+				this._UsuarioPonto.Assign(value);
 			}
 		}
 		
@@ -2563,109 +2563,109 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		private void attach_Banners(Banner entity)
+		private void attach_Banner(Banner entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Banners(Banner entity)
+		private void detach_Banner(Banner entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Videos(Video entity)
+		private void attach_Video(Video entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Videos(Video entity)
+		private void detach_Video(Video entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Eventos(Evento entity)
+		private void attach_Evento(Evento entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Eventos(Evento entity)
+		private void detach_Evento(Evento entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Galerias(Galeria entity)
+		private void attach_Galeria(Galeria entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Galerias(Galeria entity)
+		private void detach_Galeria(Galeria entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Newsletters(Newsletter entity)
+		private void attach_Newsletter(Newsletter entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Newsletters(Newsletter entity)
+		private void detach_Newsletter(Newsletter entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Noticias(Noticia entity)
+		private void attach_Noticia(Noticia entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Noticias(Noticia entity)
+		private void detach_Noticia(Noticia entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Produtos(Produto entity)
+		private void attach_Produto(Produto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Produtos(Produto entity)
+		private void detach_Produto(Produto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_Projetos(Projeto entity)
+		private void attach_Projeto(Projeto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_Projetos(Projeto entity)
+		private void detach_Projeto(Projeto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
 		}
 		
-		private void attach_UsuarioPontos(UsuarioPonto entity)
+		private void attach_UsuarioPonto(UsuarioPonto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = this;
 		}
 		
-		private void detach_UsuarioPontos(UsuarioPonto entity)
+		private void detach_UsuarioPonto(UsuarioPonto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Ponto = null;
@@ -2912,12 +2912,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Categoria.Entity = null;
-						previousValue.Produtos.Remove(this);
+						previousValue.Produto.Remove(this);
 					}
 					this._Categoria.Entity = value;
 					if ((value != null))
 					{
-						value.Produtos.Add(this);
+						value.Produto.Add(this);
 						this._CategoriaId = value.Id;
 					}
 					else
@@ -2946,12 +2946,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Produtos.Remove(this);
+						previousValue.Produto.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Produtos.Add(this);
+						value.Produto.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -3193,12 +3193,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.Projetos.Remove(this);
+						previousValue.Projeto.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.Projetos.Add(this);
+						value.Projeto.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -3243,9 +3243,9 @@ namespace PontaoCanavial.Models.VOs
 		
 		private System.Guid _UserIdMembership;
 		
-		private EntitySet<Noticia> _Noticias;
+		private EntitySet<Noticia> _Noticia;
 		
-		private EntitySet<UsuarioPonto> _UsuarioPontos;
+		private EntitySet<UsuarioPonto> _UsuarioPonto;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
@@ -3261,8 +3261,8 @@ namespace PontaoCanavial.Models.VOs
 		
 		public Usuario()
 		{
-			this._Noticias = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticias), new Action<Noticia>(this.detach_Noticias));
-			this._UsuarioPontos = new EntitySet<UsuarioPonto>(new Action<UsuarioPonto>(this.attach_UsuarioPontos), new Action<UsuarioPonto>(this.detach_UsuarioPontos));
+			this._Noticia = new EntitySet<Noticia>(new Action<Noticia>(this.attach_Noticia), new Action<Noticia>(this.detach_Noticia));
+			this._UsuarioPonto = new EntitySet<UsuarioPonto>(new Action<UsuarioPonto>(this.attach_UsuarioPonto), new Action<UsuarioPonto>(this.detach_UsuarioPonto));
 			OnCreated();
 		}
 		
@@ -3326,29 +3326,29 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		[Association(Name="Usuario_Noticia", Storage="_Noticias", ThisKey="Id", OtherKey="UsuarioId")]
-		public EntitySet<Noticia> Noticias
+		[Association(Name="Usuario_Noticia", Storage="_Noticia", ThisKey="Id", OtherKey="UsuarioId")]
+		public EntitySet<Noticia> Noticia
 		{
 			get
 			{
-				return this._Noticias;
+				return this._Noticia;
 			}
 			set
 			{
-				this._Noticias.Assign(value);
+				this._Noticia.Assign(value);
 			}
 		}
 		
-		[Association(Name="Usuario_UsuarioPonto", Storage="_UsuarioPontos", ThisKey="Id", OtherKey="UsuarioId")]
-		public EntitySet<UsuarioPonto> UsuarioPontos
+		[Association(Name="Usuario_UsuarioPonto", Storage="_UsuarioPonto", ThisKey="Id", OtherKey="UsuarioId")]
+		public EntitySet<UsuarioPonto> UsuarioPonto
 		{
 			get
 			{
-				return this._UsuarioPontos;
+				return this._UsuarioPonto;
 			}
 			set
 			{
-				this._UsuarioPontos.Assign(value);
+				this._UsuarioPonto.Assign(value);
 			}
 		}
 		
@@ -3372,25 +3372,25 @@ namespace PontaoCanavial.Models.VOs
 			}
 		}
 		
-		private void attach_Noticias(Noticia entity)
+		private void attach_Noticia(Noticia entity)
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = this;
 		}
 		
-		private void detach_Noticias(Noticia entity)
+		private void detach_Noticia(Noticia entity)
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
 		}
 		
-		private void attach_UsuarioPontos(UsuarioPonto entity)
+		private void attach_UsuarioPonto(UsuarioPonto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = this;
 		}
 		
-		private void detach_UsuarioPontos(UsuarioPonto entity)
+		private void detach_UsuarioPonto(UsuarioPonto entity)
 		{
 			this.SendPropertyChanging();
 			entity.Usuario = null;
@@ -3517,12 +3517,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Ponto.Entity = null;
-						previousValue.UsuarioPontos.Remove(this);
+						previousValue.UsuarioPonto.Remove(this);
 					}
 					this._Ponto.Entity = value;
 					if ((value != null))
 					{
-						value.UsuarioPontos.Add(this);
+						value.UsuarioPonto.Add(this);
 						this._PontoId = value.Id;
 					}
 					else
@@ -3551,12 +3551,12 @@ namespace PontaoCanavial.Models.VOs
 					if ((previousValue != null))
 					{
 						this._Usuario.Entity = null;
-						previousValue.UsuarioPontos.Remove(this);
+						previousValue.UsuarioPonto.Remove(this);
 					}
 					this._Usuario.Entity = value;
 					if ((value != null))
 					{
-						value.UsuarioPontos.Add(this);
+						value.UsuarioPonto.Add(this);
 						this._UsuarioId = value.Id;
 					}
 					else

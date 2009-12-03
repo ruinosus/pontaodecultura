@@ -107,7 +107,7 @@ namespace PontaoCanavial.Controllers
 
                 Usuario usuario = new Usuario();
                 usuario.UserIdMembership = (System.Guid)Membership.GetUser(userName).ProviderUserKey;
-                usuario.Nome = "NOme ";
+                usuario.Nome = "Nome ";
                 usuarioRepositorio.Add(usuario);
                 usuarioRepositorio.Save();
                 if (createStatus == MembershipCreateStatus.Success)

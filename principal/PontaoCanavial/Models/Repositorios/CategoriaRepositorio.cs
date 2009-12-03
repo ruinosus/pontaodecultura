@@ -15,23 +15,23 @@ namespace PontaoCanavial.Models.Repositorios
 
          public IQueryable<Categoria> ConsultarTodos()
         {
-            return db.Categorias;
+            return db.Categoria;
         }
 
         public Categoria GetCategoria(int id)
         {
-            return db.Categorias.SingleOrDefault(d => d.Id == id);
+            return db.Categoria.SingleOrDefault(d => d.Id == id);
         
         }
 
         public void Add(Categoria categoria)
         {
-            db.Categorias.InsertOnSubmit(categoria);
+            db.Categoria.InsertOnSubmit(categoria);
         }
 
         public void Delete(Categoria categoria)
         {
-            db.Categorias.DeleteOnSubmit(categoria);
+            db.Categoria.DeleteOnSubmit(categoria);
         }
 
         public void Save()

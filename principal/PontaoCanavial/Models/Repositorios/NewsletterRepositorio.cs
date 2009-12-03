@@ -15,43 +15,32 @@ namespace PontaoCanavial.Models.Repositorios
 
             public IQueryable<Newsletter> ConsultarTodos()
             {
-                return db.Newsletters;
+                return db.Newsletter;
             }
 
             public Newsletter ConsultarPorEmail(string email)
             {
-                return db.Newsletters.SingleOrDefault(d => d.Email.Equals(email));
+                return db.Newsletter.SingleOrDefault(d => d.Email.Equals(email));
             }
 
             public Newsletter GetNewsletter(int id)
             {
-                return db.Newsletters.SingleOrDefault(d => d.Id == id);
+                return db.Newsletter.SingleOrDefault(d => d.Id == id);
             }
 
             public void Add(Newsletter news)
             {
-                db.Newsletters.InsertOnSubmit(news);
+                db.Newsletter.InsertOnSubmit(news);
             }
 
             public void Delete(Newsletter news)
             {                
-                db.Newsletters.DeleteOnSubmit(news);
+                db.Newsletter.DeleteOnSubmit(news);
             }
 
             public void Save()
             {
                 db.SubmitChanges();
-            }
-
-            #endregion
-
-
-            #region INewsletterRepositorio Members
-
-
-            public Newsletter ConsultarNewsletter()
-            {
-                throw new NotImplementedException();
             }
 
             #endregion

@@ -115,16 +115,13 @@
     <Compile Include="Models\VOs\Imagem.cs" />
     <Compile Include="Models\VOs\Newsletter.cs" />
     <Compile Include="Models\VOs\Noticia.cs" />
-    <Compile Include="Models\VOs\PontaoCanavial.cs">
-      <DependentUpon>PontaoCanavial.dbml</DependentUpon>
-    </Compile>
+    <Compile Include="Models\Repositorios\Interfaces\IPontoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\PontoRepositorio.cs" />
     <Compile Include="Models\VOs\PontaoCanavial.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PontaoCanavial.dbml</DependentUpon>
     </Compile>
-    <Compile Include="Models\Repositorios\Interfaces\IPontoRepositorio.cs" />
-    <Compile Include="Models\Repositorios\PontoRepositorio.cs" />
     <Compile Include="Models\VOs\Ponto.cs" />
     <Compile Include="Models\VOs\Produto.cs" />
     <Compile Include="Models\VOs\Projeto.cs" />
@@ -268,11 +265,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App_Data\ScriptPontaoCanavial.sql" />
-    <None Include="Models\VOs\PontaoCanavial.dbml">
-      <Generator>MSLinqToSQLGenerator</Generator>
-      <LastGenOutput>PontaoCanavial.designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
@@ -282,8 +274,10 @@
     <None Include="App_Themes\Pontao\images\not\Thumbs.db" />
     <None Include="App_Themes\Pontao\images\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\Thumbs.db" />
-    <None Include="Models\VOs\PontaoCanavial.dbml.layout">
-      <DependentUpon>PontaoCanavial.dbml</DependentUpon>
+    <None Include="Models\VOs\PontaoCanavial.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PontaoCanavial.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </None>
     <Content Include="App_Themes\Pontao\images\coluna1-bg.jpg" />
     <Content Include="Scripts\documentation.css" />
@@ -322,6 +316,11 @@
       <Project>{C9D7F653-E589-44CE-9D41-89821F4F9E4E}</Project>
       <Name>MvcMembership</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\VOs\PontaoCanavial.dbml.layout">
+      <DependentUpon>PontaoCanavial.dbml</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Uploads\" />

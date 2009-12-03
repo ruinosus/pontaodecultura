@@ -9,7 +9,6 @@ namespace PontaoCanavial.Models.Repositorios.Interfaces
     public interface IUsuarioRepositorio
     {
         IQueryable<Usuario> ConsultarTodos();
-        Usuario ConsultarUsuario();
         Usuario GetUsuario(int id);
 
         void Add(Usuario usuario);

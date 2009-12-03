@@ -16,50 +16,50 @@ namespace PontaoCanavial.Models.Repositorios
         public IQueryable<Ponto> ConsultarTodos(bool consultarApenasPontinhos)
         {
             if (!consultarApenasPontinhos)
-                return db.Pontos;
+                return db.Ponto;
 
-            return from p in db.Pontos
+            return from p in db.Ponto
                    where p.EPontao == false || p.EPontao==null
                    select p;
         }
 
         public Ponto ConsultarPorNomeIdentificador(string nomeIdentificador)
         {
-            return db.Pontos.SingleOrDefault(d => d.NomeIdentificador.Equals(nomeIdentificador));
+            return db.Ponto.SingleOrDefault(d => d.NomeIdentificador.Equals(nomeIdentificador));
         }
 
         public Ponto ConsultarPontao()
         {
-            return db.Pontos.SingleOrDefault(d => d.EPontao == true);
+            return db.Ponto.SingleOrDefault(d => d.EPontao == true);
 
         }
 
         public Ponto GetPonto(int id)
         {
-            return db.Pontos.SingleOrDefault(d => d.Id == id);
+            return db.Ponto.SingleOrDefault(d => d.Id == id);
 
         }
 
         public void Add(Ponto ponto)
         {
-            db.Pontos.InsertOnSubmit(ponto);
+            db.Ponto.InsertOnSubmit(ponto);
         }
 
         public void Delete(Ponto ponto)
         {
-            db.Banners.DeleteAllOnSubmit(ponto.Banners);
-            db.Galerias.DeleteAllOnSubmit(ponto.Galerias);
+            db.Banner.DeleteAllOnSubmit(ponto.Banner);
+            db.Galeria.DeleteAllOnSubmit(ponto.Galeria);
 
-            foreach (Galeria galeria in ponto.Galerias)
+            foreach (Galeria galeria in ponto.Galeria)
             {
-                db.Imagems.DeleteAllOnSubmit(galeria.Imagems);
+                db.Imagem.DeleteAllOnSubmit(galeria.Imagem);
             }
 
-            db.Newsletters.DeleteAllOnSubmit(ponto.Newsletters);
-            db.Noticias.DeleteAllOnSubmit(ponto.Noticias);
-            db.Produtos.DeleteAllOnSubmit(ponto.Produtos);
-            db.UsuarioPontos.DeleteAllOnSubmit(ponto.UsuarioPontos);
-            db.Pontos.DeleteOnSubmit(ponto);
+            db.Newsletter.DeleteAllOnSubmit(ponto.Newsletter);
+            db.Noticia.DeleteAllOnSubmit(ponto.Noticia);
+            db.Produto.DeleteAllOnSubmit(ponto.Produto);
+            db.UsuarioPonto.DeleteAllOnSubmit(ponto.UsuarioPonto);
+            db.Ponto.DeleteOnSubmit(ponto);
         }
 
         public void Save()

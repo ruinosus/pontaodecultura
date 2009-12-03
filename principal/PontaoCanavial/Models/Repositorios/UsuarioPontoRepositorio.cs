@@ -15,22 +15,22 @@ namespace PontaoCanavial.Models.Repositorios
 
         public IQueryable<UsuarioPonto> ConsultarTodos()
         {
-            return db.UsuarioPontos;
+            return db.UsuarioPonto;
         }
 
         public UsuarioPonto GetUsuarioPonto(int id)
         {
-            return db.UsuarioPontos.SingleOrDefault(d => d.Id == id);
+            return db.UsuarioPonto.SingleOrDefault(d => d.Id == id);
         }
 
         public void Add(UsuarioPonto usuPonto)
         {
-            db.UsuarioPontos.InsertOnSubmit(usuPonto);
+            db.UsuarioPonto.InsertOnSubmit(usuPonto);
         }
 
         public void Delete(UsuarioPonto usuPonto)
         {
-            db.UsuarioPontos.DeleteOnSubmit(usuPonto);
+            db.UsuarioPonto.DeleteOnSubmit(usuPonto);
         }
 
         public void Save()

@@ -7,7 +7,7 @@ using System.Data.Linq;
 
 namespace PontaoCanavial.Models.VOs
 {
-    [Bind(Include = "Titulo,Preview,Corpo")]
+    [Bind(Include = "Titulo,Preview,Corpo,ImagemPequena,ImagemMedia,ImagemGrande,PontoId")]
     public partial class Noticia
     {
 
@@ -27,6 +27,9 @@ namespace PontaoCanavial.Models.VOs
 
             if (String.IsNullOrEmpty(Corpo))
                 yield return new RuleViolation("O Corpo é Necessário para o cadastro", "Corpo");
+
+            if ((PontoId) == 0)
+                yield return new RuleViolation("O PontoId é Necessário para o cadastro", "PontoId");
             yield break;
         }
 

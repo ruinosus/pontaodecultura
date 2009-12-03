@@ -15,28 +15,44 @@
 
 <%= Html.ValidationSummary("Corrija os erros e tente novamente.") %>
 <div id="pontoDiv">
-
     <p>
-        <label for="Logo">
-            Imagem:</label>
-        <input id="imgImagem" name="imgImagem"  type="file" class="multi" accept="gif|jpg|png" maxlength="1" /></p>
+        <label for="imgPequena">
+            Imagem pequena:</label>
+        <input id="imgPequena" name="imgPequena" type="file" class="multi" accept="gif|jpg|png"
+            maxlength="1" /></p>
     <p>
-        <label for="Nome">
+        <label for="imgMedia">
+            Imagem Media:</label>
+        <input id="imgMedia" name="imgMedia" type="file" class="multi" accept="gif|jpg|png"
+            maxlength="1" /></p>
+    <p>
+        <label for="imgGrande">
+            Imagem pequena:</label>
+        <input id="imgGrande" name="imgGrande" type="file" class="multi" accept="gif|jpg|png"
+            maxlength="1" /></p>
+    <p>
+        <label for="Titulo">
             Título:</label>
         <%= Html.TextBox("Titulo", Model.Titulo)%>
         <%= Html.ValidationMessage("Titulo", "*")%>
     </p>
     <p>
-        <label for="NomeIdentificador">
+        <label for="Preview">
             Preview:</label>
         <%= Html.TextBox("Preview", Model.Preview)%>
         <%= Html.ValidationMessage("Preview", "*")%>
     </p>
     <p>
-        <label for="DescricaoOficina">
+        <label for="Corpo">
             Corpo:</label>
         <%= Html.TextBox("Corpo", Model.Corpo)%>
         <%= Html.ValidationMessage("Corpo", "*")%>
+    </p>
+    <p>
+        <label for="PontoId">
+            Ponto:</label>
+        <%= Html.TextBox("PontoId", Model.PontoId)%>
+        <%= Html.ValidationMessage("PontoId", "*")%>
     </p>
     <p>
         <input type="submit" value="Save" />

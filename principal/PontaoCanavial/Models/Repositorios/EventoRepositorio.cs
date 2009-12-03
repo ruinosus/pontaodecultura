@@ -15,23 +15,23 @@ namespace PontaoCanavial.Models.Repositorios
 
         public IQueryable<Evento> ConsultarTodos()
         {
-            return db.Eventos;
+            return db.Evento;
         }
 
         public Evento GetEvento(int id)
         {
-            return db.Eventos.SingleOrDefault(d => d.Id == id);
+            return db.Evento.SingleOrDefault(d => d.Id == id);
 
         }
 
         public void Add(Evento evento)
         {
-            db.Eventos.InsertOnSubmit(evento);
+            db.Evento.InsertOnSubmit(evento);
         }
 
         public void Delete(Evento evento)
         {
-            db.Eventos.DeleteOnSubmit(evento);
+            db.Evento.DeleteOnSubmit(evento);
         }
 
         public void Save()
@@ -41,9 +41,5 @@ namespace PontaoCanavial.Models.Repositorios
 
         #endregion
 
-        #region IEventoRepositorio Members
-
-
-        #endregion
     }
 }

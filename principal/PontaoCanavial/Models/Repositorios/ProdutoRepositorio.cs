@@ -15,24 +15,24 @@ namespace PontaoCanavial.Models.Repositorios
 
         public IQueryable<Produto> ConsultarTodos()
         {
-            return db.Produtos;
+            return db.Produto;
         }
 
 
         public Produto GetProduto(int id)
         {
-            return db.Produtos.SingleOrDefault(d => d.Id == id);
+            return db.Produto.SingleOrDefault(d => d.Id == id);
 
         }
 
         public void Add(Produto produto)
         {
-            db.Produtos.InsertOnSubmit(produto);
+            db.Produto.InsertOnSubmit(produto);
         }
 
         public void Delete(Produto produto)
         {
-            db.Produtos.DeleteOnSubmit(produto);
+            db.Produto.DeleteOnSubmit(produto);
         }
 
         public void Save()

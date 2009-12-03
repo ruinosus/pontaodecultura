@@ -15,23 +15,23 @@ namespace PontaoCanavial.Models.Repositorios
 
         public IQueryable<Projeto> ConsultarTodos()
         {
-            return db.Projetos;
+            return db.Projeto;
         }
 
         public Projeto GetProjeto(int id)
         {
-            return db.Projetos.SingleOrDefault(d => d.Id == id);
+            return db.Projeto.SingleOrDefault(d => d.Id == id);
 
         }
 
         public void Add(Projeto projeto)
         {
-            db.Projetos.InsertOnSubmit(projeto);
+            db.Projeto.InsertOnSubmit(projeto);
         }
 
         public void Delete(Projeto projeto)
         {
-            db.Projetos.DeleteOnSubmit(projeto);
+            db.Projeto.DeleteOnSubmit(projeto);
         }
 
         public void Save()

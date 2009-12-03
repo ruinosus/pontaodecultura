@@ -16,3 +16,9 @@ C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\MvcMembership\bin\Debug
 C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\MvcMembership\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\MvcMembership\obj\Debug\MvcMembership.dll
 C:\Users\Obscurus\Desktop\pontaodecultura\PontaoCanavial\MvcMembership\obj\Debug\MvcMembership.pdb
+C:\principal\MvcMembership\bin\Debug\MvcMembership.dll
+C:\principal\MvcMembership\bin\Debug\MvcMembership.pdb
+C:\principal\MvcMembership\bin\Debug\PagedList.dll
+C:\principal\MvcMembership\obj\Debug\ResolveAssemblyReference.cache
+C:\principal\MvcMembership\obj\Debug\MvcMembership.dll
+C:\principal\MvcMembership\obj\Debug\MvcMembership.pdb

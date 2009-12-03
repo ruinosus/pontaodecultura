@@ -15,23 +15,23 @@ namespace PontaoCanavial.Models.Repositorios
 
         IQueryable<Imagem> IImagemRepositorio.ConsultarTodos()
         {
-            return db.Imagems;
+            return db.Imagem;
         }
 
         Imagem IImagemRepositorio.GetImagem(int id)
         {
-            return db.Imagems.SingleOrDefault(d => d.Id == id);
+            return db.Imagem.SingleOrDefault(d => d.Id == id);
 
         }
 
          void IImagemRepositorio.Add(Imagem imagem)
         {
-            db.Imagems.InsertOnSubmit(imagem);
+            db.Imagem.InsertOnSubmit(imagem);
         }
 
         void IImagemRepositorio.Delete(Imagem imagem)
         {
-            db.Imagems.DeleteOnSubmit(imagem);
+            db.Imagem.DeleteOnSubmit(imagem);
         }
 
         void IImagemRepositorio.Save()

@@ -6,7 +6,7 @@
     <div id="coluna-2">
         <div id="projetos-text">
             <h1>
-                <img src="../../App_Themes/Pontao/images/title07.gif" alt="Galerias" /></h1>
+                <img src="../../App_Themes/Pontao/images/title07.gif" alt="Projetos" /></h1>
             <div class="proj-body">
                 <h2>
                     <%=Model.ProjetoDetalhe.Nome %></h2>
@@ -15,11 +15,12 @@
                     <%{ %>
                     <% 
                         var imgurl = Url.Action("ThumbImageProjeto", "Image",
-                              new { id = Model.NoticiaDetalhe.Id, width = 220, height = 180, tipo = "M" }); %>
+                              new { id = Model.ProjetoDetalhe.Id, width = 220, height = 180, tipo = "M" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                     <%} %>
-                    </div>
-                <p><%=Model.ProjetoDetalhe.Descricao %></p>
+                </div>
+                <p>
+                    <%=Model.ProjetoDetalhe.Descricao %></p>
             </div>
         </div>
     </div>

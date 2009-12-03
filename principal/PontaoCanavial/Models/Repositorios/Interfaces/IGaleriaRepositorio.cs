@@ -9,7 +9,6 @@ namespace PontaoCanavial.Models.Repositorios.Interfaces
     public interface IGaleriaRepositorio
     {
         IQueryable<Galeria> ConsultarTodos();
-        Galeria ConsultarGaleria();
         Galeria GetGaleria(int id);
 
         void Add(Galeria galeria);

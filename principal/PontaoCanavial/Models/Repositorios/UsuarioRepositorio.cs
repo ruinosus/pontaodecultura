@@ -15,23 +15,23 @@ namespace PontaoCanavial.Models.Repositorios
 
         public IQueryable<Usuario> ConsultarTodos()
         {
-            return db.Usuarios;
+            return db.Usuario;
         }
 
         public Usuario GetUsuario(int id)
         {
-            return db.Usuarios.SingleOrDefault(d => d.Id == id);
+            return db.Usuario.SingleOrDefault(d => d.Id == id);
 
         }
 
         public void Add(Usuario usuario)
         {
-            db.Usuarios.InsertOnSubmit(usuario);
+            db.Usuario.InsertOnSubmit(usuario);
         }
 
         public void Delete(Usuario usuario)
         {
-            db.Usuarios.DeleteOnSubmit(usuario);
+            db.Usuario.DeleteOnSubmit(usuario);
         }
 
         public void Save()
@@ -41,48 +41,5 @@ namespace PontaoCanavial.Models.Repositorios
 
         #endregion
 
-        #region IUsuarioRepositorio Members
-
-
-        public Usuario ConsultarUsuario()
-        {
-            throw new NotImplementedException();
-        }
-
-        #endregion
-
-        #region IUsuarioRepositorio Members
-
-        IQueryable<Usuario> IUsuarioRepositorio.ConsultarTodos()
-        {
-            throw new NotImplementedException();
-        }
-
-        Usuario IUsuarioRepositorio.ConsultarUsuario()
-        {
-            throw new NotImplementedException();
-        }
-
-        Usuario IUsuarioRepositorio.GetUsuario(int id)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IUsuarioRepositorio.Add(Usuario usuario)
-        {
-            db.Usuarios.InsertOnSubmit(usuario);
-        }
-
-        void IUsuarioRepositorio.Delete(Usuario usuario)
-        {
-            throw new NotImplementedException();
-        }
-
-        void IUsuarioRepositorio.Save()
-        {
-            db.SubmitChanges();
-        }
-
-        #endregion
     }
 }

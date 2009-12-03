@@ -88,7 +88,7 @@ namespace PontaoCanavial.Controllers
                 {
                     p.PontoId = Convert.ToInt32(Session["PontoId"].ToString());
 
-                    HttpPostedFileBase imagem = this.Request.Files.Get("imgImagemPequena");
+                    HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
                     if (imagem!=null)
                     {
 
@@ -98,7 +98,7 @@ namespace PontaoCanavial.Controllers
                         p.ImagemPequena= imagemByte;
                     }
 
-                    HttpPostedFileBase imagem2 = this.Request.Files.Get("imgImagemMedia");
+                    HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
                     if (imagem != null)
                     {
 
@@ -108,7 +108,7 @@ namespace PontaoCanavial.Controllers
                         p.ImagemMedia = imagemByte;
                     }
 
-                    HttpPostedFileBase imagem3 = this.Request.Files.Get("imgImagemGrande");
+                    HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
                     if (imagem != null)
                     {
                         Int32 length = imagem3.ContentLength;

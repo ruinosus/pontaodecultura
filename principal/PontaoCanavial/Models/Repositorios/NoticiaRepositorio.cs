@@ -15,23 +15,23 @@ namespace PontaoCanavial.Models.Repositorios
 
         public IQueryable<Noticia> ConsultarTodos()
         {
-            return db.Noticias;
+            return db.Noticia;
         }
 
         public Noticia GetNoticia(int id)
         {
-            return db.Noticias.SingleOrDefault(d => d.Id == id);
+            return db.Noticia.SingleOrDefault(d => d.Id == id);
 
         }
 
         public void Add(Noticia noticia)
         {
-            db.Noticias.InsertOnSubmit(noticia);
+            db.Noticia.InsertOnSubmit(noticia);
         }
 
         public void Delete(Noticia noticia)
         {
-            db.Noticias.DeleteOnSubmit(noticia);
+            db.Noticia.DeleteOnSubmit(noticia);
         }
 
         public void Save()
