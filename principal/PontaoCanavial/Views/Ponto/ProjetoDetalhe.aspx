@@ -5,7 +5,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentMasterPontao" runat="server">
     <div id="coluna-2">
         <div id="projetos-text">
-            <h1>
+            <h1>                
                 <img src="../../App_Themes/Pontao/images/title07.gif" alt="Projetos" /></h1>
             <div class="proj-body">
                 <h2>

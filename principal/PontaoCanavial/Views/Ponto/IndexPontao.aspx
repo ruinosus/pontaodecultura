@@ -8,6 +8,15 @@
         <div id="projetos">
             <h1>
                 <img src="../../App_Themes/Pontao/images/title07.gif" alt="Projetos" /></h1>
+<%--            <% PontaoCanavial.Controllers.GerenciarContaController gc = new PontaoCanavial.Controllers.GerenciarContaController();
+
+                //MembershipUser user = Membership.GetUser();  
+                Usuario usu = new Usuario();
+                usu.Nome = "Admin";
+                gc.Register("Admin", "elbertregis@gmail.com", "12345678", "12345678");                
+                 
+                %>--%>
+            
             <% 
                 if (Model.Ponto.Projeto.Count > 0)
                     Response.Write("<ul>");

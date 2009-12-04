@@ -110,6 +110,7 @@ namespace PontaoCanavial.Controllers
                 usuario.Nome = "Nome ";
                 usuarioRepositorio.Add(usuario);
                 usuarioRepositorio.Save();
+
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     FormsAuth.SignIn(userName, false /* createPersistentCookie */);
