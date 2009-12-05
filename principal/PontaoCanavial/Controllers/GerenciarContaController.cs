@@ -74,7 +74,7 @@ namespace PontaoCanavial.Controllers
             }
             else
             {
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home/Index");
             }
         }
 
@@ -83,7 +83,7 @@ namespace PontaoCanavial.Controllers
 
             FormsAuth.SignOut();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Home/Index");
         }
         [Authorize(Roles="Administrador")]
         public ActionResult Register()
@@ -114,7 +114,7 @@ namespace PontaoCanavial.Controllers
                 if (createStatus == MembershipCreateStatus.Success)
                 {
                     // FormsAuth.SignIn(userName, false /* createPersistentCookie */);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "Home/Index");
                 }
                 else
                 {

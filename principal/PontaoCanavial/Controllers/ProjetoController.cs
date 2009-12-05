@@ -99,21 +99,21 @@ namespace PontaoCanavial.Controllers
                     }
 
                     HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
-                    if (imagem != null)
+                    if (imagem2 != null)
                     {
 
                         Int32 length = imagem2.ContentLength;
                         byte[] imagemByte = new byte[length];
-                        imagem.InputStream.Read(imagemByte, 0, length);
+                        imagem2.InputStream.Read(imagemByte, 0, length);
                         p.ImagemMedia = imagemByte;
                     }
 
                     HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
-                    if (imagem != null)
+                    if (imagem3 != null)
                     {
                         Int32 length = imagem3.ContentLength;
                         byte[] imagemByte = new byte[length];
-                        imagem.InputStream.Read(imagemByte, 0, length);
+                        imagem3.InputStream.Read(imagemByte, 0, length);
                         p.ImagemGrande = imagemByte;
                     }
 
