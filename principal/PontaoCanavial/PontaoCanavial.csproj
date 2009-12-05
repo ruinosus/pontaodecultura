@@ -73,10 +73,6 @@
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
     <Compile Include="Controllers\AdministrarController.cs" />
-    <Compile Include="Default.aspx.cs">
-      <DependentUpon>Default.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -230,7 +226,6 @@
     <Content Include="Content\cancel.png" />
     <Content Include="Content\uploadify.css" />
     <Content Include="Content\uploadify.swf" />
-    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery.MultiFile.js" />
     <Content Include="Scripts\jquery.uploadify.v2.1.0.js" />

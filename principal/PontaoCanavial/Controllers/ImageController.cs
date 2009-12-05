@@ -49,14 +49,29 @@ namespace PontaoCanavial.Controllers
         IProjetoRepositorio projetoRepositorio;
 
         public ImageController()
-            : this(new PontoRepositorio(),new NoticiaRepositorio())
+            : this(new PontoRepositorio(),
+                   new NoticiaRepositorio(),
+                   new ProdutoRepositorio(),
+                   new EventoRepositorio(),
+                   new GaleriaRepositorio(),
+                   new ProjetoRepositorio() )
         {
         }
 
-        public ImageController(IPontoRepositorio pontoRepositorio,INoticiaRepositorio noticiaRepositorio)
+        public ImageController(IPontoRepositorio pontoRepositorio,
+                               INoticiaRepositorio noticiaRepositorio,
+                               IProdutoRepositorio produtoRepositorio,
+                               IEventoRepositorio eventoRepositorio,
+                               IGaleriaRepositorio galeriaRepositorio,
+                               IProjetoRepositorio projetoRepositorio)
         {
             this.pontoRepositorio = pontoRepositorio;
             this.noticiaRepositorio = noticiaRepositorio;
+            this.produtoRepositorio = produtoRepositorio;
+            this.eventoRepositorio = eventoRepositorio;
+            this.galeriaRepositorio = galeriaRepositorio;
+            this.projetoRepositorio = projetoRepositorio;
+
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
