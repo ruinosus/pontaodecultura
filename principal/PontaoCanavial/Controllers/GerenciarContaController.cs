@@ -107,13 +107,13 @@ namespace PontaoCanavial.Controllers
 
                 Usuario usuario = new Usuario();
                 usuario.UserIdMembership = (System.Guid)Membership.GetUser(userName).ProviderUserKey;
-                usuario.Nome = "Nome ";
+                usuario.Nome = userName;
                 usuarioRepositorio.Add(usuario);
                 usuarioRepositorio.Save();
 
                 if (createStatus == MembershipCreateStatus.Success)
                 {
-                    FormsAuth.SignIn(userName, false /* createPersistentCookie */);
+                    // FormsAuth.SignIn(userName, false /* createPersistentCookie */);
                     return RedirectToAction("Index", "Home");
                 }
                 else
