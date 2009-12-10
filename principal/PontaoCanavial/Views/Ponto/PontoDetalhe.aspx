@@ -5,16 +5,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="contentMasterPontao" runat="server">
     <div id="coluna-2">
         <div id="ponto-text">
-            <h1>
-                Pont&atilde;o do Canavial</h1>
+            <h1>Pont&atilde;o do Canavial</h1>
             <div class="proj-body">
-
             <b>
                 <%if (Model.Ponto.ImagemMedia != null)
                   {%>
                 <% 
                     var imgurl = Url.Action("ThumbImagePontoDetalhe", "Image",
-                          new { id = Model.Ponto.Id, width = 231, height = 207, tipo="m" }); %>
+                          new { id = Model.Ponto.Id, width = 231, height = 207, tipo="M" }); %>
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
                   
@@ -44,4 +42,5 @@
             </div>
         </div>
     </div>
+    </b>
 </asp:Content>

@@ -11,7 +11,7 @@
                 <h3>
                     <%=Model.NoticiaDetalhe.DataCriacao %>
                     - <span>
-                        <%=Model.NoticiaDetalhe.Usuario.Nome %></span></h3>
+                        <%--<%=Model.NoticiaDetalhe.Usuario.Nome %>--%></span></h3>
                 <p>
                 </p>
             </div>
@@ -24,7 +24,8 @@
                               new { id = Model.NoticiaDetalhe.Id, width = 230, height = 230, tipo = "P" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                 </div>
-                <p><%= Model.NoticiaDetalhe.Corpo %></p>
+                <p>
+                    <%= Model.NoticiaDetalhe.Corpo %></p>
             </div>
         </div>
     </div>

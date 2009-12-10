@@ -9,9 +9,9 @@
                 <img src="../../App_Themes/Pontao/images/title02.gif" alt="Not&iacute;cias" /></h1>
             <ul>
                 <%if (Model.Ponto.EPontao.HasValue)
-                      if (Model.Ponto.Noticias.Count > 0)
+                      if (Model.Ponto.Noticia.Count > 0)
                 %>
-                <% foreach (PontaoCanavial.Models.VOs.Noticia n in Model.Ponto.Noticias)
+                <% foreach (PontaoCanavial.Models.VOs.Noticia n in Model.Ponto.Noticia)
                    {
                 %>
                 <%Response.Write("<li>");%>

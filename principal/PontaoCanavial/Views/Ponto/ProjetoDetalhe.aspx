@@ -11,12 +11,12 @@
                 <h2>
                     <%=Model.ProjetoDetalhe.Nome %></h2>
                 <div class="proj-foto">
-                    <% if (Model.ProjetoDetalhe.ImagemPequena != null)                           
+                    <% if (Model.ProjetoDetalhe.ImagemMedia != null)                           
                     { 
                            %>
                     <% 
                         var imgurl = Url.Action("ThumbImageProjeto", "Image",
-                              new { id = Model.ProjetoDetalhe.Id, width = 220, height = 180, tipo = "P" }); %>
+                              new { id = Model.ProjetoDetalhe.Id, width = 220, height = 180, tipo = "M" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                     <%} %>
                 </div>

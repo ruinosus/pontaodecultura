@@ -8,7 +8,7 @@
         <div id="projetos">
             <h1>
                 <img src="../../App_Themes/Pontao/images/title07.gif" alt="Projetos" /></h1>
-<%--            <% PontaoCanavial.Controllers.GerenciarContaController gc = new PontaoCanavial.Controllers.GerenciarContaController();
+            <%--            <% PontaoCanavial.Controllers.GerenciarContaController gc = new PontaoCanavial.Controllers.GerenciarContaController();
 
                 //MembershipUser user = Membership.GetUser();  
                 Usuario usu = new Usuario();
@@ -16,7 +16,6 @@
                 gc.Register("Admin", "elbertregis@gmail.com", "12345678", "12345678");                
                  
                 %>--%>
-            
             <% 
                 if (Model.Ponto.Projeto.Count > 0)
                     Response.Write("<ul>");
@@ -69,14 +68,7 @@
             </span>
             <%  Response.Write("</li>");%>
             <%
-                if (i == 0)
-                {
-                    Response.Write("</ul>");
-                    Response.Write("<ul>");
-                }
-
-                if (i + 1 == Model.Ponto.Noticia.Count)
-                    Response.Write("</ul>");
+                Response.Write("</ul>");
             %>
             <% 
                 }
@@ -108,20 +100,21 @@
         <div id="produtos">
             <h1>
                 <img src="../../App_Themes/Pontao/images/title05.gif" alt="Produtos" /></h1>
-            <ul>
-                <li><a href="#"><span>
-                    <img src="../../App_Themes/Pontao/images/foto_pro1.jpg" alt="foto" /><h2>
-                        Maracatu Estrela de Ouro de Alian&ccedil;a: a saga de uma tradi&ccedil;&atilde;o</h2>
-                    <p>
-                        Severino Vicente</p>
-                </span></a></li>
-                <li><a href="#"><span>
-                    <img src="../../App_Themes/Pontao/images/foto_pro2.jpg" alt="foto" /><h2>
-                        Maracatu Rural: o espet&aacute;culo como espa&ccedil;o social</h2>
-                    <p>
-                        Ana Val&eacute;ria Vicente.</p>
-                </span></a></li>
-            </ul>
+            <% 
+                if (Model.Ponto.Produto.Count > 0)
+                    Response.Write("<ul>");
+                for (int i = Model.Ponto.Produto.Count - 1; i >= Model.Ponto.Produto.Count - 2; i--)
+                {
+            %>
+            <%Response.Write("<li>");%>
+                <img src="../../App_Themes/Pontao/images/foto_pro1.jpg" alt="foto" /><h2>
+                    <%= Model.Ponto.Produto[i].Nome%></h2>
+                <p>
+                    <%= Model.Ponto.Produto[i].Categoria.Descricao%></p>
+            
+            <%  Response.Write("</li>");%>
+            <%  Response.Write("</ul>");%>
+            <%} %>
         </div>
     </div>
 </asp:Content>

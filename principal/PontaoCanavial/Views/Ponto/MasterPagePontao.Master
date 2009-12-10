@@ -2,14 +2,13 @@
 
 <%@ Import Namespace="PontaoCanavial.Models.VOs" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Pont&atilde;o do Canavial</title>
     <link href="../../App_Themes/Pontao/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
-
     <script src="../../App_Themes/Pontao/Scripts/swfobject_modified.js" type="text/javascript"></script>
-
 </head>
 <body>
     <div id="root">

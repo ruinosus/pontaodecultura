@@ -8,9 +8,9 @@
                 <img src="../../App_Themes/Pontao/images/title03.gif" alt="Galerias" /></h1>
             <ul>
                 <%if (Model.Ponto.EPontao.HasValue)
-                      if (Model.Ponto.Eventos.Count > 0)
+                      if (Model.Ponto.Evento.Count > 0)
                 %>
-                <% foreach (PontaoCanavial.Models.VOs.Evento e in Model.Ponto.Eventos)
+                <% foreach (PontaoCanavial.Models.VOs.Evento e in Model.Ponto.Evento)
                    {
                 %>
                 <%Response.Write("<li>");%>
