@@ -1,7 +1,7 @@
-<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Ponto/MasterPagePontao.Master"
+<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Ponto/MasterPagePontinho.Master"
     Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="contentMasterPontao" runat="server">
+<asp:Content ID="pontinhoProdutoLista" ContentPlaceHolderID="contentMasterPontinho" runat="server">
     <div id="coluna-2">
         <div id="produtos-list">
             <h1>

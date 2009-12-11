@@ -5,15 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using System.IO;
-using PontaoCanavial.Models.Repositorios.Interfaces;
 using PontaoCanavial.Models.Repositorios;
+using PontaoCanavial.Models.Repositorios.Interfaces;
 using PontaoCanavial.Models.VOs;
-using PontaoCanavial.Helpers;
 
 namespace PontaoCanavial.Controllers
 {
     [HandleError]
-    public class NoticiaController : Controller
+    public class ProdutoController : Controller
     {
         private byte[] ConverterByte(string filename)
         {
@@ -28,35 +27,34 @@ namespace PontaoCanavial.Controllers
             //return the byte data
         }
 
-        INoticiaRepositorio noticiaRepositorio;
+        IProdutoRepositorio produtoRepositorio;
 
-        public NoticiaController()
-            : this(new NoticiaRepositorio())
+        public ProdutoController()
+            : this(new ProdutoRepositorio())
         {
         }
 
-        public NoticiaController(INoticiaRepositorio repositorio)
+        public ProdutoController(IProdutoRepositorio repositorio)
         {
-            noticiaRepositorio = repositorio;
+            produtoRepositorio = repositorio;
         }
 
         public ActionResult Index()
         {
             return View();
-
         }
 
-        public ActionResult NoticiaDetalhes(int id)
+        public ActionResult ProdutoDetalhe(int id)
         {
             return View();
         }
 
         public ActionResult Create(int id)
         {
-            Noticia noticia = new Noticia();
+            Produto p = new Produto();
             Session.Add("PontoId", id);
-            noticia.PontoId = id;
-            return View(noticia);
+            p.PontoId = id;
+            return View(p);
         }
 
         public bool ThumbnailCallback()
@@ -67,34 +65,34 @@ namespace PontaoCanavial.Controllers
         //if (fupImgPostagem.HasFile)
         //    {
         //        HttpPostedFile myFile = fupImgPostagem.PostedFile;
-                
+
         //        System.Drawing.Image fullSizeImg = System.Drawing.Image.FromStream(myFile.InputStream);
 
         //        System.Drawing.Image.GetThumbnailImageAbort dummyCallBack = new System.Drawing.Image.GetThumbnailImageAbort(ThumbnailCallback);
 
         //        System.Drawing.Image thumbNailImg = fullSizeImg.GetThumbnailImage(200, 200, dummyCallBack, IntPtr.Zero);
-                
+
         //        postagem.Imagem = ClasseAuxiliar.imageToByteArray(thumbNailImg);
         //    }
 
         [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Create(Noticia noticia)
+        public ActionResult Create(Produto produto)
         {
-  
+
             if (ModelState.IsValid)
             {
-
                 try
                 {
-                    noticia.PontoId = Convert.ToInt32(Session["PontoId"].ToString());
+                    produto.PontoId = Convert.ToInt32(Session["PontoId"].ToString());
 
                     HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
                     if (imagem != null)
                     {
+
                         Int32 length = imagem.ContentLength;
                         byte[] imagemByte = new byte[length];
                         imagem.InputStream.Read(imagemByte, 0, length);
-                        noticia.ImagemPequena = imagemByte;
+                        produto.ImagemPequena = imagemByte;
                     }
 
                     HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
@@ -104,7 +102,7 @@ namespace PontaoCanavial.Controllers
                         Int32 length = imagem2.ContentLength;
                         byte[] imagemByte = new byte[length];
                         imagem.InputStream.Read(imagemByte, 0, length);
-                        noticia.ImagemMedia = imagemByte;
+                        produto.ImagemMedia = imagemByte;
                     }
 
                     HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
@@ -113,46 +111,32 @@ namespace PontaoCanavial.Controllers
                         Int32 length = imagem3.ContentLength;
                         byte[] imagemByte = new byte[length];
                         imagem.InputStream.Read(imagemByte, 0, length);
-                        noticia.ImagemGrande = imagemByte;
+                        produto.ImagemGrande = imagemByte;
                     }
 
+                    produtoRepositorio.Add(produto);
+                    produtoRepositorio.Save();
 
-                    //HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
-                    //noticia.PontoId =  Convert.ToInt32(Session["PontoId"].ToString());
-                    //if (imagem!=null)
-                    //{
-
-                    //    Int32 length = imagem.ContentLength;
-                    //    byte[] imagemByte = new byte[length];
-                    //    imagem.InputStream.Read(imagemByte, 0, length);
-                    //    noticia.ImagemPequena= imagemByte;
-                    //}
-
-                    noticiaRepositorio.Add(noticia);
-                    noticiaRepositorio.Save();
-
-                    return RedirectToAction("../Noticia/Index");
+                    return RedirectToAction("../Produto/Index");
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
-                    ModelState.AddModelErrors(noticia.GetRuleViolations());
+                    //ModelState.AddModelErrors(produto.GetRuleViolations());
                     ModelState.AddModelError("erro", e.Message);
                 }
             }
 
-            return View(noticia);
+            return View(produto);
         }
 
         public ActionResult Edit(int id)
         {
-            Noticia noticia = noticiaRepositorio.GetNoticia(id);
+            Produto p = produtoRepositorio.GetProduto(id);
 
-            if (noticia != null)
-                return View(noticia);
+            if (p != null)
+                return View(p);
             return View("NaoEncontrado");
         }
 
     }
-
 }
-

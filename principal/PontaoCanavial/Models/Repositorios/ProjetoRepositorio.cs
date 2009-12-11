@@ -21,7 +21,6 @@ namespace PontaoCanavial.Models.Repositorios
         public Projeto GetProjeto(int id)
         {
             return db.Projeto.SingleOrDefault(d => d.Id == id);
-
         }
 
         public void Add(Projeto projeto)
@@ -38,11 +37,6 @@ namespace PontaoCanavial.Models.Repositorios
         {
             db.SubmitChanges();
         }
-
-        #endregion
-
-        #region IEventoRepositorio Members
-
 
         public Projeto ConsultarProjeto()
         {

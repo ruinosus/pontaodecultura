@@ -27,7 +27,7 @@
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
                   
-                %>
+                %></b>
                 <object id="FlashID2" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="679"
                     height="207">
                     <param name="movie" value="../../App_Themes/Pontao/banner_top.swf" />
@@ -107,7 +107,7 @@
                     <% 
                         } %>
                 </ul>
-                <img src="../../App_Themes/Pontao/images/menu2_bottom.gif" />
+                <img src="../../App_Themes/Pontao/images/menu2_bottom.gif" alt="Ponto" />
             </div>
             <asp:ContentPlaceHolder ID="contentMasterPontao" runat="server">
             </asp:ContentPlaceHolder>
@@ -179,10 +179,10 @@
                         em nosso site.</h2>
                     <p>
                         <label>
-                            <span>Nome:</span><input name="nome" type="text" id="Buscar" value="" size="22" /></label></p>
+                            <span>Nome:</span><input name="nome" type="text" id="Buscar1" value="" size="22" /></label></p>
                     <p>
                         <label>
-                            <span>Email:</span><input name="email" type="text" id="Buscar" value="" size="22" /></label></p>
+                            <span>Email:</span><input name="email" type="text" id="Buscar2" value="" size="22" /></label></p>
                     <p>
                         <input type="image" src="../../App_Themes/Pontao/images/assinar_btn.gif" align="right" /></p>
                     </form>

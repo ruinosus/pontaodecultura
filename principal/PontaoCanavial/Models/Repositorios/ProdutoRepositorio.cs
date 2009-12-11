@@ -39,7 +39,6 @@ namespace PontaoCanavial.Models.Repositorios
         {
             db.SubmitChanges();
         }
-
         #endregion
 
         

@@ -8,14 +8,6 @@
         <div id="projetos">
             <h1>
                 <img src="../../App_Themes/Pontao/images/title07.gif" alt="Projetos" /></h1>
-            <%--            <% PontaoCanavial.Controllers.GerenciarContaController gc = new PontaoCanavial.Controllers.GerenciarContaController();
-
-                //MembershipUser user = Membership.GetUser();  
-                Usuario usu = new Usuario();
-                usu.Nome = "Admin";
-                gc.Register("Admin", "elbertregis@gmail.com", "12345678", "12345678");                
-                 
-                %>--%>
             <% 
                 if (Model.Ponto.Projeto.Count > 0)
                     Response.Write("<ul>");
@@ -53,7 +45,7 @@
                     <%=Html.ActionLink(Model.Ponto.Noticia[i].Titulo, "NoticiaDetalhe", new { id = Model.Ponto.Noticia[i].Id })%></h2>
                 <h3>
                     <%= Model.Ponto.Noticia[i].DataCriacao %></h3>
-                <%if (Model.Ponto.Noticia[i].ImagemMedia != null)
+                <%if (Model.Ponto.Noticia[i].ImagemPequena != null)
                   {%>
                 <% 
                     var imgurl = Url.Action("ThumbImageNoticia", "Image",
@@ -62,13 +54,20 @@
                 <% }
                   
                 %>
-                <h3>
+                <p>
                     <%=Model.Ponto.Noticia[i].Preview %>
-                </h3>
+                </p>
             </span>
             <%  Response.Write("</li>");%>
             <%
-                Response.Write("</ul>");
+                if (i == 0)
+                {
+                    Response.Write("</ul>");
+                    Response.Write("<ul>");
+                }
+
+                if (i + 1 == Model.Ponto.Noticia.Count)
+                    Response.Write("</ul>");
             %>
             <% 
                 }
@@ -107,14 +106,24 @@
                 {
             %>
             <%Response.Write("<li>");%>
-                <img src="../../App_Themes/Pontao/images/foto_pro1.jpg" alt="foto" /><h2>
-                    <%= Model.Ponto.Produto[i].Nome%></h2>
+            <a href="#"><span>
+                <%if (Model.Ponto.Produto[i].ImagemPequena != null)
+                  {%>
+                <% 
+                    var imgurl = Url.Action("ThumbImageProduto", "Image",
+                          new { id = Model.Ponto.Produto[i].Id, width = 80, height = 120, tipo = "P" }); %>
+                <%=Html.Image("img", imgurl, "Imagem")%>
+                <% }
+                  
+                %>
+                <h2><%=Html.ActionLink(Model.Ponto.Produto[i].Nome, "ProdutoLista", new { id = Model.Ponto.Noticia[i].Id })%>
+                    </h2>
                 <p>
-                    <%= Model.Ponto.Produto[i].Categoria.Descricao%></p>
-            
-            <%  Response.Write("</li>");%>
-            <%  Response.Write("</ul>");%>
+                    <%= Model.Ponto.Produto[i].Categoria.Descricao %></p>
+            </span></a>
+            <%Response.Write("</li>");%>
             <%} %>
+            <%Response.Write("</ul>");%>
         </div>
     </div>
 </asp:Content>

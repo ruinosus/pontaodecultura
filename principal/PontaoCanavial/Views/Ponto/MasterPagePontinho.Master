@@ -6,7 +6,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Pont&atilde;o do Canavial</title>
+    <title>Pontão do Canavial</title>
     <link href="../../App_Themes/Pontinho/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -16,37 +16,32 @@
             <ul>
                 <li>
                     <p>
-                        <a href="#">Pont&atilde;o</a></p>
+                        <%=Html.ActionLink("Pontão","../Ponto/PontoDetalhe")%></p>
                 </li>
                 <li>
                     <p>
-                        <a href="#">Not&iacute;cias</a></p>
+                        <%=Html.ActionLink("Notícias","../Ponto/NoticiaLista")%></p>
                 </li>
                 <li>
                     <p>
-                        <a href="#">Eventos</a></p>
+                        <%=Html.ActionLink("Projetos","../Ponto/ProjetoLista")%></p>
                 </li>
                 <li>
                     <p>
-                        <a href="#">Galerias</a></p>
+                        <%=Html.ActionLink("Eventos","../Ponto/EventoLista")%></p>
                 </li>
                 <li>
                     <p>
-                        <a href="#">V&iacute;deos</a></p>
+                        <%=Html.ActionLink("Produtos","../Ponto/ProdutoLista")%></p>
                 </li>
                 <li>
                     <p>
-                        <a href="#">Produtos</a></p>
-                </li>
-                <li>
-                    <p>
-                        <a href="#">Contatos</a></p>
+                        <%=Html.ActionLink("Contato","../Ponto/ContatoDetalhe")%></p>
                 </li>
             </ul>
         </div>
         <div id="top">
-            
-                <%if (Model.Ponto == null)
+            <%if (Model.Ponto == null)
               {
                   Response.Redirect("NaoEncontrado", false);
               }      
@@ -61,43 +56,127 @@
                 <% }
                   
                 %>
-            <img src="../../App_Themes/Pontinho/images/alafia_banner.jpg" alt="Banner" />
+                <img src="../../App_Themes/Pontinho/images/alafia_banner.jpg" alt="Banner" />
         </div>
         <div id="content">
             <div id="coluna-1">
                 <ul>
-                    <li><a href="#">Alafi&aacute;</a></li>
-                    <li><a href="#">Apresenta&ccedil;&atilde;o</a></li>
-                    <li><a href="#">Projetos</a></li>
-                    <li><a href="#">Oficinas</a></li>
-                    <li><a href="#">Galerias</a></li>
-                    <li><a href="#">V&iacute;deos</a></li>
-                    <li><a href="#">Produtos</a></li>
-                    <li><a href="#">Contatos</a></li>
+                    <li><%=Html.ActionLink(Model.Ponto.Nome,"../Ponto/PontinhoDetalhe")%></li>
+                    <li><%=Html.ActionLink("Notícias","../Ponto/PontinhoNoticiaLista")%></li>
+                    <li><%=Html.ActionLink("Projetos","../Ponto/PontinhoProjetoLista")%></li>
+                    <li><%=Html.ActionLink("Galerias","../Ponto/PontinhoGaleriaLista")%></li>
+                    <li><%=Html.ActionLink("Eventos","../Ponto/PontinhoEventoLista")%></li>
+                    <li><%=Html.ActionLink("Produtos","../Ponto/PontinhoProdutoLista")%></li>
+                    <li><%=Html.ActionLink("Contato","../Ponto/PontinhoContatoDetalhe")%></li>
                 </ul>
                 <img src="../../App_Themes/Pontinho/images/menu2_bottom.gif" />
             </div>
             <asp:ContentPlaceHolder ID="contentMasterPontinho" runat="server">
-            
-            </asp:ContentPlaceHolder> 
+            </asp:ContentPlaceHolder>
+            <div id="coluna-3">
+                <div id="buscar">
+                    <h1>
+                        <img src="../../App_Themes/Pontinho/images/title01.gif" alt="Buscar" /></h1>
+                    <form id="form1" name="form1" method="post" action="">
+                    <p>
+                        <label>
+                            <input name="Buscar" type="text" id="Buscar" value="Buscar" /></label></p>
+                    <p>
+                        <label>
+                            <select name="diretorio" id="diretorio">
+                                <option>No Pontão do Canavial</option>
+                                <option selected="selected">No Alafiá</option>
+                                <option>No Boi de Macuca</option>
+                                <option>No Cinema de Animação</option>
+                                <option>No Engenho dos Maracatus</option>
+                                <option>No Estrela de Ouro</option>
+                                <option>No Ororubá</option>
+                                <option>No Poço Comprido</option>
+                                <option>No Retretas</option>
+                            </select></label></p>
+                    <p>
+                        <input type="image" src="../../App_Themes/Pontinho/images/buscar_btn.gif" align="right" /></p>
+                    </form>
+                </div>
+                <div id="enquete">
+                    <h1>
+                        <img src="../../App_Themes/Pontinho/images/title03.gif" alt="Buscar" /></h1>
+                    <form id="form2" name="form2" method="post" action="">
+                    <h2>
+                        Duis sit amet sem massa, nec porttitor nunc. Nullam varius venenatis semper?</h2>
+                    <ul>
+                        <li>
+                            <label>
+                                <input name="radio" type="radio" id="enquete1" value="enquete" checked="checked" />
+                                Nullam pharetra
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="radio" type="radio" id="enquete2" value="enquete" />
+                                Leo pulvinar
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="radio" type="radio" id="enquete3" value="enquete" />
+                                Mattis eget
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="radio" type="radio" id="enquete4" value="enquete" />
+                                Lorem ipsum
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                                <input name="radio" type="radio" id="enquete5" value="enquete" />
+                                Porro quisquam
+                            </label>
+                        </li>
+                    </ul>
+                    <p>
+                        <input type="image" src="../../App_Themes/Pontinho/images/votar_btn.gif" align="right" /></p>
+                    </form>
+                </div>
+                <div id="newsletter">
+                    <h1>
+                        <img src="../../App_Themes/Pontinho/images/title06.gif" alt="Buscar" /></h1>
+                    <form id="form3" name="form3" method="post" action="">
+                    <h2>
+                        Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura afiliados
+                        em nosso site.</h2>
+                    <p>
+                        <label>
+                            <span>Nome:</span><input name="nome" type="text" id="Buscar" value="" size="22" /></label></p>
+                    <p>
+                        <label>
+                            <span>Email:</span><input name="email" type="text" id="Buscar" value="" size="22" /></label></p>
+                    <p>
+                        <input type="image" src="../../App_Themes/Pontinho/images/assinar_btn.gif" align="right" /></p>
+                    </form>
+                </div>
+            </div>
             <div id="assinatura">
                 <h2>
-                    <a href="#">Sobre o Pont&atilde;o</a> | <a href="#">Galeria</a> | <a href="#">V&iacute;deos</a>
+                    <a href="#">Sobre o Pontão</a> | <a href="#">Galeria</a> | <a href="#">Vídeos</a>
                     | <a href="#">Mapa do Site</a> | <a href="#">Fale Conosco</a></h2>
                 <p>
-                    <span>Coordena&ccedil;&atilde;o:<br />
-                        <img src="../../App_Themes/Pontinho/images/logo01.gif" alt="Alonso Oliveira" /></span> <span>Patroc&iacute;nio:<br />
-                            <img src="../../App_Themes/Pontinho/images/logo02.gif" alt="Fundarpe" /><img src="../../App_Themes/Pontinho/images/logo03.gif" alt="Governo de Pernambuco" /></span>
-                    <span>Realiza&ccedil;&atilde;o:<br />
-                        <img src="../../App_Themes/Pontinho/images/logo04.gif" alt="Associação Reviva" /><img src="../../App_Themes/Pontinho/images/logo05.gif"
-                            alt="Cultura Viva" /><img src="../../App_Themes/Pontinho/images/logo06.jpg" alt="Ministério da Cultura" /><img
-                                src="../../App_Themes/Pontinho/images/logo07.gif" alt="Governo Federal" /></span>
+                    <span>Coordenação:<br />
+                        <img src="../../App_Themes/Pontinho/images/logo01.gif" alt="Alonso Oliveira" /></span>
+                    <span>Patrocínio:<br />
+                        <img src="../../App_Themes/Pontinho/images/logo02.gif" alt="Fundarpe" /><img src="../../App_Themes/Pontinho/images/logo03.gif"
+                            alt="Governo de Pernambuco" /></span> <span>Realização:<br />
+                                <img src="../../App_Themes/Pontinho/images/logo04.gif" alt="Associação Reviva" /><img
+                                    src="../../App_Themes/Pontinho/../../App_Themes/Pontinho/images/logo05.gif" alt="Cultura Viva" /><img
+                                        src="../../App_Themes/Pontinho/images/Logo06.jpg" alt="Ministério da Cultura" /><img
+                                            src="../../App_Themes/Pontinho/images/logo07.gif" alt="Governo Federal" /></span>
                 </p>
                 <h2>
-                    Copyright © 2009 Pont&atilde;o do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
+                    Copyright © 2009 Pontão do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
             </div>
         </div>
     </div>
 </body>
 </html>
-

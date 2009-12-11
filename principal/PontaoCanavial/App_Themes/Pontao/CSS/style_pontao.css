@@ -45,7 +45,8 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 #noticias li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
 #noticias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1em;}
 #noticias h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:.7em;}
-#noticias a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1em;}
 #noticias a:hover span p{ text-decoration:underline;}
 #noticias a:hover{ text-decoration:underline;}
 #noticias img{float:left; margin-right:4px;}
@@ -62,11 +63,10 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 #produtos{width:225px; height:330px; float:left;}
 #produtos h1{width:205px; padding-left:20px; height:50px; background:url(../images/title05_bg.gif) repeat-x #C60;}
 #produtos li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
-#produtos h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#C60; font-weight:bold; font-size:1.2em;}
-#produtos a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none;}
-#produtos a:hover span h2{ text-decoration:underline;}
-#produtos a:hover span p{ text-decoration:underline;}
-#produtos a:hover{ text-decoration:underline;}
+#produtos span h2 a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#C60; font-weight:bold; font-size:.6em;}
+#produtos p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#produtos span h2 a:hover{ text-decoration:underline; color:#C60;}
+#produtos span p a:hover{ text-decoration:underline;}
 #produtos img{float:left; margin-right:4px;}
 
 #coluna-3 {width:230px; height:860px; background-color:#FFF;}
@@ -103,8 +103,9 @@ body {background:#9cf url(../images/canavial_bottom.jpg) no-repeat center bottom
 #noticias-list h1{width:430px; padding-left:20px; height:50px; background:url(../images/title02_bg.gif) repeat-x #F00;}
 #noticias-list li{ width:430px; height:80px; background-color:#EEE; border:solid #FFF 2px; border-bottom:solid #666 2px; list-style:none; padding:5px; margin:2px 4px;}
 #noticias-list h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1.4em;}
-#noticias-list h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:1em;}
-#noticias-list a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias-list h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:.7em;}
+#noticias-list p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias-list a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#F00; font-weight:bold; font-size:1.4em;}
 #noticias-list a:hover span p{ text-decoration:underline;}
 #noticias-list a:hover{ text-decoration:underline;}
 #noticias-list img{float:left; margin-right:5px;}

@@ -49,29 +49,14 @@ namespace PontaoCanavial.Controllers
         IProjetoRepositorio projetoRepositorio;
 
         public ImageController()
-            : this(new PontoRepositorio(),
-                   new NoticiaRepositorio(),
-                   new ProdutoRepositorio(),
-                   new EventoRepositorio(),
-                   new GaleriaRepositorio(),
-                   new ProjetoRepositorio() )
+            : this(new PontoRepositorio(), new NoticiaRepositorio())
         {
         }
 
-        public ImageController(IPontoRepositorio pontoRepositorio,
-                               INoticiaRepositorio noticiaRepositorio,
-                               IProdutoRepositorio produtoRepositorio,
-                               IEventoRepositorio eventoRepositorio,
-                               IGaleriaRepositorio galeriaRepositorio,
-                               IProjetoRepositorio projetoRepositorio)
+        public ImageController(IPontoRepositorio pontoRepositorio, INoticiaRepositorio noticiaRepositorio)
         {
             this.pontoRepositorio = pontoRepositorio;
             this.noticiaRepositorio = noticiaRepositorio;
-            this.produtoRepositorio = produtoRepositorio;
-            this.eventoRepositorio = eventoRepositorio;
-            this.galeriaRepositorio = galeriaRepositorio;
-            this.projetoRepositorio = projetoRepositorio;
-
         }
 
         [AcceptVerbs(HttpVerbs.Get)]
@@ -81,12 +66,12 @@ namespace PontaoCanavial.Controllers
             Image i = null;
             try
             {
-                 byte[] tempImage = ponto.Logo.ToArray();
+                byte[] tempImage = ponto.Logo.ToArray();
                 //Stream. stream = new Stream();
 
 
 
-                 i = Image.FromStream(new MemoryStream(tempImage));            
+                i = Image.FromStream(new MemoryStream(tempImage));
                 return new ImageResult(i, width, height);
             }
             catch (Exception ex)
@@ -183,38 +168,38 @@ namespace PontaoCanavial.Controllers
 
 
         [AcceptVerbs(HttpVerbs.Get)]
-        public ActionResult ThumbImageNoticia(int id, int width, int height,string tipo)
+        public ActionResult ThumbImageNoticia(int id, int width, int height, string tipo)
         {
             var noticia = noticiaRepositorio.GetNoticia(id);
             Image i = null;
             try
             {
-                if (tipo.Equals("P")||tipo.Equals("p"))
+                if (tipo.Equals("P") || tipo.Equals("p"))
                 {
                     byte[] tempImage = noticia.ImagemPequena.ToArray();
 
                     i = Image.FromStream(new MemoryStream(tempImage));
-                    
+
                 }
                 else if (tipo.Equals("M") || tipo.Equals("m"))
                 {
                     byte[] tempImage = noticia.ImagemMedia.ToArray();
 
                     i = Image.FromStream(new MemoryStream(tempImage));
-                    
+
                 }
                 else if (tipo.Equals("G") || tipo.Equals("g"))
                 {
                     byte[] tempImage = noticia.ImagemGrande.ToArray();
 
                     i = Image.FromStream(new MemoryStream(tempImage));
-                    
-                }                
-                
+
+                }
+
                 //Stream. stream = new Stream();
 
                 return new ImageResult(i, width, height);
-                
+
             }
             catch (Exception ex)
             {
@@ -230,32 +215,34 @@ namespace PontaoCanavial.Controllers
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult ThumbImageProjeto(int id, int width, int height, string tipo)
         {
-            var projeto = projetoRepositorio.GetProjeto(id);
+            var projeto = projetoRepositorio.GetProjeto(4);
             Image i = null;
             try
             {
-                if (tipo.Equals("P") || tipo.Equals("p"))
+                if (projeto != null)
                 {
-                    byte[] tempImage = projeto.ImagemPequena.ToArray();
+                    if (tipo.Equals("P") || tipo.Equals("p"))
+                    {
+                        byte[] tempImage = projeto.ImagemPequena.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                        i = Image.FromStream(new MemoryStream(tempImage));
 
+                    }
+                    else if (tipo.Equals("M") || tipo.Equals("m"))
+                    {
+                        byte[] tempImage = projeto.ImagemMedia.ToArray();
+
+                        i = Image.FromStream(new MemoryStream(tempImage));
+
+                    }
+                    else if (tipo.Equals("G") || tipo.Equals("g"))
+                    {
+                        byte[] tempImage = projeto.ImagemGrande.ToArray();
+
+                        i = Image.FromStream(new MemoryStream(tempImage));
+
+                    }
                 }
-                else if (tipo.Equals("M") || tipo.Equals("m"))
-                {
-                    byte[] tempImage = projeto.ImagemMedia.ToArray();
-
-                    i = Image.FromStream(new MemoryStream(tempImage));
-
-                }
-                else if (tipo.Equals("G") || tipo.Equals("g"))
-                {
-                    byte[] tempImage = projeto.ImagemGrande.ToArray();
-
-                    i = Image.FromStream(new MemoryStream(tempImage));
-
-                }
-
                 //Stream. stream = new Stream();
 
                 return new ImageResult(i, width, height);
