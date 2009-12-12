@@ -8,7 +8,7 @@
             <h1>
                 <img src="../../App_Themes/Pontao/images/title03.gif" alt="Galerias" /></h1>
             <ul>
-                <%if (Model.Ponto.EPontao.HasValue)
+                <%if ((!Model.Ponto.EPontao.HasValue || !Model.Ponto.EPontao.Value))
                       if (Model.Ponto.Evento.Count > 0)
                 %>
                 <% foreach (PontaoCanavial.Models.VOs.Evento e in Model.Ponto.Evento)
@@ -18,7 +18,7 @@
                 <p>
                     <%=e.Data %></p>
                 <h2>
-                    <%=Html.ActionLink(e.Nome, "EventoDetalhe", new { id = e.Id })%></h2>
+                    <%=Html.ActionLink(e.Nome,"PontinhoEventoDetalhe", new { id = e.Id })%></h2>
                 <%Response.Write("</li>");%>
                 <%} %>
             </ul>

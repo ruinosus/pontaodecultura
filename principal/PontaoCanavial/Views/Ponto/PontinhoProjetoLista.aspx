@@ -8,14 +8,14 @@
             <h1>
                 <img src="../../App_Themes/Pontao/images/title07.gif" alt="Galerias" /></h1>
             <ul>
-                <%if (Model.Ponto.EPontao.HasValue)
+                <%if ((!Model.Ponto.EPontao.HasValue || !Model.Ponto.EPontao.Value))
                       if (Model.Ponto.Projeto.Count > 0)
                 %>
                 <% foreach (PontaoCanavial.Models.VOs.Projeto p in Model.Ponto.Projeto)
                    {
                 %>
                 <%Response.Write("<li>");%>
-                <%=Html.ActionLink(p.Nome, "ProjetoDetalhe", new { id = p.Id })%>
+                <%=Html.ActionLink(p.Nome, "PontinhoProjetoDetalhe", new { id = p.Id })%>
                 <%Response.Write("</li>");%>
                 <%} %>
             </ul>

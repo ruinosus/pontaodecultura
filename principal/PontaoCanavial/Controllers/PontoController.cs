@@ -118,7 +118,9 @@ namespace PontaoCanavial.Controllers
         //pontinho
         public ActionResult PontinhoNoticiaLista()
         {
-            return View("PontinhoNoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            PontoFormViewModel p = (PontoFormViewModel)Session["PontoFormViewModel"];
+
+            return View("PontinhoNoticiaLista", p);
         }
 
         public ActionResult ProjetoLista()

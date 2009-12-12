@@ -7,7 +7,7 @@
             <h1>
                 <img src="../../App_Themes/Pontao/images/title05.gif" alt="Produtos" /></h1>
             <ul>
-                <%if (Model.Ponto.EPontao.HasValue)
+                <%if ((!Model.Ponto.EPontao.HasValue || !Model.Ponto.EPontao.Value))
                       if (Model.Ponto.Produto.Count > 0)
                 %>
                 <% foreach (PontaoCanavial.Models.VOs.Produto p in Model.Ponto.Produto)
