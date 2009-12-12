@@ -33,7 +33,7 @@
     <p>
         <label for="Nome">
             Nome:</label>
-        <%= Html.TextBox("Titulo", Model.Nome)%>
+        <%= Html.TextBox("Nome", Model.Nome)%>
         <%= Html.ValidationMessage("Nome", "*")%>
     </p>
     <p>

@@ -8,6 +8,7 @@ using System.IO;
 using PontaoCanavial.Models.Repositorios;
 using PontaoCanavial.Models.Repositorios.Interfaces;
 using PontaoCanavial.Models.VOs;
+using PontaoCanavial.Helpers;
 
 namespace PontaoCanavial.Controllers
 {
@@ -96,21 +97,21 @@ namespace PontaoCanavial.Controllers
                     }
 
                     HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
-                    if (imagem != null)
+                    if (imagem2 != null)
                     {
 
                         Int32 length = imagem2.ContentLength;
                         byte[] imagemByte = new byte[length];
-                        imagem.InputStream.Read(imagemByte, 0, length);
+                        imagem2.InputStream.Read(imagemByte, 0, length);
                         produto.ImagemMedia = imagemByte;
                     }
 
                     HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
-                    if (imagem != null)
+                    if (imagem3 != null)
                     {
                         Int32 length = imagem3.ContentLength;
                         byte[] imagemByte = new byte[length];
-                        imagem.InputStream.Read(imagemByte, 0, length);
+                        imagem3.InputStream.Read(imagemByte, 0, length);
                         produto.ImagemGrande = imagemByte;
                     }
 
@@ -121,7 +122,7 @@ namespace PontaoCanavial.Controllers
                 }
                 catch (Exception e)
                 {
-                    //ModelState.AddModelErrors(produto.GetRuleViolations());
+                    ModelState.AddModelErrors(produto.GetRuleViolations());
                     ModelState.AddModelError("erro", e.Message);
                 }
             }

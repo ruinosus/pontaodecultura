@@ -7,7 +7,7 @@ using System.Data.Linq;
 
 namespace PontaoCanavial.Models.VOs
 {
-    [Bind(Include = "Id,PontoId,CategoriaId,Nome,Imagem,Descricao")]
+    [Bind(Include = "PontoId,CategoriaId,Nome,ImagemPequena, ImagemMedia,ImagemGrande,Descricao")]
     public partial class Produto
     {
 
