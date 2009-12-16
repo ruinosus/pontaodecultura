@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using PontaoCanavial.Models.Repositorios.Interfaces;
 using PontaoCanavial.Models.VOs;
+using PontaoCanavial.Controllers;
 
 namespace PontaoCanavial.Models.Repositorios
 {
@@ -11,6 +12,10 @@ namespace PontaoCanavial.Models.Repositorios
     {
         PontaoCanavialDataContext db = new PontaoCanavialDataContext();
 
+        IProjetoRepositorio projetoRep = new ProjetoRepositorio();
+        IEventoRepositorio eventoRep = new EventoRepositorio();
+        IGaleriaRepositorio galeriaRep = new GaleriaRepositorio();
+        INoticiaRepositorio noticiaRep = new NoticiaRepositorio();
         #region Métodos da Interface
 
         public IQueryable<Ponto> ConsultarTodos(bool consultarApenasPontinhos)
@@ -19,13 +24,28 @@ namespace PontaoCanavial.Models.Repositorios
                 return db.Ponto;
 
             return from p in db.Ponto
-                   where p.EPontao == false || p.EPontao==null
+                   where p.EPontao == false || p.EPontao == null
                    select p;
         }
 
         public Ponto ConsultarPorNomeIdentificador(string nomeIdentificador)
         {
             return db.Ponto.SingleOrDefault(d => d.NomeIdentificador.Equals(nomeIdentificador));
+        }
+
+        public PontoFormViewModel Buscar(PontoFormViewModel pfvm, string valor, int id)
+        {
+            pfvm.NoticiasBusca = new List<Noticia>();
+            pfvm.ProjetosBusca = new List<Projeto>();
+            pfvm.EventosBusca = new List<Evento>();
+            pfvm.GaleriasBusca = new List<Galeria>();
+
+            pfvm.NoticiasBusca = noticiaRep.ConsultarTodos().ToList();
+            pfvm.ProjetosBusca = projetoRep.ConsultarTodos().ToList();
+            pfvm.EventosBusca = eventoRep.ConsultarTodos().ToList();
+            pfvm.GaleriasBusca = galeriaRep.ConsultarTodos().ToList();
+
+            return pfvm;
         }
 
         public Ponto ConsultarPontao()

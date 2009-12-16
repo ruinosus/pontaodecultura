@@ -78,6 +78,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\ControllerHelpers.cs" />
+    <Compile Include="Helpers\FlashHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PaginatedList.cs" />
     <Compile Include="Models\ISmtpClient.cs" />
@@ -332,6 +333,7 @@
     <Content Include="Views\Noticia\Edit.aspx" />
     <Content Include="Views\Noticia\Index.aspx" />
     <Content Include="Views\Noticia\NoticiaForm.ascx" />
+    <Content Include="Views\Ponto\BuscaLista.aspx" />
     <Content Include="Views\Ponto\EventoDetalhe.aspx" />
     <Content Include="Views\Ponto\EventoLista.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />

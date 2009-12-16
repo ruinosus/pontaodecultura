@@ -69,7 +69,7 @@
                     <li><%=Html.ActionLink("Produtos","../Ponto/PontinhoProdutoLista")%></li>
                     <li><%=Html.ActionLink("Contato","../Ponto/PontinhoContatoDetalhe")%></li>
                 </ul>
-                <img src="../../App_Themes/Pontinho/images/menu2_bottom.gif" />
+                <img src="../../App_Themes/Pontinho/images/menu2_bottom.gif" alt="Pontinho"/>
             </div>
             <asp:ContentPlaceHolder ID="contentMasterPontinho" runat="server">
             </asp:ContentPlaceHolder>
@@ -98,55 +98,47 @@
                         <input type="image" src="../../App_Themes/Pontinho/images/buscar_btn.gif" align="right" /></p>
                     </form>
                 </div>
-                <div id="enquete">
+                  <div id="eventos">
                     <h1>
-                        <img src="../../App_Themes/Pontinho/images/title03.gif" alt="Buscar" /></h1>
-                    <form id="form2" name="form2" method="post" action="">
-                    <h2>
-                        Duis sit amet sem massa, nec porttitor nunc. Nullam varius venenatis semper?</h2>
-                    <ul>
-                        <li>
-                            <label>
-                                <input name="radio" type="radio" id="enquete1" value="enquete" checked="checked" />
-                                Nullam pharetra
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input name="radio" type="radio" id="enquete2" value="enquete" />
-                                Leo pulvinar
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input name="radio" type="radio" id="enquete3" value="enquete" />
-                                Mattis eget
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input name="radio" type="radio" id="enquete4" value="enquete" />
-                                Lorem ipsum
-                            </label>
-                        </li>
-                        <li>
-                            <label>
-                                <input name="radio" type="radio" id="enquete5" value="enquete" />
-                                Porro quisquam
-                            </label>
-                        </li>
-                    </ul>
-                    <p>
-                        <input type="image" src="../../App_Themes/Pontinho/images/votar_btn.gif" align="right" /></p>
-                    </form>
+                        <img src="../../App_Themes/Pontao/images/title03.gif" alt="Buscar" /></h1>
+                    <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="230"
+                        height="280">
+                        <param name="movie" value="../../App_Themes/Pontao/flasheventos.swf" />
+                        <param name="quality" value="high" />
+                        <param name="wmode" value="opaque" />
+                        <param name="swfversion" value="9.0.45.0" />
+                        <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+                        <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
+                        <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+                        <!--[if !IE]>-->
+                        <object type="application/x-shockwave-flash" data="../../App_Themes/Pontao/flasheventos.swf"
+                            width="230" height="280">
+                            <!--<![endif]-->
+                            <param name="quality" value="high" />
+                            <param name="wmode" value="opaque" />
+                            <param name="swfversion" value="9.0.45.0" />
+                            <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
+                            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+                            <div>
+                                <h4>
+                                    Content on this page requires a newer version of Adobe Flash Player.</h4>
+                                <p>
+                                    <a href="http://www.adobe.com/go/getflashplayer">
+                                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+                                            alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+                            </div>
+                            <!--[if !IE]>-->
+                        </object>
+                        <!--<![endif]-->
+                    </object>
                 </div>
                 <div id="newsletter">
                     <h1>
                         <img src="../../App_Themes/Pontinho/images/title06.gif" alt="Buscar" /></h1>
                     <form id="form3" name="form3" method="post" action="">
                     <h2>
-                        Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura afiliados
-                        em nosso site.</h2>
+                        Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura 
+                        afiliados em nosso site.</h2>
                     <p>
                         <label>
                             <span>Nome:</span><input name="nome" type="text" id="Buscar" value="" size="22" /></label></p>

@@ -72,12 +72,36 @@ namespace PontaoCanavial.Controllers
             Image i = null;
             try
             {
-                byte[] tempImage = ponto.Logo.ToArray();
+                byte[] tempLogo = ponto.Logo.ToArray();
+                //Stream. stream = new Stream();
+
+                i = Image.FromStream(new MemoryStream(tempLogo));
+                return new ImageResult(i, width, height);
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
+
+        [AcceptVerbs(HttpVerbs.Get)]
+        public ActionResult ThumbImagePontoCabecalho(int id, int width, int height)
+        {
+            var ponto = pontoRepositorio.GetPonto(id);
+            Image i = null;
+            try
+            {
+                byte[] tempCabecalho = ponto.Cabecalho.ToArray();
                 //Stream. stream = new Stream();
 
 
 
-                i = Image.FromStream(new MemoryStream(tempImage));
+                i = Image.FromStream(new MemoryStream(tempCabecalho));
                 return new ImageResult(i, width, height);
             }
             catch (Exception ex)
@@ -107,16 +131,16 @@ namespace PontaoCanavial.Controllers
                 }
                 else if (tipo.Equals("M") || tipo.Equals("m"))
                 {
-                    byte[] tempImage = ponto.ImagemMedia.ToArray();
+                    byte[] tempImage2 = ponto.ImagemMedia.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage2));
 
                 }
                 else if (tipo.Equals("G") || tipo.Equals("g"))
                 {
-                    byte[] tempImage = ponto.ImagemGrande.ToArray();
+                    byte[] tempImage3 = ponto.ImagemGrande.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage3));
 
                 }
 
@@ -139,36 +163,17 @@ namespace PontaoCanavial.Controllers
         [AcceptVerbs(HttpVerbs.Post)]
         public void SaveImagePonto()
         {
-            //for (int i = 0; i < Request.Files.Count; i++)
-            //{
-            //    var file = this.Request.Files[i];
-            //    //string savedFileName = System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Uploads");
-            //    //savedFileName = System.IO.Path.Combine(savedFileName, System.IO.Path.GetFileName(file.FileName));
-            //    //file.SaveAs(savedFileName);
-            //    //Response.Write("OK");
-            //    ponto.Logo = new byte[file.ContentLength];
-            //    //HttpPostedFileBase arquivo = Request.Files[i].InputStream;
-
-            //    //Suas validações ......
-
-            //    //Salva o arquivo
-            //    //if (arquivo.ContentLength > 0)
-            //    //{ }
-            //}
-
             HttpPostedFileBase file = this.Request.Files[0];
             Int32 length = file.ContentLength;
             //This may seem odd, but the fun part is that if
             //  I didn't have a temp image to read into, I would
             //  get memory issues for some reason.  Something to do
             //  with reading straight into the object's ActualImage property.
-            byte[] tempImage = new byte[length];
-            file.InputStream.Read(tempImage, 0, length);
+            byte[] tempLogo = new byte[length];
+            file.InputStream.Read(tempLogo, 0, length);
             //newImage.ActualImage = tempImage;
 
-            Session.Add("ImagemLogo", tempImage);
-            //ponto.Logo = 
-            //ViewData["ImagemLogo"] = new byte[file.ContentLength];
+            Session.Add("ImagemLogo", tempLogo);
             RedirectToAction("Ponto/Create");
         }
 
@@ -189,16 +194,16 @@ namespace PontaoCanavial.Controllers
                 }
                 else if (tipo.Equals("M") || tipo.Equals("m"))
                 {
-                    byte[] tempImage = noticia.ImagemMedia.ToArray();
+                    byte[] tempImage2 = noticia.ImagemMedia.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage2));
 
                 }
                 else if (tipo.Equals("G") || tipo.Equals("g"))
                 {
-                    byte[] tempImage = noticia.ImagemGrande.ToArray();
+                    byte[] tempImage3 = noticia.ImagemGrande.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage3));
 
                 }
 
@@ -236,16 +241,16 @@ namespace PontaoCanavial.Controllers
                     }
                     else if (tipo.Equals("M") || tipo.Equals("m"))
                     {
-                        byte[] tempImage = projeto.ImagemMedia.ToArray();
+                        byte[] tempImage2 = projeto.ImagemMedia.ToArray();
 
-                        i = Image.FromStream(new MemoryStream(tempImage));
+                        i = Image.FromStream(new MemoryStream(tempImage2));
 
                     }
                     else if (tipo.Equals("G") || tipo.Equals("g"))
                     {
-                        byte[] tempImage = projeto.ImagemGrande.ToArray();
+                        byte[] tempImage3 = projeto.ImagemGrande.ToArray();
 
-                        i = Image.FromStream(new MemoryStream(tempImage));
+                        i = Image.FromStream(new MemoryStream(tempImage3));
 
                     }
                 }
@@ -281,16 +286,16 @@ namespace PontaoCanavial.Controllers
                 }
                 else if (tipo.Equals("M") || tipo.Equals("m"))
                 {
-                    byte[] tempImage = evento.ImagemMedia.ToArray();
+                    byte[] tempImage2 = evento.ImagemMedia.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage2));
 
                 }
                 else if (tipo.Equals("G") || tipo.Equals("g"))
                 {
-                    byte[] tempImage = evento.ImagemGrande.ToArray();
+                    byte[] tempImage3 = evento.ImagemGrande.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage3));
 
                 }
 
@@ -326,16 +331,16 @@ namespace PontaoCanavial.Controllers
                 }
                 else if (tipo.Equals("M") || tipo.Equals("m"))
                 {
-                    byte[] tempImage = produto.ImagemMedia.ToArray();
+                    byte[] tempImage2 = produto.ImagemMedia.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage2));
 
                 }
                 else if (tipo.Equals("G") || tipo.Equals("g"))
                 {
-                    byte[] tempImage = produto.ImagemGrande.ToArray();
+                    byte[] tempImage3 = produto.ImagemGrande.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage3));
 
                 }
 
@@ -371,16 +376,16 @@ namespace PontaoCanavial.Controllers
                 }
                 else if (tipo.Equals("M") || tipo.Equals("m"))
                 {
-                    byte[] tempImage = galeria.ImagemMedia.ToArray();
+                    byte[] tempImage2 = galeria.ImagemMedia.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage2));
 
                 }
                 else if (tipo.Equals("G") || tipo.Equals("g"))
                 {
-                    byte[] tempImage = galeria.ImagemGrande.ToArray();
+                    byte[] tempImage3 = galeria.ImagemGrande.ToArray();
 
-                    i = Image.FromStream(new MemoryStream(tempImage));
+                    i = Image.FromStream(new MemoryStream(tempImage3));
 
                 }
 
