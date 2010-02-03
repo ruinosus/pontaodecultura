@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 30.875" name="PontaoCanavial">
+  <DataContextMoniker Name="/PontaoCanavialDataContext" />
+  <nestedChildShapes>
+    <classShape Id="41abfaa5-0cad-468b-bcc3-c5577c3bd455" absoluteBounds="3.5, 16.25, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Banner" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dfd27e07-09ff-42d7-a828-c327340b746e" absoluteBounds="3.515, 16.71, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="517f2c51-d0e6-479b-abdd-5750e8f5aa09" absoluteBounds="3.5, 11.625, 2, 1.7708968098958344">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Video" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66274545-b93b-4cfe-926e-d8e47b87c569" absoluteBounds="3.515, 12.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f73d90c7-82ec-42d0-ac29-658c42ca6e20" absoluteBounds="3.75, 3.625, 2, 1.1939925130208344">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Categoria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9c3edffa-dce3-4bd2-ac6b-16291deb6460" absoluteBounds="3.765, 4.0850000000000009, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0cfc4d34-5c5f-40f2-a8b2-5a58ace8f6c1" absoluteBounds="3.5, 28.25, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Evento" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe36678f-7f10-4e1c-b8a7-9c5c375f3cae" absoluteBounds="3.515, 28.71, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8d90a608-a2aa-4eab-8f3f-3c0dcdb3aa53" absoluteBounds="3.5, 19, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Galeria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c9e27f85-df9a-4753-850c-cacdd68f1c03" absoluteBounds="3.515, 19.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="da878cf7-e1f0-4636-94f2-ac715b9db32f" absoluteBounds="6.25, 19, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Imagem" />
+      <nestedChildShapes>
+        <elementListCompartment Id="38d3fbe6-e268-47a5-97e4-3d8aec47e4cd" absoluteBounds="6.265, 19.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5515b1d1-39d8-4fa3-9535-384241c9e6d3" absoluteBounds="3.5, 6.375, 2, 1.3862939453125005">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Newsletter" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5058a05c-3ffc-4fcf-884c-f6b7771b3961" absoluteBounds="3.5150000005960464, 6.83500000089407, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="21cb2d1e-b41c-4772-858a-c7828f9d17c0" absoluteBounds="6.5, 6.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Noticia" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46dccee3-6b26-4096-93a7-abf588fe6dfa" absoluteBounds="6.515, 7.2100000000000009, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="51d84530-be9c-49cd-97e1-1a6c0491e996" absoluteBounds="0.75, 12.375, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Ponto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96d3b20d-4066-4eea-8d28-1ab2a0a58c3e" absoluteBounds="0.76500000059604645, 12.83500000089407, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4e677263-89a8-4f0a-a461-0f6412c49398" absoluteBounds="6.5, 13, 2, 2.3478011067708344">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Produto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f038c952-88c2-4de1-9951-c0ec32a3cb82" absoluteBounds="6.515, 13.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2caa56fc-3655-4270-b705-cfc0239453a6" absoluteBounds="3.5, 21.875, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Projeto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c49f94d6-012b-49e7-a05a-b7dc5e78d8c1" absoluteBounds="3.515, 22.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="067484a1-5757-4459-9fce-09eca45795a1" absoluteBounds="3.75, 9.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/Usuario" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e127dde2-3a2c-4991-81c9-616758693470" absoluteBounds="3.765, 9.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bfbb60ae-93de-43f1-9ba3-0ceaab5b156c" absoluteBounds="6.5, 10.5, 2, 1.3862939453124987">
+      <DataClassMoniker Name="/PontaoCanavialDataContext/UsuarioPonto" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b7083b7c-092f-4bac-9929-301f6711e66b" absoluteBounds="6.515, 10.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.5 : 20.0777498372396); (6.25 : 20.0777498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Galeria/Galeria_Imagem" />
+      <nodes>
+        <classShapeMoniker Id="8d90a608-a2aa-4eab-8f3f-3c0dcdb3aa53" />
+        <classShapeMoniker Id="da878cf7-e1f0-4636-94f2-ac715b9db32f" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 15.8766097005208); (1.75 : 17.2315991210938); (2.19791916666667 : 17.2315991210938 : JumpStart); (2.36458583333333 : 17.2315991210938 : JumpEnd); (2.46354541666667 : 17.2315991210938 : JumpStart); (2.63021208333333 : 17.2315991210938 : JumpEnd); (3.5 : 17.2315991210938)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Banner" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="41abfaa5-0cad-468b-bcc3-c5577c3bd455" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 12.885448405128); (3.5 : 12.885448405128)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Video" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="517f2c51-d0e6-479b-abdd-5750e8f5aa09" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 15.8766097005208); (2.2812525 : 29.4239005533854); (3.5 : 29.4239005533854)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Evento" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="0cfc4d34-5c5f-40f2-a8b2-5a58ace8f6c1" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 15.8766097005208); (1.2187475 : 20.0777498372396); (2.19791916666667 : 20.0777498372396 : JumpStart); (2.36458583333333 : 20.0777498372396 : JumpEnd); (2.46354541666667 : 20.0777498372396 : JumpStart); (2.63021208333333 : 20.0777498372396 : JumpEnd); (3.5 : 20.0777498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Galeria" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="8d90a608-a2aa-4eab-8f3f-3c0dcdb3aa53" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.75 : 12.375); (1.75 : 7.06814697265625); (3.5 : 7.06814697265625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Newsletter" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="5515b1d1-39d8-4fa3-9535-384241c9e6d3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.2812525 : 12.375); (2.2812525 : 8.65309895846372); (6.04166666666667 : 8.65309895846372 : JumpStart); (6.20833333333333 : 8.65309895846372 : JumpEnd); (6.5 : 8.65309895846372)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Noticia" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="21cb2d1e-b41c-4772-858a-c7828f9d17c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 4.81899251302083); (6.125 : 5.19399251302083); (6.125 : 14.1739005533854); (6.5 : 14.1739005533854)]" fixedFrom="NotFixed" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Categoria/Categoria_Produto" />
+      <nodes>
+        <classShapeMoniker Id="f73d90c7-82ec-42d0-ac29-658c42ca6e20" />
+        <classShapeMoniker Id="4e677263-89a8-4f0a-a461-0f6412c49398" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.75 : 14.8233508300781); (6.5 : 14.8233508300781)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Produto" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="4e677263-89a8-4f0a-a461-0f6412c49398" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.54687875 : 15.8766097005208); (2.54687875 : 22.9527498372396); (3.5 : 22.9527498372396)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_Projeto" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="2caa56fc-3655-4270-b705-cfc0239453a6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.65625 : 9.5); (5.65625 : 9.09900396490894); (6.04166666666667 : 9.09900396490894 : JumpStart); (6.20833333333333 : 9.09900396490894 : JumpEnd); (6.5 : 9.09900396490894)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Usuario/Usuario_Noticia" />
+      <nodes>
+        <classShapeMoniker Id="067484a1-5757-4459-9fce-09eca45795a1" />
+        <classShapeMoniker Id="21cb2d1e-b41c-4772-858a-c7828f9d17c0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.2187475 : 12.375); (1.2187475 : 11.2556469726563); (1.66666666666667 : 11.2556469726563 : JumpStart); (1.83333333333333 : 11.2556469726563 : JumpEnd); (2.19791916666667 : 11.2556469726563 : JumpStart); (2.36458583333333 : 11.2556469726563 : JumpEnd); (6.04166666666667 : 11.2556469726563 : JumpStart); (6.20833333333333 : 11.2556469726563 : JumpEnd); (6.5 : 11.2556469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Ponto/Ponto_UsuarioPonto" />
+      <nodes>
+        <classShapeMoniker Id="51d84530-be9c-49cd-97e1-1a6c0491e996" />
+        <classShapeMoniker Id="bfbb60ae-93de-43f1-9ba3-0ceaab5b156c" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.75 : 10.6931469726563); (6.04166666666667 : 10.6931469726563 : JumpStart); (6.20833333333333 : 10.6931469726563 : JumpEnd); (6.5 : 10.6931469726563)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PontaoCanavialDataContext/Usuario/Usuario_UsuarioPonto" />
+      <nodes>
+        <classShapeMoniker Id="067484a1-5757-4459-9fce-09eca45795a1" />
+        <classShapeMoniker Id="bfbb60ae-93de-43f1-9ba3-0ceaab5b156c" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

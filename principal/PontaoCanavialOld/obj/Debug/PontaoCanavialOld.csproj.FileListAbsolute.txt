@@ -1,0 +1,8 @@
+E:\Projetos\principal\PontaoCanavial\bin\PontaoCanavial.dll
+E:\Projetos\principal\PontaoCanavial\bin\PontaoCanavial.pdb
+E:\Projetos\principal\PontaoCanavial\bin\MvcMembership.dll
+E:\Projetos\principal\PontaoCanavial\bin\PagedList.dll
+E:\Projetos\principal\PontaoCanavial\bin\MvcMembership.pdb
+E:\Projetos\principal\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
+E:\Projetos\principal\PontaoCanavial\obj\Debug\PontaoCanavial.dll
+E:\Projetos\principal\PontaoCanavial\obj\Debug\PontaoCanavial.pdb

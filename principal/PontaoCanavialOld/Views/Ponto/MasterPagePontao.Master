@@ -1,0 +1,224 @@
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+
+<%@ Import Namespace="PontaoCanavial.Models.VOs" %>
+<%@ Import Namespace="PontaoCanavial.Helpers" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Pont&atilde;o do Canavial</title>
+    <link href="../../App_Themes/Pontao/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../App_Themes/Pontao/Scripts/swfobject_modified.js" type="text/javascript"></script>
+
+</head>
+<body>
+    <div id="root">
+        <div id="top">
+            <%if (Model.Ponto == null)
+              {
+                  Response.Redirect("NaoEncontrado", false);
+              }      
+            %>
+            <b>
+                <%if (Model.Ponto.Logo != null)
+                  {%>
+                <% 
+                    var imgurl = Url.Action("ThumbImagePonto", "Image",
+                          new { id = Model.Ponto.Id, width = 231, height = 207 }); %>
+                <%=Html.Image("img", imgurl, "Imagem")%>
+                <% }
+                  
+                %></b>
+            <object id="FlashID2" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="679"
+                height="207">
+                <param name="movie" value="../../App_Themes/Pontao/banner_top.swf" />
+                <param name="quality" value="high" />
+                <param name="wmode" value="opaque" />
+                <param name="swfversion" value="6.0.65.0" />
+                <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+                <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
+                <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+                <!--[if !IE]>-->
+                <object type="application/x-shockwave-flash" data="../../App_Themes/Pontao/banner_top.swf"
+                    width="679" height="207">
+                    <!--<![endif]-->
+                    <param name="quality" value="high" />
+                    <param name="wmode" value="opaque" />
+                    <param name="swfversion" value="6.0.65.0" />
+                    <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
+                    <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+                    <div>
+                        <h4>
+                            Content on this page requires a newer version of Adobe Flash Player.</h4>
+                        <p>
+                            <a href="http://www.adobe.com/go/getflashplayer">
+                                <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+                                    alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+                    </div>
+                    <!--[if !IE]>-->
+                </object>
+                <!--<![endif]-->
+            </object>
+        </div>
+        <div id="menu-1">
+            <img src="../../App_Themes/Pontao/images/pontao_bar.jpg" alt="Pontos de Cultura" />
+            <ul>
+                <li>
+                    <p>
+                        <%=Html.ActionLink("Pontão","../Ponto/PontoDetalhe")%></p>
+                </li>
+                <li>
+                    <p>
+                        <%=Html.ActionLink("Noticias","../Ponto/NoticiaLista")%></p>
+                </li>
+                <li>
+                    <p>
+                        <%=Html.ActionLink("Projetos","../Ponto/ProjetoLista")%></p>
+                </li>
+                <li>
+                    <p>
+                        <%=Html.ActionLink("Eventos","../Ponto/EventoLista")%></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Galerias</a></p>
+                </li>
+                <li>
+                    <p>
+                        <%=Html.ActionLink("Produtos","../Ponto/ProdutoLista")%></p>
+                </li>
+                <li>
+                    <p>
+                        <a href="#">Contatos</a></p>
+                </li>
+            </ul>
+        </div>
+        <div id="content">
+            <div id="coluna-1">
+                <ul>
+                    <%if (Model.Ponto.EPontao.HasValue)
+                          if (Model.Ponto.EPontao.Value)
+                    %>
+                    <% foreach (Ponto p in Model.Pontinhos)
+                       {
+                    %>
+                    <%Response.Write("<li>");%>
+                    <%=     Html.ActionLink(p.Nome, "Index", new { nomeIdentificador = p.NomeIdentificador })%>
+                    <%  Response.Write("</li>");%>
+                    <% 
+                        } %>
+                </ul>
+                <img src="../../App_Themes/Pontao/images/menu2_bottom.gif" alt="Ponto" />
+            </div>
+            <asp:ContentPlaceHolder ID="contentMasterPontao" runat="server">
+            </asp:ContentPlaceHolder>
+            <div id="coluna-3">
+                <div id="buscar">
+                    <h1>
+                        <img src="../../App_Themes/Pontao/images/title01.gif" alt="Buscar" /></h1>
+                    <% using (Html.BeginForm("BuscaLista", "Ponto", FormMethod.Post))
+   { %>
+<fieldset>
+                    <p>
+                        <label>
+                            <input name="Buscar" type="text" id="Buscar" value="Buscar" /></label></p>
+                    <p>
+                        <label>
+                        <%=Html.DropDownList("comboBusca",Model.PontosBusca) %>
+                            </label></p>
+                    <p>
+                     <input type="submit" value="Buscar" align="right" />
+                        <%--<input type="image" src="../../App_Themes/Pontao/images/buscar_btn.gif" onclick="javascript:alert('teu cu');"
+                            align="right" />--%>
+                    </p>
+     </fieldset>
+<% } %>
+                </div>
+                <div id="eventos">
+                    <h1>
+                        <img src="../../App_Themes/Pontao/images/title03.gif" alt="Buscar" /></h1>
+                    <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="230"
+                        height="280">
+                        <param name="movie" value="../../App_Themes/Pontao/flasheventos.swf" />
+                        <param name="quality" value="high" />
+                        <param name="wmode" value="opaque" />
+                        <param name="swfversion" value="9.0.45.0" />
+                        <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
+                        <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
+                        <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
+                        <!--[if !IE]>-->
+                        <object type="application/x-shockwave-flash" data="../../App_Themes/Pontao/flasheventos.swf"
+                            width="230" height="280">
+                            <!--<![endif]-->
+                            <param name="quality" value="high" />
+                            <param name="wmode" value="opaque" />
+                            <param name="swfversion" value="9.0.45.0" />
+                            <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
+                            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
+                            <div>
+                                <h4>
+                                    Content on this page requires a newer version of Adobe Flash Player.</h4>
+                                <p>
+                                    <a href="http://www.adobe.com/go/getflashplayer">
+                                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
+                                            alt="Get Adobe Flash player" width="112" height="33" /></a></p>
+                            </div>
+                            <!--[if !IE]>-->
+                        </object>
+                        <!--<![endif]-->
+                    </object>
+                </div>
+                <div id="newsletter">
+                    <h1>
+                        <img src="../../App_Themes/Pontao/images/title06.gif" alt="Buscar" /></h1>
+                    <form id="form3" name="form3" method="post" action="">
+                    <h2>
+                        Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura afiliados
+                        em nosso site.</h2>
+                    <p>
+                        <label>
+                            <span>Nome:</span><input name="nome" type="text" id="Buscar1" value="" size="22" /></label></p>
+                    <p>
+                        <label>
+                            <span>Email:</span><input name="email" type="text" id="Buscar2" value="" size="22" /></label></p>
+                    <p>
+                        <input type="image" src="../../App_Themes/Pontao/images/assinar_btn.gif" align="right" /></p>
+                    </form>
+                </div>
+            </div>
+            <div id="assinatura">
+                <h2>
+                    <a href="#">Sobre o Pont&atilde;o</a> | <a href="#">Galeria</a> | <a href="#">V&iacute;deos</a>
+                    | <a href="#">Mapa do Site</a> | <a href="#">Fale Conosco</a></h2>
+                <p>
+                    <span>Coordena&ccedil;&atilde;o:<br />
+                        <img src="../../App_Themes/Pontao/images/logo01.gif" alt="Alonso Oliveira" /></span>
+                    <span>Patroc&iacute;nio:<br />
+                        <a href="http://www.fundarpe.pe.gov.br/" target="_blank">
+                            <img src="../../App_Themes/Pontao/images/logo02.gif" alt="Fundarpe" /></a><a href="http://www.pe.gov.br/"
+                                target="_blank"><img src="../../App_Themes/Pontao/images/logo03.gif" alt="Governo de Pernambuco" /></a></span>
+                    <span>Realiza&ccedil;&atilde;o:<br />
+                        <a href="http://www.associacaoreviva.org.br/" target="_blank">
+                            <img src="../../App_Themes/Pontao/images/logo04.gif" alt="Associação Reviva" /></a><a
+                                href="http://www.cultura.gov.br/cultura_viva/" target="_blank"><img src="../../App_Themes/Pontao/images/logo05.gif"
+                                    alt="Cultura Viva" /></a><a href="http://www.cultura.gov.br/" target="_blank"><img
+                                        src="../../App_Themes/Pontao/images/logo06.jpg" alt="Ministério da Cultura" /></a><a
+                                            href="http://www.brasil.gov.br/" target="_blank"><img src="../../App_Themes/Pontao/images/logo07.gif"
+                                                alt="Governo Federal" /></a></span>
+                </p>
+                <h2>
+                    Copyright © 2009 Pont&atilde;o do Canavial. TODOS OS DIREITOS RESERVADOS.</h2>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+<!--
+        swfobject.registerObject("FlashID");
+        swfobject.registerObject("FlashID2");
+//-->
+    </script>
+
+</body>
+</html>

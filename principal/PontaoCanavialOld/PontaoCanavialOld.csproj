@@ -1,0 +1,410 @@
+﻿<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C711CA3C-1A82-4848-8B6C-2D42D8390C3A}</ProjectGuid>
+    <ProjectTypeGuids>{603c0e0b-db56-11dc-be95-000d561079b0};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PontaoCanavial</RootNamespace>
+    <AssemblyName>PontaoCanavial</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.0.30930.28736, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL" />
+    <Reference Include="FlashControl, Version=2.4.2276.31815, Culture=neutral, PublicKeyToken=0066be59ecd613cb, processorArchitecture=MSIL" />
+    <Reference Include="KMobile.Web, Version=1.1.3004.24089, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="PagedList, Version=1.1.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\MvcMembership\bin\Debug\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions, Version=3.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\GerenciarContaController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\ProjetoController.cs" />
+    <Compile Include="Controllers\GaleriaController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\NoticiaController.cs" />
+    <Compile Include="Controllers\PontoController.cs" />
+    <Compile Include="Controllers\AdministrarController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ControllerHelpers.cs" />
+    <Compile Include="Helpers\FlashHelper.cs" />
+    <Compile Include="Helpers\ImageHelper.cs" />
+    <Compile Include="Helpers\PaginatedList.cs" />
+    <Compile Include="Models\ISmtpClient.cs" />
+    <Compile Include="Models\Repositorios\CategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\EventoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\GaleriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\ImagemRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IBannerRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\ICategoriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IEventoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IGaleriaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IImagemRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\INewsletterRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\INoticiaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IProdutoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IProjetoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IUsuarioPontoRepositorio.cs" />
+    <Compile Include="Models\IUsuarioRepositorio.cs" />
+    <Compile Include="Models\Repositorios\NewsletterRepositorio.cs" />
+    <Compile Include="Models\Repositorios\NoticiaRepositorio.cs" />
+    <Compile Include="Models\Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\ProjetoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\UsuarioPontoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\UsuarioRepositorio.cs" />
+    <Compile Include="Models\SmtpClientProxy.cs" />
+    <Compile Include="Models\Administrar\DetailsViewModel.cs" />
+    <Compile Include="Models\Administrar\IndexViewModel.cs" />
+    <Compile Include="Models\Administrar\RoleViewModel.cs" />
+    <Compile Include="Models\VOs\Banner.cs" />
+    <Compile Include="Models\VOs\Categoria.cs" />
+    <Compile Include="Models\VOs\Galeria.cs" />
+    <Compile Include="Models\VOs\Imagem.cs" />
+    <Compile Include="Models\VOs\Newsletter.cs" />
+    <Compile Include="Models\VOs\Noticia.cs" />
+    <Compile Include="Models\Repositorios\Interfaces\IPontoRepositorio.cs" />
+    <Compile Include="Models\Repositorios\PontoRepositorio.cs" />
+    <Compile Include="Models\VOs\PontaoCanavial.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PontaoCanavial.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VOs\Ponto.cs" />
+    <Compile Include="Models\VOs\Produto.cs" />
+    <Compile Include="Models\VOs\Projeto.cs" />
+    <Compile Include="Models\VOs\RuleViolation.cs" />
+    <Compile Include="Models\VOs\Usuario.cs" />
+    <Compile Include="Models\VOs\UsuarioPonto.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Themes\Pontao\banner_top.swf" />
+    <Content Include="App_Themes\Pontao\CSS\style_pontao.css" />
+    <Content Include="App_Themes\Pontao\flasheventos.swf" />
+    <Content Include="App_Themes\Pontao\images\asing_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\assinar_btn.gif" />
+    <Content Include="App_Themes\Pontao\images\buscar_btn.gif" />
+    <Content Include="App_Themes\Pontao\images\button_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\button_sprite.jpg" />
+    <Content Include="App_Themes\Pontao\images\canavial_bottom.jpg" />
+    <Content Include="App_Themes\Pontao\images\canavial_bottom.png" />
+    <Content Include="App_Themes\Pontao\images\Cópia de pontao_logo.gif" />
+    <Content Include="App_Themes\Pontao\images\eventos\foto_evento1.jpg" />
+    <Content Include="App_Themes\Pontao\images\eventos\foto_evento2.jpg" />
+    <Content Include="App_Themes\Pontao\images\eventos\foto_evento3.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_gal1.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_gal2.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_not1.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_not2.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_not3.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_not4.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_pro1.jpg" />
+    <Content Include="App_Themes\Pontao\images\foto_pro2.jpg" />
+    <Content Include="App_Themes\Pontao\images\ico-ampliar-foto.gif" />
+    <Content Include="App_Themes\Pontao\images\logo01.gif" />
+    <Content Include="App_Themes\Pontao\images\logo02.gif" />
+    <Content Include="App_Themes\Pontao\images\logo03.gif" />
+    <Content Include="App_Themes\Pontao\images\logo04.gif" />
+    <Content Include="App_Themes\Pontao\images\logo05.gif" />
+    <Content Include="App_Themes\Pontao\images\logo06.jpg" />
+    <Content Include="App_Themes\Pontao\images\logo07.gif" />
+    <Content Include="App_Themes\Pontao\images\menu2-bg.jpg" />
+    <Content Include="App_Themes\Pontao\images\menu2_bottom.gif" />
+    <Content Include="App_Themes\Pontao\images\not\not01-thumb.jpg" />
+    <Content Include="App_Themes\Pontao\images\not\not01.jpg" />
+    <Content Include="App_Themes\Pontao\images\pontao_banner.jpg" />
+    <Content Include="App_Themes\Pontao\images\pontao_bar.jpg" />
+    <Content Include="App_Themes\Pontao\images\pontao_eventos.gif" />
+    <Content Include="App_Themes\Pontao\images\pontao_logo.gif" />
+    <Content Include="App_Themes\Pontao\images\title01.gif" />
+    <Content Include="App_Themes\Pontao\images\title01_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\title02.gif" />
+    <Content Include="App_Themes\Pontao\images\title02_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\title03.gif" />
+    <Content Include="App_Themes\Pontao\images\title03_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\title04.gif" />
+    <Content Include="App_Themes\Pontao\images\title04_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\title05.gif" />
+    <Content Include="App_Themes\Pontao\images\title05_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\title06.gif" />
+    <Content Include="App_Themes\Pontao\images\title06_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\title07.gif" />
+    <Content Include="App_Themes\Pontao\images\title07_bg.gif" />
+    <Content Include="App_Themes\Pontao\images\votar_btn.gif" />
+    <Content Include="App_Themes\Pontao\Scripts\expressInstall.swf" />
+    <Content Include="App_Themes\Pontao\Scripts\swfobject_modified.js" />
+    <Content Include="App_Themes\Pontao\xml\flash_news.xml" />
+    <Content Include="App_Themes\Pontinho\CSS\style_pontao.css" />
+    <Content Include="App_Themes\Pontinho\images\alafia_banner.jpg" />
+    <Content Include="App_Themes\Pontinho\images\alafia_logo.gif" />
+    <Content Include="App_Themes\Pontinho\images\asing_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\assinar_btn.gif" />
+    <Content Include="App_Themes\Pontinho\images\buscar_btn.gif" />
+    <Content Include="App_Themes\Pontinho\images\button_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\button_sprite.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_gal1.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_gal2.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_not1.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_not2.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_not3.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_not4.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_pro1.jpg" />
+    <Content Include="App_Themes\Pontinho\images\foto_pro2.jpg" />
+    <Content Include="App_Themes\Pontinho\images\logo01.gif" />
+    <Content Include="App_Themes\Pontinho\images\logo02.gif" />
+    <Content Include="App_Themes\Pontinho\images\logo03.gif" />
+    <Content Include="App_Themes\Pontinho\images\logo04.gif" />
+    <Content Include="App_Themes\Pontinho\images\logo05.gif" />
+    <Content Include="App_Themes\Pontinho\images\logo06.jpg" />
+    <Content Include="App_Themes\Pontinho\images\logo07.gif" />
+    <Content Include="App_Themes\Pontinho\images\menu2-bg.jpg" />
+    <Content Include="App_Themes\Pontinho\images\menu2_bottom.gif" />
+    <Content Include="App_Themes\Pontinho\images\pontao_bar.jpg" />
+    <Content Include="App_Themes\Pontinho\images\pontao_eventos.gif" />
+    <Content Include="App_Themes\Pontinho\images\title01.gif" />
+    <Content Include="App_Themes\Pontinho\images\title01_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title02.gif" />
+    <Content Include="App_Themes\Pontinho\images\title02_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title03.gif" />
+    <Content Include="App_Themes\Pontinho\images\title03_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title04.gif" />
+    <Content Include="App_Themes\Pontinho\images\title04_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title05.gif" />
+    <Content Include="App_Themes\Pontinho\images\title05_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title06.gif" />
+    <Content Include="App_Themes\Pontinho\images\title06_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\votar_btn.gif" />
+    <Content Include="Content\cancel.png" />
+    <Content Include="Content\uploadify.css" />
+    <Content Include="Content\uploadify.swf" />
+    <Content Include="Global.asax" />
+    <Content Include="Scripts\jquery.MultiFile.js" />
+    <Content Include="Scripts\jquery.uploadify.v2.1.0.js" />
+    <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="Scripts\MultiFileExemplo.js" />
+    <Content Include="Scripts\swfobject.js" />
+    <Content Include="Views\Ponto\Create.aspx" />
+    <Content Include="Views\Ponto\Details.aspx" />
+    <Content Include="Views\Ponto\Edit.aspx" />
+    <Content Include="Views\Ponto\IndexPontinho.aspx" />
+    <Content Include="Views\Ponto\NaoEncontrado.aspx" />
+    <Content Include="Views\Ponto\PontoForm.ascx" />
+    <Content Include="Views\Administrar\Details.aspx" />
+    <Content Include="Views\Administrar\Index.aspx" />
+    <Content Include="Views\Administrar\Role.aspx" />
+    <Content Include="Web.config" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\jquery-1.3.2.js" />
+    <Content Include="Scripts\jquery-1.3.2.min.js" />
+    <Content Include="Scripts\jquery-1.3.2-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.3.2.min-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Home\About.aspx" />
+    <Content Include="Views\Home\Index.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\LogOnUserControl.ascx" />
+    <Content Include="Views\Shared\Site.Master" />
+    <Content Include="Views\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Data\ScriptPontaoCanavial.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Themes\Pontao\images\eventos\Thumbs.db" />
+    <None Include="App_Themes\Pontao\images\not\Thumbs.db" />
+    <None Include="App_Themes\Pontao\images\Thumbs.db" />
+    <None Include="App_Themes\Pontinho\images\Thumbs.db" />
+    <None Include="Models\VOs\PontaoCanavial.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>PontaoCanavial.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="App_Themes\Pontao\images\coluna1-bg.jpg" />
+    <Content Include="App_Themes\Pontinho\banner_top.swf" />
+    <Content Include="App_Themes\Pontinho\flasheventos.swf" />
+    <Content Include="App_Themes\Pontinho\images\canavial_bottom.jpg" />
+    <Content Include="App_Themes\Pontinho\images\canavial_bottom.png" />
+    <Content Include="App_Themes\Pontinho\images\coluna1-bg.jpg" />
+    <Content Include="App_Themes\Pontinho\images\eventos\foto_evento1.jpg" />
+    <Content Include="App_Themes\Pontinho\images\eventos\foto_evento2.jpg" />
+    <Content Include="App_Themes\Pontinho\images\eventos\foto_evento3.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_001.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_002.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_003.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_004.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_005.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_006.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_007.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\img\img_008.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_001.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_002.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_003.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_004.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_005.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_006.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_007.jpg" />
+    <Content Include="App_Themes\Pontinho\images\galeria\thumb\img_008.jpg" />
+    <Content Include="App_Themes\Pontinho\images\gallery_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\ico-ampliar-foto.gif" />
+    <Content Include="App_Themes\Pontinho\images\next_gal_btn.gif" />
+    <Content Include="App_Themes\Pontinho\images\not\not01-thumb.jpg" />
+    <Content Include="App_Themes\Pontinho\images\not\not01.jpg" />
+    <Content Include="App_Themes\Pontinho\images\pontao_banner.jpg" />
+    <Content Include="App_Themes\Pontinho\images\pontao_logo.gif" />
+    <Content Include="App_Themes\Pontinho\images\ponto_cultura_img.jpg" />
+    <Content Include="App_Themes\Pontinho\images\prev_gal_btn.gif" />
+    <Content Include="App_Themes\Pontinho\images\projetos\foto_proj_001.jpg" />
+    <Content Include="App_Themes\Pontinho\images\title07.gif" />
+    <Content Include="App_Themes\Pontinho\images\title07_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title08_bg.gif" />
+    <Content Include="App_Themes\Pontinho\images\title_resultados.gif" />
+    <Content Include="App_Themes\Pontinho\Scripts\expressInstall.swf" />
+    <Content Include="App_Themes\Pontinho\Scripts\swfobject_modified.js" />
+    <Content Include="App_Themes\Pontinho\xml\flash_news.xml" />
+    <Content Include="Scripts\documentation.css" />
+    <Content Include="Scripts\documentation.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.MetaData.js" />
+    <Content Include="Scripts\jquery.MultiFile.pack.js" />
+    <Content Include="Views\GerenciarConta\ChangePassword.aspx" />
+    <Content Include="Views\GerenciarConta\ChangePasswordSuccess.aspx" />
+    <Content Include="Views\GerenciarConta\LogOn.aspx" />
+    <Content Include="Views\GerenciarConta\Register.aspx" />
+    <Content Include="Views\Noticia\Create.aspx" />
+    <Content Include="Views\Noticia\Edit.aspx" />
+    <Content Include="Views\Noticia\Index.aspx" />
+    <Content Include="Views\Noticia\NoticiaForm.ascx" />
+    <Content Include="Views\Ponto\BuscaLista.aspx" />
+    <Content Include="Views\Ponto\EventoDetalhe.aspx" />
+    <Content Include="Views\Ponto\EventoLista.aspx" />
+    <Content Include="Views\Ponto\MasterPagePontinho.Master" />
+    <Content Include="Views\Ponto\IndexPontao.aspx" />
+    <Content Include="Views\Ponto\MasterPagePontao.Master" />
+    <Content Include="Views\Ponto\NoticiaDetalhe.aspx" />
+    <Content Include="Views\Ponto\NoticiaLista.aspx" />
+    <Content Include="Views\Ponto\PontinhoDetalhe.aspx" />
+    <Content Include="Views\Ponto\PontinhoEventoDetalhe.aspx" />
+    <Content Include="Views\Ponto\PontinhoEventoLista.aspx" />
+    <Content Include="Views\Ponto\PontinhoNoticiaDetalhe.aspx" />
+    <Content Include="Views\Ponto\PontinhoNoticiaLista.aspx" />
+    <Content Include="Views\Ponto\PontinhoProdutoLista.aspx" />
+    <Content Include="Views\Ponto\PontinhoProjetoDetalhe.aspx" />
+    <Content Include="Views\Ponto\PontinhoProjetoLista.aspx" />
+    <Content Include="Views\Ponto\PontoDetalhe.aspx" />
+    <Content Include="Views\Ponto\ProdutoLista.aspx" />
+    <Content Include="Views\Ponto\ProjetoDetalhe.aspx" />
+    <Content Include="Views\Ponto\ProjetoLista.aspx" />
+    <Content Include="Views\Produto\Create.aspx" />
+    <Content Include="Views\Produto\Edit.aspx" />
+    <Content Include="Views\Produto\Index.aspx" />
+    <Content Include="Views\Produto\ProdutoForm.ascx" />
+    <Content Include="Views\Projeto\Create.aspx" />
+    <Content Include="Views\Projeto\Edit.aspx" />
+    <Content Include="Views\Projeto\Index.aspx" />
+    <Content Include="Views\Projeto\ProjetoForm.ascx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MvcMembership\MvcMembership.csproj">
+      <Project>{C9D7F653-E589-44CE-9D41-89821F4F9E4E}</Project>
+      <Name>MvcMembership</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Themes\Pontinho\images\eventos\Thumbs.db" />
+    <None Include="App_Themes\Pontinho\images\galeria\img\Thumbs.db" />
+    <None Include="App_Themes\Pontinho\images\galeria\thumb\Thumbs.db" />
+    <None Include="Models\VOs\PontaoCanavial.dbml.layout">
+      <DependentUpon>PontaoCanavial.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Uploads\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v9.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50074</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>
