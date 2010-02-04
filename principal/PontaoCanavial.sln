@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvcMembership", "MvcMembers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PontaoCanavialOld", "PontaoCanavialOld\PontaoCanavialOld.csproj", "{C711CA3C-1A82-4848-8B6C-2D42D8390C3A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PontaoCanavial", "PontaoCanavial\PontaoCanavial.csproj", "{4D3F6761-BF71-45B6-8B1F-EE807EABEE1D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +21,10 @@ Global
 		{C711CA3C-1A82-4848-8B6C-2D42D8390C3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C711CA3C-1A82-4848-8B6C-2D42D8390C3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C711CA3C-1A82-4848-8B6C-2D42D8390C3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D3F6761-BF71-45B6-8B1F-EE807EABEE1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D3F6761-BF71-45B6-8B1F-EE807EABEE1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D3F6761-BF71-45B6-8B1F-EE807EABEE1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D3F6761-BF71-45B6-8B1F-EE807EABEE1D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
