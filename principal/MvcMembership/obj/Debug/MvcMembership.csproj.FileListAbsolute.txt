@@ -28,9 +28,7 @@ G:\principal\MvcMembership\bin\Debug\PagedList.dll
 G:\principal\MvcMembership\obj\Debug\ResolveAssemblyReference.cache
 G:\principal\MvcMembership\obj\Debug\MvcMembership.dll
 G:\principal\MvcMembership\obj\Debug\MvcMembership.pdb
-E:\Projetos\principal\MvcMembership\bin\Debug\MvcMembership.dll
 E:\Projetos\principal\MvcMembership\bin\Debug\MvcMembership.pdb
-E:\Projetos\principal\MvcMembership\bin\Debug\PagedList.dll
 E:\Projetos\principal\MvcMembership\obj\Debug\ResolveAssemblyReference.cache
 E:\Projetos\principal\MvcMembership\obj\Debug\MvcMembership.dll
 E:\Projetos\principal\MvcMembership\obj\Debug\MvcMembership.pdb

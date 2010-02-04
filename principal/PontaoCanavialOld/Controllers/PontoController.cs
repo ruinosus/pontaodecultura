@@ -7,7 +7,7 @@ using System.Web.Mvc.Ajax;
 using PontaoCanavial.Models.Repositorios.Interfaces;
 using PontaoCanavial.Models.Repositorios;
 using PontaoCanavial.Models.VOs;
-using PontaoCanavial.Helpers;
+using PontaoCanavialOld.Helpers;
 using System.IO;
 
 namespace PontaoCanavial.Controllers

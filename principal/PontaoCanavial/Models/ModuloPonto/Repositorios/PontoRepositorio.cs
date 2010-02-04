@@ -5,10 +5,11 @@ using System.Web;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 using PontaoCanavial.Models.ModuloBasico.VOs;
 using MySql.Data.MySqlClient;
+using PontaoCanavial.Models.ModuloBasico.Singleton;
 
 namespace PontaoCanavial.Models.ModuloPonto.Repositorios
 {
-    public class PontoRepositorio : IPontoRepositorio
+    public class PontoRepositorio : Singleton<PontoRepositorio>, IPontoRepositorio
     {
         #region Atributos
 

@@ -4,27 +4,30 @@ using System.Linq;
 using System.Data.Linq;
 using System.Web.Mvc;
 using PontaoCanavial.Models.ModuloBasico.VOs;
+using PontaoCanavial.Models.ModuloPonto.Repositorios;
+using PontaoCanavial.Models.ModuloBasico.Enums;
 
-    [Bind(Include = "Nome,NomeIdentificador,DescricaoOficina,Objetivo,Justificativa,Logo,Equipe,Apresentacao,Contato,ImagemPequena,ImagemMedia,ImagemGrande")]
+    [Bind(Include = "Nome,NomeIdentificador,Objetivo,Justificativa,Logo,Equipe,Apresentacao,Contato,ImagemPequena,ImagemMedia,ImagemGrande")]
     public partial class Ponto
     {
-        //private IPontoRepositorio pontoRepositorio;
+        #region Atributos
+        private bool editando; 
+        #endregion
 
-
-        //public IPontoRepositorio PontoRepositorio
-        //{
-        //    get
-        //    {
-        //        return this.pontoRepositorio;
-        //    }
-        //    set { this.pontoRepositorio = value; }
-        //}
-
+        #region Propriedades
         public bool IsValid
         {
             get { return (GetRuleViolations().Count() == 0); }
         }
 
+        public bool Editando
+        {
+            get { return editando; }
+            set { editando = value; }
+        } 
+        #endregion
+
+        #region Eventos
         public IEnumerable<RuleViolation> GetRuleViolations()
         {
 
@@ -37,9 +40,13 @@ using PontaoCanavial.Models.ModuloBasico.VOs;
             {
                 if (!this.Editando)
                 {
-                    //Ponto p = pontoRepositorio.ConsultarPorNomeIdentificador(NomeIdentificador);
+                    PontoRepositorio repositorio = PontoRepositorio.Instance;
+                    Ponto p = new Ponto();
+                    p.NomeIdentificador = this.NomeIdentificador;
 
-                    //if (p != null)
+                    List<Ponto> resultado = repositorio.Consultar(p, TipoPesquisa.E);
+
+                    if (resultado.Count > 0)
                         yield return new RuleViolation("Nome identificador já informado, por favor informe outro.", "NomeIdentificador");
                 }
             }
@@ -48,19 +55,12 @@ using PontaoCanavial.Models.ModuloBasico.VOs;
             yield break;
         }
 
-        private bool editando;
-
-        public bool Editando
-        {
-            get { return editando; }
-            set { editando = value; }
-        }
-
         partial void OnValidate(ChangeAction action)
         {
             if (!IsValid)
                 throw new ApplicationException("Violação das regras, registro não salvo.");
-        }
+        } 
+        #endregion
 
     }
 

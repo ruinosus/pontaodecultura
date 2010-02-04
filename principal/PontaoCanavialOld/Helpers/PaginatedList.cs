@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace PontaoCanavial.Helpers
+namespace PontaoCanavialOld.Helpers
 {
     public class PaginatedList<T> : List<T>
     {

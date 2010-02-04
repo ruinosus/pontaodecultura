@@ -37,7 +37,10 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
             //{
             //    throw new ArquivoConfiguracaoNaoEncontradoExcecao();
             //}
-
+            this.Banco = "PontaoCanavialDB";
+            this.Caminho = "localhost";
+            this.Senha = "123";
+            this.Usuario = "root";
 
         }
 

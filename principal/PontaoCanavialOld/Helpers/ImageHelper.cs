@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Routing;
 using System.Web.Mvc;
 
-namespace PontaoCanavial.Helpers
+namespace PontaoCanavialOld.Helpers
 {
     public static class ImageHelper
     {

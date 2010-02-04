@@ -6,7 +6,7 @@ using System.Web.Mvc;
 using System.Web.Mvc.Ajax;
 using PontaoCanavial.Models.Repositorios;
 using PontaoCanavial.Models.VOs;
-using PontaoCanavial.Helpers;
+using PontaoCanavialOld.Helpers;
 using System.IO;
 using PontaoCanavial.Models.Repositorios.Interfaces;
 

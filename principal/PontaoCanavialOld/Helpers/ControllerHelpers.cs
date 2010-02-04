@@ -5,7 +5,7 @@ using System.Web;
 using PontaoCanavial.Models.VOs;
 using System.Web.Mvc;
 
-namespace PontaoCanavial.Helpers
+namespace PontaoCanavialOld.Helpers
 {
     public static class ModelStateHelpers
     {
