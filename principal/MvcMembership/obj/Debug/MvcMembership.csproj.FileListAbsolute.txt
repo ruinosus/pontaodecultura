@@ -32,3 +32,7 @@ E:\Projetos\principal\MvcMembership\bin\Debug\MvcMembership.pdb
 E:\Projetos\principal\MvcMembership\obj\Debug\ResolveAssemblyReference.cache
 E:\Projetos\principal\MvcMembership\obj\Debug\MvcMembership.dll
 E:\Projetos\principal\MvcMembership\obj\Debug\MvcMembership.pdb
+E:\Projetos\MvcMembership\bin\Debug\MvcMembership.pdb
+E:\Projetos\MvcMembership\obj\Debug\ResolveAssemblyReference.cache
+E:\Projetos\MvcMembership\obj\Debug\MvcMembership.dll
+E:\Projetos\MvcMembership\obj\Debug\MvcMembership.pdb

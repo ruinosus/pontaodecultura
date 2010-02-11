@@ -40,7 +40,7 @@ using PontaoCanavial.Models.ModuloBasico.Enums;
             {
                 if (!this.Editando)
                 {
-                    PontoRepositorio repositorio = PontoRepositorio.Instance;
+                    PontoRepositorio repositorio = new PontoRepositorio();
                     Ponto p = new Ponto();
                     p.NomeIdentificador = this.NomeIdentificador;
 
@@ -55,11 +55,11 @@ using PontaoCanavial.Models.ModuloBasico.Enums;
             yield break;
         }
 
-        partial void OnValidate(ChangeAction action)
-        {
-            if (!IsValid)
-                throw new ApplicationException("Violação das regras, registro não salvo.");
-        } 
+        //partial void OnValidate(ChangeAction action)
+        //{
+        //    if (!IsValid)
+        //        throw new ApplicationException("Violação das regras, registro não salvo.");
+        //} 
         #endregion
 
     }

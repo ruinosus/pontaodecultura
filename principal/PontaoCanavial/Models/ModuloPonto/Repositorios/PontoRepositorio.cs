@@ -9,7 +9,7 @@ using PontaoCanavial.Models.ModuloBasico.Singleton;
 
 namespace PontaoCanavial.Models.ModuloPonto.Repositorios
 {
-    public class PontoRepositorio : Singleton<PontoRepositorio>, IPontoRepositorio
+    public class PontoRepositorio : IPontoRepositorio
     {
         #region Atributos
 
@@ -162,9 +162,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
 
 
                             resultado = resultado.Distinct().ToList();
-                        }                        
+                        }
                         break;
-                    } 
+                    }
                 #endregion
                 #region Case Ou
                 case TipoPesquisa.Ou:
@@ -173,9 +173,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.ID == ponto.ID
-                                          select p).ToList());
+                                                where
+                                                p.ID == ponto.ID
+                                                select p).ToList());
 
                             resultado = resultado.Distinct().ToList();
                         }
@@ -184,9 +184,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.Apresentacao.Contains(ponto.Apresentacao)
-                                          select p).ToList());
+                                                where
+                                                p.Apresentacao.Contains(ponto.Apresentacao)
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();
@@ -196,9 +196,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.Contato.Contains(ponto.Contato)
-                                          select p).ToList());
+                                                where
+                                                p.Contato.Contains(ponto.Contato)
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();
@@ -208,9 +208,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                            p.EPontao.HasValue && p.EPontao.Value == ponto.EPontao
-                                          select p).ToList());
+                                                where
+                                                  p.EPontao.HasValue && p.EPontao.Value == ponto.EPontao
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();
@@ -220,9 +220,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.Equipe.Contains(ponto.Equipe)
-                                          select p).ToList());
+                                                where
+                                                p.Equipe.Contains(ponto.Equipe)
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();
@@ -232,9 +232,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.Justificativa.Contains(ponto.Justificativa)
-                                          select p).ToList());
+                                                where
+                                                p.Justificativa.Contains(ponto.Justificativa)
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();
@@ -244,9 +244,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.Nome.Contains(ponto.Nome)
-                                          select p).ToList());
+                                                where
+                                                p.Nome.Contains(ponto.Nome)
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();
@@ -256,9 +256,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
                         {
 
                             resultado.AddRange((from p in resultado
-                                          where
-                                          p.Objetivo.Contains(ponto.Objetivo)
-                                          select p).ToList());
+                                                where
+                                                p.Objetivo.Contains(ponto.Objetivo)
+                                                select p).ToList());
 
 
                             resultado = resultado.Distinct().ToList();

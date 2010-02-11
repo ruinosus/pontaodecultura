@@ -6,7 +6,7 @@ using PontaoCanavial.Models.VOs;
 
 namespace PontaoCanavial.Models.Repositorios.Interfaces
 {
-    public interface ICategoriaRepositorio
+    public interface ICategoriaRepositoriooLD
     {
         IQueryable<Categoria> ConsultarTodos();
         Categoria GetCategoria(int id);

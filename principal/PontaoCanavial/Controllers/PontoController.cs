@@ -49,7 +49,7 @@ namespace PontaoCanavial.Controllers
         //}
         public PontoController()
         {
-            this.pontoRepositorio = PontoRepositorio.Instance;
+            this.pontoRepositorio = new PontoRepositorio();
         }
 
        
@@ -69,7 +69,7 @@ namespace PontaoCanavial.Controllers
             }
             else
             {
-                PontoRepositorio repositorio = PontoRepositorio.Instance;
+                PontoRepositorio repositorio = new PontoRepositorio();
 
 
                 List<Ponto> resultado = repositorio.Consultar();

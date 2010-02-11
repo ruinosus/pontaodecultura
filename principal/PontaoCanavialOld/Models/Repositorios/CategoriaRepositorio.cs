@@ -7,7 +7,7 @@ using PontaoCanavial.Models.VOs;
 
 namespace PontaoCanavial.Models.Repositorios
 {
-    public class CategoriaRepositorio: ICategoriaRepositorio
+    public class CategoriaRepositorio: ICategoriaRepositoriooLD
     {
          PontaoCanavialDataContext db = new PontaoCanavialDataContext();
 

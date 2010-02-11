@@ -17,9 +17,9 @@ namespace PontaoCanavial.Models.ModuloPonto.Fabricas
 
         #region Propriedades
         /// <summary>
-        /// Instancia da interface IAlunoRepositorio.
+        /// Instancia da interface IPontoRepositorio.
         /// </summary>
-        public static IPontoRepositorio IAlunoInstance
+        public static IPontoRepositorio IPontoInstance
         {
             get
             {
