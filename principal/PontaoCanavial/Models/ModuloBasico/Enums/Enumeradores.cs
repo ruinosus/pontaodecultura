@@ -22,9 +22,11 @@ namespace PontaoCanavial.Models.ModuloBasico.Enums
 
     public enum Status
     {
-        Inativo = 0,
-        Ativo = 1
-    }   
+        Pontinho = 0,
+        Pontao = 1
+    }
+
+    
 
     public enum OperacoesDaTela
     {

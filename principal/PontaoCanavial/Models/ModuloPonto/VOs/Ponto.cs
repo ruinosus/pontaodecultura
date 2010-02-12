@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 using System.Linq;
 using System.Data.Linq;
@@ -6,61 +7,116 @@ using System.Web.Mvc;
 using PontaoCanavial.Models.ModuloBasico.VOs;
 using PontaoCanavial.Models.ModuloPonto.Repositorios;
 using PontaoCanavial.Models.ModuloBasico.Enums;
+using System.ComponentModel;
 
-    [Bind(Include = "Nome,NomeIdentificador,Objetivo,Justificativa,Logo,Equipe,Apresentacao,Contato,ImagemPequena,ImagemMedia,ImagemGrande")]
-    public partial class Ponto
-    {
-        #region Atributos
-        private bool editando; 
-        #endregion
+[MetadataType(typeof(PontoMetadata))]
+public partial class Ponto
+{
+    
+    
+}
 
-        #region Propriedades
-        public bool IsValid
-        {
-            get { return (GetRuleViolations().Count() == 0); }
-        }
+/* Exemplo de formulário
 
-        public bool Editando
-        {
-            get { return editando; }
-            set { editando = value; }
-        } 
-        #endregion
+//--------------------------------------
+//Bloco referente a validação via Ciente	
+<script src="/Scripts/MicrosoftAjax.js" type="text/javascript" > </script>
+<script src="/Scripts/MicrosoftMvcValidation.js" type="text/javascript" > </script>
 
-        #region Eventos
-        public IEnumerable<RuleViolation> GetRuleViolations()
-        {
+<% Html.EnableClientValidation(); %>
+//--------------------------------------
+	
+	<%Html.ValidationSummary("Corrija os erros e tente novamente.") %>
+	<%
+	using (html.BeginForm() ) 
+		{
+	%>
+			<fieldset>
+				<%= html.LabelFor(model => model.Nome)%>
+				<%= html.TextBoxFor(model => model.Nome)%>
+				<%= html.ValidationMessageFor(model => model.Nome,"*")%>
 
-            if (String.IsNullOrEmpty(Nome))
-                yield return new RuleViolation("O nome é Necessário para o cadastro", "Nome");
+				<input type="submit" value="create"/>
+			</fieldset>
+	<%
+		}
+	%>
+*/
 
-            if (String.IsNullOrEmpty(NomeIdentificador))
-                yield return new RuleViolation("O nome identificador é Necessário para o cadastro", "NomeIdentificador");
-            else
-            {
-                if (!this.Editando)
-                {
-                    PontoRepositorio repositorio = new PontoRepositorio();
-                    Ponto p = new Ponto();
-                    p.NomeIdentificador = this.NomeIdentificador;
+/* Exemplo de Controller
+	[HttpPost]
+	public ActionResult Create(Ponto ponto)
+	{
+		if(ModelState.IsValid)
+		{
+			//Salvar o ponto aki
+			return Redirect("/");
+		}
+		//Invalido - volta a tela mostrando os erros contidos.
+		return View(ponto);
 
-                    List<Ponto> resultado = repositorio.Consultar(p, TipoPesquisa.E);
+	}
 
-                    if (resultado.Count > 0)
-                        yield return new RuleViolation("Nome identificador já informado, por favor informe outro.", "NomeIdentificador");
-                }
-            }
 
-            //validar nomeidentificador,minusculos e sem caracteres especiais
-            yield break;
-        }
+*/
+[Bind(Exclude = "ID")]
+public class PontoMetadata
+{
+    [Required(ErrorMessage = "O nome do Ponto é Necessário para o cadastro.")]
+    public string Nome { get; set; }
+    
+    [Required(ErrorMessage = "O nome identificador do Ponto é Necessário para o cadastro.")]
+    [DisplayName("Nome Identificador do Ponto:")]
+    public string NomeIdentificador { get; set; }
+   
+    [UIHint("ImagemPequenaFileUpload")]
+    [DisplayName("Imagem com tamanho Pequeno:")]
+    public Byte[] ImagemPequena { get; set; }
 
-        //partial void OnValidate(ChangeAction action)
-        //{
-        //    if (!IsValid)
-        //        throw new ApplicationException("Violação das regras, registro não salvo.");
-        //} 
-        #endregion
+    [UIHint("ImagemMediaFileUpload")]
+    [DisplayName("Imagem com tamanho Médio:")]
+    public Byte[] ImagemMedia { get; set; }
 
-    }
 
+    [UIHint("ImagemGrandeFileUpload")]
+    [DisplayName("Imagem com tamanho Grande:")]
+    public Byte[] ImagemGrande { get; set; }
+
+}
+
+/* - Cria um formulário contendo todos os campos contidos no Model.
+
+<%Html.ValidationSummary("Corrija os erros e tente novamente.") %>
+   <%
+   using (html.BeginForm() ) 
+       {
+   %>
+           <fieldset>
+               <%= html.EditorFor(c=>c)%>
+
+               <input type="submit" value="create"/>
+           </fieldset>
+   <%
+       }
+   %>
+
+
+*/
+/*
+    [DisplayName("Exemplo de exibição:")]
+	[UIHint("DropListTeste")]
+	public string Teste{get;set;}
+
+    //[ScaffoldColumn(false)] - não mostra a propriedade
+
+*/
+
+
+
+/*
+
+
+você pode agora opcionalmente adicionar uma pasta chamada "EditorTemplates” e/ou “DisplayTemplates” abaixo do diretório \Views\[controllername] (se você quiser customizar a renderização das visões usadas por um controlador específico) ou abaixo do diretório \Views\Shared (se você quiser customizar a renderização de todas as visões e controladores em uma aplicação).
+
+
+*/

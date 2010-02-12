@@ -349,14 +349,13 @@
     <Content Include="App_Themes\Pontinho\images\title_resultados.gif" />
     <Content Include="App_Themes\Pontinho\images\votar_btn.gif" />
     <Content Include="App_Themes\Pontinho\Scripts\expressInstall.swf" />
-    Content Include="App_Themes\Pontinho\Scripts\swfobject_modified.js" />
+    <Content Include="App_Themes\Pontinho\Scripts\swfobject_modified.js" />
     <Content Include="App_Themes\Pontinho\xml\flash_news.xml" />
     <Content Include="Content\cancel.png" />
     <Content Include="Content\uploadify.css" />
     <Content Include="Content\uploadify.swf" />
     <Content Include="Global.asax" />
     <Content Include="Views\Ponto\BuscaLista.aspx" />
-    <Content Include="Views\Ponto\Create.aspx" />
     <Content Include="Views\Ponto\Details.aspx" />
     <Content Include="Views\Ponto\Edit.aspx" />
     <Content Include="Views\Ponto\EventoDetalhe.aspx" />
@@ -398,6 +397,7 @@
     <None Include="App_Themes\Pontinho\images\galeria\img\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\galeria\thumb\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\Thumbs.db" />
+    <Content Include="Views\Ponto\Adicionar.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />
     <Content Include="Views\Ponto\MasterPagePontao.Master" />
     <Content Include="Views\Ponto\NaoEncontrado.aspx" />
@@ -416,6 +416,9 @@
     <Content Include="Views\Ponto\ProdutoLista.aspx" />
     <Content Include="Views\Ponto\ProjetoDetalhe.aspx" />
     <Content Include="Views\Ponto\ProjetoLista.aspx" />
+    <Content Include="Views\Shared\EditorTemplates\ImagemGrandeFileUpload.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\ImagemMediaFileUpload.ascx" />
+    <Content Include="Views\Shared\EditorTemplates\ImagemPequenaFileUpload.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -460,4 +463,4 @@
       </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
-</Project> 
+</Project>

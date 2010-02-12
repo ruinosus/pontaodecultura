@@ -37,7 +37,7 @@
             <% 
     if (Model.Ponto.Noticia.Count >= 4)
         Response.Write("<ul>");
-    for (int i = Model.Ponto.Noticia.Count - 1; i >= Model.Ponto.Noticia.Count - 4; i--)
+    for (int i = Model.Ponto.Noticia.Count - 1; i <= Model.Ponto.Noticia.Count - 4; i--)
     {
             %>
             <%Response.Write("<li>");%><span>
