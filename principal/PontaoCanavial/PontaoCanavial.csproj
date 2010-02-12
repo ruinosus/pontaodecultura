@@ -397,7 +397,7 @@
     <None Include="App_Themes\Pontinho\images\galeria\img\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\galeria\thumb\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\Thumbs.db" />
-    <Content Include="Views\Ponto\Adicionar.aspx" />
+    <Content Include="Views\Ponto\Incluir.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />
     <Content Include="Views\Ponto\MasterPagePontao.Master" />
     <Content Include="Views\Ponto\NaoEncontrado.aspx" />

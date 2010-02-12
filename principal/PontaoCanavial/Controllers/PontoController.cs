@@ -227,12 +227,12 @@ namespace PontaoCanavial.Controllers
 
 
         [HttpPost]
-        public ActionResult Adicionar(Ponto ponto)
+        public ActionResult Incluir(Ponto ponto)
         {
             if (ModelState.IsValid)
             {
                 IPontoProcesso processo = PontoProcesso.Instance;
-
+                ponto.EPontao = (int)Status.Pontinho;
                 processo.Incluir(ponto);
                 processo.Confirmar();
                 return Redirect("/");
@@ -242,7 +242,7 @@ namespace PontaoCanavial.Controllers
 
         }
 
-        public ActionResult Adicionar()
+        public ActionResult Incluir()
         {
             Ponto ponto = new Ponto();
             return View(ponto);

@@ -26,7 +26,7 @@ namespace PontaoCanavial
             routes.MapRoute(
                 "Default",                                                              // Route name
                 "{controller}/{action}/{id}",                           // URL with parameters
-                new { controller = "Ponto", action = "Index", id = "" }  // Parameter defaults
+                new { controller = "Ponto", action = "Incluir", id = "" }  // Parameter defaults
             );
 
 
