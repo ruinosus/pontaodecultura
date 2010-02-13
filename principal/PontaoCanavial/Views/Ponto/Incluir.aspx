@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
-    <h2>Adicionar</h2>
+    <h2>Incluir</h2>
     <%=Html.ValidationSummary("Corrija os erros e tente novamenteo.")%>
     <% using (Html.BeginForm()) {%>
 

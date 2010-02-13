@@ -76,10 +76,10 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
+    <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\ControllerHelpers.cs" />
     <Compile Include="Helpers\FlashHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PaginatedList.cs" />
@@ -97,9 +97,9 @@
     <Compile Include="Models\ModuloBasico\Enums\Enumeradores.cs" />
     <Compile Include="Models\ModuloBasico\Excecoes\ArquivoConfiguracaoNaoEncontradoExcecao.cs" />
     <Compile Include="Models\ModuloBasico\Singleton\Singleton.cs" />
+    <Compile Include="Models\ModuloBasico\VOs\ClasseAuxiliar.cs" />
     <Compile Include="Models\ModuloBasico\VOs\Conexao.cs" />
     <Compile Include="Models\ModuloBasico\VOs\PontaoCanavialDB.cs" />
-    <Compile Include="Models\ModuloBasico\VOs\RuleViolation.cs" />
     <Compile Include="Models\ModuloCategoria\Constantes\CategoriaConstantes.cs" />
     <Compile Include="Models\ModuloCategoria\Excecoes\CategoriaNaoAlteradaExcecao.cs" />
     <Compile Include="Models\ModuloCategoria\Excecoes\CategoriaNaoExcluidaExcecao.cs" />
@@ -201,6 +201,7 @@
     <Compile Include="Models\ModuloUsuario\Processos\UsuarioProcesso.cs" />
     <Compile Include="Models\ModuloUsuario\Repositorios\Interfaces\IUsuarioRepositorio.cs" />
     <Compile Include="Models\ModuloUsuario\Repositorios\UsuarioRepositorio.cs" />
+    <Compile Include="Models\ModuloUsuario\VOs\Usuario.cs" />
     <Compile Include="Models\ModuloVideo\Constantes\VideoConstantes.cs" />
     <Compile Include="Models\ModuloVideo\Excecoes\VideoNaoAlteradoExcecao.cs" />
     <Compile Include="Models\ModuloVideo\Excecoes\VideoNaoExcluidoExcecao.cs" />
@@ -419,6 +420,7 @@
     <Content Include="Views\Shared\EditorTemplates\ImagemGrandeFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemMediaFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemPequenaFileUpload.ascx" />
+    <Content Include="Views\Usuario\Incluir.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -432,7 +434,6 @@
     <Folder Include="Models\ModuloProduto\VOs\" />
     <Folder Include="Models\ModuloProjeto\VOs\" />
     <Folder Include="Models\ModuloUsuarioPonto\VOs\" />
-    <Folder Include="Models\ModuloUsuario\VOs\" />
     <Folder Include="Models\ModuloVideo\VOs\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

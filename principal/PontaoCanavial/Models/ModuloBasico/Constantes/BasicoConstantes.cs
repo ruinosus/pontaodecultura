@@ -10,5 +10,7 @@ public static class BasicoConstantes
 		public static readonly String CONEXAO = "Database=colegioDB;Data Source=localhost;User Id=root;Password=123";
 
         public static readonly String ARQUIVO_CONFIGURACAO_NAO_ENCONTRADO = "Arquivo de configuração não encontrado.";
+
+        
 	}
 }
