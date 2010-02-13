@@ -420,7 +420,9 @@
     <Content Include="Views\Shared\EditorTemplates\ImagemGrandeFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemMediaFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemPequenaFileUpload.ascx" />
+    <Content Include="Views\Shared\LogarUserControl.ascx" />
     <Content Include="Views\Usuario\Incluir.aspx" />
+    <Content Include="Views\Usuario\Logar.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

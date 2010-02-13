@@ -25,14 +25,16 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
     public partial class ClasseAuxiliar
     {
 
-        private static UsuarioPonto usuarioLogado;
+        private static Usuario usuarioLogado;
 
-        public static UsuarioPonto UsuarioLogado
+        public static Usuario UsuarioLogado
         {
             get
             {
                 if (System.Web.HttpContext.Current.Session["UsuarioLogado"] != null)
-                    usuarioLogado = (UsuarioPonto)System.Web.HttpContext.Current.Session["UsuarioLogado"];
+                    usuarioLogado = (Usuario)System.Web.HttpContext.Current.Session["UsuarioLogado"];
+                else
+                    usuarioLogado = null;
 
                 return usuarioLogado;
             }

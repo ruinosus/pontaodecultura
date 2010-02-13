@@ -87,7 +87,27 @@ namespace PontaoCanavial.Models.ModuloUsuarioPonto.Repositorios
                                           select p).ToList());
 
                             resultado = resultado.Distinct().ToList();
-						}						
+						}
+
+                        if (usuarioPonto.Usuario != null && !string.IsNullOrEmpty(usuarioPonto.Usuario.Login))
+                        {
+                            resultado = ((from p in resultado
+                                          where
+                                          p.Usuario.Login.Equals(usuarioPonto.Usuario.Login) 
+                                          select p).ToList());
+
+                            resultado = resultado.Distinct().ToList();
+                        }
+
+                        if (usuarioPonto.Usuario != null && !string.IsNullOrEmpty(usuarioPonto.Usuario.Senha))
+                        {
+                            resultado = ((from p in resultado
+                                          where
+                                          p.Usuario.Senha.Equals(usuarioPonto.Usuario.Senha)
+                                          select p).ToList());
+
+                            resultado = resultado.Distinct().ToList();
+                        }
 						
                        break;
                     } 
@@ -124,7 +144,28 @@ namespace PontaoCanavial.Models.ModuloUsuarioPonto.Repositorios
                                           select p).ToList());
 
                             resultado = resultado.Distinct().ToList();
-						}					
+						}
+
+
+                        if (usuarioPonto.Usuario != null && !string.IsNullOrEmpty(usuarioPonto.Usuario.Login))
+                        {
+                            resultado.AddRange((from p in resultado
+                                          where
+                                          p.Usuario.Login.Equals(usuarioPonto.Usuario.Login)
+                                          select p).ToList());
+
+                            resultado = resultado.Distinct().ToList();
+                        }
+
+                        if (usuarioPonto.Usuario != null && !string.IsNullOrEmpty(usuarioPonto.Usuario.Senha))
+                        {
+                            resultado.AddRange((from p in resultado
+                                          where
+                                          p.Usuario.Senha.Equals(usuarioPonto.Usuario.Senha)
+                                          select p).ToList());
+
+                            resultado = resultado.Distinct().ToList();
+                        }
 						
                        break;
                     }

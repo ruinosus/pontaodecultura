@@ -29,7 +29,7 @@
                     My MVC Application</h1>
             </div>
             <div id="logindisplay">
-                <% Html.RenderPartial("LogOnUserControl"); %>
+                <% Html.RenderPartial("LogarUserControl"); %>
             </div>
             <div id="menucontainer">
                 <ul id="menu">
