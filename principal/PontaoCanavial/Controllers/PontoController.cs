@@ -222,6 +222,15 @@ namespace PontaoCanavial.Controllers
             {
                 IPontoProcesso processo = PontoProcesso.Instance;
                 ponto.EPontao = (int)Status.Pontinho;
+
+                HttpPostedFileBase imgLogo = this.Request.Files.Get("logo");
+                if (imgLogo != null)
+                {
+                    Int32 length = imgLogo.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imgLogo.InputStream.Read(imagemByte, 0, length);
+                    ponto.Logo = imagemByte;
+                }
                 processo.Incluir(ponto);
                 processo.Confirmar();
                 return Redirect("/");

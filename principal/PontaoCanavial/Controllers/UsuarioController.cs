@@ -13,11 +13,6 @@ namespace PontaoCanavial.Controllers
     public class UsuarioController : Controller
     {
 
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         #region Incluir
         [HttpPost]
         public ActionResult Incluir(Usuario usuario)
@@ -47,8 +42,11 @@ namespace PontaoCanavial.Controllers
         {
             if (ModelState.IsValid)
             {
+                string senha = usuario.Senha;
+                usuario = ClasseAuxiliar.UsuarioLogado;
+                usuario.Senha = senha;
                 IUsuarioProcesso processo = UsuarioProcesso.Instance;
-                processo.Incluir(usuario);
+                processo.Alterar(usuario);
                 processo.Confirmar();
                 return Redirect("/");
             }
@@ -58,9 +56,8 @@ namespace PontaoCanavial.Controllers
         }
 
         public ActionResult Alterar()
-        {
-            Usuario usuario = new Usuario();
-            return View(usuario);
+        { 
+            return View(ClasseAuxiliar.UsuarioLogado);
         }
         #endregion
 
@@ -90,18 +87,16 @@ namespace PontaoCanavial.Controllers
                 List<Usuario> usuarioLista = processo.Consultar(usuario,TipoPesquisa.E);
                 if (usuarioLista.Count != 1)
                     ModelState.AddModelError("", "");
-
-                Session.Add("UsuarioLogado", usuarioLista[0]);
-
-                return RedirectToAction("Index", "Home");
+                else
+                {
+                    Session.Add("UsuarioLogado", usuarioLista[0]);
+                    return RedirectToAction("Index", "PainelAdministrador");
+                }
             }
             //Invalido - volta a tela mostrando os erros contidos.
             return View(usuario);
 
         }
         #endregion
-
-
-
     }
 }

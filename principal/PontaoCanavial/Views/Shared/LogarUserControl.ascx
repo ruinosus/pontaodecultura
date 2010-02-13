@@ -4,6 +4,7 @@
 %>
         Bem Vindo, <b><%= Html.Encode(PontaoCanavial.Models.ModuloBasico.VOs.ClasseAuxiliar.UsuarioLogado.Nome)%></b>!
         [ <%= Html.ActionLink("Deslogar", "Deslogar", "Usuario") %> ]
+        [ <%= Html.ActionLink("Alterar Senha", "Alterar", "Usuario") %> ]
 <%
     }
     else {

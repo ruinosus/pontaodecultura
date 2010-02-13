@@ -73,8 +73,8 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\PainelAdministradorController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -379,14 +379,7 @@
     <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.js" />
     <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
-    <Content Include="Views\Account\ChangePassword.aspx" />
-    <Content Include="Views\Account\ChangePasswordSuccess.aspx" />
-    <Content Include="Views\Account\LogOn.aspx" />
-    <Content Include="Views\Account\Register.aspx" />
-    <Content Include="Views\Home\About.aspx" />
-    <Content Include="Views\Home\Index.aspx" />
     <Content Include="Views\Shared\Error.aspx" />
-    <Content Include="Views\Shared\LogOnUserControl.ascx" />
     <Content Include="Views\Shared\Site.Master" />
     <Content Include="Views\Web.config" />
   </ItemGroup>
@@ -398,6 +391,19 @@
     <None Include="App_Themes\Pontinho\images\galeria\img\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\galeria\thumb\Thumbs.db" />
     <None Include="App_Themes\Pontinho\images\Thumbs.db" />
+    <Content Include="Scripts\documentation.css" />
+    <Content Include="Scripts\documentation.js" />
+    <Content Include="Scripts\jquery.blockUI.js" />
+    <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.js" />
+    <Content Include="Scripts\jquery.MetaData.js" />
+    <Content Include="Scripts\jquery.MultiFile.js" />
+    <Content Include="Scripts\jquery.MultiFile.pack.js" />
+    <Content Include="Scripts\jquery.uploadify.v2.1.0.js" />
+    <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="Scripts\MultiFileExemplo.js" />
+    <Content Include="Scripts\swfobject.js" />
+    <Content Include="Views\PainelAdministrador\Index.aspx" />
     <Content Include="Views\Ponto\Incluir.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />
     <Content Include="Views\Ponto\MasterPagePontao.Master" />
@@ -417,10 +423,12 @@
     <Content Include="Views\Ponto\ProdutoLista.aspx" />
     <Content Include="Views\Ponto\ProjetoDetalhe.aspx" />
     <Content Include="Views\Ponto\ProjetoLista.aspx" />
+    <Content Include="Views\Shared\EditorTemplates\LogoFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemGrandeFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemMediaFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemPequenaFileUpload.ascx" />
     <Content Include="Views\Shared\LogarUserControl.ascx" />
+    <Content Include="Views\Usuario\Alterar.aspx" />
     <Content Include="Views\Usuario\Incluir.aspx" />
     <Content Include="Views\Usuario\Logar.aspx" />
   </ItemGroup>

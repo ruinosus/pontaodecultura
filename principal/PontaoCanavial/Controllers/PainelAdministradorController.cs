@@ -6,19 +6,15 @@ using System.Web.Mvc;
 
 namespace PontaoCanavial.Controllers
 {
-    [HandleError]
-    public class HomeController : Controller
+    public class PainelAdministradorController : Controller
     {
+        //
+        // GET: /PainelAdministrador/
+
         public ActionResult Index()
         {
-            ViewData["Message"] = "Welcome to ASP.NET MVC!";
-
             return View();
         }
 
-        public ActionResult About()
-        {
-            return View();
-        }
     }
 }

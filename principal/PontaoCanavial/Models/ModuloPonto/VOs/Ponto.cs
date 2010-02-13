@@ -82,6 +82,10 @@ public class PontoMetadata
     [DisplayName("Imagem com tamanho Grande:")]
     public Byte[] ImagemGrande { get; set; }
 
+    [UIHint("LogoFileUpload")]
+    [DisplayName("Logo do Ponto:")]
+    public Byte[] Logo { get; set; }
+
 }
 
 /* - Cria um formulário contendo todos os campos contidos no Model.

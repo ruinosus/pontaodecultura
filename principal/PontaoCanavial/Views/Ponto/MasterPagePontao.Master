@@ -24,8 +24,8 @@
                 <%if (Model.Ponto.Logo != null)
                   {%>
                 <% 
-                    var imgurl = Url.Action("ThumbImagePonto", "Image",
-                          new { id = Model.Ponto.ID, width = 231, height = 207 }); %>
+                    var imgurl = Url.Action("GerarImagem", "Image",
+                          new { imagem = Model.Ponto.Logo.ToArray(), width = 231, height = 207 }); %>
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
                   
