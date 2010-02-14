@@ -1,13 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Views/Shared/Site.Master" Inherits="System.Web.Mvc.ViewPage<Ponto>" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="TitleContent" runat="server">
-	Adicionar
+	Incluir
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
     <h2>Incluir</h2>
-    <%=Html.ValidationSummary("Corrija os erros e tente novamenteo.")%>
+    <%=Html.ValidationSummary("Corrija os erros e tente novamente.")%>
 <% using (Html.BeginForm("Incluir", "Ponto", FormMethod.Post, new { enctype = "multipart/form-data" }))
    { %>
 
@@ -88,15 +88,12 @@
             
             
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="Confirmar" />
             </p>
         </fieldset>
 
     <% } %>
 
-    <div>
-        <%=Html.ActionLink("Back to List", "Index") %>
-    </div>
 
 </asp:Content>
 
