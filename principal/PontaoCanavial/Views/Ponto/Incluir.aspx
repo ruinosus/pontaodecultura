@@ -12,33 +12,23 @@
    { %>
 
         <fieldset>
-            <legend>Fields</legend>
+            <legend>Campos</legend>
             
            
                 <%= Html.LabelFor(model => model.Apresentacao)%>
             
                 <%= Html.TextBoxFor(model => model.Apresentacao)%>
                 <%= Html.ValidationMessageFor(model => model.Apresentacao)%>
-          
-            
             
                 <%= Html.LabelFor(model => model.Contato)%>
             
                 <%= Html.TextBoxFor(model => model.Contato)%>
                 <%= Html.ValidationMessageFor(model => model.Contato)%>
-            
-            
-            
-              
-           
+
                 <%= Html.LabelFor(model => model.Equipe)%>
             
                 <%= Html.TextBoxFor(model => model.Equipe)%>
                 <%= Html.ValidationMessageFor(model => model.Equipe)%>
-           
-            
-            
-            
            
                 <%= Html.LabelFor(model => model.Justificativa)%>
             
@@ -50,9 +40,7 @@
             
                 <%= Html.TextBoxFor(model => model.Nome)%>
                 <%= Html.ValidationMessageFor(model => model.Nome, "*")%>
-            
-            
-           
+
                 <%= Html.LabelFor(model => model.NomeIdentificador)%>
             
                 <%= Html.TextBoxFor(model => model.NomeIdentificador)%>

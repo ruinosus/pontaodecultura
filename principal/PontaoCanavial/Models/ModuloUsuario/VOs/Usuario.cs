@@ -18,8 +18,8 @@ public partial class Usuario
 [Bind(Exclude = "ID")]
 public class UsuarioMetadata
 {
-    [Required(ErrorMessage = "O nome do Usuário é Necessário para o cadastro.")]
-    public string Nome { get; set; }
+    //[Required(ErrorMessage = "O nome do Usuário é Necessário para o cadastro.")]
+    //public string Nome { get; set; }
 
     [Required(ErrorMessage = "O Login do Usuário é Necessário para o cadastro.")]
     public string Login { get; set; }

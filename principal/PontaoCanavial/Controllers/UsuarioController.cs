@@ -67,7 +67,7 @@ namespace PontaoCanavial.Controllers
         {
             Session.Remove("UsuarioLogado");
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Ponto");
         }
 
         public ActionResult Logar()

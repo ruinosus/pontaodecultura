@@ -14,15 +14,6 @@ namespace PontaoCanavial.Controllers
 {
     public class PontoController : Controller
     {
-       
-
-        
-        public PontoController()
-        {
-            
-        }
-
-       
 
         public ActionResult Index(string nomeIdentificador)
         {
@@ -214,7 +205,11 @@ namespace PontaoCanavial.Controllers
             return View("NaoEncontrado");
         }
 
-
+        public ActionResult Incluir()
+        {
+            Ponto ponto = new Ponto();
+            return View(ponto);
+        }
         [HttpPost]
         public ActionResult Incluir(Ponto ponto)
         {
@@ -240,11 +235,10 @@ namespace PontaoCanavial.Controllers
 
         }
 
-        public ActionResult Incluir()
-        {
-            Ponto ponto = new Ponto();
-            return View(ponto);
-        }
+       
+
+
+
 
         //[AcceptVerbs(HttpVerbs.Post)]
         //public ActionResult Create(Ponto ponto)

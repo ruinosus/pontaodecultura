@@ -32,7 +32,7 @@
             
             
             <p>
-                <input type="submit" value="Create" />
+                <input type="submit" value="Confirmar" />
             </p>
         </fieldset>
 
