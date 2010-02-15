@@ -71,8 +71,8 @@
             
             
                 <%= Html.EditorFor(model => model.Logo)%>
-                
-                
+      
+       
             
             
             <p>

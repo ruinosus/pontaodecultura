@@ -2473,7 +2473,7 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnApresentacaoChanged();
     partial void OnApresentacaoChanging(string value);
     partial void OnCabecalhoChanged();
-    partial void OnCabecalhoChanging(Byte[] value);
+    partial void OnCabecalhoChanging(byte[] value);
     partial void OnContatoChanged();
     partial void OnContatoChanging(string value);
     partial void OnEpOntaoChanged();
@@ -2483,15 +2483,15 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
     partial void OnIDChanged();
     partial void OnIDChanging(int value);
     partial void OnImagemGrandeChanged();
-    partial void OnImagemGrandeChanging(Byte[] value);
+    partial void OnImagemGrandeChanging(byte[] value);
     partial void OnImagemMediaChanged();
-    partial void OnImagemMediaChanging(Byte[] value);
+    partial void OnImagemMediaChanging(byte[] value);
     partial void OnImagemPequenaChanged();
-    partial void OnImagemPequenaChanging(Byte[] value);
+    partial void OnImagemPequenaChanging(byte[] value);
     partial void OnJustificativaChanged();
     partial void OnJustificativaChanging(string value);
     partial void OnLogoChanged();
-    partial void OnLogoChanging(Byte[] value);
+    partial void OnLogoChanging(byte[] value);
     partial void OnNomeChanged();
     partial void OnNomeChanging(string value);
     partial void OnNomeIdentificadorChanged();
@@ -2529,10 +2529,10 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 
     #region Byte[] Cabecalho
 
-    private Byte[] _cabecalho;
+    private byte[] _cabecalho;
     [DebuggerNonUserCode]
     [Column(Storage = "_cabecalho", Name = "Cabecalho", DbType = "longblob", AutoSync = AutoSync.Never)]
-    public Byte[] Cabecalho
+    public byte[] Cabecalho
     {
         get
         {
@@ -2657,12 +2657,12 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 
     #endregion
 
-    #region Byte[] ImagemGrande
+    #region byte[] ImagemGrande
 
-    private Byte[] _imagemGrande;
+    private byte[] _imagemGrande;
     [DebuggerNonUserCode]
     [Column(Storage = "_imagemGrande", Name = "ImagemGrande", DbType = "longblob", AutoSync = AutoSync.Never)]
-    public Byte[] ImagemGrande
+    public byte[] ImagemGrande
     {
         get
         {
@@ -2683,12 +2683,12 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 
     #endregion
 
-    #region Byte[] ImagemMedia
+    #region byte[] ImagemMedia
 
-    private Byte[] _imagemMedia;
+    private byte[] _imagemMedia;
     [DebuggerNonUserCode]
     [Column(Storage = "_imagemMedia", Name = "ImagemMedia", DbType = "longblob", AutoSync = AutoSync.Never)]
-    public Byte[] ImagemMedia
+    public byte[] ImagemMedia
     {
         get
         {
@@ -2709,9 +2709,9 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 
     #endregion
 
-    #region Byte[] ImagemPequena
+    #region byte[] ImagemPequena
 
-    private Byte[] _imagemPequena;
+    private byte[] _imagemPequena;
     [DebuggerNonUserCode]
     [Column(Storage = "_imagemPequena", Name = "ImagemPequena", DbType = "longblob", AutoSync = AutoSync.Never)]
     public Byte[] ImagemPequena
@@ -2761,12 +2761,12 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 
     #endregion
 
-    #region Byte[] Logo
+    #region byte[] Logo
 
-    private Byte[] _logo;
+    private byte[] _logo;
     [DebuggerNonUserCode]
     [Column(Storage = "_logo", Name = "Logo", DbType = "longblob", AutoSync = AutoSync.Never)]
-    public Byte[] Logo
+    public byte[] Logo
     {
         get
         {

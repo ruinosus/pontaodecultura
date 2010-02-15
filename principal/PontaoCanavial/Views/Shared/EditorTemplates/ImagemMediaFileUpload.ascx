@@ -2,5 +2,5 @@
 
 
 
-    <input id="imagemMedia" name="imagemMedia" type="file" class="multi" accept="gif|jpg|png"
+    <input id="imgmedia" name="imgmedia" type=file class="multi" accept="gif|jpg|png"
         maxlength="1" />

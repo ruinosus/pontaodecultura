@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.IO;
 using PontaoCanavial.Models.ModuloPonto.VOs;
 using PontaoCanavial.Models.ModuloPonto.Repositorios;
-using PontaoCanavial.Helpers;
 using PontaoCanavial.Models.ModuloPonto.Processos;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 
@@ -218,7 +216,7 @@ namespace PontaoCanavial.Controllers
                 IPontoProcesso processo = PontoProcesso.Instance;
                 ponto.EPontao = (int)Status.Pontinho;
 
-                HttpPostedFileBase imgLogo = this.Request.Files.Get("logo");
+                HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
                 if (imgLogo != null)
                 {
                     Int32 length = imgLogo.ContentLength;
