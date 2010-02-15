@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Drawing.Imaging;
 using System.Drawing;
 using System.IO;
+using PontaoCanavial.Models.ModuloPonto.Processos;
 
 namespace PontaoCanavial.Controllers
 {
@@ -43,20 +44,26 @@ namespace PontaoCanavial.Controllers
 
         }
 
+
+
         [HttpGet]
-        public ActionResult GerarImagem(byte[] imagem, int width, int height)
+        public ActionResult ThumbImagePonto(int id, int width, int height)
         {
+            IPontoProcesso processo = PontoProcesso.Instance;
+            Ponto p = new Ponto();
+            p.ID = id;
+            var ponto = processo.Consultar(p,PontaoCanavial.Models.ModuloBasico.Enums.TipoPesquisa.E);
             
             Image i = null;
             try
             {
-                byte[] tempLogo = imagem;
+                byte[] tempLogo = ponto[0].Logo.ToArray();
                 //Stream. stream = new Stream();
 
                 i = Image.FromStream(new MemoryStream(tempLogo));
                 return new ImageResult(i, width, height);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 i = new Bitmap(1, 1);
                 return new ImageResult(i, 1, 1);
@@ -66,30 +73,6 @@ namespace PontaoCanavial.Controllers
                 if (i != null) i.Dispose();
             }
         }
-
-        //[HttpGet]
-        //public ActionResult ThumbImagePonto(int id, int width, int height)
-        //{
-        //    var ponto = pontoRepositorio.GetPonto(id);
-        //    Image i = null;
-        //    try
-        //    {
-        //        byte[] tempLogo = ponto.Logo.ToArray();
-        //        //Stream. stream = new Stream();
-
-        //        i = Image.FromStream(new MemoryStream(tempLogo));
-        //        return new ImageResult(i, width, height);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        i = new Bitmap(1, 1);
-        //        return new ImageResult(i, 1, 1);
-        //    }
-        //    finally
-        //    {
-        //        if (i != null) i.Dispose();
-        //    }
-        //}
 
         //[HttpGet]
         //public ActionResult ThumbImagePontoCabecalho(int id, int width, int height)

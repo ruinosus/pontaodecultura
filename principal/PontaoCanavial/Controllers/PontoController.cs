@@ -17,14 +17,21 @@ namespace PontaoCanavial.Controllers
         {
             if (!string.IsNullOrEmpty(nomeIdentificador))
             {
+
+                IPontoProcesso processo = PontoProcesso.Instance;
+
+                Ponto p = new Ponto();
+                p.EPontao = (int)Status.Pontinho;
+                p.NomeIdentificador = nomeIdentificador;
+                List<Ponto> resultado = processo.Consultar(p, TipoPesquisa.E);
                 //var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
-                //if (pontinho != null && pontinho.NomeIdentificador != string.Empty)
-                //{
-                //    Session.Add("PontoFormViewModel", new PontoFormViewModel(pontinho, null));
-                //    return View("IndexPontinho", new PontoFormViewModel(pontinho, null));
-                //}
-                //else
-                return View("NaoEncontrado");
+                if (resultado != null && resultado.Count==1)
+                {
+                    Session.Add("PontoFormViewModel", new PontoFormViewModel(resultado[0], new List<Ponto>()));
+                    return View("IndexPontinho", new PontoFormViewModel(resultado[0], new List<Ponto>()));
+                }
+                else
+                    return View("NaoEncontrado");
             }
             else
             {
@@ -32,12 +39,13 @@ namespace PontaoCanavial.Controllers
 
                 Ponto p = new Ponto();
                 p.EPontao = (int)Status.Pontao;
-                List<Ponto> resultado = processo.Consultar();
+                List<Ponto> resultado = processo.Consultar(p,TipoPesquisa.E);
 
                 //var pontao = pontoRepositorio.ConsultarPontao();
                 var pontao = resultado[0];
                 //List<Ponto> pontinhos = pontoRepositorio.ConsultarTodos(true).ToList();
-                List<Ponto> pontinhos = new List<Ponto>();
+                p.EPontao = (int)Status.Pontinho;
+                List<Ponto> pontinhos = processo.Consultar(p, TipoPesquisa.E);
                 Session.Add("PontoFormViewModel", new PontoFormViewModel(pontao, pontinhos));
                 return View("IndexPontao", new PontoFormViewModel(pontao, pontinhos));
 

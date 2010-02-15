@@ -1,6 +1,6 @@
-﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 
-<%@ Import Namespace="PontaoCanavial.Models.VOs" %>
+
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -51,7 +51,7 @@
                   {%>
                 <% 
                     var imgurl = Url.Action("ThumbImagePonto", "Image",
-                          new { id = Model.Ponto.Id, width = 231, height = 207 }); %>
+                          new { id = Model.Ponto.ID, width = 231, height = 207 }); %>
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
                   
