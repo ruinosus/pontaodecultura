@@ -363,7 +363,6 @@ namespace PontaoCanavial.Controllers
 
             IPontoProcesso processo = PontoProcesso.Instance;
             Ponto p = new Ponto();
-            p.EPontao = (int)Status.Pontinho;
             p.ID = id;
             List<Ponto> resultado = processo.Consultar(p, TipoPesquisa.E);
             if (resultado != null && resultado.Count == 1)
@@ -380,11 +379,7 @@ namespace PontaoCanavial.Controllers
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
 
-            if (ModelState.IsValid)
-            {
-
-                try
-                {
+           
                     #region Carregando Imagens
                     HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
                     if (imgLogo != null)
@@ -442,14 +437,9 @@ namespace PontaoCanavial.Controllers
                     //pontoRepositorio.Save();
 
                     return RedirectToAction("Index", new { nomeIdentificador = ponto.NomeIdentificador });
-                }
-                catch
-                {
-                    //ModelState.AddModelErrors(ponto.GetRuleViolations());
-                }
-            }
+               
 
-            return View(new PontoFormViewModel(ponto, new List<Ponto>()));
+            //return View(ponto);
         }
     }
 }

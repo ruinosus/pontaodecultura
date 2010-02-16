@@ -424,6 +424,7 @@
     <Content Include="Views\Ponto\ProdutoLista.aspx" />
     <Content Include="Views\Ponto\ProjetoDetalhe.aspx" />
     <Content Include="Views\Ponto\ProjetoLista.aspx" />
+    <Content Include="Views\Shared\GridViewPonto.ascx" />
     <Content Include="Views\Shared\EditorTemplates\LogoFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemGrandeFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemMediaFileUpload.ascx" />

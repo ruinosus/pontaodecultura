@@ -12,7 +12,7 @@
 
         <fieldset>
             <legend>Campos</legend>
-            
+            <%Html.HiddenFor(model => model.ID); %>
            
                 <%= Html.LabelFor(model => model.Apresentacao)%>
             
