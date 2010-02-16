@@ -17,6 +17,9 @@ namespace PontaoCanavial.Controllers
         [HttpPost]
         public ActionResult Incluir(Usuario usuario)
         {
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
+
             if (ModelState.IsValid)
             {
                 IUsuarioProcesso processo = UsuarioProcesso.Instance;
@@ -31,6 +34,9 @@ namespace PontaoCanavial.Controllers
 
         public ActionResult Incluir()
         {
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
+
             Usuario usuario = new Usuario();
             return View(usuario);
         }
@@ -40,23 +46,29 @@ namespace PontaoCanavial.Controllers
         [HttpPost]
         public ActionResult Alterar(Usuario usuario)
         {
-            if (ModelState.IsValid)
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
+
+            string senha = usuario.Senha;
+            usuario = ClasseAuxiliar.UsuarioLogado;
+            usuario.Senha = senha;
+            if (string.IsNullOrEmpty(senha))
             {
-                string senha = usuario.Senha;
-                usuario = ClasseAuxiliar.UsuarioLogado;
-                usuario.Senha = senha;
-                IUsuarioProcesso processo = UsuarioProcesso.Instance;
-                processo.Alterar(usuario);
-                processo.Confirmar();
-                return Redirect("/");
+                return View(usuario);
             }
-            //Invalido - volta a tela mostrando os erros contidos.
-            return View(usuario);
+
+            IUsuarioProcesso processo = UsuarioProcesso.Instance;
+            processo.Alterar(usuario);
+            processo.Confirmar();
+            return Redirect("/PainelAdministrador/ListaPonto");
+
 
         }
 
         public ActionResult Alterar()
-        { 
+        {
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
             return View(ClasseAuxiliar.UsuarioLogado);
         }
         #endregion
@@ -72,25 +84,30 @@ namespace PontaoCanavial.Controllers
 
         public ActionResult Logar()
         {
+
+            if (ClasseAuxiliar.UsuarioLogado != null)
+                return Redirect("/PainelAdministrador/ListaPonto");
             Usuario usuario = new Usuario();
-           
+
             return View(usuario);
         }
 
         [HttpPost]
         public ActionResult Logar(Usuario usuario)
         {
+            if (ClasseAuxiliar.UsuarioLogado != null)
+                return Redirect("/PainelAdministrador/ListaPonto");
 
             if (ModelState.IsValid)
             {
                 IUsuarioProcesso processo = UsuarioProcesso.Instance;
-                List<Usuario> usuarioLista = processo.Consultar(usuario,TipoPesquisa.E);
+                List<Usuario> usuarioLista = processo.Consultar(usuario, TipoPesquisa.E);
                 if (usuarioLista.Count != 1)
                     ModelState.AddModelError("", "");
                 else
                 {
                     Session.Add("UsuarioLogado", usuarioLista[0]);
-                    return RedirectToAction("Index", "PainelAdministrador");
+                    return Redirect("/PainelAdministrador/ListaPonto");
                 }
             }
             //Invalido - volta a tela mostrando os erros contidos.

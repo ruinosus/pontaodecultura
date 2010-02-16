@@ -36,7 +36,7 @@
             <div id="menucontainer">
                 <ul id="menu">
                     <li>
-                        <%= Html.ActionLink("Painel Administrador", "Index", "PainelAdministrador")%></li>
+                        <%= Html.ActionLink("Painel Administrador", "ListaPonto", "PainelAdministrador")%></li>
                    
                 </ul>
             </div>

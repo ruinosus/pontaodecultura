@@ -7,6 +7,7 @@ using PontaoCanavial.Models.ModuloPonto.VOs;
 using PontaoCanavial.Models.ModuloPonto.Repositorios;
 using PontaoCanavial.Models.ModuloPonto.Processos;
 using PontaoCanavial.Models.ModuloBasico.Enums;
+using PontaoCanavial.Models.ModuloBasico.VOs;
 
 namespace PontaoCanavial.Controllers
 {
@@ -24,8 +25,7 @@ namespace PontaoCanavial.Controllers
                 p.EPontao = (int)Status.Pontinho;
                 p.NomeIdentificador = nomeIdentificador;
                 List<Ponto> resultado = processo.Consultar(p, TipoPesquisa.E);
-                //var pontinho = pontoRepositorio.ConsultarPorNomeIdentificador(nomeIdentificador);
-                if (resultado != null && resultado.Count==1)
+                if (resultado != null && resultado.Count == 1)
                 {
                     Session.Add("PontoFormViewModel", new PontoFormViewModel(resultado[0], new List<Ponto>()));
                     return View("IndexPontinho", new PontoFormViewModel(resultado[0], new List<Ponto>()));
@@ -39,11 +39,9 @@ namespace PontaoCanavial.Controllers
 
                 Ponto p = new Ponto();
                 p.EPontao = (int)Status.Pontao;
-                List<Ponto> resultado = processo.Consultar(p,TipoPesquisa.E);
+                List<Ponto> resultado = processo.Consultar(p, TipoPesquisa.E);
 
-                //var pontao = pontoRepositorio.ConsultarPontao();
                 var pontao = resultado[0];
-                //List<Ponto> pontinhos = pontoRepositorio.ConsultarTodos(true).ToList();
                 p.EPontao = (int)Status.Pontinho;
                 List<Ponto> pontinhos = processo.Consultar(p, TipoPesquisa.E);
                 Session.Add("PontoFormViewModel", new PontoFormViewModel(pontao, pontinhos));
@@ -51,11 +49,6 @@ namespace PontaoCanavial.Controllers
 
             }
 
-        }
-
-        public ActionResult Details(int id)
-        {
-            return View();
         }
 
         public ActionResult NoticiaLista()
@@ -211,19 +204,25 @@ namespace PontaoCanavial.Controllers
             return View("NaoEncontrado");
         }
 
+        #region Incluir
         public ActionResult Incluir()
         {
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
             Ponto ponto = new Ponto();
             return View(ponto);
         }
         [HttpPost]
         public ActionResult Incluir(Ponto ponto)
         {
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
             if (ModelState.IsValid)
             {
                 IPontoProcesso processo = PontoProcesso.Instance;
                 ponto.EPontao = (int)Status.Pontinho;
 
+                #region Carregando Imagens
                 HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
                 if (imgLogo != null)
                 {
@@ -232,6 +231,46 @@ namespace PontaoCanavial.Controllers
                     imgLogo.InputStream.Read(imagemByte, 0, length);
                     ponto.Logo = imagemByte;
                 }
+
+                HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
+                if (imagem != null)
+                {
+
+                    Int32 length = imagem.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagem.InputStream.Read(imagemByte, 0, length);
+                    ponto.ImagemPequena = imagemByte;
+                }
+
+                HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
+                if (imagem2 != null)
+                {
+
+                    Int32 length = imagem2.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagem2.InputStream.Read(imagemByte, 0, length);
+                    ponto.ImagemMedia = imagemByte;
+                }
+
+                HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
+                if (imagem3 != null)
+                {
+                    Int32 length = imagem3.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagem3.InputStream.Read(imagemByte, 0, length);
+                    ponto.ImagemGrande = imagemByte;
+                }
+
+                HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("cabecalho");
+                if (imagemCabecalho != null)
+                {
+                    Int32 length = imagemCabecalho.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagemCabecalho.InputStream.Read(imagemByte, 0, length);
+                    ponto.Cabecalho = imagemByte;
+                }
+                #endregion
+
                 processo.Incluir(ponto);
                 processo.Confirmar();
                 return Redirect("/");
@@ -241,7 +280,8 @@ namespace PontaoCanavial.Controllers
 
         }
 
-       
+        #endregion
+
 
 
 
@@ -316,27 +356,37 @@ namespace PontaoCanavial.Controllers
         //    return View(new PontoFormViewModel(ponto, null));
         //}
 
-        public ActionResult Edit(int id)
+        public ActionResult Alterar(int id)
         {
-            //Ponto ponto = pontoRepositorio.GetPonto(id);
-            //ponto.Editando = true;
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
 
-            //if (ponto != null)
-            //    return View(new PontoFormViewModel(ponto, null));
-            return View("NaoEncontrado");
+            IPontoProcesso processo = PontoProcesso.Instance;
+            Ponto p = new Ponto();
+            p.EPontao = (int)Status.Pontinho;
+            p.ID = id;
+            List<Ponto> resultado = processo.Consultar(p, TipoPesquisa.E);
+            if (resultado != null && resultado.Count == 1)
+            {
+                return View(resultado[0]);
+            }
+            else
+                return View("NaoEncontrado");
         }
 
-        [AcceptVerbs(HttpVerbs.Post)]
-        public ActionResult Edit(int id, FormCollection collection)
+        [HttpPost]
+        public ActionResult Alterar(Ponto ponto)
         {
-            //Ponto ponto = pontoRepositorio.GetPonto(id);
-            Ponto ponto = new Ponto();
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
+
             if (ModelState.IsValid)
             {
 
                 try
                 {
-                    HttpPostedFileBase imgLogo = this.Request.Files.Get("imgLogo");
+                    #region Carregando Imagens
+                    HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
                     if (imgLogo != null)
                     {
                         Int32 length = imgLogo.ContentLength;
@@ -345,7 +395,7 @@ namespace PontaoCanavial.Controllers
                         ponto.Logo = imagemByte;
                     }
 
-                    HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
+                    HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
                     if (imagem != null)
                     {
 
@@ -355,7 +405,7 @@ namespace PontaoCanavial.Controllers
                         ponto.ImagemPequena = imagemByte;
                     }
 
-                    HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
+                    HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
                     if (imagem2 != null)
                     {
 
@@ -365,7 +415,7 @@ namespace PontaoCanavial.Controllers
                         ponto.ImagemMedia = imagemByte;
                     }
 
-                    HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
+                    HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
                     if (imagem3 != null)
                     {
                         Int32 length = imagem3.ContentLength;
@@ -374,7 +424,7 @@ namespace PontaoCanavial.Controllers
                         ponto.ImagemGrande = imagemByte;
                     }
 
-                    HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("Cabecalho");
+                    HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("cabecalho");
                     if (imagemCabecalho != null)
                     {
                         Int32 length = imagemCabecalho.ContentLength;
@@ -382,7 +432,10 @@ namespace PontaoCanavial.Controllers
                         imagemCabecalho.InputStream.Read(imagemByte, 0, length);
                         ponto.Cabecalho = imagemByte;
                     }
-
+                    #endregion
+                    IPontoProcesso processo = PontoProcesso.Instance;
+                    processo.Alterar(ponto);
+                    processo.Confirmar();
                     //ponto.Editando = true;
                     //ponto.PontoRepositorio = pontoRepositorio;
                     //UpdateModel(ponto);
@@ -396,7 +449,7 @@ namespace PontaoCanavial.Controllers
                 }
             }
 
-            return View(new PontoFormViewModel(ponto, null));
+            return View(new PontoFormViewModel(ponto, new List<Ponto>()));
         }
     }
 }

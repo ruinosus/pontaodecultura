@@ -403,7 +403,8 @@
     <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
     <Content Include="Scripts\MultiFileExemplo.js" />
     <Content Include="Scripts\swfobject.js" />
-    <Content Include="Views\PainelAdministrador\Index.aspx" />
+    <Content Include="Views\PainelAdministrador\ListaPonto.aspx" />
+    <Content Include="Views\Ponto\Alterar.aspx" />
     <Content Include="Views\Ponto\Incluir.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />
     <Content Include="Views\Ponto\MasterPagePontao.Master" />
