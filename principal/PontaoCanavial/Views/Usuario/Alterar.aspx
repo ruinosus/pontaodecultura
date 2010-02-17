@@ -7,12 +7,13 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
 
 <h2>Alterar</h2>
-    <%=Html.ValidationSummary("Corrija os erros e tente novamenteo.")%>
-    <% using (Html.BeginForm()) {%>
+    <%=Html.ValidationSummary("Corrija os erros e tente novamente.")%>
+  <% using (Html.BeginForm("Alterar", "Usuario", FormMethod.Post, new { enctype = "multipart/form-data" }))
+   { %>
 
         <fieldset>
             <legend>Campos</legend>
-            
+            <%Html.HiddenFor(model => model.ID); %>
                 <%= Html.LabelFor(model => model.Senha) %>
             
                 <%= Html.PasswordFor(model => model.Senha)%>

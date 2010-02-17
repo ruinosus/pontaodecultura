@@ -374,72 +374,75 @@ namespace PontaoCanavial.Controllers
         }
 
         [HttpPost]
-        public ActionResult Alterar(Ponto ponto)
+        public ActionResult Alterar(int id, FormCollection collection)
         {
+            IPontoProcesso processo = PontoProcesso.Instance;
+            Ponto ponto = new Ponto();
+            ponto.ID = id;
+            List<Ponto> resultado = processo.Consultar(ponto, TipoPesquisa.E);
+            ponto = resultado[0];
+
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
+            if (ModelState.IsValid)
+            {
+                UpdateModel(ponto);
 
-           
-                    #region Carregando Imagens
-                    HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
-                    if (imgLogo != null)
-                    {
-                        Int32 length = imgLogo.ContentLength;
-                        byte[] imagemByte = new byte[length];
-                        imgLogo.InputStream.Read(imagemByte, 0, length);
-                        ponto.Logo = imagemByte;
-                    }
+                #region Carregando Imagens
+                HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
+                if (imgLogo != null)
+                {
+                    Int32 length = imgLogo.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imgLogo.InputStream.Read(imagemByte, 0, length);
+                    ponto.Logo = imagemByte;
+                }
 
-                    HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
-                    if (imagem != null)
-                    {
+                HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
+                if (imagem != null)
+                {
 
-                        Int32 length = imagem.ContentLength;
-                        byte[] imagemByte = new byte[length];
-                        imagem.InputStream.Read(imagemByte, 0, length);
-                        ponto.ImagemPequena = imagemByte;
-                    }
+                    Int32 length = imagem.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagem.InputStream.Read(imagemByte, 0, length);
+                    ponto.ImagemPequena = imagemByte;
+                }
 
-                    HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
-                    if (imagem2 != null)
-                    {
+                HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
+                if (imagem2 != null)
+                {
 
-                        Int32 length = imagem2.ContentLength;
-                        byte[] imagemByte = new byte[length];
-                        imagem2.InputStream.Read(imagemByte, 0, length);
-                        ponto.ImagemMedia = imagemByte;
-                    }
+                    Int32 length = imagem2.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagem2.InputStream.Read(imagemByte, 0, length);
+                    ponto.ImagemMedia = imagemByte;
+                }
 
-                    HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
-                    if (imagem3 != null)
-                    {
-                        Int32 length = imagem3.ContentLength;
-                        byte[] imagemByte = new byte[length];
-                        imagem3.InputStream.Read(imagemByte, 0, length);
-                        ponto.ImagemGrande = imagemByte;
-                    }
+                HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
+                if (imagem3 != null)
+                {
+                    Int32 length = imagem3.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagem3.InputStream.Read(imagemByte, 0, length);
+                    ponto.ImagemGrande = imagemByte;
+                }
 
-                    HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("cabecalho");
-                    if (imagemCabecalho != null)
-                    {
-                        Int32 length = imagemCabecalho.ContentLength;
-                        byte[] imagemByte = new byte[length];
-                        imagemCabecalho.InputStream.Read(imagemByte, 0, length);
-                        ponto.Cabecalho = imagemByte;
-                    }
-                    #endregion
-                    IPontoProcesso processo = PontoProcesso.Instance;
-                    processo.Alterar(ponto);
-                    processo.Confirmar();
-                    //ponto.Editando = true;
-                    //ponto.PontoRepositorio = pontoRepositorio;
-                    //UpdateModel(ponto);
-                    //pontoRepositorio.Save();
+                HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("cabecalho");
+                if (imagemCabecalho != null)
+                {
+                    Int32 length = imagemCabecalho.ContentLength;
+                    byte[] imagemByte = new byte[length];
+                    imagemCabecalho.InputStream.Read(imagemByte, 0, length);
+                    ponto.Cabecalho = imagemByte;
+                }
+                #endregion
 
-                    return RedirectToAction("Index", new { nomeIdentificador = ponto.NomeIdentificador });
-               
+                processo.Alterar(ponto);
+                processo.Confirmar();
+                return RedirectToAction("Index", new { nomeIdentificador = ponto.NomeIdentificador });
+            }
 
-            //return View(ponto);
+            return View(ponto);
         }
     }
 }
