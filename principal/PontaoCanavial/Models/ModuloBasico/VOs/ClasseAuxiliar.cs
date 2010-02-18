@@ -41,6 +41,22 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
             private set { usuarioLogado = value; }
         }
 
+        private static List<UsuarioPonto> usuarioPontoLogadoLista;
+
+        public static List<UsuarioPonto> UsuarioPontoLogadoLista
+        {
+            get
+            {
+                if (System.Web.HttpContext.Current.Session["UsuarioPontoLogadoLista"] != null)
+                    usuarioPontoLogadoLista = (List<UsuarioPonto>)System.Web.HttpContext.Current.Session["UsuarioPontoLogadoLista"];
+                else
+                    usuarioPontoLogadoLista = null;
+
+                return usuarioPontoLogadoLista;
+            }
+            private set { usuarioPontoLogadoLista = value; }
+        }
+
 
         public static void CarregarComboEnum<T>(DropDownList cbo)
         {
@@ -58,7 +74,20 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
             }
         }
 
+        public static bool VerificarUsuarioPonto(int pontoID)
+        {
+            bool resultado = false;
+            if(UsuarioPontoLogadoLista!=null)
+            {
+                List<UsuarioPonto> lista = (from up in UsuarioPontoLogadoLista
+                                            where up.PontoID == pontoID
+                                            select up).ToList();
+                resultado = lista.Count > 0;
+            }
+           
 
+            return resultado;
+        }
 
         public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
         {

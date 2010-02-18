@@ -13,7 +13,7 @@ namespace PontaoCanavial.Controllers
 {
     public class PontoController : Controller
     {
-
+        #region Ponto
         public ActionResult Index(string nomeIdentificador)
         {
             if (!string.IsNullOrEmpty(nomeIdentificador))
@@ -49,159 +49,6 @@ namespace PontaoCanavial.Controllers
 
             }
 
-        }
-
-        public ActionResult NoticiaLista()
-        {
-            return View("NoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        public ActionResult BuscaLista(string valor, int? id)
-        {
-            PontoFormViewModel pfvm = (PontoFormViewModel)Session["PontoFormViewModel"];
-            //pfvm = pontoRepositorio.Buscar(pfvm, valor, 1);
-            Session["PontoFormViewModel"] = pfvm;
-            return View("BuscaLista", pfvm);
-        }
-
-        //pontinho
-        public ActionResult PontinhoNoticiaLista()
-        {
-            PontoFormViewModel p = (PontoFormViewModel)Session["PontoFormViewModel"];
-
-            return View("PontinhoNoticiaLista", p);
-        }
-
-        public ActionResult ProjetoLista()
-        {
-            return View("ProjetoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        //pontinho
-        public ActionResult PontinhoProjetoLista()
-        {
-            return View("PontinhoProjetoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        public ActionResult EventoLista()
-        {
-            return View("EventoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        //pontinho
-        public ActionResult PontinhoEventoLista()
-        {
-            return View("PontinhoEventoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        public ActionResult ProdutoLista()
-        {
-            return View("ProdutoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        //pontinho
-        public ActionResult PontinhoProdutoLista()
-        {
-            return View("PontinhoProdutoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        public ActionResult PontoDetalhe()
-        {
-            return View("PontoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-        //pontinho
-        public ActionResult PontinhoDetalhe()
-        {
-            return View("PontinhoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        }
-
-
-        public ActionResult ProjetoDetalhe(int id)
-        {
-
-            //Projeto p = projetoRepositorio.GetProjeto(id);
-
-            //if (p != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.ProjetoDetalhe = p;
-            //    return View("ProjetoDetalhe", pfvm);
-            //}
-            return View("NaoEncontrado");
-        }
-
-        //pontinho
-        public ActionResult PontinhoProjetoDetalhe(int id)
-        {
-
-            //Projeto p = projetoRepositorio.GetProjeto(id);
-
-            //if (p != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.ProjetoDetalhe = p;
-            //    return View("PontinhoProjetoDetalhe", pfvm);
-            //}
-            return View("NaoEncontrado");
-        }
-
-        public ActionResult EventoDetalhe(int id)
-        {
-
-            //Evento e = eventoRepositorio.GetEvento(id);
-
-            //if (e != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.EventoDetalhe = e;
-            //    return View("EventoDetalhe", pfvm);
-            //}
-            return View("NaoEncontrado");
-        }
-
-        //Pontinho
-        public ActionResult PontinhoEventoDetalhe(int id)
-        {
-
-            //Evento e = eventoRepositorio.GetEvento(id);
-
-            //if (e != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.EventoDetalhe = e;
-            //    return View("PontinhoEventoDetalhe", pfvm);
-            //}
-            return View("NaoEncontrado");
-        }
-
-        public ActionResult NoticiaDetalhe(int id)
-        {
-
-            //Noticia n = noticiaRepositorio.GetNoticia(id);
-
-            //if (n != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.NoticiaDetalhe = n;
-            //    return View("NoticiaDetalhe", pfvm);
-            //}
-            return View("NaoEncontrado");
-        }
-
-        //pontinho
-        public ActionResult PontinhoNoticiaDetalhe(int id)
-        {
-
-            //Noticia n = noticiaRepositorio.GetNoticia(id);
-
-            //if (n != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.NoticiaDetalhe = n;
-            //    return View("PontinhoNoticiaDetalhe", pfvm);
-            //}
-            return View("NaoEncontrado");
         }
 
         #region Incluir
@@ -282,84 +129,17 @@ namespace PontaoCanavial.Controllers
 
         #endregion
 
-
-
-
-
-        //[AcceptVerbs(HttpVerbs.Post)]
-        //public ActionResult Create(Ponto ponto)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-
-        //        try
-        //        {
-        //            HttpPostedFileBase imgLogo = this.Request.Files.Get("imgLogo");
-        //            if (imgLogo != null)
-        //            {
-        //                Int32 length = imgLogo.ContentLength;
-        //                byte[] imagemByte = new byte[length];
-        //                imgLogo.InputStream.Read(imagemByte, 0, length);
-        //                ponto.Logo = imagemByte;
-        //            }
-
-        //            HttpPostedFileBase imagem = this.Request.Files.Get("imgPequena");
-        //            if (imagem != null)
-        //            {
-
-        //                Int32 length = imagem.ContentLength;
-        //                byte[] imagemByte = new byte[length];
-        //                imagem.InputStream.Read(imagemByte, 0, length);
-        //                ponto.ImagemPequena = imagemByte;
-        //            }
-
-        //            HttpPostedFileBase imagem2 = this.Request.Files.Get("imgMedia");
-        //            if (imagem2 != null)
-        //            {
-
-        //                Int32 length = imagem2.ContentLength;
-        //                byte[] imagemByte = new byte[length];
-        //                imagem2.InputStream.Read(imagemByte, 0, length);
-        //                ponto.ImagemMedia = imagemByte;
-        //            }
-
-        //            HttpPostedFileBase imagem3 = this.Request.Files.Get("imgGrande");
-        //            if (imagem3 != null)
-        //            {
-        //                Int32 length = imagem3.ContentLength;
-        //                byte[] imagemByte = new byte[length];
-        //                imagem3.InputStream.Read(imagemByte, 0, length);
-        //                ponto.ImagemGrande = imagemByte;
-        //            }
-
-        //            HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("Cabecalho");
-        //            if (imagemCabecalho != null)
-        //            {
-        //                Int32 length = imagemCabecalho.ContentLength;
-        //                byte[] imagemByte = new byte[length];
-        //                imagemCabecalho.InputStream.Read(imagemByte, 0, length);
-        //                ponto.Cabecalho = imagemByte;
-        //            }
-
-        //            //ponto.PontoRepositorio = pontoRepositorio;
-        //            //pontoRepositorio.Add(ponto);
-        //            //pontoRepositorio.Save();
-
-        //            return RedirectToAction("Index", new { nomeIdentificador = ponto.NomeIdentificador });
-        //        }
-        //        catch
-        //        {
-        //            //ModelState.AddModelErrors(ponto.GetRuleViolations());
-        //        }
-        //    }
-
-        //    return View(new PontoFormViewModel(ponto, null));
-        //}
+        #region Alterar
 
         public ActionResult Alterar(int id)
         {
+
+
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
+
+            if (!ClasseAuxiliar.VerificarUsuarioPonto(id))
+                return View("NaoEncontrado");
 
             IPontoProcesso processo = PontoProcesso.Instance;
             Ponto p = new Ponto();
@@ -376,14 +156,23 @@ namespace PontaoCanavial.Controllers
         [HttpPost]
         public ActionResult Alterar(int id, FormCollection collection)
         {
+            if (ClasseAuxiliar.UsuarioLogado == null)
+                return Redirect("/Usuario/Logar");
+
+            if (!ClasseAuxiliar.VerificarUsuarioPonto(id))
+                return View("NaoEncontrado");
             IPontoProcesso processo = PontoProcesso.Instance;
             Ponto ponto = new Ponto();
             ponto.ID = id;
             List<Ponto> resultado = processo.Consultar(ponto, TipoPesquisa.E);
+
+            if (resultado == null && resultado.Count != 1)
+                return View("NaoEncontrado");
+
+
             ponto = resultado[0];
 
-            if (ClasseAuxiliar.UsuarioLogado == null)
-                return Redirect("/Usuario/Logar");
+
             if (ModelState.IsValid)
             {
                 UpdateModel(ponto);
@@ -444,5 +233,166 @@ namespace PontaoCanavial.Controllers
 
             return View(ponto);
         }
+        #endregion
+        #endregion
+        
+        #region Detalhes Pontão
+        public ActionResult NoticiaLista()
+        {
+            return View("NoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult BuscaLista(string valor, int? id)
+        {
+            PontoFormViewModel pfvm = (PontoFormViewModel)Session["PontoFormViewModel"];
+            //pfvm = pontoRepositorio.Buscar(pfvm, valor, 1);
+            Session["PontoFormViewModel"] = pfvm;
+            return View("BuscaLista", pfvm);
+        }
+
+        public ActionResult ProjetoLista()
+        {
+            return View("ProjetoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult EventoLista()
+        {
+            return View("EventoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult ProdutoLista()
+        {
+            return View("ProdutoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult PontoDetalhe()
+        {
+            return View("PontoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        public ActionResult ProjetoDetalhe(int id)
+        {
+
+            //Projeto p = projetoRepositorio.GetProjeto(id);
+
+            //if (p != null)
+            //{
+            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+            //    pfvm.ProjetoDetalhe = p;
+            //    return View("ProjetoDetalhe", pfvm);
+            //}
+            return View("NaoEncontrado");
+        }
+
+        public ActionResult NoticiaDetalhe(int id)
+        {
+
+            //Noticia n = noticiaRepositorio.GetNoticia(id);
+
+            //if (n != null)
+            //{
+            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+            //    pfvm.NoticiaDetalhe = n;
+            //    return View("NoticiaDetalhe", pfvm);
+            //}
+            return View("NaoEncontrado");
+        }
+
+        public ActionResult EventoDetalhe(int id)
+        {
+
+            //Evento e = eventoRepositorio.GetEvento(id);
+
+            //if (e != null)
+            //{
+            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+            //    pfvm.EventoDetalhe = e;
+            //    return View("EventoDetalhe", pfvm);
+            //}
+            return View("NaoEncontrado");
+        }
+
+        #endregion
+
+        #region Detalhes Pontinho
+
+        //pontinho
+        public ActionResult PontinhoNoticiaLista()
+        {
+            PontoFormViewModel p = (PontoFormViewModel)Session["PontoFormViewModel"];
+
+            return View("PontinhoNoticiaLista", p);
+        }
+
+        //pontinho
+        public ActionResult PontinhoProjetoLista()
+        {
+            return View("PontinhoProjetoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        //Pontinho
+        public ActionResult PontinhoEventoDetalhe(int id)
+        {
+
+            //Evento e = eventoRepositorio.GetEvento(id);
+
+            //if (e != null)
+            //{
+            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+            //    pfvm.EventoDetalhe = e;
+            //    return View("PontinhoEventoDetalhe", pfvm);
+            //}
+            return View("NaoEncontrado");
+        }
+
+        //pontinho
+        public ActionResult PontinhoNoticiaDetalhe(int id)
+        {
+
+            //Noticia n = noticiaRepositorio.GetNoticia(id);
+
+            //if (n != null)
+            //{
+            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+            //    pfvm.NoticiaDetalhe = n;
+            //    return View("PontinhoNoticiaDetalhe", pfvm);
+            //}
+            return View("NaoEncontrado");
+        }
+
+        //pontinho
+        public ActionResult PontinhoProdutoLista()
+        {
+            return View("PontinhoProdutoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        //pontinho
+        public ActionResult PontinhoProjetoDetalhe(int id)
+        {
+
+            //Projeto p = projetoRepositorio.GetProjeto(id);
+
+            //if (p != null)
+            //{
+            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+            //    pfvm.ProjetoDetalhe = p;
+            //    return View("PontinhoProjetoDetalhe", pfvm);
+            //}
+            return View("NaoEncontrado");
+        }
+
+        //pontinho
+        public ActionResult PontinhoEventoLista()
+        {
+            return View("PontinhoEventoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        }
+
+        //pontinho
+        public ActionResult PontinhoDetalhe()
+        {
+            return View("PontinhoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
+        } 
+        #endregion        
+        
     }
 }

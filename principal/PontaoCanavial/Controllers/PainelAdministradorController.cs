@@ -11,8 +11,6 @@ namespace PontaoCanavial.Controllers
 {
     public class PainelAdministradorController : Controller
     {
-
-
         public ActionResult ListaPonto()
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
@@ -25,8 +23,7 @@ namespace PontaoCanavial.Controllers
 
             List<UsuarioPonto> resultado = processo.Consultar(usuarioPonto, TipoPesquisa.E);
 
-
-
+            Session.Add("UsuarioPontoLogadoLista", resultado);
             return View(resultado);
 
         }

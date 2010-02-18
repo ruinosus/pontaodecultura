@@ -78,6 +78,7 @@ namespace PontaoCanavial.Controllers
         public ActionResult Deslogar()
         {
             Session.Remove("UsuarioLogado");
+            Session.Remove("UsuarioPontoLogadoLista");
 
             return RedirectToAction("Index", "Ponto");
         }
