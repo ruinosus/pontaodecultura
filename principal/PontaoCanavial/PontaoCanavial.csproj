@@ -83,7 +83,6 @@
     <Compile Include="Helpers\FlashHelper.cs" />
     <Compile Include="Helpers\ImageHelper.cs" />
     <Compile Include="Helpers\PaginatedList.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\ModuloBanner\Constantes\BannerConstantes.cs" />
     <Compile Include="Models\ModuloBanner\Excecoes\BannerNaoAlteradoExcecao.cs" />
     <Compile Include="Models\ModuloBanner\Excecoes\BannerNaoExcluidoExcecao.cs" />
