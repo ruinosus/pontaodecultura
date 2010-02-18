@@ -1,5 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Ponto/MasterPagePontao.Master"
-    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentMasterPontao" runat="server">
     <div id="coluna-2">
@@ -10,7 +10,7 @@
                 <%if (Model.Ponto.EPontao.HasValue)
                       if (Model.Ponto.Produto.Count > 0)
                 %>
-                <% foreach (PontaoCanavial.Models.VOs.Produto p in Model.Ponto.Produto)
+                <% foreach (Produto p in Model.Ponto.Produto)
                    {
                 %>
                 <%Response.Write("<li>");%>
@@ -18,7 +18,7 @@
                   {%>
                 <% 
                     var imgurl = Url.Action("ThumbImageProduto", "Image",
-                          new { id = p.Id, width = 80, height = 100, tipo = "P" }); %>
+                          new { id = p.ID, width = 80, height = 100, tipo = "P" }); %>
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
                   

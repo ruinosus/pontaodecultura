@@ -1,4 +1,4 @@
-﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+﻿<%@ Control Language="C#" Inherits="System.Web.Mvc.ViewUserControl<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 
 
 <script src="../../Scripts/jquery.js" type="text/javascript"></script>

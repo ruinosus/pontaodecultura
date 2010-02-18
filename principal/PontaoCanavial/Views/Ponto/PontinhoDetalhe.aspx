@@ -1,5 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Ponto/MasterPagePontinho.Master"
-    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 <asp:Content ID="pontinhoDetalhe" ContentPlaceHolderID="contentMasterPontinho" runat="server">
@@ -14,7 +14,7 @@
                   {%>
                 <% 
                     var imgurl = Url.Action("ThumbImagePontoDetalhe", "Image",
-                          new { id = Model.Ponto.Id, width = 231, height = 207, tipo="m" }); %>
+                          new { id = Model.Ponto.ID, width = 231, height = 207, tipo="m" }); %>
                 <%=Html.Image("img", imgurl, "Imagem")%>
                 <% }
                   

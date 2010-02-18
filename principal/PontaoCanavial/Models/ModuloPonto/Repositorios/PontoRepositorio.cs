@@ -163,6 +163,19 @@ namespace PontaoCanavial.Models.ModuloPonto.Repositorios
 
                             resultado = resultado.Distinct().ToList();
                         }
+
+
+                        if (!string.IsNullOrEmpty(ponto.NomeIdentificador))
+                        {
+
+                            resultado = ((from p in resultado
+                                          where
+                                          p.NomeIdentificador.Equals(ponto.NomeIdentificador)
+                                          select p).ToList());
+
+
+                            resultado = resultado.Distinct().ToList();
+                        }
                         break;
                     }
                 #endregion

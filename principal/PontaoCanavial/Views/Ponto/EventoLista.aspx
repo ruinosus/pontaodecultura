@@ -1,5 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Ponto/MasterPagePontao.Master"
-    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="contentMasterPontao" runat="server">
     <div id="coluna-2">
@@ -10,14 +10,14 @@
                 <%if (Model.Ponto.EPontao.HasValue)
                       if (Model.Ponto.Evento.Count > 0)
                 %>
-                <% foreach (PontaoCanavial.Models.VOs.Evento e in Model.Ponto.Evento)
+                <% foreach (Evento e in Model.Ponto.Evento)
                    {
                 %>
                 <%Response.Write("<li>");%>
                 <p>
-                    <%=e.Data %></p>
+                    <%=e.DataEvento %></p>
                 <h2>
-                    <%=Html.ActionLink(e.Nome, "EventoDetalhe", new { id = e.Id })%></h2>
+                    <%=Html.ActionLink(e.Nome, "EventoDetalhe", new { id = e.ID})%></h2>
                 <%Response.Write("</li>");%>
                 <%} %>
             </ul>

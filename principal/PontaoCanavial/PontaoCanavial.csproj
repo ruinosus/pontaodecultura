@@ -356,8 +356,6 @@
     <Content Include="Content\uploadify.swf" />
     <Content Include="Global.asax" />
     <Content Include="Views\Ponto\BuscaLista.aspx" />
-    <Content Include="Views\Ponto\Details.aspx" />
-    <Content Include="Views\Ponto\Edit.aspx" />
     <Content Include="Views\Ponto\EventoDetalhe.aspx" />
     <Content Include="Views\Ponto\EventoLista.aspx" />
     <Content Include="Views\Ponto\IndexPontao.aspx" />

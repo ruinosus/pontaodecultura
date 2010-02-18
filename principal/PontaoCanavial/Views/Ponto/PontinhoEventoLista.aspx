@@ -1,5 +1,5 @@
 <%@ Page Title="" Language="C#" MasterPageFile="~/Views/Ponto/MasterPagePontinho.Master"
-    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Controllers.PontoFormViewModel>" %>
+    Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 
 <asp:Content ID="pontinhoEventoLista" ContentPlaceHolderID="contentMasterPontinho" runat="server">
@@ -8,17 +8,17 @@
             <h1>
                 <img src="../../App_Themes/Pontao/images/title03.gif" alt="Galerias" /></h1>
             <ul>
-                <%if ((!Model.Ponto.EPontao.HasValue || !Model.Ponto.EPontao.Value))
+                <%if ((!Model.Ponto.EPontao.HasValue ))
                       if (Model.Ponto.Evento.Count > 0)
                 %>
-                <% foreach (PontaoCanavial.Models.VOs.Evento e in Model.Ponto.Evento)
+                <% foreach (Evento e in Model.Ponto.Evento)
                    {
                 %>
                 <%Response.Write("<li>");%>
                 <p>
-                    <%=e.Data %></p>
+                    <%=e.DataEvento %></p>
                 <h2>
-                    <%=Html.ActionLink(e.Nome,"PontinhoEventoDetalhe", new { id = e.Id })%></h2>
+                    <%=Html.ActionLink(e.Nome,"PontinhoEventoDetalhe", new { id = e.ID })%></h2>
                 <%Response.Write("</li>");%>
                 <%} %>
             </ul>
