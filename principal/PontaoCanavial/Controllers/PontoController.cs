@@ -8,6 +8,7 @@ using PontaoCanavial.Models.ModuloPonto.Repositorios;
 using PontaoCanavial.Models.ModuloPonto.Processos;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 using PontaoCanavial.Models.ModuloBasico.VOs;
+using PontaoCanavial.Models.ModuloNoticia.Processos;
 
 namespace PontaoCanavial.Controllers
 {
@@ -54,6 +55,7 @@ namespace PontaoCanavial.Controllers
         #region Incluir
         public ActionResult Incluir()
         {
+
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
             Ponto ponto = new Ponto();
@@ -239,7 +241,7 @@ namespace PontaoCanavial.Controllers
         #region Detalhes Pontão
         public ActionResult NoticiaLista()
         {
-            return View("NoticiaLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            return View("NoticiaLista", ClasseAuxiliar.PontoFormViewModel);
         }
 
         public ActionResult BuscaLista(string valor, int? id)
@@ -252,22 +254,22 @@ namespace PontaoCanavial.Controllers
 
         public ActionResult ProjetoLista()
         {
-            return View("ProjetoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            return View("ProjetoLista", ClasseAuxiliar.PontoFormViewModel);
         }
 
         public ActionResult EventoLista()
         {
-            return View("EventoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            return View("EventoLista", ClasseAuxiliar.PontoFormViewModel);
         }
 
         public ActionResult ProdutoLista()
         {
-            return View("ProdutoLista", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            return View("ProdutoLista", ClasseAuxiliar.PontoFormViewModel);
         }
 
         public ActionResult PontoDetalhe()
         {
-            return View("PontoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
+            return View("PontoDetalhe", ClasseAuxiliar.PontoFormViewModel);
         }
 
         public ActionResult ProjetoDetalhe(int id)
@@ -287,14 +289,16 @@ namespace PontaoCanavial.Controllers
         public ActionResult NoticiaDetalhe(int id)
         {
 
-            //Noticia n = noticiaRepositorio.GetNoticia(id);
-
-            //if (n != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.NoticiaDetalhe = n;
-            //    return View("NoticiaDetalhe", pfvm);
-            //}
+            Noticia n = new Noticia();
+            n.ID = id;
+            INoticiaProcesso processo = NoticiaProcesso.Instance;
+            List<Noticia> resultado = processo.Consultar(n, TipoPesquisa.E);
+            if (resultado!=null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+                pfvm.NoticiaDetalhe = resultado[0];
+                return View("NoticiaDetalhe", pfvm);
+            }
             return View("NaoEncontrado");
         }
 

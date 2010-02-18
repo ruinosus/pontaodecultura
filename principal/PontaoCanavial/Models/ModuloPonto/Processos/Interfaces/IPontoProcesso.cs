@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using PontaoCanavial.Controllers;
 using PontaoCanavial.Models.ModuloBasico.Enums;
+using PontaoCanavial.Models.ModuloPonto.VOs;
 
 namespace PontaoCanavial.Models.ModuloPonto.Processos
 {
@@ -40,6 +41,14 @@ namespace PontaoCanavial.Models.ModuloPonto.Processos
         /// </summary>
         /// <returns>Lista contendo todos os pontos cadastrados.</returns>
         List<Ponto> Consultar();
+
+        /// <summary>
+        /// Método responsável por Montar o PontoFormViewModel de um Ponto.
+        /// </summary>
+        /// <param name="ponto">Objeto do tipo ponto que irá ser utilizado como parametro de pesquisa.</param>
+        /// <param name="tipoPesquisa">Tipo de pesquisa a ser utilizada.</param>
+        /// <returns>Lista contendo o PontoFormViewModel.</returns>
+        PontoFormViewModel MontarPontoFormViewModel(Ponto ponto, TipoPesquisa tipoPesquisa);
 
         /// <summary>
         /// Método responsável por confirmar as alterações no sistema.

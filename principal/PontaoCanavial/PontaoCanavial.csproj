@@ -74,6 +74,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PainelAdministradorController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Models\ModuloNoticia\Processos\NoticiaProcesso.cs" />
     <Compile Include="Models\ModuloNoticia\Repositorios\Interfaces\INoticiaRepositorio.cs" />
     <Compile Include="Models\ModuloNoticia\Repositorios\NoticiaRepositorio.cs" />
+    <Compile Include="Models\ModuloNoticia\VOs\Noticia.cs" />
     <Compile Include="Models\ModuloPonto\Constantes\PontoConstantes.cs" />
     <Compile Include="Models\ModuloPonto\Excecoes\PontoNaoExcluidoExcecao.cs" />
     <Compile Include="Models\ModuloPonto\Excecoes\PontoNaoAlteradoExcecao.cs" />
@@ -400,7 +402,10 @@
     <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
     <Content Include="Scripts\MultiFileExemplo.js" />
     <Content Include="Scripts\swfobject.js" />
+    <Content Include="Views\Noticia\Incluir.aspx" />
+    <Content Include="Views\Noticia\Listar.aspx" />
     <Content Include="Views\PainelAdministrador\ListaPonto.aspx" />
+    <Content Include="Views\PainelAdministrador\PainelAdministrador.aspx" />
     <Content Include="Views\Ponto\Alterar.aspx" />
     <Content Include="Views\Ponto\Incluir.aspx" />
     <Content Include="Views\Ponto\MasterPagePontinho.Master" />
@@ -439,7 +444,6 @@
     <Folder Include="Models\ModuloGaleria\VOs\" />
     <Folder Include="Models\ModuloImagem\VOs\" />
     <Folder Include="Models\ModuloNewsletter\VOs\" />
-    <Folder Include="Models\ModuloNoticia\VOs\" />
     <Folder Include="Models\ModuloProduto\VOs\" />
     <Folder Include="Models\ModuloProjeto\VOs\" />
     <Folder Include="Models\ModuloUsuarioPonto\VOs\" />

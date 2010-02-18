@@ -14,6 +14,7 @@ using System.ComponentModel;
 using System.Reflection;
 using System.IO;
 using PontaoCanavial.Models.ModuloBasico.Constantes;
+using PontaoCanavial.Models.ModuloPonto.VOs;
 
 
 namespace PontaoCanavial.Models.ModuloBasico.VOs
@@ -25,6 +26,36 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
     public partial class ClasseAuxiliar
     {
 
+        private static PontoFormViewModel pontoFormViewModel;
+
+        public static PontoFormViewModel PontoFormViewModel
+        {
+            get
+            {
+                if (System.Web.HttpContext.Current.Session["PontoFormViewModel"] != null)
+                    pontoFormViewModel = (PontoFormViewModel)System.Web.HttpContext.Current.Session["PontoFormViewModel"];
+                else
+                    pontoFormViewModel = PontoFormViewModel;
+
+                return pontoFormViewModel;
+            }
+            private set { pontoFormViewModel = value; }
+        }
+
+        private static int pontoID;
+        public static int PontoID
+        {
+            get
+            {
+                if (System.Web.HttpContext.Current.Session["PontoID"] != null)
+                    pontoID = (int)System.Web.HttpContext.Current.Session["PontoID"];
+                else
+                    pontoID = 0;
+
+                return pontoID;
+            }
+            private set { pontoID = value; }
+        }
         private static Usuario usuarioLogado;
 
         public static Usuario UsuarioLogado

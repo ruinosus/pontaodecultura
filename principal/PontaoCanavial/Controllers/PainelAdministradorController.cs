@@ -27,6 +27,18 @@ namespace PontaoCanavial.Controllers
             return View(resultado);
 
         }
+        [HttpGet]
+        public ActionResult SelecionarPonto(int id)
+        {
+            Session.Add("PontoID", id);
+            return View("PainelAdministrador");
+        }
+
+        public ActionResult PainelAdministrador()
+        {
+
+            return View();
+        }
 
     }
 }

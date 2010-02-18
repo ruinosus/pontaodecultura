@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using PontaoCanavial.Models.ModuloBasico.Singleton;
 using PontaoCanavial.Models.ModuloPonto.Fabricas;
 using PontaoCanavial.Models.ModuloPonto.Repositorios;
+using PontaoCanavial.Models.ModuloPonto.VOs;
 
 namespace PontaoCanavial.Models.ModuloPonto.Processos
 {
@@ -73,6 +74,13 @@ namespace PontaoCanavial.Models.ModuloPonto.Processos
             List<Ponto> pontoList = pontoRepositorio.Consultar();
 
             return pontoList;
+        }
+
+        public PontoFormViewModel MontarPontoFormViewModel(Ponto ponto, TipoPesquisa tipoPesquisa)
+        {
+            List<Ponto> pontoList = this.pontoRepositorio.Consultar(ponto, tipoPesquisa);
+
+            return null ;
         }
 
         public void Confirmar()

@@ -35,9 +35,9 @@
             <h1>
                 <img src="../../App_Themes/Pontao/images/title02.gif" alt="Not&iacute;cias" /></h1>
             <% 
-    if (Model.Ponto.Noticia.Count >= 4)
+    if (Model.Ponto.Noticia.Count <= 4)
         Response.Write("<ul>");
-    for (int i = Model.Ponto.Noticia.Count - 1; i <= Model.Ponto.Noticia.Count - 4; i--)
+    for (int i = 0; i < Model.Ponto.Noticia.Count; i++)
     {
             %>
             <%Response.Write("<li>");%><span>
