@@ -56,6 +56,22 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
             }
             private set { pontoID = value; }
         }
+
+        private static int galeriaID;
+        public static int GaleriaID
+        {
+            get
+            {
+                if (System.Web.HttpContext.Current.Session["GaleriaID"] != null)
+                    galeriaID = (int)System.Web.HttpContext.Current.Session["GaleriaID"];
+                else
+                    galeriaID = 0;
+
+                return galeriaID;
+            }
+            private set { galeriaID = value; }
+        }
+
         private static Usuario usuarioLogado;
 
         public static Usuario UsuarioLogado

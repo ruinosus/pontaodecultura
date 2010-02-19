@@ -72,14 +72,6 @@ namespace PontaoCanavial.Controllers
                 ponto.EPontao = (int)Status.Pontinho;
 
                 #region Carregando Imagens
-                HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
-                if (imgLogo != null)
-                {
-                    Int32 length = imgLogo.ContentLength;
-                    byte[] imagemByte = new byte[length];
-                    imgLogo.InputStream.Read(imagemByte, 0, length);
-                    ponto.Logo = imagemByte;
-                }
 
                 HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
                 if (imagem != null)
@@ -88,7 +80,8 @@ namespace PontaoCanavial.Controllers
                     Int32 length = imagem.ContentLength;
                     byte[] imagemByte = new byte[length];
                     imagem.InputStream.Read(imagemByte, 0, length);
-                    ponto.ImagemPequena = imagemByte;
+                    if (imagemByte.Count() > 0)
+                        ponto.ImagemPequena = imagemByte;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -98,7 +91,8 @@ namespace PontaoCanavial.Controllers
                     Int32 length = imagem2.ContentLength;
                     byte[] imagemByte = new byte[length];
                     imagem2.InputStream.Read(imagemByte, 0, length);
-                    ponto.ImagemMedia = imagemByte;
+                    if (imagemByte.Count() > 0)
+                        ponto.ImagemMedia = imagemByte;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -107,17 +101,11 @@ namespace PontaoCanavial.Controllers
                     Int32 length = imagem3.ContentLength;
                     byte[] imagemByte = new byte[length];
                     imagem3.InputStream.Read(imagemByte, 0, length);
-                    ponto.ImagemGrande = imagemByte;
+                    if (imagemByte.Count() > 0)
+                        ponto.ImagemGrande = imagemByte;
                 }
 
-                HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("cabecalho");
-                if (imagemCabecalho != null)
-                {
-                    Int32 length = imagemCabecalho.ContentLength;
-                    byte[] imagemByte = new byte[length];
-                    imagemCabecalho.InputStream.Read(imagemByte, 0, length);
-                    ponto.Cabecalho = imagemByte;
-                }
+
                 #endregion
 
                 processo.Incluir(ponto);
@@ -180,14 +168,6 @@ namespace PontaoCanavial.Controllers
                 UpdateModel(ponto);
 
                 #region Carregando Imagens
-                HttpPostedFileBase imgLogo = this.Request.Files.Get("imglogo");
-                if (imgLogo != null)
-                {
-                    Int32 length = imgLogo.ContentLength;
-                    byte[] imagemByte = new byte[length];
-                    imgLogo.InputStream.Read(imagemByte, 0, length);
-                    ponto.Logo = imagemByte;
-                }
 
                 HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
                 if (imagem != null)
@@ -196,7 +176,8 @@ namespace PontaoCanavial.Controllers
                     Int32 length = imagem.ContentLength;
                     byte[] imagemByte = new byte[length];
                     imagem.InputStream.Read(imagemByte, 0, length);
-                    ponto.ImagemPequena = imagemByte;
+                    if (imagemByte.Count() > 0)
+                        ponto.ImagemPequena = imagemByte;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -206,7 +187,8 @@ namespace PontaoCanavial.Controllers
                     Int32 length = imagem2.ContentLength;
                     byte[] imagemByte = new byte[length];
                     imagem2.InputStream.Read(imagemByte, 0, length);
-                    ponto.ImagemMedia = imagemByte;
+                    if (imagemByte.Count() > 0)
+                        ponto.ImagemMedia = imagemByte;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -215,17 +197,11 @@ namespace PontaoCanavial.Controllers
                     Int32 length = imagem3.ContentLength;
                     byte[] imagemByte = new byte[length];
                     imagem3.InputStream.Read(imagemByte, 0, length);
-                    ponto.ImagemGrande = imagemByte;
+                    if (imagemByte.Count() > 0)
+                        ponto.ImagemGrande = imagemByte;
                 }
 
-                HttpPostedFileBase imagemCabecalho = this.Request.Files.Get("cabecalho");
-                if (imagemCabecalho != null)
-                {
-                    Int32 length = imagemCabecalho.ContentLength;
-                    byte[] imagemByte = new byte[length];
-                    imagemCabecalho.InputStream.Read(imagemByte, 0, length);
-                    ponto.Cabecalho = imagemByte;
-                }
+
                 #endregion
 
                 processo.Alterar(ponto);

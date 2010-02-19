@@ -4,22 +4,23 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using PontaoCanavial.Models.ModuloBasico.VOs;
-using PontaoCanavial.Models.ModuloNoticia.Processos;
+using PontaoCanavial.Models.ModuloImagem.Processos;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 
 namespace PontaoCanavial.Controllers
 {
-    public class NoticiaController : Controller
+    public class ImagemController : Controller
     {
+
         public ActionResult Listar()
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
 
-            INoticiaProcesso processo = NoticiaProcesso.Instance;
-            Noticia noticia = new Noticia();
-            noticia.PontoID = ClasseAuxiliar.PontoID;
-            List<Noticia> resultado = processo.Consultar(noticia, TipoPesquisa.E);
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            Imagem imagem = new Imagem();
+            imagem.GaleriaID = ClasseAuxiliar.GaleriaID;
+            List<Imagem> resultado = processo.Consultar(imagem, TipoPesquisa.E);
 
             if (resultado != null)
                 return View(resultado);
@@ -29,37 +30,38 @@ namespace PontaoCanavial.Controllers
 
         }
 
+
         #region Incluir
         public ActionResult Incluir()
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
-            Noticia noticia = new Noticia();
+            Imagem imagem = new Imagem();
 
-            noticia.PontoID = ClasseAuxiliar.PontoID;
-            return View(noticia);
+            imagem.GaleriaID = ClasseAuxiliar.GaleriaID;
+            return View(imagem);
         }
         [HttpPost]
-        public ActionResult Incluir(Noticia noticia)
+        public ActionResult Incluir(Imagem imagem)
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
             if (ModelState.IsValid)
             {
-                INoticiaProcesso processo = NoticiaProcesso.Instance;
-                noticia.PontoID = ClasseAuxiliar.PontoID;
+                IImagemProcesso processo = ImagemProcesso.Instance;
+                imagem.GaleriaID = ClasseAuxiliar.GaleriaID;
 
                 #region Carregando Imagens
 
-                HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
-                if (imagem != null)
+                HttpPostedFileBase imagem0 = this.Request.Files.Get("imgpequena");
+                if (imagem0 != null)
                 {
 
-                    Int32 length = imagem.ContentLength;
+                    Int32 length = imagem0.ContentLength;
                     byte[] imagemByte = new byte[length];
-                    imagem.InputStream.Read(imagemByte, 0, length);
+                    imagem0.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
-                        noticia.ImagemPequena = imagemByte;
+                        imagem.ImagemPequena = imagemByte;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -70,7 +72,7 @@ namespace PontaoCanavial.Controllers
                     byte[] imagemByte = new byte[length];
                     imagem2.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
-                        noticia.ImagemMedia = imagemByte;
+                        imagem.ImagemMedia = imagemByte;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -80,36 +82,36 @@ namespace PontaoCanavial.Controllers
                     byte[] imagemByte = new byte[length];
                     imagem3.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
-                        noticia.ImagemGrande = imagemByte;
+                        imagem.ImagemGrande = imagemByte;
                 }
 
 
                 #endregion
-                noticia.DataCriacao = DateTime.Now;
-                noticia.UsuarioID = ClasseAuxiliar.UsuarioLogado.ID;
-                
-                processo.Incluir(noticia);
+
+                imagem.UsuarioID = ClasseAuxiliar.UsuarioLogado.ID;
+
+                processo.Incluir(imagem);
                 processo.Confirmar();
                 return RedirectToAction("Listar");
             }
             //Invalido - volta a tela mostrando os erros contidos.
-            return View(noticia);
-        } 
+            return View(imagem);
+        }
         #endregion
 
         #region Excluir
 
-      
+
         [HttpGet]
         public ActionResult Excluir(int id)
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
 
-            INoticiaProcesso processo = NoticiaProcesso.Instance;
-            Noticia n = new Noticia();
-            n.ID = id;
-            List<Noticia> resultado = processo.Consultar(n, TipoPesquisa.E);
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            Imagem i = new Imagem();
+            i.ID = id;
+            List<Imagem> resultado = processo.Consultar(i, TipoPesquisa.E);
             if (resultado != null && resultado.Count == 1)
             {
                 processo.Excluir(resultado[0]);
@@ -117,19 +119,19 @@ namespace PontaoCanavial.Controllers
             }
 
             return RedirectToAction("Listar");
-        } 
-        #endregion       
- 
+        }
+        #endregion
+
         #region Alterar
         public ActionResult Alterar(int id)
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
 
-            INoticiaProcesso processo = NoticiaProcesso.Instance;
-            Noticia n = new Noticia();
-            n.ID = id;
-            List<Noticia> resultado = processo.Consultar(n, TipoPesquisa.E);
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            Imagem i = new Imagem();
+            i.ID = id;
+            List<Imagem> resultado = processo.Consultar(i, TipoPesquisa.E);
             if (resultado != null && resultado.Count == 1)
             {
                 return View(resultado[0]);
@@ -144,33 +146,33 @@ namespace PontaoCanavial.Controllers
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
 
-            INoticiaProcesso processo = NoticiaProcesso.Instance;
-            Noticia noticia = new Noticia();
-            noticia.ID = id;
-            List<Noticia> resultado = processo.Consultar(noticia, TipoPesquisa.E);
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            Imagem imagem = new Imagem();
+            imagem.ID = id;
+            List<Imagem> resultado = processo.Consultar(imagem, TipoPesquisa.E);
 
             if (resultado == null && resultado.Count != 1)
                 return View("NaoEncontrado");
 
 
-            noticia = resultado[0];
+            imagem = resultado[0];
 
 
             if (ModelState.IsValid)
             {
-                UpdateModel(noticia);
+                UpdateModel(imagem);
 
                 #region Carregando Imagens
 
-                HttpPostedFileBase imagem = this.Request.Files.Get("imgpequena");
+                HttpPostedFileBase imagem0 = this.Request.Files.Get("imgpequena");
                 if (imagem != null)
                 {
 
-                    Int32 length = imagem.ContentLength;
+                    Int32 length = imagem0.ContentLength;
                     byte[] imagemByte = new byte[length];
-                    imagem.InputStream.Read(imagemByte, 0, length);
+                    imagem0.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
-                        noticia.ImagemPequena = imagemByte;
+                        imagem.ImagemPequena = imagemByte;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -181,7 +183,7 @@ namespace PontaoCanavial.Controllers
                     byte[] imagemByte = new byte[length];
                     imagem2.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
-                        noticia.ImagemMedia = imagemByte;
+                        imagem.ImagemMedia = imagemByte;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -191,19 +193,20 @@ namespace PontaoCanavial.Controllers
                     byte[] imagemByte = new byte[length];
                     imagem3.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
-                        noticia.ImagemGrande = imagemByte;
+                        imagem.ImagemGrande = imagemByte;
                 }
 
 
                 #endregion
 
-                processo.Alterar(noticia);
+                processo.Alterar(imagem);
                 processo.Confirmar();
                 return RedirectToAction("Listar");
             }
 
-            return View(noticia);
-        } 
+            return View(imagem);
+        }
         #endregion
+
     }
 }

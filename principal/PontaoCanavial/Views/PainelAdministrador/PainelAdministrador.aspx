@@ -9,5 +9,6 @@
     <h2>PainelAdministrador</h2>
     
     <%=     Html.ActionLink("Verificar Notícias", "Listar","Noticia", null,null)%>
+       <%=     Html.ActionLink("Verificar Galerias", "Listar","Galeria", null,null)%>
 
 </asp:Content>

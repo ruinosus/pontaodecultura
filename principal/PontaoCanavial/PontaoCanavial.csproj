@@ -73,7 +73,9 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\ImagemController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PainelAdministradorController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
@@ -127,6 +129,7 @@
     <Compile Include="Models\ModuloGaleria\Processos\Interfaces\IGaleriaProcesso.cs" />
     <Compile Include="Models\ModuloGaleria\Repositorios\GaleriaRepositorio.cs" />
     <Compile Include="Models\ModuloGaleria\Repositorios\Interfaces\IGaleriaRepositorio.cs" />
+    <Compile Include="Models\ModuloGaleria\VOs\Galeria.cs" />
     <Compile Include="Models\ModuloImagem\Constantes\ImagemConstantes.cs" />
     <Compile Include="Models\ModuloImagem\Excecoes\ImagemNaoAlteradaExcecao.cs" />
     <Compile Include="Models\ModuloImagem\Excecoes\ImagemNaoExcluidaExcecao.cs" />
@@ -136,6 +139,7 @@
     <Compile Include="Models\ModuloImagem\Processos\Interfaces\IImagemProcesso.cs" />
     <Compile Include="Models\ModuloImagem\Repositorios\ImagemRepositorio.cs" />
     <Compile Include="Models\ModuloImagem\Repositorios\Interfaces\IImagemRepositorio.cs" />
+    <Compile Include="Models\ModuloImagem\VOs\Imagem.cs" />
     <Compile Include="Models\ModuloNewsletter\Constantes\NewsletterConstantes.cs" />
     <Compile Include="Models\ModuloNewsletter\Excecoes\NewsletterNaoAlteradaExcecao.cs" />
     <Compile Include="Models\ModuloNewsletter\Excecoes\NewsletterNaoExcluidaExcecao.cs" />
@@ -402,6 +406,13 @@
     <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
     <Content Include="Scripts\MultiFileExemplo.js" />
     <Content Include="Scripts\swfobject.js" />
+    <Content Include="Views\Galeria\Alterar.aspx" />
+    <Content Include="Views\Galeria\Incluir.aspx" />
+    <Content Include="Views\Galeria\Listar.aspx" />
+    <Content Include="Views\Imagem\Alterar.aspx" />
+    <Content Include="Views\Imagem\Incluir.aspx" />
+    <Content Include="Views\Imagem\Listar.aspx" />
+    <Content Include="Views\Noticia\Alterar.aspx" />
     <Content Include="Views\Noticia\Incluir.aspx" />
     <Content Include="Views\Noticia\Listar.aspx" />
     <Content Include="Views\PainelAdministrador\ListaPonto.aspx" />
@@ -441,8 +452,6 @@
     <Folder Include="Models\ModuloBanner\VOs\" />
     <Folder Include="Models\ModuloCategoria\VOs\" />
     <Folder Include="Models\ModuloEvento\VOs\" />
-    <Folder Include="Models\ModuloGaleria\VOs\" />
-    <Folder Include="Models\ModuloImagem\VOs\" />
     <Folder Include="Models\ModuloNewsletter\VOs\" />
     <Folder Include="Models\ModuloProduto\VOs\" />
     <Folder Include="Models\ModuloProjeto\VOs\" />
