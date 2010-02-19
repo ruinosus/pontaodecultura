@@ -54,7 +54,7 @@ namespace PontaoCanavial.Controllers
                 #region Carregando Imagens
 
                 HttpPostedFileBase imagem0 = this.Request.Files.Get("imgpequena");
-                if (imagem0 != null)
+                if (imagem != null)
                 {
 
                     Int32 length = imagem0.ContentLength;
@@ -62,6 +62,7 @@ namespace PontaoCanavial.Controllers
                     imagem0.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         imagem.ImagemPequena = imagemByte;
+                    imagem0 = null;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -73,6 +74,7 @@ namespace PontaoCanavial.Controllers
                     imagem2.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         imagem.ImagemMedia = imagemByte;
+                    imagem2 = null;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -83,6 +85,7 @@ namespace PontaoCanavial.Controllers
                     imagem3.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         imagem.ImagemGrande = imagemByte;
+                    imagem3 = null;
                 }
 
 
@@ -173,6 +176,7 @@ namespace PontaoCanavial.Controllers
                     imagem0.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         imagem.ImagemPequena = imagemByte;
+                    imagem0 = null;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -184,6 +188,7 @@ namespace PontaoCanavial.Controllers
                     imagem2.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         imagem.ImagemMedia = imagemByte;
+                    imagem2 = null;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -194,6 +199,7 @@ namespace PontaoCanavial.Controllers
                     imagem3.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         imagem.ImagemGrande = imagemByte;
+                    imagem3 = null;
                 }
 
 

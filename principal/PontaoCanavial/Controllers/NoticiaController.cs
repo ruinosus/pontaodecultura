@@ -60,6 +60,7 @@ namespace PontaoCanavial.Controllers
                     imagem.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         noticia.ImagemPequena = imagemByte;
+                    imagem = null;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -71,6 +72,7 @@ namespace PontaoCanavial.Controllers
                     imagem2.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         noticia.ImagemMedia = imagemByte;
+                    imagem2 = null;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -81,6 +83,7 @@ namespace PontaoCanavial.Controllers
                     imagem3.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         noticia.ImagemGrande = imagemByte;
+                    imagem3 = null;
                 }
 
 
@@ -171,6 +174,7 @@ namespace PontaoCanavial.Controllers
                     imagem.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         noticia.ImagemPequena = imagemByte;
+                    imagem = null;
                 }
 
                 HttpPostedFileBase imagem2 = this.Request.Files.Get("imgmedia");
@@ -182,6 +186,7 @@ namespace PontaoCanavial.Controllers
                     imagem2.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         noticia.ImagemMedia = imagemByte;
+                    imagem2 = null;
                 }
 
                 HttpPostedFileBase imagem3 = this.Request.Files.Get("imggrande");
@@ -192,6 +197,7 @@ namespace PontaoCanavial.Controllers
                     imagem3.InputStream.Read(imagemByte, 0, length);
                     if (imagemByte.Count() > 0)
                         noticia.ImagemGrande = imagemByte;
+                    imagem3 = null;
                 }
 
 
