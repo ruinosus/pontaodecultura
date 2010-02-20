@@ -23,6 +23,7 @@
                         var imgurl = Url.Action("ThumbImageImagem", "Image",
                               new { id = Model.ImagemDetalhe.ID, width = 230, height = 230, tipo = "P" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
+                    
                 </div>
              
             </div>

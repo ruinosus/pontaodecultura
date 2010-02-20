@@ -8,7 +8,7 @@
             <h1>
                 <img src="../../App_Themes/Pontao/images/title03.gif" alt="Eventos" /></h1>
             <p>
-                <%=Model.EventoDetalhe.Data %></p>
+                <%=Model.EventoDetalhe.DataEvento %></p>
             <h2>
                 <%=Model.EventoDetalhe.Nome %></h2>
             <div class="event-foto">
@@ -16,7 +16,7 @@
                     <%{ %>
                     <% 
                         var imgurl = Url.Action("ThumbImageProjeto", "Image",
-                              new { id = Model.EventoDetalhe.Id, width = 220, height = 180, tipo = "M" }); %>
+                              new { id = Model.EventoDetalhe.ID, width = 220, height = 180, tipo = "M" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                     <%} %>
             </div>

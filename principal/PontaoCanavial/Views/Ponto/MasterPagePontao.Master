@@ -1,6 +1,5 @@
 ﻿<%@ Master Language="C#" Inherits="System.Web.Mvc.ViewMasterPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 
-
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -98,7 +97,7 @@
             <div id="coluna-1">
                 <ul>
                     <%if (Model.Ponto.EPontao.HasValue)
-                          if (Model.Ponto.EPontao.Value==1)
+                          if (Model.Ponto.EPontao.Value == 1)
                     %>
                     <% foreach (Ponto p in Model.Pontinhos)
                        {
@@ -118,73 +117,69 @@
                     <h1>
                         <img src="../../App_Themes/Pontao/images/title01.gif" alt="Buscar" /></h1>
                     <% using (Html.BeginForm("BuscaLista", "Ponto", FormMethod.Post))
-   { %>
-<fieldset>
-                    <p>
-                        <label>
-                            <input name="Buscar" type="text" id="Buscar" value="Buscar" /></label></p>
-                    <p>
-                        <label>
-                        <%=Html.DropDownList("comboBusca",Model.PontosBusca) %>
-                            </label></p>
-                    <p>
-                     <input type="submit" value="Buscar" align="right" />
-                        <%--<input type="image" src="../../App_Themes/Pontao/images/buscar_btn.gif" onclick="javascript:alert('teu cu');"
+                       { %>
+                    <fieldset>
+                        <p>
+                            <label>
+                                <input name="Buscar" type="text" id="Buscar" value="Buscar" /></label></p>
+                        <p>
+                            <label>
+                                <%=Html.DropDownList("comboBusca",Model.PontosBusca) %>
+                            </label>
+                        </p>
+                        <p>
+                            <input type="submit" value="Buscar" align="right" />
+                            <%--<input type="image" src="../../App_Themes/Pontao/images/buscar_btn.gif" onclick="javascript:alert('teu cu');"
                             align="right" />--%>
-                    </p>
-     </fieldset>
-<% } %>
+                        </p>
+                    </fieldset>
+                    <% } %>
                 </div>
+                
+                
                 <div id="eventos">
                     <h1>
                         <img src="../../App_Themes/Pontao/images/title03.gif" alt="Buscar" /></h1>
-                    <object id="FlashID" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="230"
-                        height="280">
-                        <param name="movie" value="../../App_Themes/Pontao/flasheventos.swf" />
-                        <param name="quality" value="high" />
-                        <param name="wmode" value="opaque" />
-                        <param name="swfversion" value="9.0.45.0" />
-                        <!-- This param tag prompts users with Flash Player 6.0 r65 and higher to download the latest version of Flash Player. Delete it if you don’t want users to see the prompt. -->
-                        <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
-                        <!-- Next object tag is for non-IE browsers. So hide it from IE using IECC. -->
-                        <!--[if !IE]>-->
-                        <object type="application/x-shockwave-flash" data="../../App_Themes/Pontao/flasheventos.swf"
-                            width="230" height="280">
-                            <!--<![endif]-->
-                            <param name="quality" value="high" />
-                            <param name="wmode" value="opaque" />
-                            <param name="swfversion" value="9.0.45.0" />
-                            <param name="expressinstall" value="../../App_Themes/Pontao/Scripts/expressInstall.swf" />
-                            <!-- The browser displays the following alternative content for users with Flash Player 6.0 and older. -->
-                            <div>
-                                <h4>
-                                    Content on this page requires a newer version of Adobe Flash Player.</h4>
-                                <p>
-                                    <a href="http://www.adobe.com/go/getflashplayer">
-                                        <img src="http://www.adobe.com/images/shared/download_buttons/get_flash_player.gif"
-                                            alt="Get Adobe Flash player" width="112" height="33" /></a></p>
-                            </div>
-                            <!--[if !IE]>-->
-                        </object>
-                        <!--<![endif]-->
-                    </object>
+
+            <% 
+                if (Model.Ponto.Evento.Count <= 5)
+                    Response.Write("<ul>");
+                for (int i = 0; i < Model.Ponto.Evento.Count; i++)
+                {
+            %>   
+            <%Response.Write("<li>");%>           
+                        <h2>
+                    <%=Html.ActionLink(Model.Ponto.Evento[i].Nome, "EventoDetalhe", new { id= Model.Ponto.Evento[i].ID })%></h2>
+                        
+                    <%
+                      Response.Write("</li>");
+                        } %>
+                        
+                        <%  Response.Write("</ul>");%>
                 </div>
                 <div id="newsletter">
                     <h1>
                         <img src="../../App_Themes/Pontao/images/title06.gif" alt="Buscar" /></h1>
-                    <form id="form3" name="form3" method="post" action="">
-                    <h2>
-                        Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura afiliados
-                        em nosso site.</h2>
-                    <p>
-                        <label>
-                            <span>Nome:</span><input name="nome" type="text" id="Buscar1" value="" size="22" /></label></p>
-                    <p>
-                        <label>
-                            <span>Email:</span><input name="email" type="text" id="Buscar2" value="" size="22" /></label></p>
-                    <p>
-                        <input type="image" src="../../App_Themes/Pontao/images/assinar_btn.gif" align="right" /></p>
-                    </form>
+                    <% using (Html.BeginForm("Incluir", "Ponto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                       { %>
+                    <fieldset>
+                        <legend>Campos</legend>
+                        <h2>
+                            Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura afiliados
+                            em nosso site.</h2>
+                        <p>
+                            <label>
+                                <span>Nome:</span><input name="nome" type="text" id="Buscar1" value="" size="22" /></label></p>
+                        <p>
+                            <label>
+                                <span>Email:</span><input name="email" type="text" id="Buscar2" value="" size="22" /></label></p>
+                        <p>
+                            <input type="image" src="../../App_Themes/Pontao/images/assinar_btn.gif" align="right" /></p>
+                        <p>
+                            <input type="submit" value="Confirmar" />
+                        </p>
+                    </fieldset>
+                    <% } %>
                 </div>
             </div>
             <div id="assinatura">

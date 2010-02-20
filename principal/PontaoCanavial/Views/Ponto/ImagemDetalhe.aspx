@@ -2,30 +2,25 @@
     Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFormViewModel>" %>
 
 <%@ Import Namespace="PontaoCanavial.Helpers" %>
-<asp:Content ID="Content2" ContentPlaceHolderID="contentMasterPontao" runat="server">
-    <div id="coluna-2">
-         <div id="galerias">
-            <h1>
-                  <img src="../../App_Themes/Pontao/images/title04.gif" alt="Galerias" /></h1>
-            <div class="not-header">
-                <h3>
-                    <%=Model.ImagemDetalhe.Nome%>
-                    - <span>
-                        <%--<%=Model.NoticiaDetalhe.Usuario.Nome %>--%></span></h3>
-                <p>
-                </p>
+<asp:Content ID="Content2" ContentPlaceHolderID="contentMasterPontao" runat="server"> 
+    
+    <div id="Div1">
+   		  	<div id="galerias-desc">
+            	<h1><img src="images/title04.gif" alt="Galerias" /></h1>
+                <ul>
+                	<li>                 	  
+                    	<span><h2><%=Model.ImagemDetalhe.Nome%></h2></span><p><%=Model.ImagemDetalhe.Descricao%><br/>
+                    	</p>
+                  </li>
+                 </ul>
             </div>
-            <div class="not-body">
-                <h2>
-                    <%=Model.ImagemDetalhe.Descricao%></h2>
-                <div class="not-foto">
-                    <% 
-                        var imgurl = Url.Action("ThumbImageImagem", "Image",
-                              new { id = Model.ImagemDetalhe.ID, width = 230, height = 230, tipo = "P" }); %>
-                    <%=Html.Image("img", imgurl, "Imagem")%>
-                </div>
-             
+            <div id="div-galeria">
+       	    <img src="images/galeria/img/img_001.jpg"/>
+            	<ul>
+                    <li class="link-anterior"></li>
+                    <li class="link-proxima"></li>	
+                    <li></li>
+				</ul>
             </div>
-        </div>
-    </div>
+          </div>
 </asp:Content>

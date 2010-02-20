@@ -8,7 +8,7 @@ Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFor
                   <img src="../../App_Themes/Pontao/images/title04.gif" alt="Galerias" /></h1>
             <div class="not-header">
             
-            <%foreach (Imagem imagem in Model.ImagenLista)
+            <%foreach (Imagem imagem in Model.ImagemLista)
               {
                   
               %>
@@ -28,6 +28,7 @@ Inherits="System.Web.Mvc.ViewPage<PontaoCanavial.Models.ModuloPonto.VOs.PontoFor
                               new { id = imagem.ID, width = 230, height = 230, tipo = "P" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                 </div>
+                 <%=     Html.ActionLink("Detalhes", "PontinhoImagemDetalhe", "Ponto", new { id = imagem.ID }, null)%>
             <% } %>
             </div>
         </div>

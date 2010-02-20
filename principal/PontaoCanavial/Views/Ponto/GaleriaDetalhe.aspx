@@ -26,6 +26,10 @@
                 </div>
              <%=     Html.ActionLink("Visualizar Imagens", "ImagemListar", "Ponto", new { id = Model.GaleriaDetalhe.ID }, null)%>
             </div>
+                        
         </div>
     </div>
+    
+    
+    
 </asp:Content>

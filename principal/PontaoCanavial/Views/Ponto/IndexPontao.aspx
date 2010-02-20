@@ -54,7 +54,7 @@
                   
                 %>
                 <p>
-                    <%=Model.Ponto.Noticia[i].Preview%>
+                   <h3> <%=Model.Ponto.Noticia[i].Preview%> </h3>
                 </p>
             </span>
             <%  Response.Write("</li>");%>
@@ -83,7 +83,7 @@
             %>
             <%Response.Write("<li>");%><span>
                 <h2>
-                    <%=Html.ActionLink(Model.Ponto.Galeria[i].Descricao, "GaleriaDetalhe", new { id = Model.Ponto.Galeria[i].ID })%></h2>
+                    <%=Html.ActionLink(Model.Ponto.Galeria[i].Descricao, "GaleriaLista", new {  })%></h2>
                 <h3>
                 </h3>
                 <%if (Model.Ponto.Galeria[i].ImagemPequena != null)

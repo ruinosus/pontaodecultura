@@ -32,8 +32,13 @@ namespace PontaoCanavial.Controllers
                 List<Ponto> resultado = processo.Consultar(p, TipoPesquisa.E);
                 if (resultado != null && resultado.Count == 1)
                 {
-                    Session.Add("PontoFormViewModel", new PontoFormViewModel(resultado[0], new List<Ponto>()));
-                    return View("IndexPontinho", new PontoFormViewModel(resultado[0], new List<Ponto>()));
+                    PontoFormViewModel pontoFormViewModel = new PontoFormViewModel(resultado[0], new List<Ponto>());
+                    IEventoProcesso eventoProcesso = EventoProcesso.Instance;
+                    Evento evento = new Evento();
+                    evento.PontoID = resultado[0].ID;
+                    pontoFormViewModel.EventoLista = eventoProcesso.Consultar(evento, TipoPesquisa.E);
+                    Session.Add("PontoFormViewModel",pontoFormViewModel );
+                    return View("IndexPontinho", pontoFormViewModel);
                 }
                 else
                     return View("NaoEncontrado");
@@ -49,8 +54,16 @@ namespace PontaoCanavial.Controllers
                 var pontao = resultado[0];
                 p.EPontao = (int)Status.Pontinho;
                 List<Ponto> pontinhos = processo.Consultar(p, TipoPesquisa.E);
-                Session.Add("PontoFormViewModel", new PontoFormViewModel(pontao, pontinhos));
-                return View("IndexPontao", new PontoFormViewModel(pontao, pontinhos));
+
+                PontoFormViewModel pontoFormViewModel = new PontoFormViewModel(resultado[0], pontinhos);
+                IEventoProcesso eventoProcesso = EventoProcesso.Instance;
+                Evento evento = new Evento();
+                evento.PontoID = resultado[0].ID;
+                pontoFormViewModel.EventoLista = eventoProcesso.Consultar(evento, TipoPesquisa.E);
+                Session.Add("PontoFormViewModel", pontoFormViewModel);
+                return View("IndexPontao", pontoFormViewModel);
+
+
 
             }
 
@@ -314,6 +327,11 @@ namespace PontaoCanavial.Controllers
             return View("NaoEncontrado");
         }
 
+        public ActionResult GaleriaLista()
+        {
+            return View("GaleriaLista", ClasseAuxiliar.PontoFormViewModel);
+        }
+
         public ActionResult GaleriaDetalhe(int id)
         {
 
@@ -340,7 +358,7 @@ namespace PontaoCanavial.Controllers
             List<Imagem> resultado = processo.Consultar(i, TipoPesquisa.E);
 
             PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
-            pfvm.ImagenLista = resultado;
+            pfvm.ImagemLista = resultado;
             return View("ImagemListar", pfvm);
 
 
@@ -482,7 +500,7 @@ namespace PontaoCanavial.Controllers
             List<Imagem> resultado = processo.Consultar(i, TipoPesquisa.E);
 
             PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
-            pfvm.ImagenLista = resultado;
+            pfvm.ImagemLista = resultado;
             return View("ImagemListar", pfvm);
 
 
@@ -502,6 +520,10 @@ namespace PontaoCanavial.Controllers
                 return View("PontinhoImagemDetalhe", pfvm);
             }
             return View("NaoEncontrado");
+        }
+        public ActionResult PontinhoGaleriaLista()
+        {
+            return View("PontinhoGaleriaLista", ClasseAuxiliar.PontoFormViewModel);
         }
         #endregion
 

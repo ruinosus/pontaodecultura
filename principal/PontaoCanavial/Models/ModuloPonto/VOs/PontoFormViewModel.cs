@@ -24,7 +24,8 @@ namespace PontaoCanavial.Models.ModuloPonto.VOs
         public List<Galeria> GaleriasBusca { get; set; }
         public List<Evento> EventosBusca { get; set; }
         public List<Projeto> ProjetosBusca { get; set; }
-        public List<Imagem> ImagenLista{ get; set; }
+        public List<Imagem> ImagemLista{ get; set; }
+        public List<Evento> EventoLista { get; set; }
         public List<SelectListItem> PontosBusca { get; set; }
 
         #endregion

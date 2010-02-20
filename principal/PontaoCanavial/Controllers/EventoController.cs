@@ -32,10 +32,10 @@ namespace PontaoCanavial.Controllers
         {
             if (ClasseAuxiliar.UsuarioLogado == null)
                 return Redirect("/Usuario/Logar");
-            Noticia noticia = new Noticia();
+            Evento evento = new Evento();
 
-            noticia.PontoID = ClasseAuxiliar.PontoID;
-            return View(noticia);
+            evento.PontoID = ClasseAuxiliar.PontoID;
+            return View(evento);
         }
         [HttpPost]
         public ActionResult Incluir(Evento evento)
