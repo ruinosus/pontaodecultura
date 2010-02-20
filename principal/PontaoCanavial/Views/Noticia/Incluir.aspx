@@ -22,8 +22,7 @@
                 <%= Html.TextBoxFor(model => model.Corpo) %>
                 <%= Html.ValidationMessageFor(model => model.Corpo) %>
             </div>
-            
-        
+                 
             
             <div class="editor-label">
                 <%= Html.LabelFor(model => model.Preview) %>

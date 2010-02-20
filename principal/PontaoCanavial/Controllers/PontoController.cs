@@ -9,6 +9,8 @@ using PontaoCanavial.Models.ModuloPonto.Processos;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 using PontaoCanavial.Models.ModuloBasico.VOs;
 using PontaoCanavial.Models.ModuloNoticia.Processos;
+using PontaoCanavial.Models.ModuloProjeto.Processos;
+using PontaoCanavial.Models.ModuloEvento.Processos;
 
 namespace PontaoCanavial.Controllers
 {
@@ -257,14 +259,20 @@ namespace PontaoCanavial.Controllers
         public ActionResult ProjetoDetalhe(int id)
         {
 
-            //Projeto p = projetoRepositorio.GetProjeto(id);
+            IProjetoProcesso processo = ProjetoProcesso.Instance;
 
-            //if (p != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.ProjetoDetalhe = p;
-            //    return View("ProjetoDetalhe", pfvm);
-            //}
+            Projeto p = new Projeto();
+            p.ID = id;
+
+            List<Projeto> resultado = processo.Consultar(p, TipoPesquisa.E);
+
+
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.ProjetoDetalhe = resultado[0];
+                return View("ProjetoDetalhe", pfvm);
+            }
             return View("NaoEncontrado");
         }
 
@@ -287,14 +295,20 @@ namespace PontaoCanavial.Controllers
         public ActionResult EventoDetalhe(int id)
         {
 
-            //Evento e = eventoRepositorio.GetEvento(id);
+            IEventoProcesso processo = EventoProcesso.Instance;
 
-            //if (e != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.EventoDetalhe = e;
-            //    return View("EventoDetalhe", pfvm);
-            //}
+            Evento e = new Evento();
+            e.ID = id;
+
+            List<Evento> resultado = processo.Consultar(e, TipoPesquisa.E);
+
+
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.EventoDetalhe = resultado[0];
+                return View("EventoDetalhe", pfvm);
+            }
             return View("NaoEncontrado");
         }
 
@@ -319,30 +333,39 @@ namespace PontaoCanavial.Controllers
         //Pontinho
         public ActionResult PontinhoEventoDetalhe(int id)
         {
+            IEventoProcesso processo = EventoProcesso.Instance;
 
-            //Evento e = eventoRepositorio.GetEvento(id);
+            Evento e = new Evento();
+            e.ID = id;
 
-            //if (e != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.EventoDetalhe = e;
-            //    return View("PontinhoEventoDetalhe", pfvm);
-            //}
+            List<Evento> resultado = processo.Consultar(e, TipoPesquisa.E);
+
+
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.EventoDetalhe= resultado[0];
+                return View("PontinhoEventoDetalhe", pfvm);
+            }
             return View("NaoEncontrado");
         }
 
         //pontinho
         public ActionResult PontinhoNoticiaDetalhe(int id)
         {
+            INoticiaProcesso processo = NoticiaProcesso.Instance;
 
-            //Noticia n = noticiaRepositorio.GetNoticia(id);
+            Noticia n = new Noticia();
+            n.ID = id;
 
-            //if (n != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.NoticiaDetalhe = n;
-            //    return View("PontinhoNoticiaDetalhe", pfvm);
-            //}
+            List<Noticia> resultado = processo.Consultar(n,TipoPesquisa.E);
+
+            if (resultado != null && resultado.Count==1)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.NoticiaDetalhe = resultado[0];
+                return View("PontinhoNoticiaDetalhe", pfvm);
+            }
             return View("NaoEncontrado");
         }
 
@@ -356,14 +379,19 @@ namespace PontaoCanavial.Controllers
         public ActionResult PontinhoProjetoDetalhe(int id)
         {
 
-            //Projeto p = projetoRepositorio.GetProjeto(id);
+            IProjetoProcesso processo = ProjetoProcesso.Instance;
 
-            //if (p != null)
-            //{
-            //    PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-            //    pfvm.ProjetoDetalhe = p;
-            //    return View("PontinhoProjetoDetalhe", pfvm);
-            //}
+            Projeto p = new Projeto();
+            p.ID = id;
+
+            List<Projeto> resultado = processo.Consultar(p, TipoPesquisa.E);
+
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
+                pfvm.ProjetoDetalhe = resultado[0];
+                return View("PontinhoProjetoDetalhe", pfvm);
+            }
             return View("NaoEncontrado");
         }
 

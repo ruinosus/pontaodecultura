@@ -73,12 +73,17 @@
     <Reference Include="System.Web.Mobile" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
     <Compile Include="Controllers\GaleriaController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\ImagemController.cs" />
+    <Compile Include="Controllers\NewsletterController.cs" />
     <Compile Include="Controllers\NoticiaController.cs" />
     <Compile Include="Controllers\PainelAdministradorController.cs" />
     <Compile Include="Controllers\PontoController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
+    <Compile Include="Controllers\ProjetoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -111,6 +116,7 @@
     <Compile Include="Models\ModuloCategoria\Processos\Interfaces\ICategoriaProcesso.cs" />
     <Compile Include="Models\ModuloCategoria\Repositorios\CategoriaRepositorio.cs" />
     <Compile Include="Models\ModuloCategoria\Repositorios\Interfaces\ICategoriaRepositorio.cs" />
+    <Compile Include="Models\ModuloCategoria\VOs\Categoria.cs" />
     <Compile Include="Models\ModuloEvento\Constantes\EventoConstantes.cs" />
     <Compile Include="Models\ModuloEvento\Excecoes\EventoNaoAlteradoExcecao.cs" />
     <Compile Include="Models\ModuloEvento\Excecoes\EventoNaoExcluidoExcecao.cs" />
@@ -120,6 +126,7 @@
     <Compile Include="Models\ModuloEvento\Processos\Interfaces\IEventoProcesso.cs" />
     <Compile Include="Models\ModuloEvento\Repositorios\EventoRepositorio.cs" />
     <Compile Include="Models\ModuloEvento\Repositorios\Interfaces\IEventoRepositorio.cs" />
+    <Compile Include="Models\ModuloEvento\VOs\Evento.cs" />
     <Compile Include="Models\ModuloGaleria\Constantes\GaleriaConstantes.cs" />
     <Compile Include="Models\ModuloGaleria\Excecoes\GaleriaNaoAlteradaExcecao.cs" />
     <Compile Include="Models\ModuloGaleria\Excecoes\GaleriaNaoExcluidaExcecao.cs" />
@@ -149,6 +156,7 @@
     <Compile Include="Models\ModuloNewsletter\Processos\NewsletterProcesso.cs" />
     <Compile Include="Models\ModuloNewsletter\Repositorios\Interfaces\INewsletterRepositorio.cs" />
     <Compile Include="Models\ModuloNewsletter\Repositorios\NewsletterRepositorio.cs" />
+    <Compile Include="Models\ModuloNewsletter\VOs\Newsletter.cs" />
     <Compile Include="Models\ModuloNoticia\Constantes\NoticiaConstantes.cs" />
     <Compile Include="Models\ModuloNoticia\Excecoes\NoticiaNaoAlteradaExcecao.cs" />
     <Compile Include="Models\ModuloNoticia\Excecoes\NoticiaNaoExcluidaExcecao.cs" />
@@ -179,6 +187,7 @@
     <Compile Include="Models\ModuloProduto\Processos\ProdutoProcesso.cs" />
     <Compile Include="Models\ModuloProduto\Repositorios\Interfaces\IProdutoRepositorio.cs" />
     <Compile Include="Models\ModuloProduto\Repositorios\ProdutoRepositorio.cs" />
+    <Compile Include="Models\ModuloProduto\VOs\Produto.cs" />
     <Compile Include="Models\ModuloProjeto\Constantes\ProjetoConstantes.cs" />
     <Compile Include="Models\ModuloProjeto\Excecoes\ProjetoNaoAlteradoExcecao.cs" />
     <Compile Include="Models\ModuloProjeto\Excecoes\ProjetoNaoExcluidoExcecao.cs" />
@@ -188,6 +197,7 @@
     <Compile Include="Models\ModuloProjeto\Processos\ProjetoProcesso.cs" />
     <Compile Include="Models\ModuloProjeto\Repositorios\Interfaces\IProjetoRepositorio.cs" />
     <Compile Include="Models\ModuloProjeto\Repositorios\ProjetoRepositorio.cs" />
+    <Compile Include="Models\ModuloProjeto\VOs\Projeto.cs" />
     <Compile Include="Models\ModuloUsuarioPonto\Constantes\UsuarioPontoConstantes.cs" />
     <Compile Include="Models\ModuloUsuarioPonto\Excecoes\UsuarioPontoNaoAlteradoExcecao.cs" />
     <Compile Include="Models\ModuloUsuarioPonto\Excecoes\UsuarioPontoNaoExcluidoExcecao.cs" />
@@ -406,12 +416,20 @@
     <Content Include="Scripts\jquery.uploadify.v2.1.0.min.js" />
     <Content Include="Scripts\MultiFileExemplo.js" />
     <Content Include="Scripts\swfobject.js" />
+    <Content Include="Views\Categoria\Incluir.aspx" />
+    <Content Include="Views\Categoria\Listar.aspx" />
+    <Content Include="Views\Evento\Alterar.aspx" />
+    <Content Include="Views\Evento\Incluir.aspx" />
+    <Content Include="Views\Evento\Listar.aspx" />
     <Content Include="Views\Galeria\Alterar.aspx" />
     <Content Include="Views\Galeria\Incluir.aspx" />
     <Content Include="Views\Galeria\Listar.aspx" />
     <Content Include="Views\Imagem\Alterar.aspx" />
     <Content Include="Views\Imagem\Incluir.aspx" />
     <Content Include="Views\Imagem\Listar.aspx" />
+    <Content Include="Views\Newsletter\Alterar.aspx" />
+    <Content Include="Views\Newsletter\Incluir.aspx" />
+    <Content Include="Views\Newsletter\Listar.aspx" />
     <Content Include="Views\Noticia\Alterar.aspx" />
     <Content Include="Views\Noticia\Incluir.aspx" />
     <Content Include="Views\Noticia\Listar.aspx" />
@@ -437,6 +455,12 @@
     <Content Include="Views\Ponto\ProdutoLista.aspx" />
     <Content Include="Views\Ponto\ProjetoDetalhe.aspx" />
     <Content Include="Views\Ponto\ProjetoLista.aspx" />
+    <Content Include="Views\Produto\Alterar.aspx" />
+    <Content Include="Views\Produto\Incluir.aspx" />
+    <Content Include="Views\Produto\Listar.aspx" />
+    <Content Include="Views\Projeto\Alterar.aspx" />
+    <Content Include="Views\Projeto\Incluir.aspx" />
+    <Content Include="Views\Projeto\Listar.aspx" />
     <Content Include="Views\Shared\GridViewPonto.ascx" />
     <Content Include="Views\Shared\EditorTemplates\LogoFileUpload.ascx" />
     <Content Include="Views\Shared\EditorTemplates\ImagemGrandeFileUpload.ascx" />
@@ -450,11 +474,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\ModuloBanner\VOs\" />
-    <Folder Include="Models\ModuloCategoria\VOs\" />
-    <Folder Include="Models\ModuloEvento\VOs\" />
-    <Folder Include="Models\ModuloNewsletter\VOs\" />
-    <Folder Include="Models\ModuloProduto\VOs\" />
-    <Folder Include="Models\ModuloProjeto\VOs\" />
     <Folder Include="Models\ModuloUsuarioPonto\VOs\" />
     <Folder Include="Models\ModuloVideo\VOs\" />
   </ItemGroup>
