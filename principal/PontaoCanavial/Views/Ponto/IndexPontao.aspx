@@ -119,7 +119,7 @@
                {
 
 
-                   for (int i = Model.Ponto.Produto.Count - 1; i >= Model.Ponto.Produto.Count - 2; i--)
+                   for (int i = 0; i < Model.Ponto.Produto.Count; i++)
                    {
             %>
             <%Response.Write("<li>");%>
