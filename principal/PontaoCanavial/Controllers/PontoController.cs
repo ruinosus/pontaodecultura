@@ -11,6 +11,7 @@ using PontaoCanavial.Models.ModuloBasico.VOs;
 using PontaoCanavial.Models.ModuloNoticia.Processos;
 using PontaoCanavial.Models.ModuloProjeto.Processos;
 using PontaoCanavial.Models.ModuloEvento.Processos;
+using PontaoCanavial.Models.ModuloGaleria.Processos;
 
 namespace PontaoCanavial.Controllers
 {
@@ -312,6 +313,22 @@ namespace PontaoCanavial.Controllers
             return View("NaoEncontrado");
         }
 
+        public ActionResult GaleriaDetalhe(int id)
+        {
+
+            Galeria g = new Galeria();
+            g.ID = id;
+            IGaleriaProcesso processo = GaleriaProcesso.Instance;
+            List<Galeria> resultado = processo.Consultar(g, TipoPesquisa.E);
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+                pfvm.GaleriaDetalhe= resultado[0];
+                return View("GaleriaDetalhe", pfvm);
+            }
+            return View("NaoEncontrado");
+        }
+
         #endregion
 
         #region Detalhes Pontinho
@@ -405,7 +422,23 @@ namespace PontaoCanavial.Controllers
         public ActionResult PontinhoDetalhe()
         {
             return View("PontinhoDetalhe", (PontoFormViewModel)Session["PontoFormViewModel"]);
-        } 
+        }
+
+        public ActionResult PontinhoGaleriaDetalhe(int id)
+        {
+
+            Galeria g = new Galeria();
+            g.ID = id;
+            IGaleriaProcesso processo = GaleriaProcesso.Instance;
+            List<Galeria> resultado = processo.Consultar(g, TipoPesquisa.E);
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+                pfvm.GaleriaDetalhe = resultado[0];
+                return View("PontinhoGaleriaDetalhe", pfvm);
+            }
+            return View("NaoEncontrado");
+        }
         #endregion        
         
     }

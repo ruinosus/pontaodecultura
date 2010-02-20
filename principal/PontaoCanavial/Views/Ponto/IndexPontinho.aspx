@@ -75,26 +75,42 @@
         </div>
         <div id="galerias">
             <h1>
-                <img src="../../App_Themes/Pontinho/images/title04.gif" alt="Galerias" /></h1>
-            <ul>
-                <li>
-                    <h2>
-                        Lorem ipsum dolor</h2>
-                    <a href="#"><span>
-                        <img src="../../App_Themes/Pontinho/images/foto_gal1.jpg" alt="foto" /><p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at libero sagittis vitae
-                            scelerisque nibh. Nulla.
-                        </p>
-                    </span></a></li>
-                <li>
-                    <h2>
-                        Vivamus vel tellus</h2>
-                    <a href="#"><span>
-                        <img src="../../App_Themes/Pontinho/images/foto_gal2.jpg" alt="foto" /><p>
-                            Vivamus vel tellus purus, non sollicitudin lacus. Aliquam ut ultricies lorem.
-                        </p>
-                    </span></a></li>
-            </ul>
+                <img src="../../App_Themes/Pontao/images/title04.gif" alt="Galerias" /></h1>
+            <% 
+                if (Model.Ponto.Galeria.Count <= 4)
+                    Response.Write("<ul>");
+                for (int i = 0; i < Model.Ponto.Galeria.Count; i++)
+                {
+            %>
+            <%Response.Write("<li>");%><span>
+                <h2>
+                    <%=Html.ActionLink(Model.Ponto.Galeria[i].Descricao, "GaleriaDetalhe", new { id = Model.Ponto.Galeria[i].ID })%></h2>
+                <h3>
+                </h3>
+                <%if (Model.Ponto.Galeria[i].ImagemPequena != null)
+                  {%>
+                <% 
+                    var imgurl = Url.Action("ThumbImageGaleria", "Image",
+                          new { id = Model.Ponto.Galeria[i].ID, width = 80, height = 80, tipo = "P" }); %>
+                <%=Html.Image("img", imgurl, "Imagem")%>
+                <% }
+                  
+                %>
+            </span>
+            <%  Response.Write("</li>");%>
+            <%
+                if (i == 0)
+                {
+                    Response.Write("</ul>");
+                    Response.Write("<ul>");
+                }
+
+                if (i + 1 == Model.Ponto.Galeria.Count)
+                    Response.Write("</ul>");
+            %>
+            <% 
+                }
+            %>
         </div>
         <div id="produtos">
             <h1>
