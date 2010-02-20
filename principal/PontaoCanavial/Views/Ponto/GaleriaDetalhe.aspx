@@ -24,7 +24,7 @@
                               new { id = Model.GaleriaDetalhe.ID, width = 230, height = 230, tipo = "P" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                 </div>
-             
+             <%=     Html.ActionLink("Visualizar Imagens", "ImagemListar", "Ponto", new { id = Model.GaleriaDetalhe.ID }, null)%>
             </div>
         </div>
     </div>

@@ -9,7 +9,7 @@
                   <img src="../../App_Themes/Pontao/images/title04.gif" alt="Galerias" /></h1>
             <div class="not-header">
                 <h3>
-                    <%=Model.GaleriaDetalhe.Nome%>
+                    <%=Model.ImagemDetalhe.Nome%>
                     - <span>
                         <%--<%=Model.NoticiaDetalhe.Usuario.Nome %>--%></span></h3>
                 <p>
@@ -17,14 +17,14 @@
             </div>
             <div class="not-body">
                 <h2>
-                    <%=Model.GaleriaDetalhe.Descricao%></h2>
+                    <%=Model.ImagemDetalhe.Descricao%></h2>
                 <div class="not-foto">
                     <% 
-                        var imgurl = Url.Action("ThumbImageGaleria", "Image",
-                              new { id = Model.GaleriaDetalhe.ID, width = 230, height = 230, tipo = "P" }); %>
+                        var imgurl = Url.Action("ThumbImageImagem", "Image",
+                              new { id = Model.ImagemDetalhe.ID, width = 230, height = 230, tipo = "P" }); %>
                     <%=Html.Image("img", imgurl, "Imagem")%>
                 </div>
-               <%=     Html.ActionLink("Visualizar Imagens", "PontinhoImagemListar", "Ponto", new { id = Model.GaleriaDetalhe.ID }, null)%>
+             
             </div>
         </div>
     </div>

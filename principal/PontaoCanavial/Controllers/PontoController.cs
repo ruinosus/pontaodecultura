@@ -12,6 +12,7 @@ using PontaoCanavial.Models.ModuloNoticia.Processos;
 using PontaoCanavial.Models.ModuloProjeto.Processos;
 using PontaoCanavial.Models.ModuloEvento.Processos;
 using PontaoCanavial.Models.ModuloGaleria.Processos;
+using PontaoCanavial.Models.ModuloImagem.Processos;
 
 namespace PontaoCanavial.Controllers
 {
@@ -222,7 +223,7 @@ namespace PontaoCanavial.Controllers
         }
         #endregion
         #endregion
-        
+
         #region Detalhes Pontão
         public ActionResult NoticiaLista()
         {
@@ -284,7 +285,7 @@ namespace PontaoCanavial.Controllers
             n.ID = id;
             INoticiaProcesso processo = NoticiaProcesso.Instance;
             List<Noticia> resultado = processo.Consultar(n, TipoPesquisa.E);
-            if (resultado!=null && resultado.Count == 1)
+            if (resultado != null && resultado.Count == 1)
             {
                 PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
                 pfvm.NoticiaDetalhe = resultado[0];
@@ -323,8 +324,40 @@ namespace PontaoCanavial.Controllers
             if (resultado != null && resultado.Count == 1)
             {
                 PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
-                pfvm.GaleriaDetalhe= resultado[0];
+                pfvm.GaleriaDetalhe = resultado[0];
                 return View("GaleriaDetalhe", pfvm);
+            }
+            return View("NaoEncontrado");
+        }
+
+
+        public ActionResult ImagemListar(int id)
+        {
+
+            Imagem i = new Imagem();
+            i.GaleriaID = id;
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            List<Imagem> resultado = processo.Consultar(i, TipoPesquisa.E);
+
+            PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+            pfvm.ImagenLista = resultado;
+            return View("ImagemListar", pfvm);
+
+
+        }
+
+        public ActionResult ImagemDetalhe(int id)
+        {
+
+            Imagem g = new Imagem();
+            g.ID = id;
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            List<Imagem> resultado = processo.Consultar(g, TipoPesquisa.E);
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+                pfvm.ImagemDetalhe= resultado[0];
+                return View("ImagemDetalhe", pfvm);
             }
             return View("NaoEncontrado");
         }
@@ -361,7 +394,7 @@ namespace PontaoCanavial.Controllers
             if (resultado != null && resultado.Count == 1)
             {
                 PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
-                pfvm.EventoDetalhe= resultado[0];
+                pfvm.EventoDetalhe = resultado[0];
                 return View("PontinhoEventoDetalhe", pfvm);
             }
             return View("NaoEncontrado");
@@ -375,9 +408,9 @@ namespace PontaoCanavial.Controllers
             Noticia n = new Noticia();
             n.ID = id;
 
-            List<Noticia> resultado = processo.Consultar(n,TipoPesquisa.E);
+            List<Noticia> resultado = processo.Consultar(n, TipoPesquisa.E);
 
-            if (resultado != null && resultado.Count==1)
+            if (resultado != null && resultado.Count == 1)
             {
                 PontoFormViewModel pfvm = ((PontoFormViewModel)Session["PontoFormViewModel"]);
                 pfvm.NoticiaDetalhe = resultado[0];
@@ -439,7 +472,38 @@ namespace PontaoCanavial.Controllers
             }
             return View("NaoEncontrado");
         }
-        #endregion        
-        
+
+        public ActionResult PontinhoImagemListar(int id)
+        {
+
+            Imagem i = new Imagem();
+            i.GaleriaID = id;
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            List<Imagem> resultado = processo.Consultar(i, TipoPesquisa.E);
+
+            PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+            pfvm.ImagenLista = resultado;
+            return View("ImagemListar", pfvm);
+
+
+        }
+
+        public ActionResult PontinhoImagemDetalhe(int id)
+        {
+
+            Imagem g = new Imagem();
+            g.ID = id;
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            List<Imagem> resultado = processo.Consultar(g, TipoPesquisa.E);
+            if (resultado != null && resultado.Count == 1)
+            {
+                PontoFormViewModel pfvm = ClasseAuxiliar.PontoFormViewModel;
+                pfvm.ImagemDetalhe = resultado[0];
+                return View("PontinhoImagemDetalhe", pfvm);
+            }
+            return View("NaoEncontrado");
+        }
+        #endregion
+
     }
 }

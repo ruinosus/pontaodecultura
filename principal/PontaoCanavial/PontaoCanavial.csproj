@@ -436,6 +436,10 @@
     <Content Include="Views\PainelAdministrador\ListaPonto.aspx" />
     <Content Include="Views\PainelAdministrador\PainelAdministrador.aspx" />
     <Content Include="Views\Ponto\Alterar.aspx" />
+    <Content Include="Views\Ponto\PontinhoImagemDetalhe.aspx" />
+    <Content Include="Views\Ponto\ImagemDetalhe.aspx" />
+    <Content Include="Views\Ponto\PontinhoImagemListar.aspx" />
+    <Content Include="Views\Ponto\ImagemListar.aspx" />
     <Content Include="Views\Ponto\PontinhoGaleriaDetalhe.aspx" />
     <Content Include="Views\Ponto\GaleriaDetalhe.aspx" />
     <Content Include="Views\Ponto\Incluir.aspx" />

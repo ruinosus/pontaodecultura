@@ -17,12 +17,14 @@ namespace PontaoCanavial.Models.ModuloPonto.VOs
         public Galeria GaleriaDetalhe { get; set; }
         public Produto ProdutoDetalhe { get; set; }
         public Evento EventoDetalhe { get; set; }
+        public Imagem ImagemDetalhe { get; set; }
         public List<Noticia> NoticiasPrincipais { get; set; }
         public List<Galeria> GaleriasPrincipais { get; set; }
         public List<Noticia> NoticiasBusca { get; set; }
         public List<Galeria> GaleriasBusca { get; set; }
         public List<Evento> EventosBusca { get; set; }
         public List<Projeto> ProjetosBusca { get; set; }
+        public List<Imagem> ImagenLista{ get; set; }
         public List<SelectListItem> PontosBusca { get; set; }
 
         #endregion
