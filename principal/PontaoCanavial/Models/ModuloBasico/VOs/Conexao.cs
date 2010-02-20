@@ -37,10 +37,10 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
             //{
             //    throw new ArquivoConfiguracaoNaoEncontradoExcecao();
             //}
-            this.Banco = "PontaoCanavialDB";
-            this.Caminho = "localhost";
-            this.Senha = "123";
-            this.Usuario = "root";
+            this.Banco = "biuvicente4";
+            this.Caminho = "mysql05.biuvicente.com";
+            this.Senha = "Tamisa57";
+            this.Usuario = "biuvicente4";
 
         }
 
