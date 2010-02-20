@@ -12,6 +12,7 @@ using PontaoCanavial.Models.ModuloProjeto.Processos;
 using PontaoCanavial.Models.ModuloEvento.Processos;
 using PontaoCanavial.Models.ModuloProduto.Processos;
 using PontaoCanavial.Models.ModuloGaleria.Processos;
+using PontaoCanavial.Models.ModuloImagem.Processos;
 
 namespace PontaoCanavial.Controllers
 {
@@ -405,5 +406,54 @@ namespace PontaoCanavial.Controllers
             }
         }
 
+
+        [HttpGet]
+        public ActionResult ThumbImageImagem(int id, int width, int height, string tipo)
+        {
+            IImagemProcesso processo = ImagemProcesso.Instance;
+            Imagem img = new Imagem();
+            img.ID = id;
+            var imagem = processo.Consultar(img, PontaoCanavial.Models.ModuloBasico.Enums.TipoPesquisa.E);
+
+            Image i = null;
+            try
+            {
+                if (tipo.Equals("P") || tipo.Equals("p"))
+                {
+                    byte[] tempImage = imagem[0].ImagemPequena.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage));
+
+                }
+                else if (tipo.Equals("M") || tipo.Equals("m"))
+                {
+                    byte[] tempImage2 = imagem[0].ImagemMedia.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage2));
+
+                }
+                else if (tipo.Equals("G") || tipo.Equals("g"))
+                {
+                    byte[] tempImage3 = imagem[0].ImagemGrande.ToArray();
+
+                    i = Image.FromStream(new MemoryStream(tempImage3));
+
+                }
+
+                //Stream. stream = new Stream();
+
+                return new ImageResult(i, width, height);
+
+            }
+            catch (Exception ex)
+            {
+                i = new Bitmap(1, 1);
+                return new ImageResult(i, 1, 1);
+            }
+            finally
+            {
+                if (i != null) i.Dispose();
+            }
+        }
     }
 }
