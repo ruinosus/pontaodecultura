@@ -37,16 +37,22 @@ namespace PontaoCanavial.Models.ModuloBasico.VOs
             //{
             //    throw new ArquivoConfiguracaoNaoEncontradoExcecao();
             //}
-            this.Banco = "biuvicente4";
-            this.Caminho = "mysql05.biuvicente.com";
+
+            this.Banco = "biuvicente6";
+            this.Caminho = "mysql06.biuvicente.com";
             this.Senha = "Tamisa57";
-            this.Usuario = "biuvicente4";
+            this.Usuario = "biuvicente6";
+
+            //this.Banco = "biuvicente6";
+            //this.Caminho = "localhost";
+            //this.Senha = "123";
+            //this.Usuario = "root";
 
         }
 
         public override string ToString()
         {
-            return "Database="+Banco+";Data Source="+Caminho+";User Id="+Usuario+";Password="+Senha;
+            return "Database="+Banco+";Data Source="+Caminho+";User Id="+Usuario+";Password="+Senha + ";pooling=false; use procedure bodies=false";
         }
 
     }

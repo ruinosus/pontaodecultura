@@ -99,7 +99,7 @@ public partial class PontaoCanavialDB : DataContext
 
 }
 
-[Table(Name = "PontaoCanavialDB.banner")]
+[Table(Name = "biuvicente6.banner")]
 public partial class Banner : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -425,7 +425,7 @@ public partial class Banner : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.categoria")]
+[Table(Name = "biuvicente6.categoria")]
 public partial class Categoria : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -566,7 +566,7 @@ public partial class Categoria : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.evento")]
+[Table(Name = "biuvicente6.evento")]
 public partial class Evento : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -944,7 +944,7 @@ public partial class Evento : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.galeria")]
+[Table(Name = "biuvicente6.galeria")]
 public partial class Galeria : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -1334,7 +1334,7 @@ public partial class Galeria : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.imagem")]
+[Table(Name = "biuvicente6.imagem")]
 public partial class Imagem : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -1688,7 +1688,7 @@ public partial class Imagem : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.newsletter")]
+[Table(Name = "biuvicente6.newsletter")]
 public partial class Newsletter : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -1864,7 +1864,7 @@ public partial class Newsletter : INotifyPropertyChanging, INotifyPropertyChange
 
 }
 
-[Table(Name = "PontaoCanavialDB.noticia")]
+[Table(Name = "biuvicente6.noticia")]
 public partial class Noticia : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -2274,7 +2274,7 @@ public partial class Noticia : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.personalization")]
+[Table(Name = "biuvicente6.personalization")]
 public partial class Personalization : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -2435,7 +2435,7 @@ public partial class Personalization : INotifyPropertyChanging, INotifyPropertyC
 
 }
 
-[Table(Name = "PontaoCanavialDB.ponto")]
+[Table(Name = "biuvicente6.ponto")]
 public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -3120,7 +3120,7 @@ public partial class Ponto : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.produto")]
+[Table(Name = "biuvicente6.produto")]
 public partial class Produto : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -3540,7 +3540,7 @@ public partial class Produto : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.profiles")]
+[Table(Name = "biuvicente6.profiles")]
 public partial class Profiles : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -3757,7 +3757,7 @@ public partial class Profiles : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.projeto")]
+[Table(Name = "biuvicente6.projeto")]
 public partial class Projeto : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -4111,7 +4111,7 @@ public partial class Projeto : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.roles")]
+[Table(Name = "biuvicente6.roles")]
 public partial class Roles : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -4216,7 +4216,7 @@ public partial class Roles : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.sitemap")]
+[Table(Name = "biuvicente6.sitemap")]
 public partial class SiteMap : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -4461,7 +4461,7 @@ public partial class SiteMap : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.users")]
+[Table(Name = "biuvicente6.users")]
 public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -5070,7 +5070,7 @@ public partial class Users : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.usersinroles")]
+[Table(Name = "biuvicente6.usersinroles")]
 public partial class UsersInRoles : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -5203,7 +5203,7 @@ public partial class UsersInRoles : INotifyPropertyChanging, INotifyPropertyChan
 
 }
 
-[Table(Name = "PontaoCanavialDB.usuario")]
+[Table(Name = "biuvicente6.usuario")]
 public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -5636,7 +5636,7 @@ public partial class Usuario : INotifyPropertyChanging, INotifyPropertyChanged
 
 }
 
-[Table(Name = "PontaoCanavialDB.usuarioponto")]
+[Table(Name = "biuvicente6.usuarioponto")]
 public partial class UsuarioPonto : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling
@@ -5850,7 +5850,7 @@ public partial class UsuarioPonto : INotifyPropertyChanging, INotifyPropertyChan
 
 }
 
-[Table(Name = "PontaoCanavialDB.video")]
+[Table(Name = "biuvicente6.video")]
 public partial class Video : INotifyPropertyChanging, INotifyPropertyChanged
 {
     #region INotifyPropertyChanging handling

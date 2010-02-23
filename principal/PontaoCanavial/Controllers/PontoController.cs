@@ -62,9 +62,6 @@ namespace PontaoCanavial.Controllers
                 pontoFormViewModel.EventoLista = eventoProcesso.Consultar(evento, TipoPesquisa.E);
                 Session.Add("PontoFormViewModel", pontoFormViewModel);
                 return View("IndexPontao", pontoFormViewModel);
-
-
-
             }
 
         }
