@@ -4,8 +4,9 @@ using System.Linq;
 using System.Web;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 using PontaoCanavial.Models.ModuloBasico.VOs;
-using MySql.Data.MySqlClient;
+
 using PontaoCanavial.Models.ModuloBasico.Singleton;
+using MySql.Data.MySqlClient;
 
 namespace PontaoCanavial.Models.ModuloBanner.Repositorios
 {

@@ -19,7 +19,7 @@
                 <%= Html.LabelFor(model => model.Corpo) %>
             </div>
             <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Corpo) %>
+                <%= Html.TextAreaFor(model => model.Corpo) %>
                 <%= Html.ValidationMessageFor(model => model.Corpo) %>
             </div>
                  
@@ -28,7 +28,7 @@
                 <%= Html.LabelFor(model => model.Preview) %>
             </div>
             <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Preview) %>
+                <%= Html.TextAreaFor(model => model.Preview)%>
                 <%= Html.ValidationMessageFor(model => model.Preview) %>
             </div>
             
@@ -36,7 +36,7 @@
                 <%= Html.LabelFor(model => model.Titulo) %>
             </div>
             <div class="editor-field">
-                <%= Html.TextBoxFor(model => model.Titulo) %>
+                <%= Html.TextAreaFor(model => model.Titulo)%>
                 <%= Html.ValidationMessageFor(model => model.Titulo) %>
             </div>
             

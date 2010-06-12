@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using PontaoCanavial.Models.ModuloBasico.Enums;
 using PontaoCanavial.Models.ModuloBasico.VOs;
-using MySql.Data.MySqlClient;
+
 using PontaoCanavial.Models.ModuloBasico.Singleton;
 using PontaoCanavial.Models.ModuloGaleria.Fabricas;
 using PontaoCanavial.Models.ModuloGaleria.Repositorios;

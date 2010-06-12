@@ -54,8 +54,11 @@
                   
                 %>
                 <p>
-                   <h3> <%=Model.Ponto.Noticia[i].Preview%> </h3>
+                    <h3>
+                        <%=Model.Ponto.Noticia[i].Preview%>
+                    </h3>
                 </p>
+              
             </span>
             <%  Response.Write("</li>");%>
             <%
@@ -82,8 +85,16 @@
                 {
             %>
             <%Response.Write("<li>");%><span>
+                <% if (Model.Ponto.Galeria[i].Descricao != null)
+                   {
+                %>
                 <h2>
-                    <%=Html.ActionLink(Model.Ponto.Galeria[i].Descricao, "GaleriaLista", new {  })%></h2>
+                    <%=Html.ActionLink(Model.Ponto.Galeria[i].Descricao, "GaleriaLista", new { })%></h2>
+                <%}
+                   else
+                   {
+                       string teste = Model.Ponto.Galeria[i].Descricao;
+                   } %>
                 <h3>
                 </h3>
                 <%if (Model.Ponto.Galeria[i].ImagemPequena != null)
@@ -141,7 +152,7 @@
             </span></a>
             <%Response.Write("</li>");%>
             <%}
-                } %>
+               } %>
             <%Response.Write("</ul>");%>
         </div>
     </div>

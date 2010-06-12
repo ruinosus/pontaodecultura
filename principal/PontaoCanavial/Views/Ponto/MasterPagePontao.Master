@@ -5,6 +5,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta http-equiv="expires" content="-1" />
     <title>Pont&atilde;o do Canavial</title>
     <link href="../../App_Themes/Pontao/CSS/style_pontao.css" rel="stylesheet" type="text/css" />
 
@@ -81,16 +84,13 @@
                 </li>
                 <li>
                     <p>
-                        <a href="#">Galerias</a></p>
+                        <%=Html.ActionLink("Galerias", "../Ponto/GaleriaLista")%></p>
                 </li>
                 <li>
                     <p>
                         <%=Html.ActionLink("Produtos","../Ponto/ProdutoLista")%></p>
                 </li>
-                <li>
-                    <p>
-                        <a href="#">Contatos</a></p>
-                </li>
+                
             </ul>
         </div>
         <div id="content">
@@ -116,8 +116,8 @@
                 <div id="buscar">
                     <h1>
                         <img src="../../App_Themes/Pontao/images/title01.gif" alt="Buscar" /></h1>
-                    <% using (Html.BeginForm("BuscaLista", "Ponto", FormMethod.Post))
-                       { %>
+                    <%// using (Html.BeginForm("BuscaLista", "Ponto", FormMethod.Post))
+                      // { %>
                     <fieldset>
                         <p>
                             <label>
@@ -128,34 +128,29 @@
                             </label>
                         </p>
                         <p>
-                            <input type="submit" value="Buscar" align="right" />
+                            <input type="button" value="Buscar" align="right" />
                             <%--<input type="image" src="../../App_Themes/Pontao/images/buscar_btn.gif" onclick="javascript:alert('teu cu');"
                             align="right" />--%>
                         </p>
                     </fieldset>
-                    <% } %>
+                    <%// } %>
                 </div>
-                
-                
                 <div id="eventos">
                     <h1>
                         <img src="../../App_Themes/Pontao/images/title03.gif" alt="Buscar" /></h1>
-
-            <% 
-                if (Model.Ponto.Evento.Count <= 5)
-                    Response.Write("<ul>");
-                for (int i = 0; i < Model.Ponto.Evento.Count; i++)
-                {
-            %>   
-            <%Response.Write("<li>");%>           
-                        <h2>
-                    <%=Html.ActionLink(Model.Ponto.Evento[i].Nome, "EventoDetalhe", new { id= Model.Ponto.Evento[i].ID })%></h2>
-                        
+                    <% 
+                        if (Model.Ponto.Evento.Count <= 5)
+                            Response.Write("<ul>");
+                        for (int i = 0; i < Model.Ponto.Evento.Count; i++)
+                        {
+                    %>
+                    <%Response.Write("<li>");%>
+                    <h2>
+                        <%=Html.ActionLink(Model.Ponto.Evento[i].Nome, "EventoDetalhe", new { id= Model.Ponto.Evento[i].ID })%></h2>
                     <%
-                      Response.Write("</li>");
-                        } %>
-                        
-                        <%  Response.Write("</ul>");%>
+                        Response.Write("</li>");
+                } %>
+                    <%  Response.Write("</ul>");%>
                 </div>
                 <div id="newsletter">
                     <h1>
