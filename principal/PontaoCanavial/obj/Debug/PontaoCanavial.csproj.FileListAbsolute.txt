@@ -18,3 +18,8 @@ E:\Projetos\principal\PontaoCanavial\bin\PontaoCanavial.pdb
 E:\Projetos\principal\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
 E:\Projetos\principal\PontaoCanavial\obj\Debug\PontaoCanavial.dll
 E:\Projetos\principal\PontaoCanavial\obj\Debug\PontaoCanavial.pdb
+C:\principal\PontaoCanavial\obj\Debug\ResolveAssemblyReference.cache
+C:\principal\PontaoCanavial\obj\Debug\PontaoCanavial.dll
+C:\principal\PontaoCanavial\obj\Debug\PontaoCanavial.pdb
+C:\principal\PontaoCanavial\bin\PontaoCanavial.dll
+C:\principal\PontaoCanavial\bin\PontaoCanavial.pdb

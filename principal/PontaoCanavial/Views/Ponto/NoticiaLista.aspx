@@ -24,11 +24,11 @@
                     <%=Html.Image("img", imgurl, "Imagem")%>
                     <% }
                   
-                    %><p class="titulo-noticia">
-                       <%=Html.ActionLink(n.Titulo, "NoticiaDetalhe", new { id = n.ID })%></p>
+                    %><h2 class="titulo-noticia">
+                       <%=Html.ActionLink(n.Titulo, "NoticiaDetalhe", new { id = n.ID })%></h2>
                     <h3>
                         <%=n.DataCriacao %></h3>
-                    <p class="texto-preview"><%=n.Preview %></p>
+                    <%=n.Preview %>
 
                 </span></a>
                 <%  Response.Write("</li>");%>

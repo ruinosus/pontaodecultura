@@ -46,22 +46,27 @@ h2{ color:#060;}
 
 #noticias{ width:450px; height:330px;}
 #noticias h1{width:426px; padding-left:20px; height:50px; background:url(../images/title_bg.gif) repeat-x #88b300; border-left:solid 2px #cdee67; border-right:solid 2px #333; border-top:solid 1px #333;}
-#noticias li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
-#noticias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:1em;}
+#noticias li{ width:211px; height:136px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:0 5px;}
+#noticias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:.9em;}
 #noticias h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:.7em;}
-#noticias a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
 #noticias a:hover span p{ text-decoration:underline;}
 #noticias a:hover{ text-decoration:underline;}
 #noticias img{float:left; margin-right:4px;}
+#noticias h2 a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:1em; color:#060;}
+
+
 
 #galerias{width:225px; height:330px; float:left;}
 #galerias h1{width:201px; padding-left:20px; height:50px; background:url(../images/title_bg.gif) repeat-x #88b300; border-left:solid 2px #cdee67; border-right:solid 2px #333; border-top:solid 1px #333;}
 #galerias li{ width:211px; height:126px; float:left; background-color:#EEE; border:solid #FFF 2px; list-style:none; padding:5px;}
-#galerias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:1em;}
+#galerias h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:.9em;}
 #galerias a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
 #galerias a:hover span p{ text-decoration:underline;}
 #galerias a:hover{ text-decoration:underline;}
 #galerias img{float:left; margin-right:4px;}
+#galerias h2 a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:1em; color:#060;}
+
 
 #produtos{width:225px; height:330px; float:left;}
 #produtos h1{width:201px; padding-left:20px; height:50px; background:url(../images/title_bg.gif) repeat-x #88b300; border-left:solid 2px #cdee67; border-right:solid 2px #333; border-top:solid 1px #333;}
@@ -77,7 +82,7 @@ h2{ color:#060;}
 
 #buscar {width:230px; height:200px;}
 #buscar h1{width:206px; padding-left:20px; height:50px; background:url(../images/title_bg.gif) repeat-x #88b300; border-left:solid 2px #cdee67; border-right:solid 2px #333; border-top:solid 1px #333;}
-#buscar form{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; width:216px; height:136px; background-color:#EEE; border:solid #FFF 2px; padding:5px; text-align:center;}
+#buscar fieldset{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; width:216px; height:136px; background-color:#EEE; border:solid #FFF 2px; padding:5px; text-align:center;}
 #buscar input{ font-size:1.1em; margin:10px 5px;}
 #buscar select{margin:10px 5px;}
 
@@ -110,12 +115,13 @@ h2{ color:#060;}
 #noticias-list{ width:450px; height:820px;}
 #noticias-list h1{width:426px; padding-left:20px; height:50px; background:url(../images/title_bg.gif) repeat-x #88b300; border-left:solid 2px #cdee67; border-right:solid 2px #333; border-top:solid 1px #333;}
 #noticias-list li{ width:430px; height:80px; background-color:#EEE; border:solid #FFF 2px; border-bottom:solid #666 2px; list-style:none; padding:5px; margin:2px 4px; _margin:2px;}
-#noticias-list h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:1.4em;}
-#noticias-list h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:1em;}
-#noticias-list a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
-#noticias-list a:hover span p{ text-decoration:underline;}
-#noticias-list a:hover{ text-decoration:underline;}
+#noticias-list h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:.9em;}
+#noticias-list h3{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#666; font-size:.7em;}
+#noticias-list p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; text-decoration:none;}
+#noticias-list h2 a:hover{ text-decoration:underline;}
 #noticias-list img{float:left; margin-right:5px;}
+#noticias-list h2 a{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-weight:bold; font-size:1em; color:#060;}
+
 
 /* TEXTO DA NOTÍCIAS */
 
@@ -128,7 +134,7 @@ h2{ color:#060;}
 #noticias-text .not-header p a{ width:16px; height:16px; border:#999 solid 1px; margin-left:5px; padding:2px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#f00; font-size:1.5em; font-weight:bold; text-decoration:none;}
 #noticias-text .not-body{width:450px; height:770px; overflow:auto;}
 #noticias-text h2{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; font-size:1.4em; padding:10px;}
-#noticias-text .not-foto{width:240px; height:280px; margin-left:10px; _margin-left:5px; float:left;}
+#noticias-text .not-foto{width:240px; height:240px; margin-left:10px; _margin-left:5px; float:left;}
 #noticias-text .not-foto img{border:solid #333 1px;}
 #noticias-text .not-foto h4{width:226px; height:36px; margin-top:240px; _margin-top:0; background-color:#ccc; border-bottom:solid #666 2px; font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.7em; font-weight:normal; padding:2px;}
 #noticias-text p{font-family:"Trebuchet MS", Arial, Helvetica, sans-serif; color:#333; font-size:.8em; text-decoration:none; margin:0 10px;}

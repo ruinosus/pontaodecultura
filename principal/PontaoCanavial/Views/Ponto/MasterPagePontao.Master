@@ -128,7 +128,7 @@
                             </label>
                         </p>
                         <p>
-                            <input type="button" value="Buscar" align="right" />
+                            <input type="image" src="../../App_Themes/Pontao/images/buscar_btn.gif" align="right" />
                             <%--<input type="image" src="../../App_Themes/Pontao/images/buscar_btn.gif" onclick="javascript:alert('teu cu');"
                             align="right" />--%>
                         </p>
@@ -157,8 +157,7 @@
                         <img src="../../App_Themes/Pontao/images/title06.gif" alt="Buscar" /></h1>
                     <% using (Html.BeginForm("Incluir", "Ponto", FormMethod.Post, new { enctype = "multipart/form-data" }))
                        { %>
-                    <fieldset>
-                        <legend>Campos</legend>
+
                         <h2>
                             Cadastre-se abaixo para receber no seu e-mail novidades dos pontos de cultura afiliados
                             em nosso site.</h2>
@@ -173,7 +172,6 @@
                         <p>
                             <input type="submit" value="Confirmar" />
                         </p>
-                    </fieldset>
                     <% } %>
                 </div>
             </div>

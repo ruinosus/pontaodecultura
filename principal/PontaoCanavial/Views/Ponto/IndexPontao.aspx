@@ -40,8 +40,7 @@
                 {
             %>
             <%Response.Write("<li>");%><span>
-                <h2>
-                    <%=Html.ActionLink(Model.Ponto.Noticia[i].Titulo, "NoticiaDetalhe", new { id = Model.Ponto.Noticia[i].ID })%></h2>
+                <h2><%=Html.ActionLink(Model.Ponto.Noticia[i].Titulo, "NoticiaDetalhe", new { id = Model.Ponto.Noticia[i].ID })%></h2>
                 <h3>
                     <%= Model.Ponto.Noticia[i].DataCriacao%></h3>
                 <%if (Model.Ponto.Noticia[i].ImagemPequena != null)
@@ -53,11 +52,7 @@
                 <% }
                   
                 %>
-                <p>
-                    <h3>
-                        <%=Model.Ponto.Noticia[i].Preview%>
-                    </h3>
-                </p>
+                <%=Model.Ponto.Noticia[i].Preview%>
               
             </span>
             <%  Response.Write("</li>");%>
